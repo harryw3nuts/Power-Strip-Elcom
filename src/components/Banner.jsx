@@ -3,26 +3,24 @@ import Image from "next/image";
 import leftstrip from "@/asset/images/leftstrip.png";
 import rightstrip from "@/asset/images/rightstrip.png";
 
-Link
-
-const Banner = () => {
+const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,rightSideImage,bannerButtonInfo}) => {
     return (
         <>
             <div className="brackerwrap">
                 <div className="brackerInner">
-                    <div className="brackerleft">
-                        <Image src={leftstrip} width={681} height={454} alt="leftstrip"></Image>
-                    </div>
-                    <div className="brackerright">
-                        <Image src={rightstrip} width={582} height={402} alt="rightstrip"></Image>
-                    </div>
+                    {bannerLeftSideImage && <div className="brackerleft">
+                        <Image src={bannerLeftSideImage?.sourceUrl} width={681} height={454} alt="leftstrip"></Image>
+                    </div>}
+                    {rightSideImage && <div className="brackerright">
+                        <Image src={rightSideImage?.sourceUrl} width={582} height={402} alt="rightstrip"></Image>
+                    </div>}
                     <div className="container">
                         <div className="brackerdtl">
-                            <h1>The Ultimate Power Strip for All Your Needs</h1>
-                            <p>Power your space with our innovative Power Strip. Experience advanced features and seamless power for all your devices.</p>
-                            <div className="btnbox">
-                                <Link href={'#'}>Buy Now</Link>
-                            </div>
+                            {bannerHeading && <h1>{bannerHeading}</h1>}
+                            {bannerSubHeading && <p>{bannerSubHeading}</p>}
+                            {bannerButtonInfo && <div className="btnbox">
+                                <Link href={bannerButtonInfo.url} target={bannerButtonInfo.target}>{bannerButtonInfo.title}</Link>
+                            </div>}
                         </div>
                     </div>
                 </div>

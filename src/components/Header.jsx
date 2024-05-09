@@ -8,7 +8,7 @@ import Logo from "@/asset/images/Logo.svg";
 
 
 
-const Header = () => {
+const Header = ({headerLogo,ctaOneInfo,ctaTwoInfo}) => {
     return (
         // <header>header</header>
         <header className="navigationBar">
@@ -16,8 +16,8 @@ const Header = () => {
                 <div className="container">
                     <div className="navBar">
                         <div className="navLogo">
-                            <Link href="#">
-                                <Image src={Logo} alt="Logo" width={43} height={40}></Image>
+                            <Link href="/">
+                                <Image src={headerLogo?.sourceUrl} alt="Logo" width={43} height={40}></Image>
                             </Link>
                         </div>
                         <div className="navInner">
@@ -30,12 +30,12 @@ const Header = () => {
                                 <li><Link href="#">FAQs</Link></li>
                             </ul>
                         </div>
-                        <div className="navBtn">
+                        {(ctaOneInfo || ctaTwoInfo) && <div className="navBtn">
                             <ul>
-                                <li><Link href="#">Contact</Link></li>
-                                <li className="buyNow"><Link href="#">Buy now</Link></li>
+                                {ctaOneInfo && <li><Link href={ctaOneInfo.url} target={ctaOneInfo.target}>{ctaOneInfo.title}</Link></li>}
+                                {ctaTwoInfo && <li className="buyNow"><Link href={ctaTwoInfo.url} target={ctaTwoInfo.target}>{ctaTwoInfo.title}</Link></li>}
                             </ul>
-                        </div>
+                        </div>}
                     </div>
                 </div>
             </div>

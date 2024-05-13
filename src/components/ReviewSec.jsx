@@ -1,127 +1,76 @@
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import React, { useRef } from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+// import React, { Component } from "react";
+import React from "react";
 
 const ReviewSec = () => {
 
-    const swiperRef = useRef();
-	const sliderSettings = {
-		0: {
-			slidesPerView: 1,
-		},
-		768: {
-			slidesPerView: 2,
-		},
-		992: {
-			slidesPerView: 3,
-		},
-		1200: {
-			slidesPerView: 1,
-		},
-        1500: {
-			slidesPerView: 2,
-		},
-	};
+    const ArrowLeft = (props) => (
+		<button {...props} className="left group">
+			<svg class="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+		</button>
+	);
+	const ArrowRight = (props) => (
+		<button {...props} className="right group">
+			<svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+		</button>
+	);
 
+    var settings = {
+        dots: true,
+        arrows: true,
+        className: "center",
+        centerMode: true,
+        infinite: true,
+        centerPadding: "60px",
+        slidesToShow: 3,
+        speed: 500,
+        prevArrow: <ArrowLeft />,
+		nextArrow: <ArrowRight />,
+        
+        
+        // cssEase: 'linear'
+      };
     return (
         <>
             <div className="reviewBox">
                 
-                    <div className="benefitHead">
-                        <h3>Reviews</h3>
-                    </div>
-                    <div className="reviewSlider">
-                        <Swiper className="swiper_slider"
-                            loop={false}
-                            slidesPerView={2}
-                            spaceBetween={20}
-                            breakpoints={sliderSettings}
-                            centeredSlides={true}
-                            // navigation={true}
-                            // modules={[Navigation]}
-                            onBeforeInit={(swiper) => {
-                                swiperRef.current = swiper;
-                            }}
-                        >
-                            <SwiperSlide>
-                                <div className="box_slider">
-                                    <div className="text_box_slider">
-                                        <span>Jyoti Thakur</span>
-                                    </div>
-                                    <div className="text_slider_dtl">
-                                        <p>This power strip is a game-changer. With 10 outlets, surge protection, and a sturdy build, it's perfect for my home office. The long cord is a plus, and the LED indicators are handy. While it's a bit bulky, the benefits far outweigh the minor inconvenience. I highly recommend it for anyone looking to upgrade their power strip. While it's a bit bulky, the benefits far outweigh the minor inconvenience. I highly recommend it for anyone looking to upgrade their power strip... <Link href={'#'}>Read More</Link></p>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="box_slider">
-                                    <div className="text_box_slider">
-                                        <span>rohit mahadeshwar</span>
-                                    </div>
-                                    <div className="text_slider_dtl">
-                                        <p>I recently purchased this power strip for my home office, and I couldn't be happier with the results. As someone who relies on multiple electronic devices and peripherals to get through the workday, finding the right power strip was crucial. This one exceeded my expectations in every way. This one exceeded my expectations in every way.</p>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="box_slider">
-                                    <div className="text_box_slider">
-                                        <span>mahindra bhairat</span>
-                                    </div>
-                                    <div className="text_slider_dtl">
-                                        <p>This power strip is fantastic. It offers plenty of outlets, surge protection, and a solid build. The long cord and LED indicators are handy.</p>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="box_slider">
-                                    <div className="text_box_slider">
-                                        <span>mahindra bhairat</span>
-                                    </div>
-                                    <div className="text_slider_dtl">
-                                        <p>This power strip is fantastic. It offers plenty of outlets, surge protection, and a solid build. The long cord and LED indicators are handy.</p>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="box_slider">
-                                    <div className="text_box_slider">
-                                        <span>mahindra bhairat</span>
-                                    </div>
-                                    <div className="text_slider_dtl">
-                                        <p>This power strip is fantastic. It offers plenty of outlets, surge protection, and a solid build. The long cord and LED indicators are handy.</p>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-                            <SwiperSlide>
-                            <div className="box_slider">
-                                    <div className="text_box_slider">
-                                        <span>mahindra bhairat</span>
-                                    </div>
-                                    <div className="text_slider_dtl">
-                                        <p>This power strip is fantastic. It offers plenty of outlets, surge protection, and a solid build. The long cord and LED indicators are handy.</p>
-                                    </div>
-                                </div>
-                            </SwiperSlide>
-
-                        </Swiper>
-                        <div className="switer_btn">
-                            <button onClick={() => swiperRef.current?.slidePrev()} className="group">
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="20" cy="20" r="19" stroke="#E12929" strokeWidth="2" />
-                                    <path d="M18 27L11 20M11 20L18 13M11 20L29 20" stroke="#E12929" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </button>
-                            <button onClick={() => swiperRef.current?.slideNext()} className="group">
-                                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="20" cy="20" r="19" stroke="#E12929" strokeWidth="2" />
-                                    <path d="M22 13L29 20M29 20L22 27M29 20L11 20" stroke="#E12929" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </button>
+                <div className="benefitHead">
+                    <h3>Reviews</h3>
+                </div>
+                <div className="reviewSlider">
+                    <Slider {...settings}>
+                        <div className="box_slider">
+                            <div className="text_box_slider">
+                                <span>Jyoti Thakur</span>
+                            </div>
+                            <div className="text_slider_dtl">
+                                <p>This power strip is a game-changer. With 10 outlets, surge protection, and a sturdy build, it's perfect for my home office. The long cord is a plus, and the LED indicators are handy. While it's a bit bulky, the benefits far outweigh the minor inconvenience. I highly recommend it for anyone looking to upgrade their power strip. While it's a bit bulky, the benefits far outweigh the minor inconvenience. I highly recommend it for anyone looking to upgrade their power strip... <Link href={'#'}>Read More</Link></p>
+                            </div>
                         </div>
-                    </div>
-                
+
+                        <div className="box_slider">
+                            <div className="text_box_slider">
+                                <span>rohit mahadeshwar</span>
+                            </div>
+                            <div className="text_slider_dtl">
+                                <p>I recently purchased this power strip for my home office, and I couldn't be happier with the results. As someone who relies on multiple electronic devices and peripherals to get through the workday, finding the right power strip was crucial. This one exceeded my expectations in every way. This one exceeded my expectations in every way.</p>
+                            </div>
+                        </div>
+
+                        <div className="box_slider">
+                            <div className="text_box_slider">
+                                <span>mahindra bhairat</span>
+                            </div>
+                            <div className="text_slider_dtl">
+                                <p>This power strip is fantastic. It offers plenty of outlets, surge protection, and a solid build. The long cord and LED indicators are handy.</p>
+                            </div>
+                        </div>
+                    </Slider>
+                </div>
+
             </div>
         </>
     )

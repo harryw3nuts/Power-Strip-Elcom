@@ -1,9 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import twitter from '@/asset/images/twitter.svg';
-import linkedin from '@/asset/images/linkedin.svg';
-import facebook from '@/asset/images/facebook.svg';
-import youtube from '@/asset/images/youtube.svg';
+import Twitter from '@/components/Svgs/Twitter';
+import Linkedin from "@/components/Svgs/Linkedin";
+import Facebook from "@/components/Svgs/Facebook";
+import Youtube from "./Svgs/Youtube";
+
 
 const Footer = () => {
     return (
@@ -20,10 +21,10 @@ const Footer = () => {
                         </div>
                         <div className="socialLink">
                             <ul>
-                                <li><Link href={'#'}><Image src={twitter} alt="twitter"/></Link></li>
-                                <li><Link href={'#'}><Image src={linkedin} alt="linkedin"/></Link></li>
-                                <li><Link href={'#'}><Image src={facebook} alt="facebook"/></Link></li>
-                                <li><Link href={'#'}><Image src={youtube} alt="youtube"/></Link></li>
+                                <li><Link href="#"><Twitter/></Link></li>
+                                <li><Link href="#"><Linkedin/></Link></li>
+                                <li><Link href="#"><Facebook/></Link></li>
+                                <li><Link href="#"><Youtube/></Link></li>
                             </ul>
                         </div>
                     </div>

@@ -124,7 +124,10 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .priceSwiper .swiper-wrapper {flex-direction: column; gap: 12px;}
 .priceSwiper .thumbBox {border-radius: 4px;background: #f4f4f4;; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;}
 .priceSwiper .thumbBox img {display: flex; justify-content: center; align-items: center;}
-.pricefullImg {background: #f4f4f4; height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px;}
+.pricefullImg {background: #f4f4f4; height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative;}
+.switer_btn {position: absolute; bottom: 32px; right: 32px; display: flex; gap: 20px;}
+.switer_btn .group { border: none; background-color: #FFF; width: 40px; height: 40px; border-radius: 50px;}
+
 .thumbfullBox {display: flex; justify-content: start; align-items: center; width: 100%;}
 .thumbfullBox img {display: flex; justify-content: start; align-items: center; height: 100%; width: 100%;}
 .swiper-button-prev,
@@ -190,6 +193,7 @@ font-size: 24px; font-weight: 600; line-height: 32px; display: block;}
 
 
 .stripWrap {margin: 120px 0;}
+.stripSec .row {row-gap: 40px;}
 .stripHead {text-align: center; padding-bottom: 40px;}
 .stripHead h3 {color: var(--Primary-Black, #101010); font-family: "Inter Tight"; font-size: 48px;
 font-weight: 600; line-height: 56px;}

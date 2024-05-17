@@ -1,0 +1,57 @@
+
+
+
+
+
+
+
+
+@media (min-width: 1400px) and (max-width: 1440px) {
+
+    .navigationBar .navWrap .container {max-width: 1408px;}
+ }
+
+@media (min-width: 1300px) and (max-width: 1399px) { 
+ 
+ }
+
+
+@media (min-width: 1200px) and (max-width: 1299px) {
+ 
+ 
+}
+ 
+@media (min-width: 992px) and (max-width: 1199px) {
+ 
+  
+ 
+}
+
+@media (max-width: 991px) { 
+ 
+}
+ 
+@media (min-width: 768px) and (max-width: 991px) { 
+  
+}
+
+
+ 
+ 
+
+@media (max-width: 767px) {
+
+    .navigationBar .navWrap .navInner > ul {display: none;}
+    .benefitHead h3 {font-size: 80px;} 
+    .benefitsecBox {margin: 0;}
+    .benefitBox {margin-bottom: 30px;}
+ 
+ }
+
+
+ 
+ 
+
+
+@media (min-width: 568px) and (max-width: 767px) { } 
+@media (min-width: 240px) and (max-width: 567px) { } 

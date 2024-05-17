@@ -11,15 +11,31 @@ import ReviewSec from "@/components/ReviewSec";
 import { useEffect } from "react";
 import { sendGraphQLQuery } from "@/utils/utils";
 import { HOME_PAGE, THEME_SETTINGS } from "@/queries/graphql_queries";
+import VideoSec from "@/components/VideoSec";
+import SucessSec from "@/components/SucessPage";
 
 // const inter = Inter({ subsets: ["latin"] });
 
-export default function Home({data,error}) {
+export default function Home({ data, error }) {
   // console.log("data : ",data?.data?.pageBy?.template?.homePageFields)
-  const {bannerHeading,bannerSubHeading,bannerLeftSideImage,rightSideImage,bannerButtonInfo} = data?.data?.pageBy?.template?.homePageFields;
+  const { 
+    bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo,
+    otherHeading,otherProductInfo,
+    reviewsHeading,reviewsInfo,
+    insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,
+    benefitsHeading,benefitsInfo,
+    faqHeading,faqInfo
+  } = data?.data?.pageBy?.template?.homePageFields;
 
-  const BannerData = {bannerHeading,bannerSubHeading,bannerLeftSideImage,rightSideImage,bannerButtonInfo}
-  if(error){
+  const latest3Posts = data?.data?.posts?.nodes;
+
+  const BannerData = { bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo }
+  const otherInfoData = {otherHeading,otherProductInfo}
+  const reviewsData = {reviewsHeading,reviewsInfo}
+  const insightsData = {insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,latest3Posts}
+  const benefitsData = {benefitsHeading,benefitsInfo}
+  const faqData = {faqHeading,faqInfo}
+  if (error) {
     return (
       <h2>Error : {JSON.stringify(error)}</h2>
     )
@@ -32,13 +48,16 @@ export default function Home({data,error}) {
       </Head>
       <Banner {...BannerData} />
       <PriceSec />
-      <StripBox />
-      <ReviewSec />
-      <InsightSec />
-      <BenefitSec />
-      <QuestionSec />
+      <VideoSec />
+      <StripBox {...otherInfoData}/>
+      <ReviewSec {...reviewsData}/>
+      <InsightSec {...insightsData}/>
+      <BenefitSec {...benefitsData}/>
+      <QuestionSec {...faqData}/>
+      {/* <SucessSec/> */}
     </>
-  );
+  )
+
 }
 
 export async function getServerSideProps() {

@@ -67,7 +67,7 @@ query THEME_SETTINGS {
                     bannerLeftSideImage {
                         sourceUrl
                     }
-                    rightSideImage {
+                    bannerRightSideImage {
                         sourceUrl
                     }
                     bannerButtonInfo {
@@ -83,9 +83,49 @@ query THEME_SETTINGS {
                         }
                         largeWidthBox
                     }
+                    reviewsHeading
+                    reviewsInfo{
+                      name
+                      description
+                    }
+                    insightsHeading
+                    insightsReadMoreLinkText
+                    insightsAllInsightsLink{
+                      title
+                      url
+                      target
+                    }
+                    benefitsHeading
+                    benefitsInfo{
+                      title
+                      image{
+                        sourceUrl
+                      }
+                    }
+                    faqHeading
+                    faqInfo{
+                      heading
+                      description
+                    }
                 }
             }
         }
+    }
+    posts(first: 3, where: {status: PUBLISH}) {
+      nodes {
+        title
+        uri
+        categories{
+          nodes{
+            name
+          }
+        }
+        featuredImage{
+          node{
+            sourceUrl
+          }
+        }
+      }
     }
   }
 `

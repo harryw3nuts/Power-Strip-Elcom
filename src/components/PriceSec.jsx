@@ -20,6 +20,8 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 const PriceSec = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
+    
+
     return (
         <>
 
@@ -106,8 +108,15 @@ const PriceSec = () => {
                                     </div>
                                     <div className='colorQun'>
                                         <div className='colorSec'>
-                                            <span className='textBlog'>colour</span>
-                                            <span className='difColor'></span>
+                                            <span className='textBlog'>Color</span>
+                                            <div className='colorBtn'>
+                                                <div className='difBtn'>
+                                                    <label for="gray">
+                                                        <input type="radio" id="gray" name="colors" checked />
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div className='qunSec'>
                                             <span className='textBlog'>quantity</span>

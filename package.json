@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",
     "gsap": "^3.12.5",
@@ -16,6 +17,9 @@
     "react": "^18",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.11.0",
     "swiper": "^11.1.1"
   },
   "devDependencies": {

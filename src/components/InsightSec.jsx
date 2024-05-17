@@ -2,81 +2,56 @@ import Image from "next/image";
 import Link from "next/link";
 import stripbox1 from '@/asset/images/stripbox1.png';
 
-Image
-
-const InsightSec = () => {
-    return (
-        <>
-            <div className="insightWrap">
-                <div className="container">
-                    <div className="insightSec">
-                        <div className="insightHead">
-                            <h3>Power Strip Insights</h3>
-                        </div>
-                        <div className="row">
-                            <div className="col-lg-4">
-                                <div class="insightBox">
-                                    <div class="boxImage">
-                                        <Image src={stripbox1} alt="stripbox1"></Image>
-                                    </div>
-                                    <div class="boxText">
-                                        <div class="lebalText">
-                                            <span>BLOG</span>
+const InsightSec = ({insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,latest3Posts}) => {
+    if(latest3Posts){
+        return (
+            <>
+                <div className="insightWrap">
+                    <div className="container">
+                        <div className="insightSec">
+                            {insightsHeading && <div className="insightHead">
+                                <h3>{insightsHeading}</h3>
+                            </div>}
+                            <div className="row">
+                                {latest3Posts.map((post,index) => {
+                                    console.log(post)
+                                    const {title,uri,categories,featuredImage} = post;
+                                    return (
+                                        <div className="col-lg-4" key={index}>
+                                            <div class="insightBox">
+                                                {featuredImage?.node && <div class="boxImage">
+                                                    <Image src={featuredImage?.node?.sourceUrl} width={416} height={278} alt="stripbox1"></Image>
+                                                </div>}
+                                                <div class="boxText">
+                                                    {categories?.nodes && <div class="lebalText">
+                                                        {categories?.nodes.map((cat,index) => {
+                                                            return (
+                                                                <span key={index}>{cat.name}</span>
+                                                            )
+                                                        })}
+                                                    </div>}
+                                                    <div class="headTitle">
+                                                        <h5>{title}</h5>
+                                                    </div>
+                                                    <div class="btnbox">
+                                                        <Link href={uri}>{insightsReadMoreLinkText && "Read more"}</Link>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="headTitle">
-                                            <h5>Stay Plugged In: Choosing the Right Power Strip for Your Needs</h5>
-                                        </div>
-                                        <div class="btnbox">
-                                            <Link href={'#'}>Read more</Link>
-                                        </div>
-                                    </div>
-                                </div>
+                                    )
+                                })}
                             </div>
-                            <div className="col-lg-4">
-                                <div class="insightBox">
-                                    <div class="boxImage">
-                                        <Image src={stripbox1} alt="stripbox1"></Image>
-                                    </div>
-                                    <div class="boxText">
-                                        <div class="lebalText">
-                                            <span>BLOG</span>
-                                        </div>
-                                        <div class="headTitle">
-                                            <h5>Stay Plugged In: Choosing the Right Power Strip for Your Needs</h5>
-                                        </div>
-                                        <div class="btnbox">
-                                            <Link href={'#'}>Read more</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-lg-4">
-                                <div class="insightBox">
-                                    <div class="boxImage">
-                                        <Image src={stripbox1} alt="stripbox1"></Image>
-                                    </div>
-                                    <div class="boxText">
-                                        <div class="lebalText">
-                                            <span>BLOG</span>
-                                        </div>
-                                        <div class="headTitle">
-                                            <h5>Stay Plugged In: Choosing the Right Power Strip for Your Needs</h5>
-                                        </div>
-                                        <div class="btnbox">
-                                            <Link href={'#'}>Read more</Link>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="boxbtn">
-                            <Link href={'#'}>read all insights</Link>
+                            {insightsAllInsightsLink && <div className="boxbtn">
+                                <Link href={insightsAllInsightsLink.url} target={insightsAllInsightsLink.target}>{insightsAllInsightsLink.title}</Link>
+                            </div>}
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
-    )
+            </>
+        )
+    }
+    return ''
 }
 
 export default InsightSec;

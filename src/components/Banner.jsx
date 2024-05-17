@@ -3,7 +3,7 @@ import Image from "next/image";
 import leftstrip from "@/asset/images/leftstrip.png";
 import rightstrip from "@/asset/images/rightstrip.png";
 
-const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,rightSideImage,bannerButtonInfo}) => {
+const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,bannerRightSideImage,bannerButtonInfo}) => {
     return (
         <>
             <div className="brackerwrap">
@@ -11,8 +11,8 @@ const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,rightSideIma
                     {bannerLeftSideImage && <div className="brackerleft">
                         <Image src={bannerLeftSideImage?.sourceUrl} width={681} height={454} alt="leftstrip"></Image>
                     </div>}
-                    {rightSideImage && <div className="brackerright">
-                        <Image src={rightSideImage?.sourceUrl} width={582} height={402} alt="rightstrip"></Image>
+                    {bannerRightSideImage && <div className="brackerright">
+                        <Image src={bannerRightSideImage?.sourceUrl} width={582} height={402} alt="rightstrip"></Image>
                     </div>}
                     <div className="container">
                         <div className="brackerdtl">

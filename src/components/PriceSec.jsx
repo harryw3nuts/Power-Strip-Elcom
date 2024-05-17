@@ -20,7 +20,7 @@ import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 const PriceSec = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
-    
+    const swiperRef = useRef();
 
     return (
         <>
@@ -69,12 +69,15 @@ const PriceSec = () => {
                                 <div className='pricefullImg'>
                                     <Swiper
                                         onSwiper={setThumbsSwiper}
-                                        loop={true}
+                                        loop={false}
                                         slidesPerView={1}
                                         freeMode={true}
-                                        navigation={true}
+                                        // navigation={true}
                                         watchSlidesProgress={true}
                                         modules={[FreeMode, Navigation, Thumbs]}
+                                        onBeforeInit={(swiper) => {
+                                            swiperRef.current = swiper;
+                                            }}
                                         className="mySwiper"
                                     >
                                         <SwiperSlide>
@@ -98,6 +101,14 @@ const PriceSec = () => {
                                             </div>
                                         </SwiperSlide>
                                     </Swiper>
+                                    <div className="switer_btn">
+                                        <button onClick={() => swiperRef.current?.slidePrev()} className="group">
+                                            <svg class="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+                                        </button>
+                                        <button onClick={() => swiperRef.current?.slideNext()} className="group">
+                                            <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <div className='col-lg-4'>

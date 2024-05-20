@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 // const inter = Inter({ subsets: ["latin"] });
 import Script from "next/script";
 
+
 export default function CheckoutPage() {
   const [rzpLoaded, setRzpLoaded] = useState(false);
 
@@ -73,48 +74,56 @@ export default function CheckoutPage() {
         version: "wc/v3"
     });
 
-
-    const orderData = {
-      payment_method: 'cod',
-      payment_method_title: 'Cash on delivery',
-      set_paid: true,
-      billing: {
-          first_name: 'John',
-          last_name: 'Doe',
-          address_1: '123 Main St',
-          city: 'Anytown',
-          state: 'NY',
-          postcode: '12345',
-          country: 'US',
-          email: 'john.doe@example.com',
-          phone: '123456789'
-      },
-      line_items: [
-        {
-          product_id: 138,
-          quantity: 1
-        }
-      ]
-  };
-  api.post('orders', orderData)
+    api.get('shipping/zones/1/methods')
     .then(response => {
         console.log('Order created successfully:', response.data);
     })
     .catch(error => {
         console.error('Error creating order:', error.response.data);
     });
+
+
+  //   const orderData = {
+  //     payment_method: 'cod',
+  //     payment_method_title: 'Cash on delivery',
+  //     set_paid: true,
+  //     billing: {
+  //         first_name: 'John',
+  //         last_name: 'Doe',
+  //         address_1: '123 Main St',
+  //         city: 'Anytown',
+  //         state: 'NY',
+  //         postcode: '12345',
+  //         country: 'US',
+  //         email: 'john.doe@example.com',
+  //         phone: '123456789'
+  //     },
+  //     line_items: [
+  //       {
+  //         product_id: 138,
+  //         quantity: 1
+  //       }
+  //     ]
+  // };
+  // api.post('orders', orderData)
+  //   .then(response => {
+  //       console.log('Order created successfully:', response.data);
+  //   })
+  //   .catch(error => {
+  //       console.error('Error creating order:', error.response.data);
+  //   });
     // console.log("api",api)
   },[])
   return (
    <>
     <CheckoutSec/>
-    <div style={{marginTop:150}}>
-    <h5 onClick={handlePayment}>Click me</h5>
-    <Script
+    {/* <div style={{marginTop:150}}> */}
+    {/* <h5 onClick={handlePayment}>Click me</h5> */}
+    {/* <Script
         src="https://checkout.razorpay.com/v1/checkout.js"
         onLoad={() => setRzpLoaded(true)}
       />
-    </div>
+    </div> */}
    </>
      
   );

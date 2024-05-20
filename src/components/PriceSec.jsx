@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -14,14 +14,106 @@ import thumb4 from '@/asset/images/thumb4.png';
 import thumbfull1 from '@/asset/images/thumbfull1.png';
 import flag from '@/asset/images/flag.svg';
 import correct from '@/asset/images/correct.svg';
+import Swal from 'sweetalert2';
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+import { useRouter } from 'next/router';
+import { useContext } from 'react';
+import { ThemeContext } from '@/context/ThemeContext';
 
-const PriceSec = ({productData}) => {
-    console.log("productData : ",productData)
+const PriceSec = ({ productData }) => {
+    console.log("productData : ", productData)
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const swiperRef = useRef();
-    if(productData?.__typename == "VariableProduct"){
+    const [selectedAttributes, setSelectedAttributes] = useState({});
+    const [productPrice,setProductPrice] = useState(productData?.price || 0);
+    const router = useRouter();
+    const {products,setProductsHandler} = useContext(ThemeContext);
+    // console.log("ctx : ",ctx)
+
+    let [num, setNum] = useState(0);
+    let incNum = () => {
+        // if (num < 10) {
+        setNum(Number(num) + 1);
+        // }
+    };
+    let decNum = () => {
+        if (num > 0) {
+            setNum(num - 1);
+        }
+    }
+    let handleChange = (e) => {
+        setNum(e.target.value);
+    }
+
+    const handleAttributeChange = (attributeName, value) => {
+        setSelectedAttributes((prevAttributes) => ({
+            ...prevAttributes,
+            [attributeName]: value,
+        }));
+    };
+
+    const getMatchingVariation = () => {
+        return productData?.variations?.nodes.find((variation) =>
+            variation.attributes.nodes.every((attr) => {
+                return selectedAttributes[attr.name] && selectedAttributes[attr.name] === attr.value
+            })
+        );
+    };
+
+    // const getMatchingVariation = () => {
+    //     return productData.variations.nodes.find((variation) =>
+    //         variation.attributes.nodes.every((attr) => {
+    //             const selectedValue = selectedAttributes[attr.name];
+    //             if (attr.name === 'pa_size' && selectedValue === '') {
+    //                 // If the selected value for size is empty, consider it as a match
+    //                 return true;
+    //             }
+    //             return selectedValue === attr.value;
+    //         })
+    //     );
+    // };
+
+    
+    
+    const buyNowHandler = () => {
+        const matchingVariation = getMatchingVariation();
+
+        console.log("matchingVariation : ",matchingVariation);
+        if(matchingVariation == undefined && num <= 0){
+            Swal.fire({
+                title: 'Attributes and Quantity is required!',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+            })
+        }else if(matchingVariation == undefined && num > 0){
+            Swal.fire({
+                title: 'Please select attribute!',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+            })
+        }else if(matchingVariation != undefined && num <= 0){
+            Swal.fire({
+                title: 'Quantity should be greater then 0',
+                icon: 'warning',
+                confirmButtonText: 'Ok'
+            })
+        }else{
+            matchingVariation.selectedQty = num;
+            setProductsHandler(matchingVariation);
+            router.push('/checkout')
+        }
+    }
+
+
+    useEffect(() => {
+        const matchingVariation = getMatchingVariation();
+        if(matchingVariation != undefined){
+            setProductPrice(matchingVariation?.price)
+        }
+    },[selectedAttributes])
+
+    if (productData?.__typename == "VariableProduct") {
         return (
             <>
                 <div className='priceImg'>
@@ -76,7 +168,7 @@ const PriceSec = ({productData}) => {
                                             modules={[FreeMode, Navigation, Thumbs]}
                                             onBeforeInit={(swiper) => {
                                                 swiperRef.current = swiper;
-                                                }}
+                                            }}
                                             className="mySwiper"
                                         >
                                             <SwiperSlide>
@@ -102,10 +194,10 @@ const PriceSec = ({productData}) => {
                                         </Swiper>
                                         <div className="switer_btn">
                                             <button onClick={() => swiperRef.current?.slidePrev()} className="group">
-                                                <svg class="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+                                                <svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6" /></svg>
                                             </button>
                                             <button onClick={() => swiperRef.current?.slideNext()} className="group">
-                                                <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                                                <svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6" /></svg>
                                             </button>
                                         </div>
                                     </div>
@@ -114,35 +206,62 @@ const PriceSec = ({productData}) => {
                                     <div className='priceList'>
                                         <div className='headSec'>
                                             <h4>{productData?.name}</h4>
-                                            {productData?.price && <span>{productData?.price}</span>}
+                                            {productPrice && <span>{productPrice}</span>}
                                         </div>
                                         <div className='colorQun'>
-                                            <div className='colorSec'>
-                                                <span className='textBlog'>Color</span>
-                                                <div className='colorBtn'>
-                                                    <div className='difBtn'>
-                                                        <label for="gray">
-                                                            <input type="radio" id="gray" name="colors" checked />
-                                                            <span></span>
-                                                        </label>
+                                            {productData?.attributes?.nodes.map((attribute, index) => {
+                                                const { label, optionsWithFields, options, name, id } = attribute;
+                                                return (
+                                                    <div className='colorSec' key={id}>
+                                                        <span className='textBlog'>{label}</span>
+                                                        {(name == "pa_color") ?
+                                                            (<div className='colorBtn'>
+                                                                {optionsWithFields?.map(option => {
+                                                                    return (
+                                                                        <div className='difBtn' key={option.value}>
+                                                                            <label for={option.slug}>
+                                                                                <input type="radio" id={option.slug} name={name} onChange={(e) => handleAttributeChange(name, e.target.value)} value={option.slug} />
+                                                                                <span style={{
+                                                                                    background: option
+                                                                                        .colorCode
+                                                                                }}></span>
+                                                                            </label>
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                                            </div>)
+                                                            :
+                                                            (<div className='colorBtn'>
+                                                                {optionsWithFields?.map(option => {
+                                                                    return (
+                                                                        <div className='difBtn' key={option}>
+                                                                            <label for={option.slug}>
+                                                                                <input type="radio" id={option.slug} name={name} value={option.slug} onChange={(e) => handleAttributeChange(name, e.target.value)} />
+                                                                                <span>{option.name}</span>
+                                                                            </label>
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                                            </div>)
+                                                        }
                                                     </div>
-                                                </div>
-                                            </div>
+                                                )
+                                            })}
                                             <div className='qunSec'>
                                                 <span className='textBlog'>quantity</span>
-                                                <div className='qunBtn'>
-                                                    <button className='btn minus' type='button'>
-                                                        <i className='solidMinus'></i>
-                                                    </button>
-                                                    <input type="number" min={0} id='qtyIn' />
-                                                    <button className='btn plus' type='button'>
-                                                        <i className='solidPlus'></i>
-                                                    </button>
+                                                <div class="input-group">
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
+                                                    </div>
+                                                    <input type="number" class="form-control" value={num} onChange={handleChange} />
+                                                    <div class="input-group-prepend">
+                                                        <button class="btn btn-outline-primary" type="button" onClick={incNum}>+</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className='buyNow'>
-                                            <button className='buybtn'>Buy Now</button>
+                                            <button className='buybtn' onClick={() => buyNowHandler()}>Buy Now</button>
                                         </div>
                                         <div className='warrantySec'>
                                             <div className='flagSec'>
@@ -162,7 +281,7 @@ const PriceSec = ({productData}) => {
                                             <p>Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. <Link href={'#'}>Read more</Link></p>
                                         </div>
                                     </div>
-    
+
                                 </div>
                             </div>
                         </div>
@@ -194,11 +313,9 @@ const PriceSec = ({productData}) => {
                         </div>
                     </div>
                 </div>
-    
-    
             </>
         );
-    }else{
+    } else {
         return <h4 className="text-center my-5">Selected product is not a variable product, Please select variable product to see here.</h4>
     }
 }

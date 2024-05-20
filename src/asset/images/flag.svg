@@ -4,9 +4,9 @@
 <rect x="0.5" y="0.574219" width="24.2" height="17" rx="0.5" fill="white" stroke="white"/>
 </mask>
 <g mask="url(#mask0_5373_276)">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0 6.07422H25.2V0.0742188H0V6.07422Z" fill="#FFA44A"/>
-<path fill-rule="evenodd" clip-rule="evenodd" d="M0 18.0745H25.2V12.0745H0V18.0745Z" fill="#1A9F0B"/>
-<path d="M12.6008 11.1244C13.733 11.1244 14.6508 10.2066 14.6508 9.07441C14.6508 7.94223 13.733 7.02441 12.6008 7.02441C11.4686 7.02441 10.5508 7.94223 10.5508 9.07441C10.5508 10.2066 11.4686 11.1244 12.6008 11.1244Z" fill="#181A93" fill-opacity="0.15" stroke="#181A93" stroke-width="0.5"/>
+<path fillRule="evenodd" clipRule="evenodd" d="M0 6.07422H25.2V0.0742188H0V6.07422Z" fill="#FFA44A"/>
+<path fillRule="evenodd" clipRule="evenodd" d="M0 18.0745H25.2V12.0745H0V18.0745Z" fill="#1A9F0B"/>
+<path d="M12.6008 11.1244C13.733 11.1244 14.6508 10.2066 14.6508 9.07441C14.6508 7.94223 13.733 7.02441 12.6008 7.02441C11.4686 7.02441 10.5508 7.94223 10.5508 9.07441C10.5508 10.2066 11.4686 11.1244 12.6008 11.1244Z" fill="#181A93" fill-opacity="0.15" stroke="#181A93" strokeWidth="0.5"/>
 <circle cx="12.6" cy="9.07461" r="0.6" fill="#181A93"/>
 </g>
 </svg>

@@ -4,10 +4,6 @@ import Link from "next/link";
 import { Fragment } from "react";
 import Logo from "@/asset/images/Logo.svg";
 
-
-
-
-
 const Header = ({headerLogo,ctaOneInfo,ctaTwoInfo}) => {
     return (
         // <header>header</header>
@@ -17,7 +13,8 @@ const Header = ({headerLogo,ctaOneInfo,ctaTwoInfo}) => {
                     <div className="navBar">
                         <div className="navLogo">
                             <Link href="/">
-                                <Image src={headerLogo?.sourceUrl} alt="Logo" width={43} height={40}></Image>
+                                {/* <Image src={headerLogo?.sourceUrl} alt="Logo" width={43} height={40}></Image> */}
+                                <Image src={Logo} alt="Logo" width={43} height={40}></Image>
                             </Link>
                         </div>
                         <div className="navInner">

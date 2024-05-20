@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import '@/styles/responsive.css';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from '@/context/ThemeContext';
 
 export default function App({ Component, pageProps }) {
   const themeSettings = pageProps?.data?.data?.themeGeneralSettings?.themeGeneralSettings;
@@ -22,11 +23,11 @@ export default function App({ Component, pageProps }) {
     youtubeUri: themeSettings?.youtubeUri,
   }
   return (
-    <>
+    <ThemeProvider>
       <Header {...headerData}/>
       <Component {...pageProps} />
       <Footer {...footerData}/>
-    </>
+    </ThemeProvider>
   )
     ;
 }

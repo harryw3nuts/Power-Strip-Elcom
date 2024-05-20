@@ -107,6 +107,53 @@ query THEME_SETTINGS {
                       heading
                       description
                     }
+                    selectProduct {
+                      __typename
+                      ... on VariableProduct {
+                        id
+                        name
+                        price
+                        attributes {
+                          nodes {
+                            id
+                            label
+                            name
+                            options
+                            variation
+                            optionsWithFields {
+                              name
+                              slug
+                              value
+                              colorCode
+                            }
+                          }
+                        }
+                        variations {
+                          nodes {
+                            databaseId
+                            name
+                            price
+                            regularPrice
+                            salePrice
+                            image {
+                              sourceUrl
+                            }
+                            attributes {
+                              nodes {
+                                id
+                                name
+                                label
+                                value
+                              }
+                            }
+                          }
+                        }
+                      }
+                      ... on SimpleProduct {
+                        id
+                        name
+                      }
+                    }
                 }
             }
         }

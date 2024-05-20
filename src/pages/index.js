@@ -17,14 +17,14 @@ import SucessSec from "@/components/SucessPage";
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data, error }) {
-  // console.log("data : ",data?.data?.pageBy?.template?.homePageFields)
+  console.log("data : ",data?.data?.pageBy?.template?.homePageFields)
   const { 
     bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo,
     otherHeading,otherProductInfo,
     reviewsHeading,reviewsInfo,
     insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,
     benefitsHeading,benefitsInfo,
-    faqHeading,faqInfo
+    faqHeading,faqInfo,selectProduct
   } = data?.data?.pageBy?.template?.homePageFields;
 
   const latest3Posts = data?.data?.posts?.nodes;
@@ -47,7 +47,7 @@ export default function Home({ data, error }) {
         <title>Elcom | Power Strip</title>
       </Head>
       <Banner {...BannerData} />
-      <PriceSec />
+      <PriceSec productData={selectProduct}/>
       <VideoSec />
       <StripBox {...otherInfoData}/>
       <ReviewSec {...reviewsData}/>

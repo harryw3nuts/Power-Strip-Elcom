@@ -13,6 +13,7 @@
     .feture_text_box-5 { top: 77%; right: 21%; }
 
     .feture_text_box-2 .line { right: -20px; }
+    .videoGrp .container{max-width: 1920px; margin: 0 auto;} 
 }
 
 @media (min-width: 1400px) and (max-width: 1440px) {

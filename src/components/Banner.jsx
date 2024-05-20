@@ -11,10 +11,10 @@ const Banner = () => {
             <div className="brackerwrap">
                 <div className="brackerInner">
                     <div className="brackerleft">
-                        <Image src={leftstrip} width={681} height={454} alt="leftstrip"></Image>
+                        <Image src={leftstrip} width={520} height={781} alt="leftstrip"></Image>
                     </div>
                     <div className="brackerright">
-                        <Image src={rightstrip} width={582} height={402} alt="rightstrip"></Image>
+                        <Image src={rightstrip} width={364} height={676} alt="rightstrip"></Image>
                     </div>
                     <div className="container">
                         <div className="brackerdtl">

@@ -14,8 +14,13 @@ import thumb4 from '@/asset/images/thumb4.png';
 import thumbfull1 from '@/asset/images/thumbfull1.png';
 import flag from '@/asset/images/flag.svg';
 import correct from '@/asset/images/correct.svg';
+import ReactReadMoreReadLess from "react-read-more-read-less";
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
+
+
+
+
 
 const PriceSec = () => {
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -38,6 +43,9 @@ const PriceSec = () => {
    let handleChange = (e)=>{
      setNum(e.target.value);
     }
+
+    // const [readMore , setReadMore] = useState(false);
+    const longText = "Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. ";
 
     return (
         <>
@@ -189,7 +197,17 @@ const PriceSec = () => {
                                         </div>
                                     </div>
                                     <div className='productContent'>
-                                        <p>Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. <Link href={'#'}>Read more</Link></p>
+                                        {/* <p>Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy.
+                                         <Link href={'#'} onClick = {() => setReadMore(!readMore)}><ReadMore/></Link></p> */}
+                                         <ReactReadMoreReadLess
+                                            charLimit={200}
+                                            readMoreText={"Read more"}
+                                            readLessText={"Read less"}
+                                            readMoreClassName="read-more-less--more"
+                                            readLessClassName="read-more-less--less"
+                                        >
+                                            {longText}
+                                        </ReactReadMoreReadLess>
                                     </div>
                                 </div>
 

@@ -30,8 +30,7 @@ export default function Home() {
     <BenefitSec/>
     <PowerStripSliderSec />
     <QuestionSec/>
-    <SucessSec/>
-   </>
+  </>
      
   );
 }

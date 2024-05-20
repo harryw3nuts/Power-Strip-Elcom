@@ -4,7 +4,16 @@
 
 
 
+@media (min-width: 1900px) {
+    .features-sec .title { top: 140px; }
+    .feture_text_box-1 { top: 48%; left: 31.5%; }
+    .feture_text_box-2 { top: 64%; left: 23%; }
+    .feture_text_box-3 { top: 48%; right: 13%; }
+    .feture_text_box-4 { top: 62%; right: 16%; }
+    .feture_text_box-5 { top: 77%; right: 21%; }
 
+    .feture_text_box-2 .line { right: -20px; }
+}
 
 @media (min-width: 1400px) and (max-width: 1440px) {
 

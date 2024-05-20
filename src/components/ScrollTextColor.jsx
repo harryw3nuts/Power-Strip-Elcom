@@ -156,7 +156,7 @@ const ScrollTextColor = () => {
                     start: "top top",
                     end: "200% bottom",
                     pin: true,
-                    markers: true,
+                    //markers: true,
                 },
             });
         };

@@ -32,7 +32,7 @@ const FeaturesSecNew = () => {
                     end: "+=500%",  
                     scrub: 1,
                     pin: true,
-                    markers: true
+                    //markers: true
                 }
             });
 

@@ -15,54 +15,54 @@ const InsightSec = () => {
                         </div>
                         <div className="row">
                             <div className="col-lg-4">
-                                <div class="insightBox">
-                                    <div class="boxImage">
+                                <div className="insightBox">
+                                    <div className="boxImage">
                                         <Image src={stripbox1} alt="stripbox1"></Image>
                                     </div>
-                                    <div class="boxText">
-                                        <div class="lebalText">
+                                    <div className="boxText">
+                                        <div className="lebalText">
                                             <span>BLOG</span>
                                         </div>
-                                        <div class="headTitle">
+                                        <div className="headTitle">
                                             <h5>Stay Plugged In: Choosing the Right Power Strip for Your Needs</h5>
                                         </div>
-                                        <div class="btnbox">
+                                        <div className="btnbox">
                                             <Link href={'#'}>Read more</Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                <div class="insightBox">
-                                    <div class="boxImage">
+                                <div className="insightBox">
+                                    <div className="boxImage">
                                         <Image src={stripbox1} alt="stripbox1"></Image>
                                     </div>
-                                    <div class="boxText">
-                                        <div class="lebalText">
+                                    <div className="boxText">
+                                        <div className="lebalText">
                                             <span>BLOG</span>
                                         </div>
-                                        <div class="headTitle">
+                                        <div className="headTitle">
                                             <h5>Stay Plugged In: Choosing the Right Power Strip for Your Needs</h5>
                                         </div>
-                                        <div class="btnbox">
+                                        <div className="btnbox">
                                             <Link href={'#'}>Read more</Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                <div class="insightBox">
-                                    <div class="boxImage">
+                                <div className="insightBox">
+                                    <div className="boxImage">
                                         <Image src={stripbox1} alt="stripbox1"></Image>
                                     </div>
-                                    <div class="boxText">
-                                        <div class="lebalText">
+                                    <div className="boxText">
+                                        <div className="lebalText">
                                             <span>BLOG</span>
                                         </div>
-                                        <div class="headTitle">
+                                        <div className="headTitle">
                                             <h5>Stay Plugged In: Choosing the Right Power Strip for Your Needs</h5>
                                         </div>
-                                        <div class="btnbox">
+                                        <div className="btnbox">
                                             <Link href={'#'}>Read more</Link>
                                         </div>
                                     </div>

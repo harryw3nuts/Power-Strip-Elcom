@@ -1,8 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import thumb1 from '@/asset/images/thumb1.png';
+// import Select from "react-dropdown-select";
+import { useState } from "react";
 
 const CheckoutSec = () =>{
+
+    // const options = [
+    //     {
+    //       id: 1,
+    //       name: 'Leanne Graham'
+    //     },
+    //     {
+    //       id: 2,
+    //       name: 'Ervin Howell'
+    //     }
+    //   ];
+
+
+      
     return (
         <>
         <div className="chekoutWrap">
@@ -54,7 +70,12 @@ const CheckoutSec = () =>{
                                                     <input type="text" name="Address line 2" placeholder="Address line 2"/>
                                                 </div>
                                                 <div className='contactInner'>
-                                                    <input type="text" name="Address line 2" placeholder="Address line 2"/>
+                                                {/* <Select
+                                                    options={options}
+                                                    labelField="name"
+                                                    valueField="id"
+                                                    onChange={(values) => this.setValues(values)}
+                                                    />; */}
                                                 </div>
                                                 <div className='contactInner'>
                                                     <input type="text" name="Address line 2" placeholder="Address line 2"/>
@@ -110,7 +131,7 @@ const CheckoutSec = () =>{
                                         </div>
                                     </div>
                                     <div className="btnCheckbox">
-                                        <div class="checkbox_wrap">
+                                        <div className="checkbox_wrap">
                                             <label>
                                                 <input name="privacyCB" type="checkbox" value="false"/><span>I've taken notice of the <Link target="" href="/privacy-policy">Privacy Statement</Link></span>
                                             </label>

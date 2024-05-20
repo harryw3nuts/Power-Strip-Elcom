@@ -22,6 +22,23 @@ const PriceSec = () => {
 
     const swiperRef = useRef();
 
+    let [num, setNum]= useState(0);
+    let incNum =()=>{
+      if(num<10)
+      {
+      setNum(Number(num)+1);
+      }
+    };
+    let decNum = () => {
+       if(num>0)
+       {
+        setNum(num - 1);
+       }
+    }
+   let handleChange = (e)=>{
+     setNum(e.target.value);
+    }
+
     return (
         <>
 
@@ -103,10 +120,10 @@ const PriceSec = () => {
                                     </Swiper>
                                     <div className="switer_btn">
                                         <button onClick={() => swiperRef.current?.slidePrev()} className="group">
-                                            <svg class="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+                                            <svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
                                         </button>
                                         <button onClick={() => swiperRef.current?.slideNext()} className="group">
-                                            <svg class="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                                            <svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
                                         </button>
                                     </div>
                                 </div>
@@ -123,7 +140,19 @@ const PriceSec = () => {
                                             <div className='colorBtn'>
                                                 <div className='difBtn'>
                                                     <label for="gray">
-                                                        <input type="radio" id="gray" name="colors" checked />
+                                                        <input type="radio" id="gray" name="colors"/>
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div className='difBtn'>
+                                                    <label for="red">
+                                                        <input type="radio" id="red" name="colors" />
+                                                        <span></span>
+                                                    </label>
+                                                </div>
+                                                <div className='difBtn'>
+                                                    <label for="yellow">
+                                                        <input type="radio" id="yellow" name="colors" />
                                                         <span></span>
                                                     </label>
                                                 </div>
@@ -131,14 +160,14 @@ const PriceSec = () => {
                                         </div>
                                         <div className='qunSec'>
                                             <span className='textBlog'>quantity</span>
-                                            <div className='qunBtn'>
-                                                <button className='btn minus' type='button'>
-                                                    <i className='solidMinus'></i>
-                                                </button>
-                                                <input type="number" min={0} id='qtyIn' />
-                                                <button className='btn plus' type='button'>
-                                                    <i className='solidPlus'></i>
-                                                </button>
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
+                                                </div>
+                                                <input type="text" class="form-control" value={num} onChange={handleChange}/>
+                                                <div class="input-group-prepend">
+                                                    <button class="btn btn-outline-primary" type="button" onClick={incNum}>+</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

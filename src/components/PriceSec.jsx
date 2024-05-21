@@ -137,7 +137,7 @@ const PriceSec = ({ productData }) => {
                                             className="mySwiper2"
                                         >
                                             <SwiperSlide>
-                                                <div className='thumbBox'>
+                                                <div className='thumbBox'> 
                                                     <Image src={thumb1} alt='thumb1'></Image>
                                                 </div>
                                             </SwiperSlide>

@@ -95,6 +95,14 @@ query THEME_SETTINGS {
                       url
                       target
                     }
+                    insightsInfo{
+                      image{
+                        sourceUrl
+                      }
+                      categoryName
+                      title
+                      link
+                    }
                     benefitsHeading
                     benefitsInfo{
                       title

@@ -9,7 +9,7 @@ import { ThemeContext } from "@/context/ThemeContext";
 const CheckoutSec = () => {
     const context = useContext(ThemeContext);
     const { products } = context;
-    console.log("products", products)
+    // console.log("products", products)
     const [values, setValues] = useState();
     const options = [
         { id: 'AN', name: 'Andaman and Nicobar Islands' },

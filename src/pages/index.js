@@ -13,11 +13,14 @@ import { sendGraphQLQuery } from "@/utils/utils";
 import { HOME_PAGE, THEME_SETTINGS } from "@/queries/graphql_queries";
 import VideoSec from "@/components/VideoSec";
 import SucessSec from "@/components/SucessPage";
+import ScrollTextColor from "@/components/ScrollTextColor";
+import FeaturesSecNew from "@/components/FeaturesSecNew";
+import PowerStripSliderSec from "@/components/PowerStripSliderSec";
 
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data, error }) {
-  console.log("data : ",data?.data?.pageBy?.template?.homePageFields)
+  // console.log("data : ",data?.data?.pageBy?.template?.homePageFields)
   const { 
     bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo,
     otherHeading,otherProductInfo,
@@ -47,12 +50,15 @@ export default function Home({ data, error }) {
         <title>Elcom | Power Strip</title>
       </Head>
       <Banner {...BannerData} />
+      <ScrollTextColor />
       <PriceSec productData={selectProduct}/>
+      <FeaturesSecNew />
       <VideoSec />
       <StripBox {...otherInfoData}/>
       <ReviewSec {...reviewsData}/>
       <InsightSec {...insightsData}/>
       <BenefitSec {...benefitsData}/>
+      <PowerStripSliderSec />
       <QuestionSec {...faqData}/>
       {/* <SucessSec/> */}
     </>

@@ -15,6 +15,7 @@ import thumbfull1 from '@/asset/images/thumbfull1.png';
 import flag from '@/asset/images/flag.svg';
 import correct from '@/asset/images/correct.svg';
 import Swal from 'sweetalert2';
+import ReactReadMoreReadLess from "react-read-more-read-less";
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { useRouter } from 'next/router';
@@ -22,20 +23,19 @@ import { useContext } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 
 const PriceSec = ({ productData }) => {
-    console.log("productData : ", productData)
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
     const swiperRef = useRef();
     const [selectedAttributes, setSelectedAttributes] = useState({});
-    const [productPrice,setProductPrice] = useState(productData?.price || 0);
+    const [productPrice, setProductPrice] = useState(productData?.price || 0);
     const router = useRouter();
-    const {products,setProductsHandler} = useContext(ThemeContext);
-    // console.log("ctx : ",ctx)
+    const { products, setProductsHandler } = useContext(ThemeContext);
 
     let [num, setNum] = useState(0);
     let incNum = () => {
-        // if (num < 10) {
-        setNum(Number(num) + 1);
-        // }
+        if (num < 10) {
+            setNum(Number(num) + 1);
+        }
     };
     let decNum = () => {
         if (num > 0) {
@@ -74,48 +74,49 @@ const PriceSec = ({ productData }) => {
     //     );
     // };
 
-    
-    
     const buyNowHandler = () => {
         const matchingVariation = getMatchingVariation();
 
-        console.log("matchingVariation : ",matchingVariation);
-        if(matchingVariation == undefined && num <= 0){
+        console.log("matchingVariation : ", matchingVariation);
+        if (matchingVariation == undefined && num <= 0) {
             Swal.fire({
                 title: 'Attributes and Quantity is required!',
                 icon: 'warning',
                 confirmButtonText: 'Ok'
             })
-        }else if(matchingVariation == undefined && num > 0){
+        } else if (matchingVariation == undefined && num > 0) {
             Swal.fire({
                 title: 'Please select attribute!',
                 icon: 'warning',
                 confirmButtonText: 'Ok'
             })
-        }else if(matchingVariation != undefined && num <= 0){
+        } else if (matchingVariation != undefined && num <= 0) {
             Swal.fire({
                 title: 'Quantity should be greater then 0',
                 icon: 'warning',
                 confirmButtonText: 'Ok'
             })
-        }else{
+        } else {
             matchingVariation.selectedQty = num;
             setProductsHandler(matchingVariation);
             router.push('/checkout')
         }
     }
 
-
     useEffect(() => {
         const matchingVariation = getMatchingVariation();
-        if(matchingVariation != undefined){
+        if (matchingVariation != undefined) {
             setProductPrice(matchingVariation?.price)
         }
-    },[selectedAttributes])
+    }, [selectedAttributes])
+
+    // const [readMore , setReadMore] = useState(false);
+    const longText = "Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. ";
 
     if (productData?.__typename == "VariableProduct") {
         return (
             <>
+
                 <div className='priceImg'>
                     <div className='container'>
                         <div className='priceWrapper'>
@@ -253,7 +254,7 @@ const PriceSec = ({ productData }) => {
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
                                                     </div>
-                                                    <input type="number" class="form-control" value={num} onChange={handleChange} />
+                                                    <input type="text" class="form-control" value={num} onChange={handleChange} />
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-primary" type="button" onClick={incNum}>+</button>
                                                     </div>
@@ -261,7 +262,7 @@ const PriceSec = ({ productData }) => {
                                             </div>
                                         </div>
                                         <div className='buyNow'>
-                                            <button className='buybtn' onClick={() => buyNowHandler()}>Buy Now</button>
+                                            <button className='buybtn'  onClick={() => buyNowHandler()}>Buy Now</button>
                                         </div>
                                         <div className='warrantySec'>
                                             <div className='flagSec'>
@@ -278,7 +279,17 @@ const PriceSec = ({ productData }) => {
                                             </div>
                                         </div>
                                         <div className='productContent'>
-                                            <p>Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. <Link href={'#'}>Read more</Link></p>
+                                            {/* <p>Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy.
+                                         <Link href={'#'} onClick = {() => setReadMore(!readMore)}><ReadMore/></Link></p> */}
+                                            <ReactReadMoreReadLess
+                                                charLimit={200}
+                                                readMoreText={"Read more"}
+                                                readLessText={"Read less"}
+                                                readMoreClassName="read-more-less--more"
+                                                readLessClassName="read-more-less--less"
+                                            >
+                                                {longText}
+                                            </ReactReadMoreReadLess>
                                         </div>
                                     </div>
 
@@ -313,6 +324,8 @@ const PriceSec = ({ productData }) => {
                         </div>
                     </div>
                 </div>
+
+
             </>
         );
     } else {

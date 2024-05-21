@@ -9,10 +9,10 @@ const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,bannerRightS
             <div className="brackerwrap">
                 <div className="brackerInner">
                     {bannerLeftSideImage && <div className="brackerleft">
-                        <Image src={bannerLeftSideImage?.sourceUrl} width={681} height={454} alt="leftstrip"></Image>
+                        <Image src={bannerLeftSideImage?.sourceUrl} width={520} height={781} alt="leftstrip"></Image>
                     </div>}
                     {bannerRightSideImage && <div className="brackerright">
-                        <Image src={bannerRightSideImage?.sourceUrl} width={582} height={402} alt="rightstrip"></Image>
+                        <Image src={bannerRightSideImage?.sourceUrl} width={364} height={676} alt="rightstrip"></Image>
                     </div>}
                     <div className="container">
                         <div className="brackerdtl">

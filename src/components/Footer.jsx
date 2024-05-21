@@ -6,33 +6,42 @@ import Facebook from "@/components/Svgs/Facebook";
 import Youtube from "./Svgs/Youtube";
 
 
-const Footer = () => {
-    return (
-        <>
-        <footer className="footerNav">
-            <div className="footerBar">
-                <div className="container">
-                    <div className="footerSec">
-                        <div className="nameSec">
-                            <span>© Elcom International 2023</span>
-                        </div>
-                        <div className="webLink">
-                            <Link href={'#'}>elcom-in.com</Link>
-                        </div>
-                        <div className="socialLink">
-                            <ul>
-                                <li><Link href="#"><Twitter/></Link></li>
-                                <li><Link href="#"><Linkedin/></Link></li>
-                                <li><Link href="#"><Facebook/></Link></li>
-                                <li><Link href="#"><Youtube/></Link></li>
-                            </ul>
+const Footer = ({ footerCopyrightInfo, footerElcomLink, twitterUri, linkedinUri, facebookUri, youtubeUri }) => {
+    const currentYear = new Date().getFullYear();
+
+    if (footerCopyrightInfo || footerElcomLink || twitterUri || linkedinUri || youtubeUri) {
+        return (
+            <>
+                <footer className="footerNav">
+                    <div className="footerBar">
+                        <div className="container">
+                            <div className="footerSec">
+                                {footerCopyrightInfo && <div className="nameSec">
+                                    <span>{footerCopyrightInfo.replace(/%s/g, currentYear)}</span>
+                                </div>}
+                                {footerElcomLink &&
+                                    <div className="webLink">
+                                        <Link href={footerElcomLink.url} target={footerElcomLink.target}>{footerElcomLink.title}</Link>
+                                    </div>
+                                }
+                                {(twitterUri.trim() != '' || linkedinUri.trim() != '' || facebookUri.trim() != '' || youtubeUri.trim() != '') && <div className="socialLink">
+                                    <div className="socialLink">
+                                        <ul>
+                                            {twitterUri && <li><Link href={twitterUri} target="_blank"><Twitter/></Link></li>}
+                                            {linkedinUri && <li><Link href={linkedinUri} target="_blank"><Linkedin/></Link></li>}
+                                            {facebookUri && <li><Link href={facebookUri} target="_blank"><Facebook/></Link></li>}
+                                            {youtubeUri && <li><Link href={youtubeUri} target="_blank"><Youtube/></Link></li>}
+                                        </ul>
+                                    </div>
+                                </div>}
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </footer>
-        </>
-    )
+                </footer>
+            </>
+        )
+    }
+    return ''
 }
 
 export default Footer;

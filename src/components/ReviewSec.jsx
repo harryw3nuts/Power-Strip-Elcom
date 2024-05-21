@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import React from "react";
 import ReactReadMoreReadLess from "react-read-more-read-less";
 
-const ReviewSec = () => {
+const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
 
     const ArrowLeft = (props) => (
 		<button {...props} className="left group">
@@ -41,46 +41,34 @@ const ReviewSec = () => {
     return (
         <>
             <div className="reviewBox">
-                
-                <div className="benefitHead">
-                    <h3>Reviews</h3>
-                </div>
+                {reviewsHeading && <div className="benefitHead">
+                    <h3>{reviewsHeading}</h3>
+                </div>}
                 <div className="reviewSlider">
                     <Slider {...settings}>
-                        <div className="box_slider">
-                            <div className="text_box_slider">
-                                <span>Jyoti Thakur</span>
-                            </div>
-                            <div className="text_slider_dtl">
-                                <ReactReadMoreReadLess
-                                            charLimit={475}
+                        {reviewsInfo.map((review,index) => {
+                            const {name,description} = review;
+                            const des_length = description.split(' ').length;
+                            return (
+                                <div className="box_slider" key={index}>
+                                    {name && <div className="text_box_slider">
+                                        <span>{name}</span>
+                                    </div>}
+                                    {description && <div className="text_slider_dtl">
+                                        {/* <p>{description}{des_length > 80 && (<>{'...'} <Link href={'#'}>Read More</Link></>)}</p> */}
+                                        <ReactReadMoreReadLess
+                                            charLimit={450}
                                             readMoreText={"Read more"}
                                             readLessText={"Read less"}
                                             readMoreClassName="read-more-less--more"
                                             readLessClassName="read-more-less--less"
                                         >
-                                            {longText}
+                                            {description}
                                         </ReactReadMoreReadLess>
-                            </div>
-                        </div>
-
-                        <div className="box_slider">
-                            <div className="text_box_slider">
-                                <span>rohit mahadeshwar</span>
-                            </div>
-                            <div className="text_slider_dtl">
-                                <p>I recently purchased this power strip for my home office, and I couldn't be happier with the results. As someone who relies on multiple electronic devices and peripherals to get through the workday, finding the right power strip was crucial. This one exceeded my expectations in every way. This one exceeded my expectations in every way.</p>
-                            </div>
-                        </div>
-
-                        <div className="box_slider">
-                            <div className="text_box_slider">
-                                <span>mahindra bhairat</span>
-                            </div>
-                            <div className="text_slider_dtl">
-                                <p>This power strip is fantastic. It offers plenty of outlets, surge protection, and a solid build. The long cord and LED indicators are handy.</p>
-                            </div>
-                        </div>
+                                    </div>}
+                                </div>
+                            )
+                        })}
                     </Slider>
                 </div>
 

@@ -4,10 +4,25 @@ import "@/styles/globals.css";
 import '@/styles/responsive.css';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { ThemeProvider } from '@/context/ThemeContext';
 import { useEffect } from 'react';
 
-
 export default function App({ Component, pageProps }) {
+  const themeSettings = pageProps?.data?.data?.themeGeneralSettings?.themeGeneralSettings;
+  const headerData = {
+    headerLogo: themeSettings?.headerLogo,
+    ctaOneInfo: themeSettings?.ctaOneInfo,
+    ctaTwoInfo: themeSettings?.ctaTwoInfo,
+  }
+
+  const footerData = {
+    footerCopyrightInfo: themeSettings?.footerCopyrightInfo,
+    footerElcomLink: themeSettings?.footerElcomLink,
+    twitterUri: themeSettings?.twitterUri,
+    linkedinUri: themeSettings?.linkedinUri,
+    facebookUri: themeSettings?.facebookUri,
+    youtubeUri: themeSettings?.youtubeUri,
+  }
 
   // useEffect(()=>{
   //   (async () => {
@@ -25,13 +40,12 @@ export default function App({ Component, pageProps }) {
   //       };
   //   })();
   // },[])
-  
   return (
-    <>
-      <Header />
+    <ThemeProvider>
+      <Header {...headerData}/>
       <Component {...pageProps} />
-      <Footer />
-    </>
+      <Footer {...footerData}/>
+    </ThemeProvider>
   )
-  ;
+    ;
 }

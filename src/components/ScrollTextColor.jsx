@@ -48,8 +48,8 @@ const ScrollTextColor = () => {
         const scaleImg = 0.465;
         const textDivWidth = imageClipperDimensions.width * scaleImg;
         const textDivHeight = imageClipperDimensions.height * scaleImg;
-        console.log("textDivWidth", textDivWidth);
-        console.log("imageClipperDimensions.width", imageClipperDimensions.width);
+        // console.log("textDivWidth", textDivWidth);
+        // console.log("imageClipperDimensions.width", imageClipperDimensions.width);
 
         gsap.fromTo(
             intextRef.current,

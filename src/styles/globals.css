@@ -259,7 +259,7 @@ font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px
 .benefitHead h3 { font-size: 180px; font-weight: 400; background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 90%); background-clip: text; color: transparent;
 -webkit-background-clip: text; font-family: "Inter Tight"; margin: 0; }
 .benefitsecBox {margin-top: -72px;}
-.benefitBox {border-radius: 8px; background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%), #F4F4F4; padding: 32px 32px 57px 32px; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.benefitBox {border-radius: 8px; background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%), #F4F4F4; padding: 32px 32px 57px 32px; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;}
 .benefitBox .benefitText {position: relative; margin: 0;padding-bottom: 40px;}
 .benefitBox .benefitText .lebalText {display: block; color: var(--Secondary-Green, #5BDE84);
 font-family: "Inter Tight"; font-size: 14px; font-style: normal; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; padding-bottom: 20px;}
@@ -308,7 +308,7 @@ font-style: normal; font-weight: 500; line-height: 24px; text-decoration-line: u
 
 
 .trailerText {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; display: flex; align-items: center; width: 100%; justify-content: center;}
-.videoGrp .videoPlayer .videoWrapper .blueBtn {margin: 0 453px 0 365px;}
+.videoGrp .videoPlayer .videoWrapper .blueBtn {margin: 0 453px 0 311px;}
 .videoGrp .videoPlayer .videoWrapper .blueBtn a {color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; text-decoration: none; border: 1px solid #FFF; border-radius: 100px; height: 60px; display: flex; justify-content: center; align-items: center; padding: 0 44px; transition: all ease-in-out 0.3s;}
 .videoGrp .videoPlayer .videoWrapper .blueBtn a:hover{background-color: #0071E3; border-color: #0071E3;}
 
@@ -399,6 +399,9 @@ font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppe
 input[type="radio"]:checked + label:before {-webkit-transition: all .3s ease;
     transition: all .3s ease;
     border: #000;}
+
+  .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {background: transparent !important;}  
+  .btn:focus-visible {background-color: transparent !important; box-shadow: none !important;} 
 /* PriceSec end */
 
 .zoomer-wrap { position: relative; overflow: hidden; }

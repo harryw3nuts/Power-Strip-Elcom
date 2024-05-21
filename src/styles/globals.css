@@ -400,9 +400,8 @@ font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppe
 input[type="radio"]:checked + label:before {-webkit-transition: all .3s ease;
     transition: all .3s ease;
     border: #000;}
-
-  .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {background: transparent !important;}  
-  .btn:focus-visible {background-color: transparent !important; box-shadow: none !important;} 
+.btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {background: transparent !important;}  
+.btn:focus-visible {background-color: transparent !important; box-shadow: none !important;} 
 /* PriceSec end */
 
 .zoomer-wrap { position: relative; overflow: hidden; }

@@ -17,6 +17,7 @@ import ScrollTextColor from "@/components/ScrollTextColor";
 import FeaturesSecNew from "@/components/FeaturesSecNew";
 import PowerStripSliderSec from "@/components/PowerStripSliderSec";
 
+
 // const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({ data, error }) {
@@ -53,6 +54,7 @@ export default function Home({ data, error }) {
       <Banner {...BannerData} />
       <ScrollTextColor />
       <PriceSec productData={selectProduct}/>
+      {/* <SwiperSec/> */}
       {/* <FeaturesSecNew /> */}
       <VideoSec />
       <StripBox {...otherInfoData}/>

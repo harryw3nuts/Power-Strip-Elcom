@@ -121,15 +121,15 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 
 /* PriceSec start */
 .priceImg {margin: 120px 0;}
-.priceSwiper .swiper-wrapper {flex-direction: column; gap: 12px;}
-.priceSwiper .thumbBox {border-radius: 4px;background: #f4f4f4;; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;}
-.priceSwiper .thumbBox img {display: flex; justify-content: center; align-items: center;}
+/* .priceSwiper .swiper-wrapper {flex-direction: column; gap: 12px;} */
+.thumbBox {border-radius: 4px;background: #f4f4f4;; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;}
+.priceSwiper .thumbBox img {display: flex; justify-content: center; align-items: center; width: 100%;}
 .pricefullImg {background: #f4f4f4; height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative;}
-.switer_btn {position: absolute; bottom: 32px; right: 32px; display: flex; gap: 20px;}
+.switer_btn {position: absolute; bottom: 32px; right: 32px; display: flex; gap: 20px; z-index: 10;}
 .switer_btn .group { border: none; background-color: #FFF; width: 40px; height: 40px; border-radius: 50px;}
 
 .thumbfullBox {display: flex; justify-content: start; align-items: center; width: 100%;}
-.thumbfullBox img {display: flex; justify-content: start; align-items: center; height: 100%; width: 100%;}
+.thumbfullBox img {display: flex; justify-content: start; align-items: center; width: 100%;}
 .swiper-button-prev,
 .swiper-button-next {left: 0 !important; top: 100% !important;}
 
@@ -623,4 +623,87 @@ input[type=number] {
 .powerstripslider-mainbox .powerstrips-slide.client-2 { z-index: 2; transform: translate(32px,32px);}
 .powerstripslider-mainbox .powerstrips-slide.active { z-index: 3;  
   transform: translate(64px,64px); }
+
+  /* .swiper-slide-active  {opacity: 1;} 
+  .priceSwiper {display: flex;}
+  .mySwiper2 {width: 100px; display: flex; flex-direction: column; height: 100px;}
+  .mySwiper2 .swiper-wrapper .swiper-slide {width: 100px !important; } */
 /* powerstrip-slider-main */
+
+
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #f4f4f4;
+
+  /* Center slide text vertically */
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  height: auto !important;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
+.swiper {
+  width: 100%;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-slide {
+  background-size: cover;
+  background-position: center;
+}
+
+.mySwiper2 {
+  height: 100%;
+  width: 100%;
+}
+
+.mySwiper {
+  height: 20%;
+  box-sizing: border-box;
+  padding: 10px 0;
+}
+
+.mySwiper .swiper-slide {
+  
+  opacity: 0.4;
+  width: 100% !important;
+}
+
+.mySwiper .swiper-slide-thumb-active {
+  opacity: 1;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.swiper-free-mode > .swiper-wrapper {flex-direction: column; width: 100px; gap: 12px;}
+.swiper-free-mode > .swiper-wrapper .swiper-slide img {width: 100px;}
+/* .swiper-free-mode > .swiper-wrapper { }
+.swiper-free-mode > .swiper-wrapper .swiper-slide img {width: 100px; height: 100px;}
+.priceSwiper {display: flex; gap: 12px;}
+.secondSec .swiper-slide img {width: 752px; height: 563px;}  */
+
+.disable_arrow svg{opacity: 0.4; pointer-events: none;}
+
+

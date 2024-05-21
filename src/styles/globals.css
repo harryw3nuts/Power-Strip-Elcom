@@ -338,9 +338,12 @@ font-size: 16px; font-style: normal; font-weight: 400; line-height: 28px; /* 175
 .chekoutWrap .checkoutGrp {}
 .chekoutWrap .checkoutGrp .checkoutForm {}
 .chekoutWrap .checkoutGrp .checkoutForm .checkoutNav { border-bottom: 1px solid #BDBDBD; margin-bottom: 40px;}
-.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul {display: flex; gap: 34px; padding-bottom: 10px;}
-.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li a {color: var(--primary-2-c-2-a-25, #2C2A25); font-size: 16px; font-style: normal; font-weight: 400;
-line-height: 140%; text-decoration: none; }
+.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul {display: flex; gap: 34px; padding-bottom: 
+10px;}
+.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li {position: relative;}
+.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li a::after{position: absolute; content: ''; right: -12px; top: 9px; background-image: url(../asset/images/v1.svg); width: 6px; height: 10px; background-repeat: no-repeat;}
+.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li:last-child a::after {display: none;}
+.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li a {color: var(--primary-2-c-2-a-25, #2C2A25); font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-decoration: none; }
 .checkoutBox .personalDtl {}
 .checkoutBox .personalDtl .checkoutHead {padding-bottom: 40px;}
 .checkoutBox .personalDtl .checkoutHead h2 {color: var(--Primary-Black, #101010); font-family: "Inter Tight"; font-size: 48px; font-weight: 600; line-height: 56px; /* 116.667% */}
@@ -705,5 +708,29 @@ input[type=number] {
 .secondSec .swiper-slide img {width: 752px; height: 563px;}  */
 
 .disable_arrow svg{opacity: 0.4; pointer-events: none;}
+
+.css-16vukcu {border: none !important;}
+.css-16vukcu:focus,
+.css-16vukcu:focus-within {box-shadow: none !important;}
+.css-16vukcu {padding: 0 !important;}
+/* .react-dropdown-select-input {display: none !important;} */
+.css-16vukcu {border-bottom: 1px solid #7B7B7B !important;}
+.css-1m5113o span {width: 100%; border-left: none; border-top: none; border-right: none; color: #000; padding-bottom: 8px; font-family: "Inter Tight"; font-size: 20px; font-weight: 400;
+  line-height: 28px; 
+  letter-spacing: -0.4px;}
+
+.errorMessage {color: red; margin-top: 5px;}
+
+ input:-webkit-autofill,
+ input:-webkit-autofill:hover, 
+ input:-webkit-autofill:focus, 
+ input:-webkit-autofill:active{
+    /* -webkit-box-shadow: 0 0 0 30px white inset !important; */
+    /* -webkit-text-fill-color: yellow !important; */
+
+    box-shadow: inset 20px 20px 20px 30px #fff;
+    -webkit-text-fill-color:  #A1A1A1;
+}
+
 
 

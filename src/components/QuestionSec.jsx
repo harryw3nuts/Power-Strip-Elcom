@@ -4,7 +4,7 @@ const QuestionSec = ({faqHeading,faqInfo}) => {
     if(faqInfo){
         return (
             <>
-                <div className="questionWrap">
+                <div className="questionWrap" id="faqSec">
                     <div className="container">
                         <div className="accordianWrap">
                             {faqHeading && <div className="accordianHead">

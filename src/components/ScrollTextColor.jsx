@@ -5,7 +5,7 @@ import PsImage from "@/asset/images/ps-text-image.png";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
-const ScrollTextColor = () => {
+const ScrollTextColor = ({powerStripimage,powerStripleftText,powerStriprightText}) => {
     gsap.registerPlugin(ScrollTrigger);
 
     const pinRef = useRef(null);
@@ -170,20 +170,22 @@ const ScrollTextColor = () => {
     }, [imageLoaded]);
 
     return (
-        <div className="zoomer-wrap">
+        <div className="zoomer-wrap" id="aboutSec">
             <div class="zoomer" ref={pinRef}>
                 <div class="text textwrapout">
                     <div class="clipper" ref={textClipperRef}>
-                        <h2 ref={leftTextRef}>Power</h2>
+                        <h2 ref={leftTextRef}>{powerStripleftText}</h2>
                         <h2 ref={rightTextRef} className="heading2">
-                            Strip
+                            {powerStriprightText}
                         </h2>
                     </div>
                 </div>
                 <div class="images">
                     <div class="clipper" ref={imageClipperRef}>
                         <Image
-                            src={PsImage}
+                            src={powerStripimage?.sourceUrl}
+                            width={1376}
+                            height={688}
                             alt="PsImage"
                             onLoad={() => {
                                 setImageClipperDimensions({
@@ -199,9 +201,9 @@ const ScrollTextColor = () => {
                 <div class="textwrap">
                     <div class="intextwrap" ref={intextRef}>
                         <div class="inner_intextwrap">
-                            <h2 ref={outerLeftTextRef}>Power</h2>
+                            <h2 ref={outerLeftTextRef}>{powerStripleftText}</h2>
                             <h2 ref={outerRightTextRef} className="heading2">
-                                Strip
+                                {powerStriprightText}
                             </h2>
                         </div>
                     </div>

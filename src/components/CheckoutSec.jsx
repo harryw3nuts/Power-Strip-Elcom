@@ -52,12 +52,15 @@ const CheckoutSec = () => {
         { id: 'WB', name: 'West Bengal' }
     ];
 
+   
+      
+      
+
     return (
         <>
             <div className="chekoutWrap">
                 <div className="container">
                     <div className="checkoutGrp">
-
                         <Formik
                             initialValues={{ name: '', email: '', mobile: '', addressLine1: '', addressLine2: '', city: '', state: '', pincode: '', state: '' }}
                             validate={values => {
@@ -123,6 +126,7 @@ const CheckoutSec = () => {
                                                         </li>
                                                     </ul>
                                                 </div>
+                                                
                                                 <div className="checkoutBox">
                                                     <div className="personalDtl">
                                                         <div className="checkoutHead">
@@ -212,7 +216,7 @@ const CheckoutSec = () => {
                                                                         onChange={handleChange}
                                                                         onBlur={handleBlur}
                                                                         value={values.pincode} />
-                                                                    {errors.pincode && touched.pincode && errors.pincode}
+                                                                    <ErrorMessage name="pincode" component="div" className="errorMessage" />
                                                                 </div>
 
                                                                 <input type="submit" value="Submit" />

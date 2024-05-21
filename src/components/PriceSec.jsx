@@ -1,5 +1,7 @@
+
 import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import ReactReadMoreReadLess from "react-read-more-read-less";
 
 import 'swiper/css';
 import 'swiper/css/free-mode';
@@ -11,11 +13,14 @@ import thumb1 from '@/asset/images/thumb1.png';
 import thumb2 from '@/asset/images/thumb2.png';
 import thumb3 from '@/asset/images/thumb3.png';
 import thumb4 from '@/asset/images/thumb4.png';
+import futuremain from '@/asset/images/features-main-imge.png';
+import stripimg3 from '@/asset/images/stripimg3.png';
+
 import thumbfull1 from '@/asset/images/thumbfull1.png';
 import flag from '@/asset/images/flag.svg';
 import correct from '@/asset/images/correct.svg';
 import Swal from 'sweetalert2';
-import ReactReadMoreReadLess from "react-read-more-read-less";
+
 
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { useRouter } from 'next/router';
@@ -26,6 +31,9 @@ const PriceSec = ({ productData }) => {
     // console.log("productData : ",productData)
     const {productExtraOptions} = productData; 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
+
+    const [isBeginning, setIsBeginning] = useState(true);
+    const [isEnd, setIsEnd] = useState(false);
 
     const swiperRef = useRef();
     const [selectedAttributes, setSelectedAttributes] = useState({});
@@ -123,88 +131,119 @@ const PriceSec = ({ productData }) => {
                     <div className='container'>
                         <div className='priceWrapper'>
                             <div className='row'>
-                                <div className='col-lg-1'>
-                                    <div className='priceSwiper'>
-                                        <Swiper
-                                            style={{
-                                                '--swiper-navigation-color': '#fff',
-                                                '--swiper-pagination-color': '#fff',
+                            <div className='col-lg-1'>
+                                <div className='priceSwiper'>
+                                    <Swiper 
+                                      onSwiper={setThumbsSwiper}
+                                      spaceBetween={10}
+                                      slidesPerView={4}
+                                      freeMode={true}
+                                      watchSlidesProgress={true}
+                                      modules={[FreeMode, Navigation, Thumbs]}
+                                      className="mySwiper"
+                                    >
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={thumbfull1} alt='thumbfull1' width={100} height={50} ></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={futuremain} alt='futuremain'></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={thumb3} alt='thumb3'></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={stripimg3} alt='stripimg3'></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                    </Swiper>
+                                    {/* <Swiper
+                                        modules={[Thumbs]} 
+                                        loop={true}
+                                        spaceBetween={10}
+                                        thumbs={{ swiper: thumbsSwiper }}
+                                        className="mySwiper2"
+                                    >
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={thumbfull1} alt='thumbfull1' width={100} height={50} ></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={thumb2} alt='thumb2'></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={thumb3} alt='thumb3'></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbBox'>
+                                                <Image src={thumb4} alt='thumb4'></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                    </Swiper > */}
+                                </div>
+                            </div>
+                            <div className='col-lg-7'>
+                                <div className='pricefullImg'>
+                                    <Swiper
+                                        spaceBetween={10}
+                                        // navigation={true}
+                                        thumbs={{ swiper: thumbsSwiper }}
+                                        modules={[FreeMode, Navigation, Thumbs]}
+                                        onBeforeInit={(swiper) => {
+                                            swiperRef.current = swiper;
                                             }}
-                                            loop={true}
-                                            spaceBetween={10}
-                                            thumbs={thumbsSwiper ? { swiper: thumbsSwiper } : null}
-                                            modules={[FreeMode, Navigation, Thumbs]}
-                                            className="mySwiper2"
-                                        >
-                                            <SwiperSlide>
-                                                <div className='thumbBox'>
-                                                    <Image src={thumb1} alt='thumb1'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className='thumbBox'> 
-                                                    <Image src={thumb2} alt='thumb2'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className='thumbBox'>
-                                                    <Image src={thumb3} alt='thumb3'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className='thumbBox'>
-                                                    <Image src={thumb4} alt='thumb4'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                        </Swiper >
+                                            onSlideChange={(swiper) => {
+                                                setIsBeginning(swiper.isBeginning);
+                                                setIsEnd(swiper.isEnd);
+                                      }}
+                                     onReachBeginning={() => setIsBeginning(true)}
+                                     onReachEnd={() => setIsEnd(true)}
+                                        className="mySwiper2"
+
+                                    >
+                                        <SwiperSlide>
+                                            <div className='thumbfullBox'>
+                                                <Image src={thumbfull1} alt='thumbfull1' width={727} height={200}></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbfullBox'>
+                                                <Image src={futuremain} alt='futuremain' width={727} height={400}></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbfullBox'>
+                                                <Image src={thumb3} alt='thumb3' width={727} height={400}></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                        <SwiperSlide>
+                                            <div className='thumbfullBox'>
+                                                <Image src={stripimg3} alt='stripimg3' width={727} height={300}></Image>
+                                            </div>
+                                        </SwiperSlide>
+                                    
+                                    </Swiper>
+                                    <div className="switer_btn">
+                                        <button onClick={() => swiperRef.current?.slidePrev()} className={`group ${isBeginning ? 'disable_arrow' : ''}`}>
+                                            <svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+                                        </button>
+                                        <button onClick={() => swiperRef.current?.slideNext()} className={`group ${isEnd ? 'disable_arrow' : ''}`}>
+                                            <svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+                                        </button>
                                     </div>
                                 </div>
-                                <div className='col-lg-7'>
-                                    <div className='pricefullImg'>
-                                        <Swiper
-                                            onSwiper={setThumbsSwiper}
-                                            loop={false}
-                                            slidesPerView={1}
-                                            freeMode={true}
-                                            // navigation={true}
-                                            watchSlidesProgress={true}
-                                            modules={[FreeMode, Navigation, Thumbs]}
-                                            onBeforeInit={(swiper) => {
-                                                swiperRef.current = swiper;
-                                            }}
-                                            className="mySwiper"
-                                        >
-                                            <SwiperSlide>
-                                                <div className='thumbfullBox'>
-                                                    <Image src={thumbfull1} alt='thumbfull1'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className='thumbfullBox'>
-                                                    <Image src={thumbfull1} alt='thumbfull1'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className='thumbfullBox'>
-                                                    <Image src={thumbfull1} alt='thumbfull1'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                            <SwiperSlide>
-                                                <div className='thumbfullBox'>
-                                                    <Image src={thumbfull1} alt='thumbfull1'></Image>
-                                                </div>
-                                            </SwiperSlide>
-                                        </Swiper>
-                                        <div className="switer_btn">
-                                            <button onClick={() => swiperRef.current?.slidePrev()} className="group">
-                                                <svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6" /></svg>
-                                            </button>
-                                            <button onClick={() => swiperRef.current?.slideNext()} className="group">
-                                                <svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6" /></svg>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                            </div>
                                 <div className='col-lg-4'>
                                     <div className='priceList'>
                                         <div className='headSec'>

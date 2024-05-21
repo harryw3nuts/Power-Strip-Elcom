@@ -19,7 +19,7 @@ const Header = ({headerLogo,ctaOneInfo,ctaTwoInfo}) => {
                         </div>
                         <div className="navInner">
                             <ul>
-                                <li><Link href="#">About</Link></li>
+                                <li><Link href="/about">About</Link></li>
                                 <li><Link href="#">Details</Link></li>
                                 <li><Link href="#">Features</Link></li>
                                 <li><Link href="#">Benefits</Link></li>

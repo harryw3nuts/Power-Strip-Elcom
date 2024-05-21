@@ -254,7 +254,7 @@ const PriceSec = ({ productData }) => {
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-primary" type="button" onClick={decNum}>-</button>
                                                     </div>
-                                                    <input type="text" class="form-control" value={num} onChange={handleChange} />
+                                                    <input type="number" class="form-control" value={num} onChange={handleChange} />
                                                     <div class="input-group-prepend">
                                                         <button class="btn btn-outline-primary" type="button" onClick={incNum}>+</button>
                                                     </div>

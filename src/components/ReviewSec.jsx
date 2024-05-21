@@ -57,7 +57,7 @@ const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
                                     {description && <div className="text_slider_dtl">
                                         {/* <p>{description}{des_length > 80 && (<>{'...'} <Link href={'#'}>Read More</Link></>)}</p> */}
                                         <ReactReadMoreReadLess
-                                            charLimit={475}
+                                            charLimit={450}
                                             readMoreText={"Read more"}
                                             readLessText={"Read less"}
                                             readMoreClassName="read-more-less--more"

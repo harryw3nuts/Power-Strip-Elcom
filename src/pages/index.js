@@ -25,7 +25,7 @@ export default function Home({ data, error }) {
     bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo,
     otherHeading,otherProductInfo,
     reviewsHeading,reviewsInfo,
-    insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,
+    insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,insightsInfo,
     benefitsHeading,benefitsInfo,
     faqHeading,faqInfo,selectProduct
   } = data?.data?.pageBy?.template?.homePageFields;
@@ -35,7 +35,8 @@ export default function Home({ data, error }) {
   const BannerData = { bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo }
   const otherInfoData = {otherHeading,otherProductInfo}
   const reviewsData = {reviewsHeading,reviewsInfo}
-  const insightsData = {insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,latest3Posts}
+  const insightsData = {insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,latest3Posts,insightsInfo
+  }
   const benefitsData = {benefitsHeading,benefitsInfo}
   const faqData = {faqHeading,faqInfo}
   if (error) {
@@ -52,7 +53,7 @@ export default function Home({ data, error }) {
       <Banner {...BannerData} />
       <ScrollTextColor />
       <PriceSec productData={selectProduct}/>
-      <FeaturesSecNew />
+      {/* <FeaturesSecNew /> */}
       <VideoSec />
       <StripBox {...otherInfoData}/>
       <ReviewSec {...reviewsData}/>

@@ -1,28 +1,29 @@
 import Link from "next/link";
 import PowerStripSlider from "./PowerStripSlider";
 
-const PowerStripSliderSec = ({ selectTestimonials }) => {
-
-  return (
-    <div className="powerstrip-slidersec-main">
-      <div className="powerstrip-slidersec-main-wrap">
-        <div className="row justify-content-center">
-          <div className="col-lg-3">
+const PowerStripSliderSec = ({ exploreHeading, exploreButtonInfo, exploreImagesInfo }) => {
+  if(exploreImagesInfo){
+    return (
+      <div className="powerstrip-slidersec-main" id="highlightSec">
+        <div className="powerstrip-slidersec-main-wrap">
+          <div className="row justify-content-center">
+            {(exploreHeading && exploreButtonInfo) && <div className="col-lg-3">
               <div className="powerstrip-slider-text">
-                <h3>Explore our <br /> Power Strip</h3>
-                <div className="btnbox">
-                  <Link href="#" className="border-btn blue-fill" >Buy now</Link>
-                </div>
+                {exploreHeading && <h3 dangerouslySetInnerHTML={{ __html: exploreHeading }}></h3>}
+                {exploreButtonInfo && <div className="btnbox">
+                  <Link href={exploreButtonInfo.url} target={exploreButtonInfo.target} className="border-btn blue-fill" >{exploreButtonInfo.title}</Link>
+                </div>}
               </div>
-          </div>
-          <div className="col-lg-7">
-              <PowerStripSlider />
+            </div>}
+            {exploreImagesInfo && <div className="col-lg-7">
+              <PowerStripSlider imagesInfo={exploreImagesInfo}/>
+            </div>}
           </div>
         </div>
       </div>
-    </div>
-  )
-
+    )
+  }
+  return ''
 };
 
 export default PowerStripSliderSec;

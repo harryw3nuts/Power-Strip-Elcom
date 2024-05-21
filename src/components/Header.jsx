@@ -4,7 +4,17 @@ import Link from "next/link";
 import { Fragment } from "react";
 import Logo from "@/asset/images/Logo.svg";
 
-const Header = ({headerLogo,ctaOneInfo,ctaTwoInfo}) => {
+const Header = ({ headerLogo, ctaOneInfo, ctaTwoInfo }) => {
+
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        if (element) {
+            const offset = 90; // adjust this value to account for the height of the header or any other fixed element
+            const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+    };
+
     return (
         // <header>header</header>
         <header className="navigationBar">
@@ -19,18 +29,19 @@ const Header = ({headerLogo,ctaOneInfo,ctaTwoInfo}) => {
                         </div>
                         <div className="navInner">
                             <ul>
-                                <li><Link href="/about">About</Link></li>
-                                <li><Link href="#">Details</Link></li>
-                                <li><Link href="#">Features</Link></li>
-                                <li><Link href="#">Benefits</Link></li>
-                                <li><Link href="#">Highlights</Link></li>
-                                <li><Link href="#">FAQs</Link></li>
+                                <li><Link href="#" onClick={(e) => { e.preventDefault(); scrollToSection("aboutSec") }}>About</Link></li>
+                                <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("detailSec") }}>Details</Link></li>
+                                <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("featuresSec") }}>Features</Link></li>
+                                <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("benefitsSec") }}>Benefits</Link></li>
+                                <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("highlightSec") }}>Highlights</Link></li>
+                                <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("faqSec") }}>FAQs</Link></li>
                             </ul>
                         </div>
                         {(ctaOneInfo || ctaTwoInfo) && <div className="navBtn">
                             <ul>
                                 {ctaOneInfo && <li><Link href={ctaOneInfo.url} target={ctaOneInfo.target}>{ctaOneInfo.title}</Link></li>}
-                                {ctaTwoInfo && <li className="buyNow"><Link href={ctaTwoInfo.url} target={ctaTwoInfo.target}>{ctaTwoInfo.title}</Link></li>}
+                                {ctaTwoInfo && <li className="buyNow"><Link href={"#"} onClick={(e) => { e.preventDefault();scrollToSection("detailSec") }}>{ctaTwoInfo.title}</Link></li>}
+                                {/* {ctaTwoInfo && <li className="buyNow"><Link href={ctaTwoInfo.url} target={ctaTwoInfo.target}>{ctaTwoInfo.title}</Link></li>} */}
                             </ul>
                         </div>}
                     </div>

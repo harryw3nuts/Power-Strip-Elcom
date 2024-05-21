@@ -75,6 +75,25 @@ query THEME_SETTINGS {
                         url
                         target
                     }
+                    powerStripimage{
+                      sourceUrl
+                    }
+                    powerStripleftText
+                    powerStriprightText
+                    featuresHeading
+                    featuresImage{
+                      sourceUrl
+                    }
+                    features1Heading
+                    features1Subheading
+                    features2Heading
+                    features2Subheading
+                    features3Heading
+                    features3Subheading
+                    features4Heading
+                    features4Subheading
+                    features5Heading
+                    features5Subheading
                     otherHeading
                     otherProductInfo {
                         productName
@@ -110,6 +129,17 @@ query THEME_SETTINGS {
                         sourceUrl
                       }
                     }
+                    exploreHeading
+                    exploreButtonInfo{
+                      title
+                      url
+                      target
+                    }
+                    exploreImagesInfo{
+                      image{
+                        sourceUrl
+                      }
+                    }
                     faqHeading
                     faqInfo{
                       heading
@@ -121,6 +151,7 @@ query THEME_SETTINGS {
                         id
                         name
                         price
+                        content
                         attributes {
                           nodes {
                             id
@@ -154,6 +185,14 @@ query THEME_SETTINGS {
                                 value
                               }
                             }
+                          }
+                        }
+                        productExtraOptions{
+                          isProductMadeInIndia
+                          productWarranty
+                          productInfo{
+                            heading
+                            value
                           }
                         }
                       }

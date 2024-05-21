@@ -23,11 +23,14 @@ export default function Home({ data, error }) {
   // console.log("data : ",data?.data?.pageBy?.template?.homePageFields)
   const { 
     bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo,
+    powerStripimage,powerStripleftText,powerStriprightText,
     otherHeading,otherProductInfo,
     reviewsHeading,reviewsInfo,
     insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,insightsInfo,
     benefitsHeading,benefitsInfo,
-    faqHeading,faqInfo,selectProduct
+    faqHeading,faqInfo,selectProduct,
+    featuresHeading,featuresImage,features1Heading,features1Subheading,features2Heading,features2Subheading,features3Heading,features3Subheading,features4Heading,features4Subheading,features5Heading,features5Subheading,
+    exploreHeading,exploreButtonInfo,exploreImagesInfo
   } = data?.data?.pageBy?.template?.homePageFields;
 
   const latest3Posts = data?.data?.posts?.nodes;
@@ -39,6 +42,9 @@ export default function Home({ data, error }) {
   }
   const benefitsData = {benefitsHeading,benefitsInfo}
   const faqData = {faqHeading,faqInfo}
+  const powerStripData = {powerStripimage,powerStripleftText,powerStriprightText}
+  const featuresData = {featuresHeading,featuresImage,features1Heading,features2Heading,features3Heading,features4Heading,features5Heading,features1Subheading,features2Subheading,features3Subheading,features4Subheading,features5Subheading}
+  const exploreData = {exploreHeading,exploreButtonInfo,exploreImagesInfo}
   if (error) {
     return (
       <h2>Error : {JSON.stringify(error)}</h2>
@@ -51,15 +57,15 @@ export default function Home({ data, error }) {
         <title>Elcom | Power Strip</title>
       </Head>
       <Banner {...BannerData} />
-      <ScrollTextColor />
+      <ScrollTextColor {...powerStripData}/>
       <PriceSec productData={selectProduct}/>
-      {/* <FeaturesSecNew /> */}
+      <FeaturesSecNew {...featuresData}/>
       <VideoSec />
       <StripBox {...otherInfoData}/>
       <ReviewSec {...reviewsData}/>
       <InsightSec {...insightsData}/>
       <BenefitSec {...benefitsData}/>
-      <PowerStripSliderSec />
+      <PowerStripSliderSec {...exploreData}/>
       <QuestionSec {...faqData}/>
       {/* <SucessSec/> */}
     </>

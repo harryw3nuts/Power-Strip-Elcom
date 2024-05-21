@@ -5,7 +5,7 @@ const BenefitSec = ({benefitsHeading,benefitsInfo}) => {
     if(benefitsInfo){
         return (
             <>
-                <div className="benefitWrap">
+                <div className="benefitWrap" id="benefitsSec">
                     <div className="container">
                         <div className="benefitGrp">
                             {benefitsHeading && <div className="benefitHead">

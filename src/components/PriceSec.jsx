@@ -23,6 +23,8 @@ import { useContext } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 
 const PriceSec = ({ productData }) => {
+    // console.log("productData : ",productData)
+    const {productExtraOptions} = productData; 
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     const swiperRef = useRef();
@@ -117,7 +119,7 @@ const PriceSec = ({ productData }) => {
         return (
             <>
 
-                <div className='priceImg'>
+                <div className='priceImg' id="detailSec">
                     <div className='container'>
                         <div className='priceWrapper'>
                             <div className='row'>
@@ -232,18 +234,21 @@ const PriceSec = ({ productData }) => {
                                                                 })}
                                                             </div>)
                                                             :
-                                                            (<div className='colorBtn'>
-                                                                {optionsWithFields?.map(option => {
-                                                                    return (
-                                                                        <div className='difBtn' key={option}>
-                                                                            <label for={option.slug}>
-                                                                                <input type="radio" id={option.slug} name={name} value={option.slug} onChange={(e) => handleAttributeChange(name, e.target.value)} />
-                                                                                <span>{option.name}</span>
-                                                                            </label>
-                                                                        </div>
-                                                                    )
-                                                                })}
-                                                            </div>)
+                                                            (
+                                                            // <div className='colorBtn'>
+                                                            //     {optionsWithFields?.map(option => {
+                                                            //         return (
+                                                            //             <div className='difBtn' key={option}>
+                                                            //                 <label for={option.slug}>
+                                                            //                     <input type="radio" id={option.slug} name={name} value={option.slug} onChange={(e) => handleAttributeChange(name, e.target.value)} />
+                                                            //                     <span>{option.name}</span>
+                                                            //                 </label>
+                                                            //             </div>
+                                                            //         )
+                                                            //     })}
+                                                            // </div>
+                                                            ""
+                                                            )
                                                         }
                                                     </div>
                                                 )
@@ -264,23 +269,22 @@ const PriceSec = ({ productData }) => {
                                         <div className='buyNow'>
                                             <button className='buybtn'  onClick={() => buyNowHandler()}>Buy Now</button>
                                         </div>
-                                        <div className='warrantySec'>
-                                            <div className='flagSec'>
+
+                                        {productExtraOptions && <div className='warrantySec'>
+                                            {productExtraOptions?.isProductMadeInIndia && <div className='flagSec'>
                                                 <ul>
                                                     <li><i><Image src={flag} alt='flag'></Image></i></li>
                                                     <li className='mii'>Made In India</li>
                                                 </ul>
-                                            </div>
-                                            <div className='warGrp'>
+                                            </div>}
+                                            {productExtraOptions?.productWarranty && <div className='warGrp'>
                                                 <ul>
                                                     <li><i><Image src={correct} alt='correct'></Image></i></li>
-                                                    <li className='corr'>2 Years Warranty</li>
+                                                    <li className='corr'>{productExtraOptions?.productWarranty}</li>
                                                 </ul>
-                                            </div>
-                                        </div>
+                                            </div>}
+                                        </div>}
                                         <div className='productContent'>
-                                            {/* <p>Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy.
-                                         <Link href={'#'} onClick = {() => setReadMore(!readMore)}><ReadMore/></Link></p> */}
                                             <ReactReadMoreReadLess
                                                 charLimit={200}
                                                 readMoreText={"Read more"}
@@ -297,32 +301,23 @@ const PriceSec = ({ productData }) => {
                             </div>
                         </div>
                     </div>
-                    <div className='container'>
+                    {productExtraOptions?.productInfo && <div className='container'>
                         <div className='productDetail'>
                             <ul>
-                                <li>
-                                    <span className='title'>Input Voltage</span>
-                                    <span className='value'>100-240V AC</span>
-                                </li>
-                                <li>
-                                    <span className='title'>Output Voltage</span>
-                                    <span className='value'>5V DC (USB), <br /> 120V AC (Outlets)</span>
-                                </li>
-                                <li>
-                                    <span className='title'>Power Rating</span>
-                                    <span className='value'>6A, 240V</span>
-                                </li>
-                                <li>
-                                    <span className='title'>Cord Length</span>
-                                    <span className='value'>6ft (1.8m)</span>
-                                </li>
-                                <li>
-                                    <span className='title'>Dimensions</span>
-                                    <span className='value'>11.5" x 2.5" x 1.2"</span>
-                                </li>
+                                {productExtraOptions?.productInfo.map((info,index) => {
+                                    const {heading,value} = info;
+                                    if(heading || value){
+                                        return (
+                                            <li key={index}>
+                                                <span className='title'>{heading}</span>
+                                                <span className='value' dangerouslySetInnerHTML={{__html:value}}></span>
+                                            </li>
+                                        )
+                                    }
+                                })}
                             </ul>
                         </div>
-                    </div>
+                    </div>}
                 </div>
 
 

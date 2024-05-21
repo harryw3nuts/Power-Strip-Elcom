@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from 'next/link';
 import ivideoimg from "@/asset/images/ivideoimg.png";
 import { useEffect, useState } from "react";
-import { addAutoplayParam, checkVideoPlatform, formatDuration, parseDuration } from "@/utils/utils";
+import { checkVideoPlatform, formatDuration, getVimeoEmbeddedUrl, getYouTubeEmbeddedUrl, parseDuration } from "@/utils/utils";
 import axios from "axios";
 
 
@@ -10,21 +10,34 @@ const VideoSec = () => {
     const [showVideo, setShowVideo] = useState(false);
     const [videoUrl, setVideoUrl] = useState("");
     const [videoDetails,setVideoDetails] = useState();
-    const url = "https://www.youtube.com/watch?v=D0UnqGm_miA";
+    // const url = "https://www.youtube.com/watch?v=D0UnqGm_miA";
+    const url = "https://www.youtube.com/watch?v=7PIji8OubXU";
+    // const url = "https://www.youtube.com/embed/D0UnqGm_miA";
     // const url = "https://vimeo.com/46926279";
+    // const url = "https://vimeo.com/945935458";
     let updatedURL = '';
     //getting plateform of given URL (eg. Youtube,Vimeo)
     const videoPlatForm = checkVideoPlatform(url);
 
-    if(videoPlatForm == 'YouTube' || videoPlatForm == 'Vimeo'){
-        updatedURL = addAutoplayParam(url)
-        console.log('updatedURL',updatedURL)
+    if(videoPlatForm == 'YouTube'){
+        updatedURL = getYouTubeEmbeddedUrl(url)
+    }else if(videoPlatForm == 'Vimeo'){
+        updatedURL = getVimeoEmbeddedUrl(url)
+    }else{
+        updatedURL = url;
     }
 
     //get Youtube video id from url
     const getVideoIdFromUrl = (url) => {
-        const urlObj = new URL(url);
-        return urlObj.searchParams.get('v');
+        // const urlObj = new URL(url);
+        // return urlObj.searchParams.get('v');
+        let videoId;
+        const youtubeRegex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+        const match = url.match(youtubeRegex);
+        if (match && match[1]) {
+            videoId = match[1];
+        }
+        return videoId
     };
 
     //fetch Youtube video details from video id
@@ -77,7 +90,7 @@ const VideoSec = () => {
                             {!showVideo && <div className="videoFrame">
                                 <Image src={ivideoimg} alt="ivideoimg" />
                             </div>}
-                            <div class="video-blk">
+                            <div className="video-blk">
                                 <iframe width="1000" height="500" src={videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                             </div>
                             {!showVideo && <div className="trailerText">

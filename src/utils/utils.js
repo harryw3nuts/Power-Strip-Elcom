@@ -25,6 +25,32 @@ export function checkVideoPlatform(url) {
     }
 }
 
+export function getYouTubeEmbeddedUrl(url) {
+  let videoId;
+  const youtubeRegex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
+  const match = url.match(youtubeRegex);
+  if (match && match[1]) {
+      videoId = match[1];
+  }
+  if (videoId) {
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+  }
+  return null;
+}
+
+export function getVimeoEmbeddedUrl(url) {
+  let videoId;
+  const vimeoRegex = /vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:\w+\/)?|album\/(?:\d+\/video\/)?|video\/|)(\d+)(?:$|\/|\?)/;
+  const match = url.match(vimeoRegex);
+  if (match && match[1]) {
+      videoId = match[1];
+  }
+  if (videoId) {
+      return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+  }
+  return null;
+}
+
 export function formatDuration(seconds) {
   const hours = Math.floor(seconds / 3600);
   const minutes = Math.floor((seconds % 3600) / 60);
@@ -54,20 +80,4 @@ export function parseDuration(duration) {
   ].join(':');
 
   return formattedDuration;
-}
-
-export function addAutoplayParam(url) {
-  try {
-    const urlObj = new URL(url);
-    const params = urlObj.searchParams;
-
-    if (!params.has('autoplay')) {
-      params.append('autoplay', '1');
-    }
-
-    return urlObj.toString();
-  } catch (error) {
-    console.error('Invalid URL:', error);
-    return url;
-  }
 }

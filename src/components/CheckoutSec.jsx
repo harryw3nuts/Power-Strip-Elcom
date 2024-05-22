@@ -202,7 +202,7 @@ const CheckoutSec = () => {
                                                                         value={values.city} />
                                                                     <ErrorMessage name="city" component="div" className="errorMessage" />
                                                                 </div>
-                                                                <div className="contactInner">
+                                                                <div className="contactInnerselect">
                                                                     <Field name="state">
                                                                         {({ field, form }) => (
                                                                             <Select
@@ -255,7 +255,11 @@ const CheckoutSec = () => {
                                                                                 })}
                                                                                 {product?.selectedQty && <li>Quantity : {product.selectedQty}</li>}
                                                                             </ul>
+                                                                            <div className="editBtn">
+                                                                                <a href="#">Edit</a>
+                                                                            </div>
                                                                         </div>
+                                                                        
                                                                     </div>
                                                                 )
                                                             })}

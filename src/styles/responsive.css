@@ -2,7 +2,9 @@
 
 
 
-
+@media (min-width:1920px){
+    .container { width: 1824px; max-width: 1824px; margin: 0 auto;} 
+    }
 
 @media (min-width: 1900px) {
     .features-sec .title { top: 140px; }
@@ -16,10 +18,10 @@
     .videoGrp .container{max-width: 1920px; margin: 0 auto;} 
 }
 
-@media (min-width: 1400px) and (max-width: 1440px) {
+/* @media (min-width: 1400px) and (max-width: 1440px) {
 
     .navigationBar .navWrap .container {max-width: 1408px;}
- }
+ } */
 
 @media (min-width: 1300px) and (max-width: 1399px) { 
  

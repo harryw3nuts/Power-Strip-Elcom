@@ -342,6 +342,7 @@ font-size: 16px; font-style: normal; font-weight: 400; line-height: 28px; /* 175
 10px;}
 .chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li {position: relative;}
 .chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li a::after{position: absolute; content: ''; right: -12px; top: 9px; background-image: url(../asset/images/v1.svg); width: 6px; height: 10px; background-repeat: no-repeat;}
+.chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul .checkoutDirect a {font-weight: 500;} 
 .chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li:last-child a::after {display: none;}
 .chekoutWrap .checkoutGrp .checkoutForm .checkoutNav ul li a {color: var(--primary-2-c-2-a-25, #2C2A25); font-size: 16px; font-style: normal; font-weight: 400; line-height: 140%; text-decoration: none; }
 .checkoutBox .personalDtl {}
@@ -362,15 +363,25 @@ font-size: 24px; font-weight: 600; line-height: 32px;}
 .titleBox .orderInner {position: relative;}
 .titleBox .orderInner .titleHead {padding: 0 0 40px;}
 .titleBox .orderInner .titleHead h4 {color: var(--Primary-Black, #101010); font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px;}
+<<<<<<< HEAD
 .titleBox .orderInner .orderBox { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; border: 1px solid #000;}
 .titleBox .orderInner .orderBox .orderImg {width: 120px;display: flex; justify-content: center;align-items: center; background-color: #E2E2E2; height: 120px; margin: 10px 0 10px 8px;} 
 .titleBox .orderInner .orderBox .orderImg img {display: flex; justify-content: center; align-items: center; width: 100%; height: 100%; object-fit: contain;}
 .titleBox .orderInner .orderBox .orderDtl {position: relative;}
+=======
+.titleBox .orderInner .orderBox { display: flex; gap: 20px; align-items: center; margin-bottom: 40px;}
+.titleBox .orderInner .orderBox .orderImg {width: 120px; height: 120px; border: 1px solid #000; display: flex; justify-content: center;align-items: center;}
+.titleBox .orderInner .orderBox .orderImg img {display: flex; justify-content: center; align-items: center; width: 100%; object-fit: contain;}
+.titleBox .orderInner .orderBox .orderDtl {position: relative; display: flex; justify-content: space-between; gap: 32px; align-items: flex-end;}
+>>>>>>> main
 .titleBox .orderInner .orderBox .orderDtl ul {display: block; margin: 0; padding: 0;}
 .titleBox .orderInner .orderBox .orderDtl ul li {color: #000; font-family: "Inter Tight";
 font-size: 16px; font-weight: 400; line-height: 24px; padding-bottom: 5px; display: block;}
 .titleBox .orderInner .orderBox .orderDtl ul .orderHead {color: var(--Primary-Black, #101010);
 font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px; padding-bottom: 8px;}
+.editBtn {display: flex;}
+.editBtn a {color: var(--Primary-Blue, #005ABB); font-family: "Inter Tight"; font-size: 16px;
+font-weight: 600; line-height: 24px; text-decoration-line: underline;}
 
 .totalDtl {}
 .totalDtl .totalBox {}
@@ -389,9 +400,9 @@ font-size: 18px; font-weight: 400; line-height: 24px;}
 font-weight: 400; line-height: 24px; letter-spacing: -0.2px; display: block;}
 .btnCheckbox .checkbox_wrap label span a{color: #101010; font-family: "Inter Tight"; font-size: 16px; font-weight: 400; line-height: 24px; letter-spacing: -0.2px; text-decoration-line: underline;}
 .proceedBtn {display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 40px;}
-.proceedBtn a {color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 14px;
-font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; display: flex; justify-content: center; align-items: center; height: 60px; background-color: #0071E3; transition: all ease-in-out 0.3s; padding: 0 185px; border-radius: 100px; text-decoration: none;}
-.proceedBtn a:hover{background-color: #101010;} 
+.proceedBtn button {color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 14px;
+font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; display: flex; justify-content: center; align-items: center; height: 60px; background-color: #0071E3; transition: all ease-in-out 0.3s; padding: 0 185px; border-radius: 100px; text-decoration: none; border: none;}
+.proceedBtn button:hover{background-color: #101010;} 
 .input-group {width: 141px; border: 2px solid #000; border-radius: 50px;}
 .input-group > :not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback) {text-align: center;}
 .btn-outline-primary {outline: none !important; border-color: none !important;}
@@ -715,9 +726,11 @@ input[type=number] {
 .css-16vukcu {padding: 0 !important;}
 /* .react-dropdown-select-input {display: none !important;} */
 .css-16vukcu {border-bottom: 1px solid #7B7B7B !important;}
-.css-1m5113o span {width: 100%; border-left: none; border-top: none; border-right: none; color: #000; padding-bottom: 8px; font-family: "Inter Tight"; font-size: 20px; font-weight: 400;
+.css-1m5113o  {width: 100%; border-left: none; border-top: none; border-right: none; color: #000; padding-bottom: 8px; font-family: "Inter Tight"; font-size: 20px; font-weight: 400;
   line-height: 28px; 
   letter-spacing: -0.4px;}
+  .css-wmy1p7-ReactDropdownSelect {border-bottom: 1px solid #7B7B7B !important; padding: 0 !important; border-top: none !important; border-left: none !important; border-right: none !important;}  
+  .css-wmy1p7-ReactDropdownSelect:focus, .css-wmy1p7-ReactDropdownSelect:focus-within {box-shadow: none !important;}
 
 .errorMessage {color: red; margin-top: 5px;}
 
@@ -731,6 +744,13 @@ input[type=number] {
     box-shadow: inset 20px 20px 20px 30px #fff;
     -webkit-text-fill-color:  #A1A1A1;
 }
+.css-16po3ad {margin-left: 0 !important; font-size: 20px !important;}
 
+.contactInnerselect {margin-bottom: 40px; }
+/* .contactInnerselect span {width: 100%; border-left: none; border-top: none; border-right: none; color: #000; padding-bottom: 8px; font-family: "Inter Tight"; font-size: 20px; font-weight: 400;
+  line-height: 28px; 
+  letter-spacing: -0.4px;} */
 
+  .css-jznujr-ContentComponent {font-size: 20px !important;}
+  .css-187kexr-InputComponent {margin: 0 !important; font-size: 20px !important;}
 

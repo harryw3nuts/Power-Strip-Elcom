@@ -88,3 +88,9 @@ export function rupeeStringToNumber(price){
   const roundedPrice = parseFloat(priceNumber.toFixed(2));
   return roundedPrice;
 }
+
+export function isValidIndianPhoneNumber(phoneNumber) {
+  // Regular expression for Indian phone number with optional +91 country code and optional space
+  const phoneNumberPattern = /^(?:\+91\s?)?[6-9]\d{9}$/;
+  return phoneNumberPattern.test(phoneNumber);
+}

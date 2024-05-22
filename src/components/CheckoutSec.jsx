@@ -6,15 +6,19 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "@/context/ThemeContext";
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { rupeeStringToNumber } from "@/utils/utils";
+import { isValidIndianPhoneNumber, rupeeStringToNumber } from "@/utils/utils";
+import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+import { useRouter } from "next/router";
 
-const CheckoutSec = () => {
+const CheckoutSec = ({rzpLoaded}) => {
+    const router = useRouter();
     const context = useContext(ThemeContext);
     const { products } = context;
     console.log("products", products)
     const [values, setValues] = useState();
-    const [userData,setUserData] = useState({});
-    const [productsTotal,setProductTotal] = useState(0)
+    const [userData, setUserData] = useState({});
+    const [productsTotal, setProductTotal] = useState(0)
+    const [lineItems, setLineItems] = useState([]);
     const options = [
         { id: 'AN', name: 'Andaman and Nicobar Islands' },
         { id: 'AP', name: 'Andhra Pradesh' },
@@ -55,19 +59,157 @@ const CheckoutSec = () => {
         { id: 'WB', name: 'West Bengal' }
     ];
 
+
+    //woocommerce rest api init
+    const api = new WooCommerceRestApi({
+        url: process.env.NEXT_PUBLIC_WOO_SITE_URL,
+        consumerKey: process.env.NEXT_PUBLIC_WOO_CONSUMER_KEY,
+        consumerSecret: process.env.NEXT_PUBLIC_WOO_CONSUMER_SECRET,
+        version: "wc/v3"
+    });
+
     useEffect(() => {
-        if(products.length > 0){
-            const total = products.reduce((prev,product,index) => {
+        if (products.length > 0) {
+            const total = products.reduce((prev, product, index) => {
+                console.log("Product + ", product)
                 let productPrice = rupeeStringToNumber(product.price);
                 let productQty = product?.selectedQty || 1;
                 let currentProductTotal = productPrice * productQty;
                 return prev + currentProductTotal;
-            },0)
+            }, 0)
+
+            //for order api
+            const line_items = products.map((product) => {
+                return { product_id: product.databaseId, quantity: product?.selectedQty || 1 }
+            })
+            setLineItems(line_items);
             setProductTotal(total)
         }
-    },[])
+    }, [])
 
-    console.log("userData ",userData)
+    //create wordpress order when User click on Proceed/Checkout button
+    const createOrderHandler = async (userDataForOrder) => {
+        //if userDataForOrder is not empty then create order
+        if(Object.keys(userDataForOrder).length){
+            const orderData = {
+                payment_method: 'razorpay',
+                payment_method_title: 'Razor Pay Payment',
+                set_paid: false,
+                billing: userDataForOrder,
+                line_items: lineItems
+            };
+            // creating wordpress order and status is pending payment to retrive order id and amount for razorpay checkout
+            api.post('orders', orderData)
+                .then(response => {
+                    console.log('Woocommerce Order created successfully:', response.data);
+                    const orderData = response.data;
+                    console.log(orderData.id);
+                    razorPayHandler(orderData)
+                })
+                .catch(error => {
+                    console.error('Error creating Woocommerce order:', error.response.data);
+                });
+        }
+
+    }
+
+    const razorPayHandler = async (orderData) => {
+        //creating razorpay 
+        if(orderData){
+            const orderId = orderData.id;
+            const orderAmount = orderData.total;
+            try {
+                const response = await fetch('/api/createOrder', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    amount: orderAmount,
+                    currency: 'INR',
+                    receipt: String(orderId),
+                  }),
+                });
+            
+                const data = await response.json();
+                const { order } = data;
+            
+                // Use the order object returned by the API for payment initiation
+                console.log('Razor pay Order created:', order);
+                console.log("window",window)
+                console.log("rzpLoaded",rzpLoaded)
+                if (window && window.Razorpay && rzpLoaded) {
+                  const rzp = new window.Razorpay({
+                    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+                    amount: order.amount,
+                    currency: order.currency,
+                    name: 'Your Company Name',
+                    description: 'Payment for Product/Service',
+                    order_id: order.id,
+                    handler: function (response) {
+                      console.log(response);
+                      const {razorpay_order_id,razorpay_payment_id,razorpay_signature} = response;
+                      // Handle successful payment response
+                      const updateOrderData = {
+                        status:"processing",
+                        meta_data : [
+                            {
+                                'key' : "razorpay_order_id",
+                                'value' : razorpay_order_id
+                            },
+                            {
+                                'key' : "razorpay_payment_id",
+                                'value' : razorpay_payment_id
+                            },
+                            {
+                                'key' : "razorpay_signature",
+                                'value' : razorpay_signature
+                            }
+                        ]
+                      }
+                      api.put(`orders/${orderId}`, updateOrderData)
+                        .then(response => {
+                            console.log('updateOrderData Success:', response.data);
+                            router.push('/payment-successful')
+                        })
+                        .catch(error => {
+                            console.error('updateOrderData ERROR:', error.response.data);
+                        });
+                    },
+                    prefill: {
+                      name: 'John Doe',
+                      email: 'john.doe@example.com',
+                      contact: '9876543210',
+                    },
+                    notes: {
+                      address: 'Razorpay Corporate Office',
+                    },
+                    theme: {
+                      color: '#F37254',
+                    },
+                    modal: {
+                        ondismiss: function () {
+                            console.log("Checkout form closed");
+                            // Handle the close event here
+                        },
+                        confirm_close:true
+                    }
+                  });
+                  
+                  
+                  rzp.open();
+                  rzp.on('payment.failed', function (response) {
+                    // Handle payment failure
+                    console.error('Payment failed:', response.error.code, response.error.description);
+                  });
+                }
+
+              } catch (error) {
+                console.error('Error creating order:', error.message);
+              }
+        }
+    }
+
     return (
         <>
             <div className="chekoutWrap">
@@ -83,7 +225,10 @@ const CheckoutSec = () => {
                                 }
                                 if (values?.mobile?.trim() == '') {
                                     errors.mobile = requiredFieldMessage
+                                } else if (!isValidIndianPhoneNumber(values?.mobile)) {
+                                    errors.mobile = "Please enter valid mobile number!"
                                 }
+
                                 if (values?.addressLine1?.trim() == '') {
                                     errors.addressLine1 = requiredFieldMessage
                                 }
@@ -99,10 +244,10 @@ const CheckoutSec = () => {
                                 if (!values.email) {
                                     errors.email = requiredFieldMessage
                                 } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)) {
-                                    errors.email = 'Invalid email address';
+                                    errors.email = 'Invalid email address!';
                                 }
                                 if (!values.state) {
-                                    errors.state = 'Please select a state';
+                                    errors.state = 'Please select a state!';
                                 }
 
                                 if (!values.privacyStatementCb) {
@@ -112,10 +257,33 @@ const CheckoutSec = () => {
                                 return errors;
                             }}
                             onSubmit={(values, { setSubmitting }) => {
-                                setTimeout(() => {
-                                    setUserData(values)
-                                    setSubmitting(false);
-                                }, 400);
+                                console.log("values : ", values)
+                                let fullName = values.name;
+                                let fullNameArr = fullName.trim().split(" ");
+                                let firstName = '';
+                                let lastName = '';
+                                if (fullNameArr.length > 1) {
+                                    firstName = fullNameArr[0];
+                                    lastName = fullNameArr[fullNameArr.length - 1];
+                                } else {
+                                    firstName = fullName;
+                                    lastName = '';
+                                }
+                                const userDataForOrder = {
+                                    first_name: firstName,
+                                    last_name: lastName,
+                                    address_1: values?.addressLine1,
+                                    address_2: values?.addressLine2,
+                                    city: values?.city,
+                                    state: values?.state[0].id,
+                                    postcode: values?.pincode,
+                                    country: 'IN',
+                                    email: values?.email,
+                                    phone: values?.mobile
+                                }
+                                setUserData(userDataForOrder)
+                                setSubmitting(false);
+                                createOrderHandler(userDataForOrder);
                             }}
                         >
                             {({
@@ -264,7 +432,7 @@ const CheckoutSec = () => {
                                                                     <ul>
                                                                         <li>
                                                                             <p>Total</p>
-                                                                            <span>₹ 1099/-</span>
+                                                                            <span>₹ {productsTotal}/-</span>
                                                                         </li>
                                                                         <li>
                                                                             <p>Tax</p>
@@ -276,7 +444,7 @@ const CheckoutSec = () => {
                                                                         </li>
                                                                         <li>
                                                                             <p className="subHead">Subtotal</p>
-                                                                            <span className="totalRs">₹ 1139/-</span>
+                                                                            <span className="totalRs">₹ {productsTotal}/-</span>
                                                                         </li>
                                                                     </ul>
                                                                 </div>

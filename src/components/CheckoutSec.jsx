@@ -2,16 +2,19 @@ import Link from "next/link";
 import Image from "next/image";
 import thumb1 from '@/asset/images/thumb1.png';
 import Select from "react-dropdown-select";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "@/context/ThemeContext";
 import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { rupeeStringToNumber } from "@/utils/utils";
 
 const CheckoutSec = () => {
     const context = useContext(ThemeContext);
     const { products } = context;
-    // console.log("products", products)
+    console.log("products", products)
     const [values, setValues] = useState();
+    const [userData,setUserData] = useState({});
+    const [productsTotal,setProductTotal] = useState(0)
     const options = [
         { id: 'AN', name: 'Andaman and Nicobar Islands' },
         { id: 'AP', name: 'Andhra Pradesh' },
@@ -52,17 +55,26 @@ const CheckoutSec = () => {
         { id: 'WB', name: 'West Bengal' }
     ];
 
-   
-      
-      
+    useEffect(() => {
+        if(products.length > 0){
+            const total = products.reduce((prev,product,index) => {
+                let productPrice = rupeeStringToNumber(product.price);
+                let productQty = product?.selectedQty || 1;
+                let currentProductTotal = productPrice * productQty;
+                return prev + currentProductTotal;
+            },0)
+            setProductTotal(total)
+        }
+    },[])
 
+    console.log("userData ",userData)
     return (
         <>
             <div className="chekoutWrap">
                 <div className="container">
                     <div className="checkoutGrp">
                         <Formik
-                            initialValues={{ name: '', email: '', mobile: '', addressLine1: '', addressLine2: '', city: '', state: '', pincode: '', state: '' }}
+                            initialValues={{ name: '', email: '', mobile: '', addressLine1: '', addressLine2: '', city: '', state: '', pincode: '', state: '', privacyStatementCb: false }}
                             validate={values => {
                                 const errors = {};
                                 const requiredFieldMessage = 'This field is required!';
@@ -93,11 +105,15 @@ const CheckoutSec = () => {
                                     errors.state = 'Please select a state';
                                 }
 
+                                if (!values.privacyStatementCb) {
+                                    errors.privacyStatementCb = requiredFieldMessage
+                                }
+
                                 return errors;
                             }}
                             onSubmit={(values, { setSubmitting }) => {
                                 setTimeout(() => {
-                                    alert(JSON.stringify(values, null, 2));
+                                    setUserData(values)
                                     setSubmitting(false);
                                 }, 400);
                             }}
@@ -126,7 +142,7 @@ const CheckoutSec = () => {
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                
+
                                                 <div className="checkoutBox">
                                                     <div className="personalDtl">
                                                         <div className="checkoutHead">
@@ -186,27 +202,18 @@ const CheckoutSec = () => {
                                                                         value={values.city} />
                                                                     <ErrorMessage name="city" component="div" className="errorMessage" />
                                                                 </div>
-                                                                {/* <div className='contactInner'>
-                                                                    <Select
-                                                                        options={options}
-                                                                        labelField="name"
-                                                                        valueField="id"
-                                                                        onChange={(values) => setValues(values)}
-                                                                        placeholder="State"
-                                                                    />
-                                                                </div> */}
                                                                 <div className="contactInner">
                                                                     <Field name="state">
                                                                         {({ field, form }) => (
                                                                             <Select
-                                                                            {...field}
-                                                                            options={options}
-                                                                            labelField="name"
-                                                                            valueField="id"
-                                                                            placeholder="State"
-                                                                            onChange={(option) => form.setFieldValue(field.name, option)}
-                                                                            onBlur={() => form.setFieldTouched(field.name, true)}
-                                                                          />
+                                                                                {...field}
+                                                                                options={options}
+                                                                                labelField="name"
+                                                                                valueField="id"
+                                                                                placeholder="State"
+                                                                                onChange={(option) => form.setFieldValue(field.name, option)}
+                                                                                onBlur={() => form.setFieldTouched(field.name, true)}
+                                                                            />
                                                                         )}
                                                                     </Field>
                                                                     <ErrorMessage name="state" component="div" className="errorMessage" />
@@ -218,8 +225,6 @@ const CheckoutSec = () => {
                                                                         value={values.pincode} />
                                                                     <ErrorMessage name="pincode" component="div" className="errorMessage" />
                                                                 </div>
-
-                                                                <input type="submit" value="Submit" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -279,11 +284,18 @@ const CheckoutSec = () => {
                                                             <div className="btnCheckbox">
                                                                 <div className="checkbox_wrap">
                                                                     <label>
-                                                                        <input name="privacyCB" type="checkbox" value="false" /><span>I've taken notice of the <Link target="" href="/privacy-policy">Privacy Statement</Link></span>
+                                                                        <Field type="checkbox" name="privacyStatementCb"
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                        />
+                                                                        <span>I've taken notice of the <Link target="" href="/privacy-policy">Privacy Statement</Link></span>
                                                                     </label>
+                                                                    <ErrorMessage name="privacyStatementCb" component="div" className="errorMessage" />
                                                                 </div>
                                                                 <div className="proceedBtn">
-                                                                    <Link href={'#'}>Proceed</Link>
+                                                                    <button type="submit" disabled={isSubmitting}>
+                                                                        Proceed
+                                                                    </button>
                                                                 </div>
                                                             </div>
                                                         </>

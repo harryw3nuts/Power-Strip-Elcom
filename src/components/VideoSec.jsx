@@ -6,7 +6,8 @@ import { checkVideoPlatform, formatDuration, getVimeoEmbeddedUrl, getYouTubeEmbe
 import axios from "axios";
 
 
-const VideoSec = () => {
+const VideoSec = ({videoBackgroundImage,videoUrl:videoUrlData,videoButtonText}) => {
+
     const [showVideo, setShowVideo] = useState(false);
     const [videoUrl, setVideoUrl] = useState("");
     const [videoDetails,setVideoDetails] = useState();
@@ -81,35 +82,39 @@ const VideoSec = () => {
             fetchVimeoVideoDetails(oEmbedUrl);
         }
     }, []);
-    return (
-        <>
-            <div className="videoGrp">
-                <div className="container">
-                    <div className="videoPlayer">
-                        <div className="videoWrapper">
-                            {!showVideo && <div className="videoFrame">
-                                <Image src={ivideoimg} alt="ivideoimg" />
-                            </div>}
-                            <div className="video-blk">
-                                <iframe width="1000" height="500" src={videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-                            </div>
-                            {!showVideo && <div className="trailerText">
-                                {videoDetails?.title && <div className="trailorSec">
-                                    <p>{videoDetails?.title}</p>
+
+    if(videoUrlData){
+        return (
+            <>
+                <div className="videoGrp">
+                    <div className="container">
+                        <div className="videoPlayer">
+                            <div className="videoWrapper">
+                                {!showVideo && <div className="videoFrame">
+                                    <Image src={videoBackgroundImage?.sourceUrl} alt="ivideoimg" width={1376} height={688} />
                                 </div>}
-                                <div className="blueBtn">
-                                    <Link href="/" onClick={(e) => { e.preventDefault(); setVideoUrl(updatedURL); console.log(updatedURL); setShowVideo(true) }}>watch video</Link>
+                                <div className="video-blk">
+                                    <iframe width="1000" height="500" src={videoUrl} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                                 </div>
-                                {videoDetails?.duration && <div className="timerSec">
-                                    <span>{videoDetails?.duration}</span>
+                                {!showVideo && <div className="trailerText">
+                                    {videoDetails?.title && <div className="trailorSec">
+                                        <p>{videoDetails?.title}</p>
+                                    </div>}
+                                    <div className="blueBtn">
+                                        <Link href="/" onClick={(e) => { e.preventDefault(); setVideoUrl(updatedURL); console.log(updatedURL); setShowVideo(true) }}>{videoButtonText ? videoButtonText:  "watch video"}</Link>
+                                    </div>
+                                    {videoDetails?.duration && <div className="timerSec">
+                                        <span>{videoDetails?.duration}</span>
+                                    </div>}
                                 </div>}
-                            </div>}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </>
-    )
+            </>
+        )
+    }
+    return ''
 }
 
 export default VideoSec;

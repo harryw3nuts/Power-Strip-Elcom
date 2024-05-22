@@ -31,7 +31,8 @@ export default function Home({ data, error }) {
     benefitsHeading,benefitsInfo,
     faqHeading,faqInfo,selectProduct,
     featuresHeading,featuresImage,features1Heading,features1Subheading,features2Heading,features2Subheading,features3Heading,features3Subheading,features4Heading,features4Subheading,features5Heading,features5Subheading,
-    exploreHeading,exploreButtonInfo,exploreImagesInfo
+    exploreHeading,exploreButtonInfo,exploreImagesInfo,
+    videoBackgroundImage,videoUrl,videoButtonText
   } = data?.data?.pageBy?.template?.homePageFields;
 
   const latest3Posts = data?.data?.posts?.nodes;
@@ -46,6 +47,7 @@ export default function Home({ data, error }) {
   const powerStripData = {powerStripimage,powerStripleftText,powerStriprightText}
   const featuresData = {featuresHeading,featuresImage,features1Heading,features2Heading,features3Heading,features4Heading,features5Heading,features1Subheading,features2Subheading,features3Subheading,features4Subheading,features5Subheading}
   const exploreData = {exploreHeading,exploreButtonInfo,exploreImagesInfo}
+  const videoData = {videoBackgroundImage,videoUrl,videoButtonText}
   if (error) {
     return (
       <h2>Error : {JSON.stringify(error)}</h2>
@@ -61,7 +63,7 @@ export default function Home({ data, error }) {
       <ScrollTextColor {...powerStripData}/>
       <PriceSec productData={selectProduct}/>
       <FeaturesSecNew {...featuresData}/>
-      <VideoSec />
+      {videoUrl && <VideoSec {...videoData}/>}
       <StripBox {...otherInfoData}/>
       <ReviewSec {...reviewsData}/>
       <InsightSec {...insightsData}/>

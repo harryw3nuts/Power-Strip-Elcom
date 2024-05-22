@@ -94,6 +94,11 @@ query THEME_SETTINGS {
                     features4Subheading
                     features5Heading
                     features5Subheading
+                    videoBackgroundImage{
+                      sourceUrl
+                    }
+                    videoUrl
+                    videoButtonText
                     otherHeading
                     otherProductInfo {
                         productName

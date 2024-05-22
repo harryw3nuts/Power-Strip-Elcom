@@ -81,3 +81,10 @@ export function parseDuration(duration) {
 
   return formattedDuration;
 }
+
+export function rupeeStringToNumber(price){
+  const priceString = price;
+  const priceNumber = parseFloat(priceString.replace("₹", "").replace(/,/g, ""));
+  const roundedPrice = parseFloat(priceNumber.toFixed(2));
+  return roundedPrice;
+}

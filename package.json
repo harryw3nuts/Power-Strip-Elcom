@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.4.4",
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
     "axios": "^1.6.8",
     "bootstrap": "^5.3.3",

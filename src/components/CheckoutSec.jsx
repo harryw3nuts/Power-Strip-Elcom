@@ -10,15 +10,16 @@ import { isValidIndianPhoneNumber, rupeeStringToNumber } from "@/utils/utils";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
+import Loader from "./Loader";
 
-const CheckoutSec = ({rzpLoaded}) => {
+const CheckoutSec = ({ rzpLoaded }) => {
     const router = useRouter();
-    const ctx = useContext(ThemeContext);
     const context = useContext(ThemeContext);
-    const { products } = context;
+    const { products,setProducts } = context;
     console.log("products", products)
     console.log("rzpLoaded", rzpLoaded)
     const [values, setValues] = useState();
+    const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState({});
     const [productsTotal, setProductTotal] = useState(0)
     const [lineItems, setLineItems] = useState([]);
@@ -93,7 +94,7 @@ const CheckoutSec = ({rzpLoaded}) => {
     //create wordpress order when User click on Proceed/Checkout button
     const createOrderHandler = async (userDataForOrder) => {
         //if userDataForOrder is not empty then create order
-        if(Object.keys(userDataForOrder).length){
+        if (Object.keys(userDataForOrder).length) {
             const orderData = {
                 payment_method: 'razorpay',
                 payment_method_title: 'Razor Pay Payment',
@@ -112,7 +113,7 @@ const CheckoutSec = ({rzpLoaded}) => {
                 .catch(error => {
                     Swal.fire({
                         title: 'Error while creating Woocommerce order',
-                        text:error.response.data,
+                        text: error.response.data,
                         icon: 'error',
                         confirmButtonText: 'Ok'
                     })
@@ -124,117 +125,163 @@ const CheckoutSec = ({rzpLoaded}) => {
 
     const razorPayHandler = async (orderData) => {
         //creating razorpay 
-        if(orderData){
+        if (orderData) {
             const orderId = orderData.id;
             const orderAmount = orderData.total;
+            const orderUserEmail = orderData?.billing?.email;
+            const orderUserFirstName = orderData?.billing?.first_name;
+            const orderUserLastName = orderData?.billing?.last_name;
+            const orderUserFullName = orderUserFirstName + orderUserLastName;
+            const orderUserphone = orderData?.billing?.phone;
+            let razorPayOrderID = '';
             try {
                 const response = await fetch('/api/createOrder', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    amount: orderAmount,
-                    currency: 'INR',
-                    receipt: String(orderId),
-                  }),
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        amount: orderAmount,
+                        currency: 'INR',
+                        receipt: String(orderId),
+                    }),
                 });
-            
+
                 const data = await response.json();
                 const { order } = data;
-            
+                razorPayOrderID = order.id;
+
                 // Use the order object returned by the API for payment initiation
                 console.log('Razor pay Order created:', order);
-                console.log("window",window)
-                console.log("rzpLoaded",rzpLoaded)
                 if (window && window.Razorpay && rzpLoaded) {
-                  const rzp = new window.Razorpay({
-                    key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-                    amount: order.amount,
-                    currency: order.currency,
-                    name: 'Elcom',
-                    // description: 'Payment for Product/Service',
-                    order_id: order.id,
-                    handler: function (response) {
-                      console.log(response);
-                      const {razorpay_order_id,razorpay_payment_id,razorpay_signature} = response;
-                      // Handle successful payment response
-                      const updateOrderData = {
-                        status:"processing",
-                        meta_data : [
-                            {
-                                'key' : "razorpay_order_id",
-                                'value' : razorpay_order_id
-                            },
-                            {
-                                'key' : "razorpay_payment_id",
-                                'value' : razorpay_payment_id
-                            },
-                            {
-                                'key' : "razorpay_signature",
-                                'value' : razorpay_signature
+                    const rzp = new window.Razorpay({
+                        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+                        amount: order.amount,
+                        currency: order.currency,
+                        name: 'Elcom',
+                        // description: 'Payment for Product/Service',
+                        order_id: order.id,
+                        handler: function (response) {
+                            console.log("order : L LL L ",order);
+                            console.log(response);
+                            const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
+
+                            /* updaing woocommer order and add razorpay meta data to it and 
+                            update order state from pending payemnt to processing */
+                            const updateOrderData = {
+                                status: "processing",
+                                meta_data: [
+                                    {
+                                        'key': "razorpay_order_id",
+                                        'value': razorpay_order_id
+                                    },
+                                    {
+                                        'key': "razorpay_payment_id",
+                                        'value': razorpay_payment_id
+                                    },
+                                    {
+                                        'key': "razorpay_signature",
+                                        'value': razorpay_signature
+                                    }
+                                ]
                             }
-                        ]
-                      }
-                      api.put(`orders/${orderId}`, updateOrderData)
-                        .then(response => {
-                            console.log('updateOrderData Success:', response.data);
-                            router.push('/payment-successful')
-                        })
-                        .catch(error => {
-                            Swal.fire({
-                                title: 'Error while updating order',
-                                text:error.response.data,
-                                icon: 'error',
-                                confirmButtonText: 'Ok'
-                            })
-                            console.error('updateOrderData ERROR:', error.response.data);
-                        });
-                    },
-                    prefill: {
-                      name: 'John Doe',
-                      email: 'john.doe@example.com',
-                      contact: '9876543210',
-                    },
-                    notes: {
-                      address: 'Razorpay Corporate Office',
-                    },
-                    theme: {
-                      color: '#F37254',
-                    },
-                    modal: {
-                        ondismiss: function () {
-                            console.log("Checkout form closed");
-                            // Handle the close event here
+                            api.put(`orders/${orderId}`, updateOrderData)
+                                .then(response => {
+                                    console.log('updateOrderData Success:', response.data);
+                                    setIsLoading(false);
+                                    router.push('/payment-successful')
+                                })
+                                .catch(error => {
+                                    setIsLoading(false);
+                                    Swal.fire({
+                                        title: 'Error while updating order',
+                                        text: error.response.data,
+                                        icon: 'error',
+                                        confirmButtonText: 'Ok'
+                                    })
+                                    console.error('updateOrderData ERROR:', error.response.data);
+                                });
                         },
-                        confirm_close:true
-                    }
-                  });
-                  
-                  
-                  rzp.open();
-                  rzp.on('payment.failed', function (response) {
-                    // Handle payment failure
-                    ctx.setPaymentErrorHandler(response.error.code + "|" + response.error.description);
-                    router.push('/payment-failed')
-                    console.error('Payment failed:', response.error.code, response.error.description);
-                  });
+                        prefill: {
+                            name: orderUserFullName,
+                            email: orderUserFullName,
+                            contact: orderUserphone,
+                        },
+                        // notes: {
+                        //     address: 'Razorpay Corporate Office',
+                        // },
+                        theme: {
+                            color: '#0071E3',
+                        },
+                        modal: {
+                            ondismiss: async function (dismissdata) {
+                                console.log("Checkout form closed",dismissdata);
+                                // Handle the close event here
+                                
+                                //updating woocommerce order and make state pendingpayment to failed
+                                const updateOrderData = { status: "failed", }
+                                api.put(`orders/${orderId}`, updateOrderData)
+                                    .then(response => {
+                                        console.log('update order failed Success:', response.data);
+                                        // setProducts([])
+                                        // router.push('/payment-failed')
+                                    })
+                                    .catch(error => {
+                                        Swal.fire({
+                                            title: 'Error while updating order',
+                                            text: error.response.data,
+                                            icon: 'error',
+                                            confirmButtonText: 'Ok'
+                                        })
+                                        console.error('updateOrderData ERROR:', error.response.data);
+                                    });
+
+                                // update razorpay order and add custom notes to it  
+                                const response = await fetch('/api/updateOrder', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                    },
+                                    body: JSON.stringify({
+                                        orderId: razorPayOrderID,
+                                    }),
+                                });
+                                const data = await response.json();
+                                setIsLoading(false);
+                            },
+                            confirm_close: true
+                        }
+                    });
+                    rzp.open();
+
+                    rzp.on('payment.failed', function (response) {
+                        // Handle payment failure
+                        console.error('Payment failed:', response.error.code, response.error.description);
+                        setIsLoading(false);
+                        context.setPaymentErrorHandler(response.error);
+                        setProducts([])
+                        router.push('/payment-failed')
+                        // rzp.close();
+                        // console.error('Payment failed:', response);
+                    });
                 }
 
-              } catch (error) {
+            } catch (error) {
+                setIsLoading(false);
                 Swal.fire({
                     title: 'Error while creating order',
-                    text:error.message,
+                    text: error.message,
                     icon: 'error',
                     confirmButtonText: 'Ok'
                 })
                 console.error('Error creating order:', error.message);
-              }
+            }
         }
     }
 
     return (
         <>
+            {isLoading && <Loader/>}
             <div className="chekoutWrap">
                 <div className="container">
                     <div className="checkoutGrp">
@@ -306,6 +353,7 @@ const CheckoutSec = ({rzpLoaded}) => {
                                 }
                                 setUserData(userDataForOrder)
                                 setSubmitting(false);
+                                setIsLoading(true)
                                 createOrderHandler(userDataForOrder);
                             }}
                         >
@@ -450,7 +498,7 @@ const CheckoutSec = ({rzpLoaded}) => {
                                                                                 <a href="#">Edit</a>
                                                                             </div>
                                                                         </div>
-                                                                        
+
                                                                     </div>
                                                                 )
                                                             })}

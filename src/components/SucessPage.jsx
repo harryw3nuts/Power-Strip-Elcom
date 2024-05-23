@@ -21,7 +21,7 @@ const SucessSec = () => {
                         </div>
                     </div>
                     <div className="backHome">
-                        <p>Page while be automatically redirected to the main page or click button <Link href={'#'}>Back home</Link></p>
+                        <p>Page while be automatically redirected to the main page or click button <Link href={'/'}>Back home</Link></p>
                     </div>
                 </div>
             </div>

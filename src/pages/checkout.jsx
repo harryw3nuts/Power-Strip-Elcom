@@ -67,6 +67,7 @@ export default function CheckoutPage() {
     }
   };
   useEffect(() => {
+    setRzpLoaded(true)
     const api = new WooCommerceRestApi({
         url: process.env.NEXT_PUBLIC_WOO_SITE_URL,
         consumerKey: process.env.NEXT_PUBLIC_WOO_CONSUMER_KEY,

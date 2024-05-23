@@ -1,8 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import fail from "@/asset/images/fail.svg";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
 const FailedSec = () => {
+    const ctx = useContext(ThemeContext);
+    console.log(ctx);
     return (
         <>
         <div className="sucessWrap">

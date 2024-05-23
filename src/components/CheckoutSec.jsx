@@ -9,12 +9,15 @@ import { ErrorMessage, Field, Form, Formik } from 'formik'
 import { isValidIndianPhoneNumber, rupeeStringToNumber } from "@/utils/utils";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import { useRouter } from "next/router";
+import Swal from "sweetalert2";
 
 const CheckoutSec = ({rzpLoaded}) => {
     const router = useRouter();
+    const ctx = useContext(ThemeContext);
     const context = useContext(ThemeContext);
     const { products } = context;
     console.log("products", products)
+    console.log("rzpLoaded", rzpLoaded)
     const [values, setValues] = useState();
     const [userData, setUserData] = useState({});
     const [productsTotal, setProductTotal] = useState(0)
@@ -107,6 +110,12 @@ const CheckoutSec = ({rzpLoaded}) => {
                     razorPayHandler(orderData)
                 })
                 .catch(error => {
+                    Swal.fire({
+                        title: 'Error while creating Woocommerce order',
+                        text:error.response.data,
+                        icon: 'error',
+                        confirmButtonText: 'Ok'
+                    })
                     console.error('Error creating Woocommerce order:', error.response.data);
                 });
         }
@@ -143,8 +152,8 @@ const CheckoutSec = ({rzpLoaded}) => {
                     key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
                     amount: order.amount,
                     currency: order.currency,
-                    name: 'Your Company Name',
-                    description: 'Payment for Product/Service',
+                    name: 'Elcom',
+                    // description: 'Payment for Product/Service',
                     order_id: order.id,
                     handler: function (response) {
                       console.log(response);
@@ -173,6 +182,12 @@ const CheckoutSec = ({rzpLoaded}) => {
                             router.push('/payment-successful')
                         })
                         .catch(error => {
+                            Swal.fire({
+                                title: 'Error while updating order',
+                                text:error.response.data,
+                                icon: 'error',
+                                confirmButtonText: 'Ok'
+                            })
                             console.error('updateOrderData ERROR:', error.response.data);
                         });
                     },
@@ -200,11 +215,19 @@ const CheckoutSec = ({rzpLoaded}) => {
                   rzp.open();
                   rzp.on('payment.failed', function (response) {
                     // Handle payment failure
+                    ctx.setPaymentErrorHandler(response.error.code + "|" + response.error.description);
+                    router.push('/payment-failed')
                     console.error('Payment failed:', response.error.code, response.error.description);
                   });
                 }
 
               } catch (error) {
+                Swal.fire({
+                    title: 'Error while creating order',
+                    text:error.message,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
                 console.error('Error creating order:', error.message);
               }
         }

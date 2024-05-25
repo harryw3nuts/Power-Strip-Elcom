@@ -786,7 +786,7 @@ input[type=number] {
     } 
   /* CSS LOADER  */
 
-  .navigationBar .navWrap .navBar {display: none;}
+  
   .invoiceWrap {max-width: 595px; margin: 200px auto; padding: 37px;}
   .invoiceWrap .firstHead {display: flex; justify-content: space-between; gap: 310px; padding-bottom: 25px;}
   .invoiceWrap .firstHead .invoiceAdd p {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 10px; font-weight: 400;}

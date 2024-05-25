@@ -13,13 +13,13 @@ body { max-width: 100vw; height: 100vh; font-family: 'Inter Tight'; color: #1010
 
 [className*="col-"] { padding-left: 16px; padding-right: 16px; } 
 
-/* @media (min-width:1440px){
+@media (min-width:1440px){
  .container { width: 1342px ; max-width: 1342px; margin: 0 auto;} 
- } */
+ }
 
- @media (min-width:1920px){
+ /* @media (min-width:1920px){
   .container { width: 1824px; max-width: 1824px; margin: 0 auto;} 
-  }
+  } */
 
 
   .flxrow {
@@ -67,7 +67,7 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .navLogo a {display: flex;}
 .navigationBar {width: 100%; position: fixed; top: 0; left: 0; z-index: 100;}
 .navigationBar .navWrap {width: 100%; padding: 16px 0 ;}
-.navigationBar .navWrap .container {max-width: 1920px; width: 100%;}
+/* .navigationBar .navWrap .container {max-width: 1920px; width: 100%;} */
 /* .navigationBar .navWrap .container {max-width: 1408px !important; width: 100% !important;} */
 .navigationBar .navWrap .navBar {display: flex; justify-content: space-between; align-items: center; padding: 15px 48px; border-radius: 8px; background: rgba(255, 255, 255, 0.60); backdrop-filter: blur(100px);} 
 .navigationBar .navWrap .navInner {position: relative;}
@@ -785,3 +785,41 @@ input[type=number] {
     }
     } 
   /* CSS LOADER  */
+
+  .navigationBar .navWrap .navBar {display: none;}
+  .invoiceWrap {max-width: 595px; margin: 200px auto; padding: 37px;}
+  .invoiceWrap .firstHead {display: flex; justify-content: space-between; gap: 310px; padding-bottom: 25px;}
+  .invoiceWrap .firstHead .invoiceAdd p {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 10px; font-weight: 400;}
+  .invoiceWrap .firstHead .invoiceAdd span {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 10px; font-weight: 400; display: block;}
+  .invoiceNumber {padding-bottom: 25px;}
+  .invoiceNumber h2 {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 16px; font-weight: 600; padding-bottom: 10px; margin: 0;}
+  .invoiceNumber span {display: block; color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 10px; font-weight: 400; line-height: normal;}
+  .customerDtl {padding-bottom: 25px;}
+  .customerDtl h2 {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 16px; font-weight: 600; padding-bottom: 10px; margin: 0;}
+  .customerDtl ul {display: block;}
+  .customerDtl ul li {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight";
+  font-size: 10px; font-style: normal; font-weight: 400; line-height: 12px; /* 120% */}
+  .customerDtl ul li span {color: var(--primary-4963-a-0, #4963A0);}
+  .shippAdd {padding-bottom: 25px;}
+  .shippAdd h2 {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 16px; font-weight: 600; padding-bottom: 10px; margin: 0;}
+  .shippAdd span {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight"; font-size: 10px; font-style: normal; font-weight: 400; display: block;}
+  .listDtl {}
+  .listDtl .row {display: flex;}
+  .listDtl .row .listHead {display: flex; justify-content: space-between; border-radius: 2.5px 2.5px 0px 0px; background: #0071E3; padding: 12px 25px;}
+  .listDtl .row .listHead  li {display: block; color: #FFF; font-family: "Inter Tight"; font-size: 10px; font-weight: 600; }
+  .listDtl .row .listName {display: flex; justify-content: space-between; border-radius: 2.5px 2.5px 0px 0px; background: #F4F4F4; padding: 12px 25px;}
+  .listDtl .row .listName li {color: var(--primary-2-c-2-a-25, #2C2A25); font-family: "Inter Tight";
+  font-size: 10px; font-weight: 400; line-height: normal;}
+  .listDtl .row .listName .proName {color: #0071E3;}
+  .finalAmount {padding-top: 25px; display: flex; justify-content: flex-end;}
+  .finalAmount ul {display: block;}
+  .finalAmount ul li {display: flex; justify-content: space-between; width: 100%; gap: 100px;  padding: 9px 0;}
+  .finalAmount ul li:not(:last-child) {border-bottom: 1px solid #7B7B7B;}
+  .finalAmount ul li p {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-weight: 600; display: block; margin: 0;}
+  .finalAmount ul li span {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-style: normal; font-weight: 400;display: block; margin: 0;}
+  .finalAm ul {display: block;}
+  .finalAm {display: flex; justify-content: flex-end;}
+  .finalAm ul li {display: flex; justify-content: space-between; width: 100%; gap: 116px; border-top: 1px solid #7B7B7B; padding: 9px 0; margin-top: 10px; }
+  .finalAm ul li p {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-weight: 600; display: block;}
+  .finalAm ul li span {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-style: normal; font-weight: 400;display: block; } 
+

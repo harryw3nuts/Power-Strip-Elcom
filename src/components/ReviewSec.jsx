@@ -30,6 +30,42 @@ const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
         speed: 500,
         prevArrow: <ArrowLeft />,
 		nextArrow: <ArrowRight />,
+        responsive: [
+			{
+				breakpoint: 1399,
+				settings: {
+				  slidesToShow: 3,
+				}
+			},
+			{
+				breakpoint: 1300,
+				settings: {
+				  slidesToShow: 3,
+				}
+			},
+			{
+			  breakpoint: 1199,
+			  settings: {
+				slidesToShow: 3,
+			  }
+			},
+			{
+			  breakpoint: 991,
+			  settings: {
+				slidesToShow: 2,
+			  }
+			},
+			{
+			  breakpoint: 767,
+			  settings: {
+				slidesToShow: 1,
+                centerMode:false,
+                centerPadding: 0,
+                slidesToScroll:1,
+			  }
+			}
+		]
+	
         
         
         // cssEase: 'linear'

@@ -103,7 +103,7 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 
 /* banner start */
 .brackerwrap {background-color: #f4f4f4; width: 100%; padding: 86px 0 0; height: 100vh;}
-.brackerwrap .brackerInner {padding: 120px 0 0; position: relative; height: 100%; width: 100%;}
+.brackerwrap .brackerInner {padding: 120px 0 0; position: relative; height: 100%; width: 100%; overflow: hidden;}
 .brackerwrap .brackerdtl { text-align: center; max-width: 705px; margin: 0 auto; }
 .brackerwrap .container { position: relative; z-index: 1; }
 .brackerwrap .brackerleft { position: absolute; left: 0; bottom: 0; pointer-events: none; }
@@ -257,8 +257,8 @@ font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px
 .benefitWrap {margin: 120px 0;}
 .benefitWrap .benefitGrp {position: relative; width: 100%;}
 .benefitHead {text-align: center;}
-.benefitHead h3 { font-size: 180px; font-weight: 400; background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 90%); background-clip: text; color: transparent;
--webkit-background-clip: text; font-family: "Inter Tight"; margin: 0; }
+.benefitHead h3 { font-size: 180px; font-weight: 500; background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 90%); background-clip: text; color: transparent;
+-webkit-background-clip: text; font-family: "Inter Tight"; margin: 0;  }
 .benefitsecBox {margin-top: -72px;}
 .benefitBox {border-radius: 8px; background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%), #F4F4F4; padding: 32px 32px 57px 32px; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;}
 .benefitBox .benefitText {position: relative; margin: 0;padding-bottom: 40px;}
@@ -296,7 +296,7 @@ font-style: normal; font-weight: 500; line-height: 24px; text-decoration-line: u
 .reviewSlider .right.group:hover svg {stroke: #000000;}
 
 .videoGrp {margin: 120px 0;}
-.videoGrp .container{max-width: 1376px;}
+.videoGrp .container{max-width: 1406px; width: 1476px;}
 .videoGrp .videoPlayer {}
 .videoGrp .videoPlayer .videoWrapper {margin: 20px 0 80px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; display: flex; align-items: center; justify-content: center; max-width: 1839px; margin: 0 auto;}
 .videoGrp .videoPlayer .videoWrapper .videoFrame {position: absolute; top: 0; width: 100%; height: 100%; z-index: 1; border-radius: 8px; overflow: hidden;}

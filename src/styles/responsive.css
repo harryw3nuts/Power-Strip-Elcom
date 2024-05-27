@@ -54,9 +54,89 @@
 @media (max-width: 767px) {
 
     .navigationBar .navWrap .navInner > ul {display: none;}
-    .benefitHead h3 {font-size: 80px;} 
-    .benefitsecBox {margin: 0;}
-    .benefitBox {margin-bottom: 30px;}
+    .benefitHead h3 {font-size: 68px;} 
+    .benefitsecBox {margin-top: -25px;}
+    .benefitBox {margin-bottom: 30px; padding: 20px;}
+    .features-sec {display: none;}
+    .navigationBar .navWrap .navBtn > ul li:first-child{display: none;}
+    .navigationBar .navWrap .navBar {padding: 18px 16px;}
+    .brackerdtl h1 {font-size: 48px; padding-bottom: 20px;}
+    .brackerwrap .brackerInner {padding-top: 80px;}
+    .brackerwrap .brackerleft img {height: 100%;}
+    .brackerwrap .brackerright img {height: 100%;}
+    .brackerwrap .brackerleft {left: -50px;}
+    .zoomer-wrap {display: none;}
+    .mobileText {margin: 80px 0;}
+    .mobileGrp {position: relative;}
+    .mobileGrp .mobileImg {}
+    .mobileGrp .mobileImg img {width: 100%; height: 100%; border-radius: 8px;}
+    .psText {position: absolute; top: 0; left: 0; display: flex; align-items: center; justify-content: center; z-index: 1; width: 100%;}
+    .psText h2 {position: absolute; left: 9px; top: 18px; color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 68px; font-weight: 500; line-height: 72px; margin: 0;}
+    .psText h2.heading2 {position: absolute; left: auto; bottom: 18px; right: 9px; margin: 65px 0 0 0;}
+    .priceImg {margin: 80px 0;}
+    .productDetail > ul {flex-direction: column;}
+    .productDetail > ul > li:not(:first-child) {border-top: 1px solid #d6d6d6;}
+    .productDetail > ul > li:first-child{padding-top: 0;}
+    .productDetail > ul > li{padding: 20px 0;}
+    .productDetail {margin-top: 40px;}
+    .videoGrp .container {max-width: 100%; width: 100%;}
+    .videoGrp {margin: 80px 0;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {display: none;}
+    .trailorSec p {font-size: 10px;}
+    .timerSec span {font-size: 10px;}
+    .trailerText {justify-content: space-evenly;}
+    .stripWrap {margin: 80px 0;}
+    .benefitWrap {margin: 80px 0;}
+    .benefitBox .benefitImg {max-width: 80px;}
+    .benefitBox .benefitText .lebalText {font-size: 12px; padding-bottom: 10px;}
+    .benefitBox .benefitText h5 {font-size: 16px; line-height: 18px;}
+    .benefitBox .benefitText {padding-bottom: 20px;}
+    .benefitsecBox .row{row-gap: 20px;}
+    .powerstrip-slider-text h3{font-size: 32px; margin: 0;}
+    .powerstripslider-mainbox .powerstrips-slide {max-width: 314px;}
+    .powerstripslider-mainbox .powerstrips-slide img {width: 100%; height: 100%;}
+    .powerstripslider-mainbox {height: 209px;}
+    .powerstripslider {padding-left: 0;}
+    .powerstripslider-mainbox .powerstrips-slide.client-2 {transform: translate(20px, 20px);}
+    .powerstripslider-mainbox .powerstrips-slide.active {transform: translate(40px, 40px);}
+    .powerstripslider-uitis {padding-top: 55px; margin-left: 0;}
+    .powerstrip-slidersec-main {padding: 0 16px; margin: 0; border-radius: 0; height: 100%; padding: 80px 16px;}
+    .powerstrip-slidersec-main .row {row-gap: 40px;}
+    .stripHead h3 {font-size: 32px; margin: 0; line-height: 40px;}
+    .reviewBox {padding: 80px 0 160px;}
+    .reviewBox .reviewSlider {margin-top: -25px;}
+    .insightWrap {margin: 80px 0;}
+    .insightWrap .insightSec .insightHead h3 {font-size: 32px; margin: 0;}
+    .insightWrap .boxImage {min-height: 100%;}
+    .insightWrap .insightSec .insightBox .boxText {padding: 24px 20px;}
+    .insightWrap .insightSec .insightBox .boxText h5 {font-size: 18px; line-height: 26px; margin-bottom: 24px;}
+    .insightWrap .insightSec .row {row-gap: 40px;}
+    .questionWrap {margin: 80px 0;}
+    .questionWrap .accordianWrap .accordianHead h3 {font-size: 32px; line-height: 40px;}
+    .questionWrap .accordianWrap .accordianHead {margin-bottom: 40px;}
+    .accordion-button{padding: 20px; font-size: 18px; line-height: 26px;} 
+    .accordion-button::before {right: 31px;}
+    .accordion-body {font-size: 16px; padding: 0 20px 20px 20px;}
+    .brackerwrap .brackerright {right: -110px;}
+    .slick-initialized .slick-slide {margin: 0;padding: 0 16px;}
+    .slick-dots {left: 10px;}
+    .reviewSlider .left.group {right: 25%;}
+    .stripImg .stripBox img {height: 100%;}
+    .stripImg .stripBox {min-height: 162px;}
+    .stripImg .stripText span {font-size: 18px;}
+    .priceWrapper .row .col-lg-1{order: 2;} 
+    .priceWrapper .row .col-lg-7{order: 1;}
+    .priceWrapper .row .col-lg-4{order: 3;}
+    .pricefullImg {height: 100%; }
+    .swiper-slide {border-radius: 8px;}    
+    .swiper-free-mode > .swiper-wrapper {flex-direction: row; margin: 0;} 
+    .thumbBox {width: 70px; height: 70px; border-radius: 8px;}
+    .priceSwiper {margin-top: 17px;}
+    .switer_btn {display: none;}
+    .priceList {padding-top: 40px;}
+
+    
+
  
  }
 

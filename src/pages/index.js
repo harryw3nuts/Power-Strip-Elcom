@@ -16,6 +16,7 @@ import SucessSec from "@/components/SucessPage";
 import ScrollTextColor from "@/components/ScrollTextColor";
 import FeaturesSecNew from "@/components/FeaturesSecNew";
 import PowerStripSliderSec from "@/components/PowerStripSliderSec";
+import MobileTextColor from "@/components/MobileTextColor";
 
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -61,14 +62,15 @@ export default function Home({ data, error }) {
       </Head>
       <Banner {...BannerData} />
       <ScrollTextColor {...powerStripData}/>
+      <MobileTextColor/>
       <PriceSec productData={selectProduct}/>
       <FeaturesSecNew {...featuresData}/>
       {videoUrl && <VideoSec {...videoData}/>}
+      <BenefitSec {...benefitsData}/>
+      <PowerStripSliderSec {...exploreData}/>
       <StripBox {...otherInfoData}/>
       <ReviewSec {...reviewsData}/>
       <InsightSec {...insightsData}/>
-      <BenefitSec {...benefitsData}/>
-      <PowerStripSliderSec {...exploreData}/>
       <QuestionSec {...faqData}/>
       {/* <SucessSec/> */}
     </>

@@ -16,7 +16,7 @@ const BenefitSec = ({benefitsHeading,benefitsInfo}) => {
                                     {benefitsInfo.map((benefit,index) => {
                                         const {title,image} = benefit;
                                         return (
-                                            <div className="col-lg-3" key={index}>
+                                            <div className="col-lg-3 col-6" key={index}>
                                                 <div className="benefitBox">
                                                     <div className="benefitText">
                                                         <span className="lebalText">{(index + 1) < 10 ? `0${index + 1}` : index + 1}</span>

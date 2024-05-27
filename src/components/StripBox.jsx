@@ -20,7 +20,7 @@ const StripBox = ({otherHeading,otherProductInfo}) => {
                                 {otherProductInfo.map((product,index) => {
                                     const {productName,productImage,largeWidthBox} = product;
                                     return (
-                                        <div className={`col-lg-${largeWidthBox ? 6 : 3}`} key={index}>
+                                        <div className={`col-lg-${largeWidthBox ? 6 : 3} col-${largeWidthBox ? 12 : 6}`} key={index}>
                                             <div className="stripImg">
                                                 {productImage && <div className="stripBox">
                                                     <Image src={productImage.sourceUrl} alt="stripimg1" width={625} height={200}></Image>

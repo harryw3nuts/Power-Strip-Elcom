@@ -1,10 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import sucess from "@/asset/images/sucess.svg";
+import { useContext } from "react";
+import { ThemeContext } from "@/context/ThemeContext";
 
 
 
 const SucessSec = () => {
+    const {orderInfo} = useContext(ThemeContext)
+    console.log("orderInfo : ",orderInfo)
     return (
         <>
         <div className="sucessWrap">

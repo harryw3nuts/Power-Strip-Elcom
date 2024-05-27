@@ -11,18 +11,23 @@ import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
 import Loader from "./Loader";
+import { typeOf } from "react-read-more-read-less";
 
 const CheckoutSec = ({ rzpLoaded }) => {
     const router = useRouter();
     const context = useContext(ThemeContext);
-    const { products,setProducts } = context;
+    const { products, setProducts,setOrderInfo } = context;
     console.log("products", products)
-    console.log("rzpLoaded", rzpLoaded)
+    // console.log("rzpLoaded", rzpLoaded)
     const [values, setValues] = useState();
     const [isLoading, setIsLoading] = useState(false);
     const [userData, setUserData] = useState({});
     const [productsTotal, setProductTotal] = useState(0)
+    const [subTotal, setSubTotal] = useState(0)
     const [lineItems, setLineItems] = useState([]);
+    const [taxInfo, setTaxInfo] = useState([])
+    const [stateTaxRate, setStateTaxRate] = useState([]);
+    const [selectedState, setSelectedState] = useState("")
     const options = [
         { id: 'AN', name: 'Andaman and Nicobar Islands' },
         { id: 'AP', name: 'Andhra Pradesh' },
@@ -87,9 +92,41 @@ const CheckoutSec = ({ rzpLoaded }) => {
                 return { product_id: product.databaseId, quantity: product?.selectedQty || 1 }
             })
             setLineItems(line_items);
-            setProductTotal(total)
+            setProductTotal(parseFloat(total))
+            setSubTotal(parseFloat(total))
         }
+
+        //fetching taxes rates 
+        api.get('taxes')
+            .then(response => {
+                setTaxInfo(response.data);
+            })
+            .catch(error => {
+                console.error('Woocommerce TAX ERROR:', error.response.data);
+            });
     }, [])
+
+    useEffect(() => {
+        if (taxInfo && selectedState != '') {
+            let matchingRates = taxInfo.filter(rate => rate.state === selectedState);
+
+            // If no matches are found, check for objects with an empty state
+            if (matchingRates.length === 0) {
+                matchingRates = taxInfo.filter(rate => rate.state === '');
+            }
+
+            // Calculate the total tax based on matching rates
+            const totalTax = matchingRates.reduce((total, rate) => {
+                return total + (productsTotal * parseFloat(rate.rate) / 100);
+            }, 0);
+
+            let finalTotal = (productsTotal + totalTax)
+            setStateTaxRate(matchingRates);
+            setSubTotal(finalTotal);
+        }
+
+    }, [selectedState])
+
 
     //create wordpress order when User click on Proceed/Checkout button
     const createOrderHandler = async (userDataForOrder) => {
@@ -162,7 +199,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                         // description: 'Payment for Product/Service',
                         order_id: order.id,
                         handler: function (response) {
-                            console.log("order : L LL L ",order);
+                            console.log("order : L LL L ", order);
                             console.log(response);
                             const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
 
@@ -185,10 +222,12 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                     }
                                 ]
                             }
+
                             api.put(`orders/${orderId}`, updateOrderData)
                                 .then(response => {
                                     console.log('updateOrderData Success:', response.data);
                                     setIsLoading(false);
+                                    context.setOrderInfo(response.data)
                                     router.push('/payment-successful')
                                 })
                                 .catch(error => {
@@ -215,9 +254,9 @@ const CheckoutSec = ({ rzpLoaded }) => {
                         },
                         modal: {
                             ondismiss: async function (dismissdata) {
-                                console.log("Checkout form closed",dismissdata);
+                                console.log("Checkout form closed", dismissdata);
                                 // Handle the close event here
-                                
+
                                 //updating woocommerce order and make state pendingpayment to failed
                                 const updateOrderData = { status: "failed", }
                                 api.put(`orders/${orderId}`, updateOrderData)
@@ -281,7 +320,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
 
     return (
         <>
-            {isLoading && <Loader/>}
+            {isLoading && <Loader />}
             <div className="chekoutWrap">
                 <div className="container">
                     <div className="checkoutGrp">
@@ -366,189 +405,211 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                 handleSubmit,
                                 isSubmitting,
                                 /* and other goodies */
-                            }) => (
-                                <Form onSubmit={handleSubmit}>
-                                    <div className="row">
-                                        <div className="col-lg-7">
-                                            <div className="checkoutForm">
-                                                <div className="checkoutNav">
-                                                    <ul>
-                                                        <li className="powerDirect">
-                                                            <Link href={'#'}>Powerstrip</Link>
-                                                        </li>
-                                                        <li className="checkoutDirect">
-                                                            <Link href={'#'}>Checkout</Link>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-
-                                                <div className="checkoutBox">
-                                                    <div className="personalDtl">
-                                                        <div className="checkoutHead">
-                                                            <h2>Checkout</h2>
-                                                        </div>
-                                                        <div className="innerForm">
-                                                            <div className="innerHead">
-                                                                <h4>Personal  Details</h4>
-                                                            </div>
-                                                            <div className="innerformDtl">
-                                                                <div className='contactInner'>
-                                                                    <Field type="text" name="name" placeholder="Name" onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        value={values.name} />
-                                                                    <ErrorMessage name="name" component="div" className="errorMessage" />
-                                                                </div>
-                                                                <div className='contactInner'>
-                                                                    <Field type="tel" name="mobile" placeholder="Mobile Number"
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        value={values.mobile}
-                                                                    />
-                                                                    <ErrorMessage name="mobile" component="div" className="errorMessage" />
-                                                                </div>
-                                                                <div className={`contactInner`}>
-                                                                    <Field type="email" name="email" placeholder="Email"
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        value={values.email} />
-                                                                    <ErrorMessage name="email" component="div" className="errorMessage" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="innerForm">
-                                                            <div className="innerHead">
-                                                                <h4>Shipping Details</h4>
-                                                            </div>
-                                                            <div className="innerformDtl">
-                                                                <div className='contactInner'>
-                                                                    <Field type="text" name="addressLine1" placeholder="Address line 1"
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        value={values.addressLine1} />
-                                                                    <ErrorMessage name="addressLine1" component="div" className="errorMessage" />
-                                                                </div>
-                                                                <div className='contactInner'>
-                                                                    <Field type="text" name="addressLine2" placeholder="Address line 2"
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        value={values.addressLine2} />
-                                                                    <ErrorMessage name="addressLine2" component="div" className="errorMessage" />
-                                                                </div>
-                                                                <div className='contactInner'>
-                                                                    <Field type="text" name="city" placeholder="City"
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        value={values.city} />
-                                                                    <ErrorMessage name="city" component="div" className="errorMessage" />
-                                                                </div>
-                                                                <div className="contactInnerselect">
-                                                                    <Field name="state">
-                                                                        {({ field, form }) => (
-                                                                            <Select
-                                                                                {...field}
-                                                                                options={options}
-                                                                                labelField="name"
-                                                                                valueField="id"
-                                                                                placeholder="State"
-                                                                                onChange={(option) => form.setFieldValue(field.name, option)}
-                                                                                onBlur={() => form.setFieldTouched(field.name, true)}
-                                                                            />
-                                                                        )}
-                                                                    </Field>
-                                                                    <ErrorMessage name="state" component="div" className="errorMessage" />
-                                                                </div>
-                                                                <div className='contactInner'>
-                                                                    <Field type="text" name="pincode" placeholder="PIn code" min="0"
-                                                                        onChange={handleChange}
-                                                                        onBlur={handleBlur}
-                                                                        value={values.pincode} />
-                                                                    <ErrorMessage name="pincode" component="div" className="errorMessage" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                            }) => {
+                                // if(values.state != '' && values.state.length > 0){
+                                //     let selectedState = values.state[0].id;
+                                //     console.log("selectedState : ",selectedState)
+                                // }
+                                return (
+                                    <Form onSubmit={handleSubmit}>
+                                        <div className="row">
+                                            <div className="col-lg-7">
+                                                <div className="checkoutForm">
+                                                    <div className="checkoutNav">
+                                                        <ul>
+                                                            <li className="powerDirect">
+                                                                <Link href={'#'}>Powerstrip</Link>
+                                                            </li>
+                                                            <li className="checkoutDirect">
+                                                                <Link href={'#'}>Checkout</Link>
+                                                            </li>
+                                                        </ul>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-5">
-                                            <div className="titleBox">
-                                                <div className="orderInner">
-                                                    <div className="titleHead">
-                                                        <h4>Your order</h4>
-                                                    </div>
-                                                    {(products.length > 0) ?
-                                                        <>
-                                                            {products?.map((product, index) => {
-                                                                return (
-                                                                    <div className="orderBox" key={index}>
-                                                                        <div className="orderImg">
-                                                                            <Image src={product?.image?.sourceUrl} width={120} height={120} alt="thumb1"></Image>
-                                                                        </div>
-                                                                        <div className="orderDtl">
-                                                                            <ul>
-                                                                                <li className="orderHead">{product.name}</li>
-                                                                                <li>Product code : 99920KISH</li>
-                                                                                {product?.attributes?.nodes.map((attribute) => {
-                                                                                    const { label, id, value } = attribute;
-                                                                                    return <li key={id}>Product {label} : {value}</li>
-                                                                                })}
-                                                                                {product?.selectedQty && <li>Quantity : {product.selectedQty}</li>}
-                                                                            </ul>
-                                                                            <div className="editBtn">
-                                                                                <a href="#">Edit</a>
-                                                                            </div>
-                                                                        </div>
 
+                                                    <div className="checkoutBox">
+                                                        <div className="personalDtl">
+                                                            <div className="checkoutHead">
+                                                                <h2>Checkout</h2>
+                                                            </div>
+                                                            <div className="innerForm">
+                                                                <div className="innerHead">
+                                                                    <h4>Personal  Details</h4>
+                                                                </div>
+                                                                <div className="innerformDtl">
+                                                                    <div className='contactInner'>
+                                                                        <Field type="text" name="name" placeholder="Name" onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            value={values.name} />
+                                                                        <ErrorMessage name="name" component="div" className="errorMessage" />
                                                                     </div>
-                                                                )
-                                                            })}
-                                                            <div className="totalDtl">
-                                                                <div className="totalBox">
-                                                                    <ul>
-                                                                        <li>
-                                                                            <p>Total</p>
-                                                                            <span>₹ {productsTotal}/-</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <p>Tax</p>
-                                                                            <span>₹ 0/-</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <p>Shipping</p>
-                                                                            <span>₹ 40/-</span>
-                                                                        </li>
-                                                                        <li>
-                                                                            <p className="subHead">Subtotal</p>
-                                                                            <span className="totalRs">₹ {productsTotal}/-</span>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div className="btnCheckbox">
-                                                                <div className="checkbox_wrap">
-                                                                    <label>
-                                                                        <Field type="checkbox" name="privacyStatementCb"
+                                                                    <div className='contactInner'>
+                                                                        <Field type="tel" name="mobile" placeholder="Mobile Number"
                                                                             onChange={handleChange}
                                                                             onBlur={handleBlur}
+                                                                            value={values.mobile}
                                                                         />
-                                                                        <span>I've taken notice of the <Link target="" href="/privacy-policy">Privacy Statement</Link></span>
-                                                                    </label>
-                                                                    <ErrorMessage name="privacyStatementCb" component="div" className="errorMessage" />
-                                                                </div>
-                                                                <div className="proceedBtn">
-                                                                    <button type="submit" disabled={isSubmitting}>
-                                                                        Proceed
-                                                                    </button>
+                                                                        <ErrorMessage name="mobile" component="div" className="errorMessage" />
+                                                                    </div>
+                                                                    <div className={`contactInner`}>
+                                                                        <Field type="email" name="email" placeholder="Email"
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            value={values.email} />
+                                                                        <ErrorMessage name="email" component="div" className="errorMessage" />
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                        </>
-                                                        : <h5>Please add product to checkout from <Link href={"/"}>here.</Link></h5>}
+                                                            <div className="innerForm">
+                                                                <div className="innerHead">
+                                                                    <h4>Shipping Details</h4>
+                                                                </div>
+                                                                <div className="innerformDtl">
+                                                                    <div className='contactInner'>
+                                                                        <Field type="text" name="addressLine1" placeholder="Address line 1"
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            value={values.addressLine1} />
+                                                                        <ErrorMessage name="addressLine1" component="div" className="errorMessage" />
+                                                                    </div>
+                                                                    <div className='contactInner'>
+                                                                        <Field type="text" name="addressLine2" placeholder="Address line 2"
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            value={values.addressLine2} />
+                                                                        <ErrorMessage name="addressLine2" component="div" className="errorMessage" />
+                                                                    </div>
+                                                                    <div className='contactInner'>
+                                                                        <Field type="text" name="city" placeholder="City"
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            value={values.city} />
+                                                                        <ErrorMessage name="city" component="div" className="errorMessage" />
+                                                                    </div>
+                                                                    <div className="contactInnerselect">
+                                                                        <Field name="state">
+                                                                            {({ field, form }) => (
+                                                                                <Select
+                                                                                    {...field}
+                                                                                    options={options}
+                                                                                    labelField="name"
+                                                                                    valueField="id"
+                                                                                    placeholder="State"
+                                                                                    onChange={(option) => {
+                                                                                        if (option.length) {
+                                                                                            setSelectedState(option[0].id);
+                                                                                        }
+                                                                                        form.setFieldValue(field.name, option)
+                                                                                    }}
+                                                                                    onBlur={() => form.setFieldTouched(field.name, true)}
+                                                                                />
+                                                                            )}
+                                                                        </Field>
+                                                                        <ErrorMessage name="state" component="div" className="errorMessage" />
+                                                                    </div>
+                                                                    <div className='contactInner'>
+                                                                        <Field type="text" name="pincode" placeholder="PIn code" min="0"
+                                                                            onChange={handleChange}
+                                                                            onBlur={handleBlur}
+                                                                            value={values.pincode} />
+                                                                        <ErrorMessage name="pincode" component="div" className="errorMessage" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="col-lg-5">
+                                                <div className="titleBox">
+                                                    <div className="orderInner">
+                                                        <div className="titleHead">
+                                                            <h4>Your order</h4>
+                                                        </div>
+                                                        {(products.length > 0) ?
+                                                            <>
+                                                                {products?.map((product, index) => {
+                                                                    return (
+                                                                        <div className="orderBox" key={index}>
+                                                                            <div className="orderImg">
+                                                                                <Image src={product?.image?.sourceUrl} width={120} height={120} alt="thumb1"></Image>
+                                                                            </div>
+                                                                            <div className="orderDtl">
+                                                                                <ul>
+                                                                                    <li className="orderHead">{product.name}</li>
+                                                                                    <li>Product code : 99920KISH</li>
+                                                                                    {product?.attributes?.nodes.map((attribute) => {
+                                                                                        const { label, id, value } = attribute;
+                                                                                        return <li key={id}>Product {label} : {value}</li>
+                                                                                    })}
+                                                                                    {product?.selectedQty && <li>Quantity : {product.selectedQty}</li>}
+                                                                                </ul>
+                                                                                <div className="editBtn">
+                                                                                    <a href="#">Edit</a>
+                                                                                </div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                                                <div className="totalDtl">
+                                                                    <div className="totalBox">
+                                                                        <ul>
+                                                                            <li>
+                                                                                <p>Total</p>
+                                                                                <span>₹ {productsTotal.toFixed(2)}/-</span>
+                                                                            </li>
+                                                                            {/* {JSON.stringify(stateTaxRate)} */}
+                                                                            {stateTaxRate.length == 0 &&
+                                                                                <li>
+                                                                                    <p>Tax</p>
+                                                                                    <span>₹ 0/-</span>
+                                                                                </li>
+                                                                            }
+                                                                            {
+                                                                                stateTaxRate.length > 0 && stateTaxRate.map((info, index) => {
+                                                                                    return (<li>
+                                                                                        <p>{info.name} Tax {parseFloat(info.rate).toFixed(2)}%</p>
+                                                                                        <span>₹ {(productsTotal * parseFloat(info.rate) / 100).toFixed(2)}/-</span>
+                                                                                    </li>)
+                                                                                })
+                                                                            }
+                                                                            <li>
+                                                                                <p>Shipping</p>
+                                                                                <span>₹ 00/-</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <p className="subHead">Subtotal</p>
+                                                                                <span className="totalRs">₹ {subTotal.toFixed(2)}/-</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <div className="btnCheckbox">
+                                                                    <div className="checkbox_wrap">
+                                                                        <label>
+                                                                            <Field type="checkbox" name="privacyStatementCb"
+                                                                                onChange={handleChange}
+                                                                                onBlur={handleBlur}
+                                                                            />
+                                                                            <span>I've taken notice of the <Link target="" href="/privacy-policy">Privacy Statement</Link></span>
+                                                                        </label>
+                                                                        <ErrorMessage name="privacyStatementCb" component="div" className="errorMessage" />
+                                                                    </div>
+                                                                    <div className="proceedBtn">
+                                                                        <button type="submit" disabled={isSubmitting}>
+                                                                            Proceed
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </>
+                                                            : <h5>Please add product to checkout from <Link href={"/"}>here.</Link></h5>}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </Form>
-                            )}
+                                    </Form>
+                                )
+                            }}
                         </Formik>
                     </div>
                 </div >

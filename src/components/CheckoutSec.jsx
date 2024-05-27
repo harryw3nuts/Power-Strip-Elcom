@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "@/context/ThemeContext";
 import { ErrorMessage, Field, Form, Formik } from 'formik'
-import { isValidIndianPhoneNumber, rupeeStringToNumber } from "@/utils/utils";
+import { IndiaStatesList, isValidIndianPhoneNumber, rupeeStringToNumber } from "@/utils/utils";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
 import { useRouter } from "next/router";
 import Swal from "sweetalert2";
@@ -28,45 +28,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
     const [taxInfo, setTaxInfo] = useState([])
     const [stateTaxRate, setStateTaxRate] = useState([]);
     const [selectedState, setSelectedState] = useState("")
-    const options = [
-        { id: 'AN', name: 'Andaman and Nicobar Islands' },
-        { id: 'AP', name: 'Andhra Pradesh' },
-        { id: 'AR', name: 'Arunachal Pradesh' },
-        { id: 'AS', name: 'Assam' },
-        { id: 'BR', name: 'Bihar' },
-        { id: 'CH', name: 'Chandigarh' },
-        { id: 'CG', name: 'Chhattisgarh' },
-        { id: 'DN', name: 'Dadra and Nagar Haveli' },
-        { id: 'DD', name: 'Daman and Diu' },
-        { id: 'DL', name: 'Delhi' },
-        { id: 'GA', name: 'Goa' },
-        { id: 'GJ', name: 'Gujarat' },
-        { id: 'HR', name: 'Haryana' },
-        { id: 'HP', name: 'Himachal Pradesh' },
-        { id: 'JK', name: 'Jammu and Kashmir' },
-        { id: 'JH', name: 'Jharkhand' },
-        { id: 'KA', name: 'Karnataka' },
-        { id: 'KL', name: 'Kerala' },
-        { id: 'LA', name: 'Ladakh' },
-        { id: 'LD', name: 'Lakshadweep' },
-        { id: 'MP', name: 'Madhya Pradesh' },
-        { id: 'MH', name: 'Maharashtra' },
-        { id: 'MN', name: 'Manipur' },
-        { id: 'ML', name: 'Meghalaya' },
-        { id: 'MZ', name: 'Mizoram' },
-        { id: 'NL', name: 'Nagaland' },
-        { id: 'OR', name: 'Odisha' },
-        { id: 'PY', name: 'Puducherry' },
-        { id: 'PB', name: 'Punjab' },
-        { id: 'RJ', name: 'Rajasthan' },
-        { id: 'SK', name: 'Sikkim' },
-        { id: 'TN', name: 'Tamil Nadu' },
-        { id: 'TS', name: 'Telangana' },
-        { id: 'TR', name: 'Tripura' },
-        { id: 'UP', name: 'Uttar Pradesh' },
-        { id: 'UK', name: 'Uttarakhand' },
-        { id: 'WB', name: 'West Bengal' }
-    ];
+    const options = IndiaStatesList;
 
 
     //woocommerce rest api init
@@ -150,7 +112,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                 .catch(error => {
                     Swal.fire({
                         title: 'Error while creating Woocommerce order',
-                        text: error.response.data,
+                        text: error?.response?.data,
                         icon: 'error',
                         confirmButtonText: 'Ok'
                     })

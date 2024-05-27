@@ -29,7 +29,7 @@ const Header = ({ headerLogo, ctaOneInfo, ctaTwoInfo }) => {
                         </div>
                         <div className="navInner">
                             <ul>
-                                <li><Link href="#" onClick={(e) => { e.preventDefault(); scrollToSection("aboutSec") }}>About</Link></li>
+                                <li><Link href="/about">About</Link></li>
                                 <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("detailSec") }}>Details</Link></li>
                                 <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("featuresSec") }}>Features</Link></li>
                                 <li><Link href="#" onClick={(e) => { e.preventDefault();scrollToSection("benefitsSec") }}>Benefits</Link></li>

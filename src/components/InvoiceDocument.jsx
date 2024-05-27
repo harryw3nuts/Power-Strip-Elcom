@@ -1,14 +1,14 @@
-
 import React, { useContext } from 'react'
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, Image, Link } from '@react-pdf/renderer'
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, Image, Link ,Font} from '@react-pdf/renderer'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 import { IndiaStatesList, formatDate } from '@/utils/utils';
 
+export const InvoiceDocument = ({orderInfo}) => {
 
+Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
 
-const InvoiceDocument = () => {
   const styles = StyleSheet.create({
     page: {
       padding: 30,
@@ -184,8 +184,11 @@ const InvoiceDocument = () => {
 
     rsLabel: {
       fontSize: 10,
+      fontFamily:'Roboto'
     }
   });
+
+  const rs = "₹";
 
 
   const order = {
@@ -205,169 +208,6 @@ const InvoiceDocument = () => {
     total: '₹750',
   };
 
-  const orderInfo = {
-    "id": 290,
-    "parent_id": 0,
-    "status": "processing",
-    "currency": "INR",
-    "version": "8.8.3",
-    "prices_include_tax": false,
-    "date_created": "2024-05-27T09:21:18",
-    "date_modified": "2024-05-27T09:21:48",
-    "discount_total": "0.00",
-    "discount_tax": "0.00",
-    "shipping_total": "0.00",
-    "shipping_tax": "0.00",
-    "cart_tax": "269.82",
-    "total": "1768.82",
-    "total_tax": "269.82",
-    "customer_id": 0,
-    "order_key": "wc_order_ySskZiUaXNlno",
-    "billing": {
-      "first_name": "Shubham",
-      "last_name": "Rathod",
-      "company": "",
-      "address_1": "Swati park",
-      "address_2": "Kalawad road",
-      "city": "Rajkot",
-      "state": "MH",
-      "postcode": "360002",
-      "country": "IN",
-      "email": "user@mipo.com",
-      "phone": "9876543210"
-    },
-    "shipping": {
-      "first_name": "",
-      "last_name": "",
-      "company": "",
-      "address_1": "",
-      "address_2": "",
-      "city": "",
-      "state": "",
-      "postcode": "",
-      "country": "",
-      "phone": ""
-    },
-    "payment_method": "razorpay",
-    "payment_method_title": "Razor Pay Payment",
-    "transaction_id": "",
-    "customer_ip_address": "",
-    "customer_user_agent": "",
-    "created_via": "rest-api",
-    "customer_note": "",
-    "date_completed": null,
-    "date_paid": "2024-05-27T09:21:47",
-    "cart_hash": "",
-    "number": "290",
-    "meta_data": [
-      {
-        "id": 243,
-        "key": "razorpay_order_id",
-        "value": "order_OFSzaaOYJMtjpt"
-      },
-      {
-        "id": 244,
-        "key": "razorpay_payment_id",
-        "value": "pay_OFSzlomSLPYByn"
-      },
-      {
-        "id": 245,
-        "key": "razorpay_signature",
-        "value": "aa176407e72d3da23d92a6f9089d0f5a850771ef7cd5dbb66cf61643702c9cca"
-      }
-    ],
-    "line_items": [
-      {
-        "id": 118,
-        "name": "Elcom Power Strip - Blue",
-        "product_id": 146,
-        "variation_id": 158,
-        "quantity": 1,
-        "tax_class": "",
-        "subtotal": "1499.00",
-        "subtotal_tax": "269.82",
-        "total": "1499.00",
-        "total_tax": "269.82",
-        "taxes": [
-          {
-            "id": 1,
-            "total": "134.91",
-            "subtotal": "134.91"
-          },
-          {
-            "id": 2,
-            "total": "134.91",
-            "subtotal": "134.91"
-          }
-        ],
-        "meta_data": [
-          {
-            "id": 1028,
-            "key": "pa_color",
-            "value": "blue",
-            "display_key": "Color",
-            "display_value": "Blue"
-          }
-        ],
-        "sku": "elcomproduct1",
-        "price": 1499,
-        "image": {
-          "id": 46,
-          "src": "https://multiatesting.in/elcom-powerstrip/wp-content/uploads/2024/05/stripimg1.png"
-        },
-        "parent_name": "Elcom Power Strip"
-      }
-    ],
-    "tax_lines": [
-      {
-        "id": 119,
-        "rate_code": "IN-MH-CGST-1",
-        "rate_id": 1,
-        "label": "CGST",
-        "compound": false,
-        "tax_total": "134.91",
-        "shipping_tax_total": "0.00",
-        "rate_percent": 9,
-        "meta_data": []
-      },
-      {
-        "id": 120,
-        "rate_code": "IN-MH-SGST-2",
-        "rate_id": 2,
-        "label": "SGST",
-        "compound": false,
-        "tax_total": "134.91",
-        "shipping_tax_total": "0.00",
-        "rate_percent": 9,
-        "meta_data": []
-      }
-    ],
-    "shipping_lines": [],
-    "fee_lines": [],
-    "coupon_lines": [],
-    "refunds": [],
-    "payment_url": "https://multiatesting.in/elcom-powerstrip/checkout/order-pay/290/?pay_for_order=true&key=wc_order_ySskZiUaXNlno",
-    "is_editable": false,
-    "needs_payment": false,
-    "needs_processing": true,
-    "date_created_gmt": "2024-05-27T09:21:18",
-    "date_modified_gmt": "2024-05-27T09:21:48",
-    "date_completed_gmt": null,
-    "date_paid_gmt": "2024-05-27T09:21:47",
-    "currency_symbol": "₹",
-    "_links": {
-      "self": [
-        {
-          "href": "https://multiatesting.in/elcom-powerstrip/wp-json/wc/v3/orders/290"
-        }
-      ],
-      "collection": [
-        {
-          "href": "https://multiatesting.in/elcom-powerstrip/wp-json/wc/v3/orders"
-        }
-      ]
-    }
-  }
 
   let address = '';
   if (orderInfo) {
@@ -402,7 +242,7 @@ const InvoiceDocument = () => {
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          {/* <Image style={styles.logo} src="/Logo.png" /> */}
+          <Image style={styles.logo} src="/Logo.png" />
           <View style={styles.companyDetails}>
             <Text>20, Prabhadevi Industrial Estate 408,</Text>
             <Text>Veer Savarkar Marg, Prabhadevi,</Text>
@@ -442,32 +282,32 @@ const InvoiceDocument = () => {
               <Text style={styles.tableCell}>{item?.name}</Text>
               <Text style={styles.tableCell}>{item?.meta_data[0]?.display_value}</Text>
               <Text style={styles.tableCell}>{item?.quantity}</Text>
-              <Text style={styles.tableCell}>{orderInfo?.currency_symbol}{item?.subtotal}</Text>
+              <Text style={styles.rsLabel}>{rs}{item?.subtotal}</Text>
             </View>
           ))}
         </View>
         <View style={styles.totalRow}>
           <View style={styles.comRow}>
             <Text style={styles.totalLabel}>Subtotal:</Text>
-            <Text style={styles.rsLabel}>{orderInfo?.currency_symbol}{(orderInfo?.total - (orderInfo?.total_tax || 0)).toFixed(2)}</Text>
+            <Text style={styles.rsLabel}>{rs}{(orderInfo?.total - (orderInfo?.total_tax || 0)).toFixed(2)}</Text>
           </View>
           {orderInfo?.tax_lines?.length > 0 &&
             orderInfo?.tax_lines?.map((tax,index) => {
               return (
                 <View style={styles.comRow} key={index}>
                   <Text style={styles.totalLabel}>{tax.label}:</Text>
-                  <Text style={styles.rsLabel}>{orderInfo?.currency_symbol}{tax.tax_total}</Text>
+                  <Text style={styles.rsLabel}>{rs}{tax.tax_total}</Text>
                 </View>
               )
             })
           }
           <View style={styles.lastSec}>
             <Text style={styles.totalLabel}>Shipping:</Text>
-            <Text style={styles.rsLabel}>{orderInfo?.currency_symbol}{0}</Text>
+            <Text style={styles.rsLabel}>{rs}{0}</Text>
           </View>
           <View style={styles.lastRow}>
             <Text style={styles.totalLabel}>Total:</Text>
-            <Text style={styles.rsLabel}>{orderInfo?.currency_symbol}{orderInfo?.total}</Text>
+            <Text style={styles.rsLabel}>{rs}{orderInfo?.total}</Text>
           </View>
         </View>
         <View style={styles.footer}>
@@ -477,31 +317,4 @@ const InvoiceDocument = () => {
     </Document>
   )
 }
-
-const About = () => {
-  const [isClient, setIsClient] = useState(false)
-
-  const { orderInfo } = useContext(ThemeContext)
-  console.log("orderInfo :  : ", orderInfo)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-
-  return (
-    <>
-      <InvoiceDocument orderInfo={orderInfo} />
-      <div className="cotainer" style={{ height: '1000px', marginTop: "100px" }}>
-        {isClient ?
-          <PDFDownloadLink document={<InvoiceDocument />} fileName="invoice.pdf">
-            {({ loading }) => (loading ? 'Loading document...' : 'Download Invoice')}
-          </PDFDownloadLink>
-          : "Loading"}
-      </div>
-    </>
-  )
-}
-
-export default About
 

@@ -2,9 +2,9 @@
 
 
 
-@media (min-width:1920px){
+/* @media (min-width:1920px){
     .container { width: 1824px; max-width: 1824px; margin: 0 auto;} 
-    }
+    } */
 
 @media (min-width: 1900px) {
     .features-sec .title { top: 140px; }

@@ -34,8 +34,6 @@ const InvoiceDocument = () => {
     },
     companyDetails: {
       textAlign: 'right',
-      fontSize:10,
-      width:165,
     },
     title: {
       fontSize: 16,
@@ -75,44 +73,42 @@ const InvoiceDocument = () => {
       paddingLeft:25,
       paddingRight:25,
       justifyContent:'space-between',
-      alignItems:'center',
-      flexDirection:'row',
-      width:'100%',
+      alignItems:'center'
       
     },
     tableRow: {
       display:'flex',
       backgroundColor:'#F4F4F4',
       justifyContent:'space-between',
-      alignItems:'flex-start',
+      alignItems:'center',
       paddingTop:12,
       paddingBottom:12,
       paddingLeft:25,
       paddingRight:25,
-      color:'#000',
-      flexDirection:'row',
-      width:'100%',
+      color:'#000'
 
     },
-    
+    tableCol: {
+      width: '20%',
+      padding: 8,
+      borderStyle: 'solid',
+      borderWidth: 1,
+      borderColor: '#e5e5e5',
+    },
     tableCell: {
-      width:'20%',
-      paddingLeft:'10px',
-      paddingRight:'10px',
-      fontSize:10,
-      textAlign:'center'
+      margin: 'auto',
+      textAlign: 'center',
     },
     totalRow: {
-      flexDirection: 'column',
-      display:'flex',
-      justifyContent:'flex-end',
-      width:'100%',
-      alignItems: 'flex-end'
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
+      paddingRight: 10,
+      marginTop: 10,
     },
     totalLabel: {
+      width: '20%',
       textAlign: 'right',
       fontWeight: 'bold',
-      fontSize: 10,
     },
     footer: {
       textAlign: 'center',
@@ -141,47 +137,6 @@ const InvoiceDocument = () => {
     briefDtl:{
       fontSize:10,
       fontWeight:'light'
-    },
-
-    gst:{
-      marginTop:8,
-    },
-
-    shipAdd: {
-      fontSize:10,
-    },
-    comRow:{
-      display:'flex',
-      flexDirection:'row',
-      justifyContent:'space-between',
-      width:'30%',
-      borderBottom: '1px solid #000',
-      paddingTop: 8,
-      paddingBottom:8,
-      alignItems:'center'
-    },
-
-    lastRow: {
-      display:'flex',
-      flexDirection:'row',
-      justifyContent:'space-between',
-      width:'30%',
-      paddingTop: 8,
-      paddingBottom:8,
-      marginTop:10,
-    },
-    lastSec: {
-      display:'flex',
-      justifyContent:'space-between',
-      flexDirection:'row',
-      width:'30%',
-      borderBottom: '1px solid #000',
-      paddingTop: 8,
-      paddingBottom:18,
-    },
-
-    rsLabel: {
-      fontSize:10,
     }
   });
 
@@ -212,7 +167,7 @@ const InvoiceDocument = () => {
             <Text>20, Prabhadevi Industrial Estate 408,</Text>
             <Text>Veer Savarkar Marg, Prabhadevi,</Text>
             <Text>Mumbai, Maharashtra 400 025, India</Text>
-            <Text style={styles.gst}>GST No: XXXXXXXXXXXXXXXXXX</Text>
+            <Text>GST No: XXXXXXXXXXXXXXXXXX</Text>
           </View>
         </View>
         <View style={styles.second}>
@@ -231,7 +186,7 @@ const InvoiceDocument = () => {
         </View>
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Shipping Address</Text>
-          <Text style={styles.shipAdd}>{order.shippingAddress}</Text>
+          <Text>{order.shippingAddress}</Text>
         </View>
         <View style={styles.table}>
           <View style={styles.tableHeader}>
@@ -244,7 +199,7 @@ const InvoiceDocument = () => {
           {order.items.map((item, index) => (
             <View style={styles.tableRow} key={index}>
                 <Text style={styles.tableCell}>{item.code}</Text>
-                <Text style={styles.tableCell}>{item.name}</Text>
+                <Link src={item.link} style={styles.tableCell}>{item.name}</Link>
                 <Text style={styles.tableCell}>{item.color}</Text>
                 <Text style={styles.tableCell}>{item.quantity}</Text>
                 <Text style={styles.tableCell}>{item.price}</Text>
@@ -252,26 +207,24 @@ const InvoiceDocument = () => {
           ))}
         </View>
         <View style={styles.totalRow}>
-            <View style={styles.comRow}>
-                <Text style={styles.totalLabel}>Subtotal:</Text>
-                <Text style={styles.rsLabel}>{order.subtotal}</Text>
-            </View>
-            <View style={styles.comRow}>
-            <Text style={styles.totalLabel}>CGST:</Text>
-            <Text style={styles.rsLabel}>{order.cgst}</Text>
-            </View>
-            <View style={styles.comRow}>
-                <Text style={styles.totalLabel}>SGST:</Text>
-                <Text style={styles.rsLabel}>{order.sgst}</Text>
-            </View>
-            <View style={styles.lastSec}>
-              <Text style={styles.totalLabel}>Shipping:</Text>
-              <Text style={styles.rsLabel}>{order.shipping}</Text>
-            </View>
-            <View style={styles.lastRow}>
-              <Text style={styles.totalLabel}>Total:</Text>
-              <Text style={styles.rsLabel}>{order.total}</Text>
-            </View>
+          <Text style={styles.totalLabel}>Subtotal:</Text>
+          <Text>{order.subtotal}</Text>
+        </View>
+        <View style={styles.totalRow}>
+          <Text style={styles.totalLabel}>CGST:</Text>
+          <Text>{order.cgst}</Text>
+        </View>
+        <View style={styles.totalRow}>
+          <Text style={styles.totalLabel}>SGST:</Text>
+          <Text>{order.sgst}</Text>
+        </View>
+        <View style={styles.totalRow}>
+          <Text style={styles.totalLabel}>Shipping:</Text>
+          <Text>{order.shipping}</Text>
+        </View>
+        <View style={styles.totalRow}>
+          <Text style={styles.totalLabel}>Total:</Text>
+          <Text>{order.total}</Text>
         </View>
         <View style={styles.footer}>
           <Text>Thank you for your purchase!</Text>

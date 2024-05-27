@@ -41,13 +41,13 @@ const InvoiceDocument = () => {
       fontSize: 16,
       color: '#2C2A25',
       marginBottom: 10,
-      fontWeight:600
+      fontWeight:'bold'
     },
     sectionTitle: {
       fontSize: 16,
       marginBottom: 10,
       color: '#2C2A25',
-      fontWeight: 600,
+      fontWeight: 'bold',
     },
     section: {
       marginBottom: 25,
@@ -97,8 +97,6 @@ const InvoiceDocument = () => {
     
     tableCell: {
       width:'20%',
-      paddingLeft:'10px',
-      paddingRight:'10px',
       fontSize:10,
       textAlign:'center'
     },
@@ -182,7 +180,16 @@ const InvoiceDocument = () => {
 
     rsLabel: {
       fontSize:10,
-    }
+      fontFamily:'NotoSans',
+    },
+
+    tableProduct: {
+      fontSize:10,
+      textAlign:'center',
+      color:'#005ABB',
+      fontWeight:'bold',
+      width:'20%'
+    },
   });
 
 
@@ -194,13 +201,14 @@ const InvoiceDocument = () => {
     customerPhone: '+91 9876543210',
     shippingAddress: 'Shop Address Line 2\nState, Country',
     items: [
-      { code: '99920KISH', name: 'Elcom Power Strip', link: 'http://example.com', color: 'White', quantity: 1, price: '₹200' },
+      { code: '99920KISH', name: 'Elcom Power Strip', link: 'http://example.com', color: 'White', quantity: 1, price: '200' },
     ],
-    subtotal: '₹600',
-    cgst: '₹50',
-    sgst: '₹50',
-    shipping: '₹50',
-    total: '₹750',
+    subtotal: '600',
+    cgst: '50',
+    sgst: '50',
+    shipping: '50',
+    total: '750',
+    
   };
 
   return (
@@ -244,33 +252,33 @@ const InvoiceDocument = () => {
           {order.items.map((item, index) => (
             <View style={styles.tableRow} key={index}>
                 <Text style={styles.tableCell}>{item.code}</Text>
-                <Text style={styles.tableCell}>{item.name}</Text>
+                <Text style={styles.tableProduct}>{item.name}</Text>
                 <Text style={styles.tableCell}>{item.color}</Text>
                 <Text style={styles.tableCell}>{item.quantity}</Text>
-                <Text style={styles.tableCell}>{item.price}</Text>
+                <Text style={styles.tableCell}>&#8377;{item.price}</Text>
             </View>
           ))}
         </View>
         <View style={styles.totalRow}>
             <View style={styles.comRow}>
                 <Text style={styles.totalLabel}>Subtotal:</Text>
-                <Text style={styles.rsLabel}>{order.subtotal}</Text>
+                <Text style={styles.rsLabel}>&#8377;{order.subtotal}</Text>
             </View>
             <View style={styles.comRow}>
             <Text style={styles.totalLabel}>CGST:</Text>
-            <Text style={styles.rsLabel}>{order.cgst}</Text>
+            <Text style={styles.rsLabel}>&#8377;{order.cgst}</Text>
             </View>
             <View style={styles.comRow}>
                 <Text style={styles.totalLabel}>SGST:</Text>
-                <Text style={styles.rsLabel}>{order.sgst}</Text>
+                <Text style={styles.rsLabel}>&#8377;{order.sgst}</Text>
             </View>
             <View style={styles.lastSec}>
               <Text style={styles.totalLabel}>Shipping:</Text>
-              <Text style={styles.rsLabel}>{order.shipping}</Text>
+              <Text style={styles.rsLabel}>&#8377;{order.shipping}</Text>
             </View>
             <View style={styles.lastRow}>
               <Text style={styles.totalLabel}>Total:</Text>
-              <Text style={styles.rsLabel}>{order.total}</Text>
+              <Text style={styles.rsLabel}>&#8377;{order.total}</Text>
             </View>
         </View>
         <View style={styles.footer}>

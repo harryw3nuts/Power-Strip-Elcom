@@ -529,7 +529,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                             }
                                                                             {
                                                                                 stateTaxRate.length > 0 && stateTaxRate.map((info, index) => {
-                                                                                    return (<li>
+                                                                                    return (<li key={index}>
                                                                                         <p>{info.name} Tax {parseFloat(info.rate).toFixed(2)}%</p>
                                                                                         <span>₹ {(productsTotal * parseFloat(info.rate) / 100).toFixed(2)}/-</span>
                                                                                     </li>)
@@ -553,7 +553,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                                 onChange={handleChange}
                                                                                 onBlur={handleBlur}
                                                                             />
-                                                                            <span>I've taken notice of the <Link target="" href="/privacy-policy">Privacy Statement</Link></span>
+                                                                            <span>{`I've taken notice of the`} <Link target="" href="/privacy-policy">Privacy Statement</Link></span>
                                                                         </label>
                                                                         <ErrorMessage name="privacyStatementCb" component="div" className="errorMessage" />
                                                                     </div>

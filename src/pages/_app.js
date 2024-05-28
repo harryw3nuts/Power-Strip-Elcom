@@ -13,6 +13,7 @@ export default function App({ Component, pageProps }) {
     headerLogo: themeSettings?.headerLogo,
     ctaOneInfo: themeSettings?.ctaOneInfo,
     ctaTwoInfo: themeSettings?.ctaTwoInfo,
+    menuInfo: themeSettings?.menuInfo,
   }
 
   const footerData = {

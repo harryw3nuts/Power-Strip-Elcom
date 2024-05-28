@@ -6,8 +6,6 @@ import { useEffect } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 import { IndiaStatesList, formatDate } from '@/utils/utils';
 
-
-
 const InvoiceDocument = () => {
   const styles = StyleSheet.create({
     page: {
@@ -49,7 +47,7 @@ const InvoiceDocument = () => {
       fontSize: 16,
       marginBottom: 10,
       color: '#2C2A25',
-      fontWeight: 'bold',
+      fontWeight: 600,
     },
     section: {
       marginBottom: 25,
@@ -196,14 +194,13 @@ const InvoiceDocument = () => {
     customerPhone: '+91 9876543210',
     shippingAddress: 'Shop Address Line 2\nState, Country',
     items: [
-      { code: '99920KISH', name: 'Elcom Power Strip', link: 'http://example.com', color: 'White', quantity: 1, price: '200' },
+      { code: '99920KISH', name: 'Elcom Power Strip', link: 'http://example.com', color: 'White', quantity: 1, price: '₹200' },
     ],
-    subtotal: '600',
-    cgst: '50',
-    sgst: '50',
-    shipping: '50',
-    total: '750',
-    
+    subtotal: '₹600',
+    cgst: '₹50',
+    sgst: '₹50',
+    shipping: '₹50',
+    total: '₹750',
   };
 
   const orderInfo = {

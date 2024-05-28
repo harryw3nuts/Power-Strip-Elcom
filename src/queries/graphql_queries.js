@@ -5,6 +5,14 @@ query THEME_SETTINGS {
         headerLogo{
           sourceUrl
         }
+        menuInfo{
+          link{
+            title
+            target
+            url
+          }
+          scrollToSectionLink
+        }
         ctaOneInfo{
           title
           target
@@ -25,6 +33,36 @@ query THEME_SETTINGS {
         linkedinUri
         facebookUri
         youtubeUri
+        pdfLogo{
+          sourceUrl
+        }
+        pdfAddressInfo
+        pdfGstInfo
+        pdfInvoiceText
+        pdfOrderDateText
+        pdfCustomerDetailsText
+        pdfShippingText
+        pdfProductCodeText
+        pdfProductNameText
+        pdfColorText
+        pdfQuantityText
+        pdfPriceText
+        successImage {
+          sourceUrl
+        }
+        successHeading
+        successDescription
+        successDownloadInvoiceButtonText
+        successBackHomeText
+        successBackHomeButtonText
+        failImage{
+          sourceUrl
+        }
+        failHeading
+        failDescription
+        failRetryButtonText
+        failBackHomeText
+        failBackHomeButtonText
       }
     }
   }
@@ -36,6 +74,14 @@ query THEME_SETTINGS {
         headerLogo{
           sourceUrl
         }
+        menuInfo{
+          link{
+            title
+            target
+            url
+          }
+          scrollToSectionLink
+        }
         ctaOneInfo{
           title
           target
@@ -56,6 +102,20 @@ query THEME_SETTINGS {
         linkedinUri
         facebookUri
         youtubeUri
+        pdfLogo{
+          sourceUrl
+        }
+        pdfAddressInfo
+        pdfGstInfo
+        pdfInvoiceText
+        pdfOrderDateText
+        pdfCustomerDetailsText
+        pdfShippingText
+        pdfProductCodeText
+        pdfProductNameText
+        pdfColorText
+        pdfQuantityText
+        pdfPriceText
       }
     }
     pageBy(uri: "/") {
@@ -170,6 +230,16 @@ query THEME_SETTINGS {
                               value
                               colorCode
                             }
+                          }
+                        }
+                        featuredImage{
+                          node{
+                            sourceUrl
+                          }
+                        }
+                        galleryImages{
+                          nodes{
+                            sourceUrl
                           }
                         }
                         variations {

@@ -823,3 +823,4 @@ input[type=number] {
   .finalAm ul li p {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-weight: 600; display: block;}
   .finalAm ul li span {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-style: normal; font-weight: 400;display: block; } 
 
+  .mobileText {display: none;}

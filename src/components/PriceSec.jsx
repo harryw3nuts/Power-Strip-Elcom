@@ -28,8 +28,8 @@ import { useContext } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 
 const PriceSec = ({ productData }) => {
-    // console.log("productData : ",productData)
-    const {productExtraOptions} = productData; 
+    console.log("productData : ", productData)
+    const { productExtraOptions, galleryImages, featuredImage } = productData;
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     const [isBeginning, setIsBeginning] = useState(true);
@@ -41,7 +41,7 @@ const PriceSec = ({ productData }) => {
     const router = useRouter();
     const { products, setProductsHandler } = useContext(ThemeContext);
 
-    let [num, setNum] = useState(0);
+    let [num, setNum] = useState(1);
     let incNum = () => {
         if (num < 10) {
             setNum(Number(num) + 1);
@@ -131,119 +131,84 @@ const PriceSec = ({ productData }) => {
                     <div className='container'>
                         <div className='priceWrapper'>
                             <div className='row'>
-                            <div className='col-lg-1'>
-                                <div className='priceSwiper'>
-                                    <Swiper 
-                                      onSwiper={setThumbsSwiper}
-                                      spaceBetween={10}
-                                      slidesPerView={4}
-                                      freeMode={true}
-                                      watchSlidesProgress={true}
-                                      modules={[FreeMode, Navigation, Thumbs]}
-                                      className="mySwiper"
-                                    >
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={thumbfull1} alt='thumbfull1' width={100} height={50} ></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={futuremain} alt='futuremain'></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={thumb3} alt='thumb3'></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={stripimg3} alt='stripimg3'></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                    </Swiper>
-                                    {/* <Swiper
-                                        modules={[Thumbs]} 
-                                        loop={true}
-                                        spaceBetween={10}
-                                        thumbs={{ swiper: thumbsSwiper }}
-                                        className="mySwiper2"
-                                    >
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={thumbfull1} alt='thumbfull1' width={100} height={50} ></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={thumb2} alt='thumb2'></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={thumb3} alt='thumb3'></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbBox'>
-                                                <Image src={thumb4} alt='thumb4'></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                    </Swiper > */}
-                                </div>
-                            </div>
-                            <div className='col-lg-7'>
-                                <div className='pricefullImg'>
-                                    <Swiper
-                                        spaceBetween={10}
-                                        // navigation={true}
-                                        thumbs={{ swiper: thumbsSwiper }}
-                                        modules={[FreeMode, Navigation, Thumbs]}
-                                        onBeforeInit={(swiper) => {
-                                            swiperRef.current = swiper;
+                                {(galleryImages?.nodes.length > 0 || featuredImage) &&
+                                    <div className='col-lg-1'>
+                                        <div className='priceSwiper'>
+                                            <Swiper
+                                                onSwiper={setThumbsSwiper}
+                                                spaceBetween={10}
+                                                slidesPerView={4}
+                                                freeMode={true}
+                                                watchSlidesProgress={true}
+                                                modules={[FreeMode, Navigation, Thumbs]}
+                                                className="mySwiper"
+                                            >
+                                                {galleryImages?.nodes.map((image, index) => {
+                                                    return (
+                                                        <SwiperSlide key={index}>
+                                                            <div className='thumbBox'>
+                                                                <Image src={image?.sourceUrl} alt='thumbfull1' width={100} height={50} ></Image>
+                                                            </div>
+                                                        </SwiperSlide>
+                                                    )
+                                                })}
+                                                {(galleryImages?.nodes.length == 0 && galleryImages) &&
+                                                    <SwiperSlide>
+                                                        <div className='thumbBox'>
+                                                            <Image src={featuredImage?.node?.sourceUrl} alt='thumbfull1' width={100} height={50} ></Image>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                }
+                                            </Swiper>
+                                        </div>
+                                    </div>
+                                }
+                                {(galleryImages?.nodes.length > 0 || featuredImage) && <div className='col-lg-7'>
+                                    <div className='pricefullImg'>
+                                        <Swiper
+                                            spaceBetween={10}
+                                            // navigation={true}
+                                            thumbs={{ swiper: thumbsSwiper }}
+                                            modules={[FreeMode, Navigation, Thumbs]}
+                                            onBeforeInit={(swiper) => {
+                                                swiperRef.current = swiper;
                                             }}
                                             onSlideChange={(swiper) => {
                                                 setIsBeginning(swiper.isBeginning);
                                                 setIsEnd(swiper.isEnd);
-                                      }}
-                                     onReachBeginning={() => setIsBeginning(true)}
-                                     onReachEnd={() => setIsEnd(true)}
-                                        className="mySwiper2"
+                                            }}
+                                            onReachBeginning={() => setIsBeginning(true)}
+                                            onReachEnd={() => setIsEnd(true)}
+                                            className="mySwiper2"
 
-                                    >
-                                        <SwiperSlide>
-                                            <div className='thumbfullBox'>
-                                                <Image src={thumbfull1} alt='thumbfull1' width={727} height={200}></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbfullBox'>
-                                                <Image src={futuremain} alt='futuremain' width={727} height={400}></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbfullBox'>
-                                                <Image src={thumb3} alt='thumb3' width={727} height={400}></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                        <SwiperSlide>
-                                            <div className='thumbfullBox'>
-                                                <Image src={stripimg3} alt='stripimg3' width={727} height={300}></Image>
-                                            </div>
-                                        </SwiperSlide>
-                                    
-                                    </Swiper>
-                                    <div className="switer_btn">
-                                        <button onClick={() => swiperRef.current?.slidePrev()} className={`group ${isBeginning ? 'disable_arrow' : ''}`}>
-                                            <svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
-                                        </button>
-                                        <button onClick={() => swiperRef.current?.slideNext()} className={`group ${isEnd ? 'disable_arrow' : ''}`}>
-                                            <svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
-                                        </button>
+                                        >
+                                            {galleryImages?.nodes.map((image, index) => {
+                                                return (
+                                                    <SwiperSlide key={index}>
+                                                        <div className='thumbfullBox'>
+                                                            <Image src={image?.sourceUrl} alt='thumbfull1' width={727} height={200}></Image>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                )
+                                            })}
+                                            {(galleryImages?.nodes.length == 0 && galleryImages) &&
+                                                    <SwiperSlide>
+                                                        <div className='thumbfullBox'>
+                                                            <Image src={featuredImage?.node?.sourceUrl} alt='thumbfull1' width={727} height={200} ></Image>
+                                                        </div>
+                                                    </SwiperSlide>
+                                                }
+                                        </Swiper>
+                                        <div className="switer_btn">
+                                            <button onClick={() => swiperRef.current?.slidePrev()} className={`group ${isBeginning ? 'disable_arrow' : ''}`}>
+                                                <svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6" /></svg>
+                                            </button>
+                                            <button onClick={() => swiperRef.current?.slideNext()} className={`group ${isEnd ? 'disable_arrow' : ''}`}>
+                                                <svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6" /></svg>
+                                            </button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
+                                </div>}
                                 <div className='col-lg-4'>
                                     <div className='priceList'>
                                         <div className='headSec'>
@@ -274,19 +239,19 @@ const PriceSec = ({ productData }) => {
                                                             </div>)
                                                             :
                                                             (
-                                                            // <div className='colorBtn'>
-                                                            //     {optionsWithFields?.map(option => {
-                                                            //         return (
-                                                            //             <div className='difBtn' key={option}>
-                                                            //                 <label for={option.slug}>
-                                                            //                     <input type="radio" id={option.slug} name={name} value={option.slug} onChange={(e) => handleAttributeChange(name, e.target.value)} />
-                                                            //                     <span>{option.name}</span>
-                                                            //                 </label>
-                                                            //             </div>
-                                                            //         )
-                                                            //     })}
-                                                            // </div>
-                                                            ""
+                                                                // <div className='colorBtn'>
+                                                                //     {optionsWithFields?.map(option => {
+                                                                //         return (
+                                                                //             <div className='difBtn' key={option}>
+                                                                //                 <label for={option.slug}>
+                                                                //                     <input type="radio" id={option.slug} name={name} value={option.slug} onChange={(e) => handleAttributeChange(name, e.target.value)} />
+                                                                //                     <span>{option.name}</span>
+                                                                //                 </label>
+                                                                //             </div>
+                                                                //         )
+                                                                //     })}
+                                                                // </div>
+                                                                ""
                                                             )
                                                         }
                                                     </div>
@@ -306,7 +271,7 @@ const PriceSec = ({ productData }) => {
                                             </div>
                                         </div>
                                         <div className='buyNow'>
-                                            <button className='buybtn'  onClick={() => buyNowHandler()}>Buy Now</button>
+                                            <button className='buybtn' onClick={() => buyNowHandler()}>Buy Now</button>
                                         </div>
 
                                         {productExtraOptions && <div className='warrantySec'>
@@ -343,13 +308,13 @@ const PriceSec = ({ productData }) => {
                     {productExtraOptions?.productInfo && <div className='container'>
                         <div className='productDetail'>
                             <ul>
-                                {productExtraOptions?.productInfo.map((info,index) => {
-                                    const {heading,value} = info;
-                                    if(heading || value){
+                                {productExtraOptions?.productInfo.map((info, index) => {
+                                    const { heading, value } = info;
+                                    if (heading || value) {
                                         return (
                                             <li key={index}>
                                                 <span className='title'>{heading}</span>
-                                                <span className='value' dangerouslySetInnerHTML={{__html:value}}></span>
+                                                <span className='value' dangerouslySetInnerHTML={{ __html: value }}></span>
                                             </li>
                                         )
                                     }

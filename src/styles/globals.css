@@ -92,7 +92,7 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .footerBar .footerSec .nameSec {position: relative;}
 .footerBar .footerSec .nameSec span {display: block; font-size: 12px; color: #D6D6D6; line-height: 16px; font-family: "Inter Tight"; font-weight: 500;}
 .footerBar .footerSec .webLink {position: relative;}
-.footerBar .footerSec .webLink a {font-size: 12px; color: #D6D6D6; line-height: 16px; text-decoration: none; font-family: "Inter Tight"; font-weight: 500;}
+.footerBar .footerSec .webLink a {font-size: 12px; color: #D6D6D6; line-height: 16px; text-decoration: none; font-family: "Inter Tight"; font-weight: 500; display: flex;}
 .footerBar .footerSec .socialLink {position: relative;}
 .footerBar .footerSec .socialLink ul {display: flex; gap: 31px;}
 .footerBar .footerSec .socialLink ul li {display: block; margin: 0; padding: 0;}
@@ -117,7 +117,7 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .brackerdtl .btnbox a:hover{background-color: #101010;}
 
 /* banner end */
-
+.mobileText {display: none;}
 
 /* PriceSec start */
 .priceImg {margin: 120px 0;}
@@ -334,7 +334,7 @@ font-size: 16px; font-style: normal; font-weight: 400; line-height: 28px; /* 175
 .sucessWrap .sucessDtl .backHome p a {color: var(--Primary-Blue, #005ABB); font-family: "Inter Tight"; font-size: 16px; font-style: normal; font-weight: 600; line-height: 24px; text-decoration-line: underline;}
 
 
-.chekoutWrap {margin: 150px 0 100px;}
+.chekoutWrap {margin: 150px 0 100px; position: relative;}
 .chekoutWrap .checkoutGrp {}
 .chekoutWrap .checkoutGrp .checkoutForm {}
 .chekoutWrap .checkoutGrp .checkoutForm .checkoutNav { border-bottom: 1px solid #BDBDBD; margin-bottom: 40px;}
@@ -757,24 +757,35 @@ input[type=number] {
 
 
   /* CSS LOADER  */
+  .innerOverlay {overflow: hidden;}
   .loaderWrapper {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    background-color: #aba9a4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 113, 227, 0.3);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    pointer-events: none;  
   }
   .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
-    border-bottom-color: #0071E3;
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+    width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 10px solid #ddd;
+  border-top-color: #0071E3;;
+  animation: rotation 1s linear infinite;
+  
     
     }
+
+    .loaderActive {overflow: hidden; pointer-events: none;}
 
     @keyframes rotation {
     0% {
@@ -784,6 +795,7 @@ input[type=number] {
         transform: rotate(360deg);
     }
     } 
+    
   /* CSS LOADER  */
 
   

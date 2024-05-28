@@ -66,6 +66,8 @@ const CheckoutSec = ({ rzpLoaded }) => {
             .catch(error => {
                 console.error('Woocommerce TAX ERROR:', error.response.data);
             });
+
+        // document.body.classList.add("loaderActive")
     }, [])
 
     useEffect(() => {

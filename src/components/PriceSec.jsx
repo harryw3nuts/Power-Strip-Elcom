@@ -131,7 +131,7 @@ const PriceSec = ({ productData }) => {
                     <div className='container'>
                         <div className='priceWrapper'>
                             <div className='row'>
-                            <div className='col-lg-1'>
+                            <div className='col-lg-2 col-md-2 col-xl-1'>
                                 <div className='priceSwiper'>
                                     <Swiper 
                                       onSwiper={setThumbsSwiper}
@@ -193,7 +193,7 @@ const PriceSec = ({ productData }) => {
                                     </Swiper > */}
                                 </div>
                             </div>
-                            <div className='col-lg-7'>
+                            <div className='col-lg-6 col-md-10 col-xl-7'>
                                 <div className='pricefullImg'>
                                     <Swiper
                                         spaceBetween={10}
@@ -244,7 +244,7 @@ const PriceSec = ({ productData }) => {
                                     </div>
                                 </div>
                             </div>
-                                <div className='col-lg-4'>
+                                <div className='col-lg-4 col-md-12 col-xl-4'>
                                     <div className='priceList'>
                                         <div className='headSec'>
                                             <h4>{productData?.name}</h4>

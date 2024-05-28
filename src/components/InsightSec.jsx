@@ -17,7 +17,7 @@ const InsightSec = ({insightsHeading,insightsReadMoreLinkText,insightsAllInsight
                                     // console.log(post)
                                     const {title,link,categoryName,image} = post;
                                     return (
-                                        <div className="col-lg-4" key={index}>
+                                        <div className="col-lg-4 col-md-6" key={index}>
                                             <div class="insightBox">
                                                 {image && <div class="boxImage">
                                                     <Image src={image?.sourceUrl} width={416} height={278} alt="stripbox1"></Image>

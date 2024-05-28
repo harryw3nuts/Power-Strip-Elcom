@@ -7,7 +7,7 @@ const PowerStripSliderSec = ({ exploreHeading, exploreButtonInfo, exploreImagesI
       <div className="powerstrip-slidersec-main" id="highlightSec">
         <div className="powerstrip-slidersec-main-wrap">
           <div className="row justify-content-center">
-            {(exploreHeading && exploreButtonInfo) && <div className="col-lg-3">
+            {(exploreHeading && exploreButtonInfo) && <div className="col-lg-3 col-md-4">
               <div className="powerstrip-slider-text">
                 {exploreHeading && <h3 dangerouslySetInnerHTML={{ __html: exploreHeading }}></h3>}
                 {exploreButtonInfo && <div className="btnbox">
@@ -15,7 +15,7 @@ const PowerStripSliderSec = ({ exploreHeading, exploreButtonInfo, exploreImagesI
                 </div>}
               </div>
             </div>}
-            {exploreImagesInfo && <div className="col-lg-7">
+            {exploreImagesInfo && <div className="col-lg-7 col-md-7">
               <PowerStripSlider imagesInfo={exploreImagesInfo}/>
             </div>}
           </div>

@@ -132,7 +132,7 @@ const PriceSec = ({ productData }) => {
                         <div className='priceWrapper'>
                             <div className='row'>
                                 {(galleryImages?.nodes.length > 0 || featuredImage) &&
-                                    <div className='col-lg-1'>
+                                    <div className='col-lg-2 col-md-2 col-xl-1'>
                                         <div className='priceSwiper'>
                                             <Swiper
                                                 onSwiper={setThumbsSwiper}
@@ -163,7 +163,7 @@ const PriceSec = ({ productData }) => {
                                         </div>
                                     </div>
                                 }
-                                {(galleryImages?.nodes.length > 0 || featuredImage) && <div className='col-lg-7'>
+                                {(galleryImages?.nodes.length > 0 || featuredImage) && <div className='col-lg-6 col-md-10 col-xl-7'>
                                     <div className='pricefullImg'>
                                         <Swiper
                                             spaceBetween={10}
@@ -209,7 +209,7 @@ const PriceSec = ({ productData }) => {
                                         </div>
                                     </div>
                                 </div>}
-                                <div className='col-lg-4'>
+                                <div className='col-lg-4 col-md-12 col-xl-4'>
                                     <div className='priceList'>
                                         <div className='headSec'>
                                             <h4>{productData?.name}</h4>

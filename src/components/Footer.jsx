@@ -25,14 +25,14 @@ const Footer = ({ footerCopyrightInfo, footerElcomLink, twitterUri, linkedinUri,
                                     </div>
                                 }
                                 {(twitterUri.trim() != '' || linkedinUri.trim() != '' || facebookUri.trim() != '' || youtubeUri.trim() != '') && <div className="socialLink">
-                                    <div className="socialLink">
+                                    
                                         <ul>
                                             {twitterUri && <li><Link href={twitterUri} target="_blank"><Twitter/></Link></li>}
                                             {linkedinUri && <li><Link href={linkedinUri} target="_blank"><Linkedin/></Link></li>}
                                             {facebookUri && <li><Link href={facebookUri} target="_blank"><Facebook/></Link></li>}
                                             {youtubeUri && <li><Link href={youtubeUri} target="_blank"><Youtube/></Link></li>}
                                         </ul>
-                                    </div>
+                                    
                                 </div>}
                             </div>
                         </div>

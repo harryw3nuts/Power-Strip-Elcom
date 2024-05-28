@@ -5,9 +5,9 @@ import React from 'react'
 
 const PaymentSuccessful = ({data}) => {
   console.log("data : ",data)
-  if(data){
-    const {pdfAddressInfo,pdfColorText,pdfCustomerDetailsText,pdfGstInfo,pdfInvoiceText,pdfLogo,pdfOrderDateText,pdfPriceText,pdfProductCodeText,pdfProductNameText,pdfQuantityText,pdfShippingText,successBackHomeButtonText,successBackHomeText,successDescription,successDownloadInvoiceButtonText,successHeading,successImage,} = data?.themeGeneralSettings?.themeGeneralSettings;
-  }
+  // if(data){
+  //   const {pdfAddressInfo,pdfColorText,pdfCustomerDetailsText,pdfGstInfo,pdfInvoiceText,pdfLogo,pdfOrderDateText,pdfPriceText,pdfProductCodeText,pdfProductNameText,pdfQuantityText,pdfShippingText,successBackHomeButtonText,successBackHomeText,successDescription,successDownloadInvoiceButtonText,successHeading,successImage,} = data?.themeGeneralSettings?.themeGeneralSettings;
+  // }
   return (
     <SucessSec/>
   )

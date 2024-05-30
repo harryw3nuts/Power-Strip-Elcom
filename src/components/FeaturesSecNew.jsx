@@ -94,7 +94,7 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
                             {features1Subheading && <div className="feture_box-subtitle" ref={subtextRef} >{features1Subheading}</div>}
                             <div className="line">
                                 <svg width="144" height="343" viewBox="0 0 144 343" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path ref={pathRef} d="M134.498 19L7.83839 325.127" stroke="#5BDE84" stroke-width="1.5" />
+                                    <path ref={pathRef} d="M134.498 19L7.83839 325.127" stroke="#5BDE84" strokeWidth="1.5" />
                                     <circle className="circle-1" cx="133.998" cy="19" r="6" transform="rotate(90 133.998 19)" fill="#5BDE84" stroke="#5BDE84" />
                                     <circle className="circle-2" cx="7.83964" cy="325.126" r="6" transform="rotate(106.173 7.83964 325.126)" fill="#5BDE84" stroke="#5BDE84" />
                                 </svg>
@@ -107,7 +107,7 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
                             {features2Subheading && <div className="feture_box-subtitle">{features2Subheading}</div>}
                             <div className="line">
                                 <svg width="292" height="277" viewBox="0 0 292 277" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M192.5 8.00097L99.7965 268.133" stroke="#5BDE84" stroke-width="1.5" />
+                                    <path d="M192.5 8.00097L99.7965 268.133" stroke="#5BDE84" strokeWidth="1.5" />
                                     <circle className="circle-1" cx="6" cy="6" r="6" transform="matrix(0.616282 0.787526 0.787526 -0.616282 184 7.39453)" fill="#5BDE84" stroke="#5BDE84" />
                                     <circle className="circle-2" cx="6" cy="6" r="6" transform="matrix(0.616282 0.787526 0.787526 -0.616282 91.3711 267.105)" fill="#5BDE84" stroke="#5BDE84" />
                                 </svg>
@@ -120,7 +120,7 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
                             {features3Subheading && <div className="feture_box-subtitle">{features3Subheading}</div>}
                             <div className="line">
                                 <svg width="145" height="14" viewBox="0 0 145 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 6.99999L74.819 7.00001L134 7.00001" stroke="#5BDE84" stroke-width="1.5" />
+                                    <path d="M7 6.99999L74.819 7.00001L134 7.00001" stroke="#5BDE84" strokeWidth="1.5" />
                                     <circle className="circle-1" cx="7" cy="7" r="6" fill="#5BDE84" stroke="#5BDE84" />
                                     <circle className="circle-2" cx="138" cy="7" r="6" fill="#5BDE84" stroke="#5BDE84" />
                                 </svg>
@@ -133,7 +133,7 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
                             {features4Subheading && <div className="feture_box-subtitle">{features4Subheading}</div>}
                             <div className="line">
                                 <svg width="182" height="14" viewBox="0 0 182 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 7L96.7133 6.99999L175 6.99999" stroke="#5BDE84" stroke-width="1.5" />
+                                    <path d="M7 7L96.7133 6.99999L175 6.99999" stroke="#5BDE84" strokeWidth="1.5" />
                                     <circle className="circle-1" cx="7" cy="7" r="6" fill="#5BDE84" stroke="#5BDE84" />
                                     <circle className="circle-2" cx="175" cy="7" r="6" fill="#5BDE84" stroke="#5BDE84" />
                                 </svg>
@@ -146,7 +146,7 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
                             {features5Subheading && <div className="feture_box-subtitle">{features5Subheading}</div>}
                             <div className="line">
                                 <svg width="380" height="29" viewBox="0 0 380 29" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M6.5 21L373 6.99997" stroke="#5BDE84" stroke-width="1.5" />
+                                    <path d="M6.5 21L373 6.99997" stroke="#5BDE84" strokeWidth="1.5" />
                                     <circle className="circle-1" cx="7" cy="22" r="6" fill="#5BDE84" stroke="#5BDE84" />
                                     <circle className="circle-2" cx="373" cy="7" r="6" fill="#5BDE84" stroke="#5BDE84" />
                                 </svg>

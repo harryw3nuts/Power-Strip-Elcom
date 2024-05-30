@@ -36,6 +36,7 @@
     .feture_text_box-2 .line {right: 30px;}
     .feture_text_box-4 {right: 0; top: 60%;}
     .feture_text_box-3 {top: 37%;}
+    .proceedBtn button {padding: 0 100px;}
  
  }
 
@@ -59,7 +60,9 @@
     .feture_text_box-4 {top: 70%;}
     .feture_text_box-5 {top: 78%; right: 16%;}
     .feture_text_box-5 .line {left: -15px;}
+    .proceedBtn button {padding: 0 100px;}
 }
+
  
 @media (min-width: 992px) and (max-width: 1199px) {
  
@@ -95,6 +98,7 @@
     .feture_text_box-4 {top: 69%; right: 0;}
     .feture_text_box-5 {top: 77%; right: 18%;}
     .buyNow .buybtn {padding: 0 90px;}
+    .proceedBtn button {padding: 0 100px;}
  
 }
 
@@ -164,6 +168,7 @@
     .features-wrap .imgbox img {width: 100%;}
     .feture_text_box-2 .line {right: 93px; top: 45px;}
     .features-sec .title h2 {font-size: 120px;}
+    .proceedBtn button {padding: 0 100px;}
     
 }
 

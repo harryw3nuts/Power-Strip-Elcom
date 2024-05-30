@@ -124,7 +124,7 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 /* .priceSwiper .swiper-wrapper {flex-direction: column; gap: 12px;} */
 .thumbBox {border-radius: 4px;background: #f4f4f4;; width: 100px; height: 100px; display: flex; justify-content: center; align-items: center;}
 .priceSwiper .thumbBox img {display: flex; justify-content: center; align-items: center; width: 100%;}
-.pricefullImg {background: #f4f4f4; height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative;}
+.pricefullImg {background: #f4f4f4; min-height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative; height: 100%;}
 .switer_btn {position: absolute; bottom: 32px; right: 32px; display: flex; gap: 20px; z-index: 10;}
 .switer_btn .group { border: none; background-color: #FFF; width: 40px; height: 40px; border-radius: 50px;}
 
@@ -834,3 +834,5 @@ input[type=number] {
   .finalAm ul li {display: flex; justify-content: space-between; width: 100%; gap: 116px; border-top: 1px solid #7B7B7B; padding: 9px 0; margin-top: 10px; }
   .finalAm ul li p {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-weight: 600; display: block;}
   .finalAm ul li span {color: var(--primary-2-c-2-a-25, #2C2A25); text-align: right; font-family: "Inter Tight"; font-size: 10px; font-style: normal; font-weight: 400;display: block; } 
+
+  .mobileSlider {display: none;}

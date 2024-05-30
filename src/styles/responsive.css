@@ -152,6 +152,16 @@
     .powerstripslider-mainbox .powerstrips-slide img {width: 100%; height: 100%;}
     .powerstripslider-mainbox .powerstrips-slide {max-width: 314px;}
     .powerstrip-slider-text h3 {font-size: 35px;}
+    .feture_text_box-1 {left: 4.5%;}
+    .feture_text_box-2 {top: 50%; left: 30px;}
+    .feture_text_box-3 {top: 57%; right: 3%; padding-left: 160px; max-width: 300px;}
+    .feture_text_box-4 {top: 71%; right: 2%; padding-left: 115px;}
+    .feture_text_box-5 {top: 80%; padding-left: 268px; right: 10%;}
+    .feture_text_box-4 .line {left: -115px; top: 18px;}
+    .feture_text_box-5 .line {transform: rotate(192deg);left: -122px;}
+    .features-wrap .imgbox img {width: 100%;}
+    .feture_text_box-2 .line {right: 93px; top: 45px;}
+    .features-sec .title h2 {font-size: 120px;}
     
 }
 
@@ -250,6 +260,7 @@
     .footerBar .footerSec .socialLink {order: 1; width: 100%; justify-content: center; align-items: center; display: flex; margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid #343434;}
     .footerBar .footerSec .nameSec {order: 2; margin-right: 42px;}
     .footerBar .footerSec .webLink {order: 3; margin-left: 42px;}
+    .mobileSlider {display: block;}
 
 
     

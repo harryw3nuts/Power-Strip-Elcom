@@ -171,17 +171,17 @@ const ScrollTextColor = ({powerStripimage,powerStripleftText,powerStriprightText
 
     return (
         <div className="zoomer-wrap" id="aboutSec">
-            <div class="zoomer" ref={pinRef}>
-                <div class="text textwrapout">
-                    <div class="clipper" ref={textClipperRef}>
+            <div className="zoomer" ref={pinRef}>
+                <div className="text textwrapout">
+                    <div className="clipper" ref={textClipperRef}>
                         <h2 ref={leftTextRef}>{powerStripleftText}</h2>
                         <h2 ref={rightTextRef} className="heading2">
                             {powerStriprightText}
                         </h2>
                     </div>
                 </div>
-                <div class="images">
-                    <div class="clipper" ref={imageClipperRef}>
+                <div className="images">
+                    <div className="clipper" ref={imageClipperRef}>
                         <Image
                             src={powerStripimage?.sourceUrl}
                             width={1376}
@@ -198,9 +198,9 @@ const ScrollTextColor = ({powerStripimage,powerStripleftText,powerStriprightText
                         />
                     </div>
                 </div>
-                <div class="textwrap">
-                    <div class="intextwrap" ref={intextRef}>
-                        <div class="inner_intextwrap">
+                <div className="textwrap">
+                    <div className="intextwrap" ref={intextRef}>
+                        <div className="inner_intextwrap">
                             <h2 ref={outerLeftTextRef}>{powerStripleftText}</h2>
                             <h2 ref={outerRightTextRef} className="heading2">
                                 {powerStriprightText}

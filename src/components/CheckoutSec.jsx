@@ -91,6 +91,14 @@ const CheckoutSec = ({ rzpLoaded }) => {
 
     }, [selectedState])
 
+    useEffect(() => {
+        if(isLoading){
+            document.body.classList.add("loaderActive")
+        }else{
+            document.body.classList.remove("loaderActive")
+        }
+    },[isLoading])
+
 
     //create wordpress order when User click on Proceed/Checkout button
     const createOrderHandler = async (userDataForOrder) => {
@@ -226,6 +234,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                 api.put(`orders/${orderId}`, updateOrderData)
                                     .then(response => {
                                         console.log('update order failed Success:', response.data);
+                                        setIsLoading(false);
                                         // setProducts([])
                                         // router.push('/payment-failed')
                                     })
@@ -237,6 +246,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                             confirmButtonText: 'Ok'
                                         })
                                         console.error('updateOrderData ERROR:', error.response.data);
+                                        setIsLoading(false);
                                     });
 
                                 // update razorpay order and add custom notes to it  
@@ -250,7 +260,6 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                     }),
                                 });
                                 const data = await response.json();
-                                setIsLoading(false);
                             },
                             confirm_close: true
                         }
@@ -260,10 +269,10 @@ const CheckoutSec = ({ rzpLoaded }) => {
                     rzp.on('payment.failed', function (response) {
                         // Handle payment failure
                         console.error('Payment failed:', response.error.code, response.error.description);
-                        setIsLoading(false);
-                        context.setPaymentErrorHandler(response.error);
-                        setProducts([])
-                        router.push('/payment-failed')
+                        // setIsLoading(false);
+                        // context.setPaymentErrorHandler(response.error);
+                        // setProducts([])
+                        // router.push('/payment-failed')
                         // rzp.close();
                         // console.error('Payment failed:', response);
                     });
@@ -382,10 +391,10 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                     <div className="checkoutNav">
                                                         <ul>
                                                             <li className="powerDirect">
-                                                                <Link href={'#'}>Powerstrip</Link>
+                                                                <Link href={'/'}>Powerstrip</Link>
                                                             </li>
                                                             <li className="checkoutDirect">
-                                                                <Link href={'#'}>Checkout</Link>
+                                                                <Link href={'#'} onClick={(e) => {e.preventDefault()}}>Checkout</Link>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -494,13 +503,13 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                 {products?.map((product, index) => {
                                                                     return (
                                                                         <div className="orderBox" key={index}>
-                                                                            <div className="orderImg">
+                                                                            {product?.image?.sourceUrl && <div className="orderImg">
                                                                                 <Image src={product?.image?.sourceUrl} width={120} height={120} alt="thumb1"></Image>
-                                                                            </div>
+                                                                            </div>}
                                                                             <div className="orderDtl">
                                                                                 <ul>
                                                                                     <li className="orderHead">{product.name}</li>
-                                                                                    <li>Product code : 99920KISH</li>
+                                                                                    {product?.sku && <li>Product code : {product?.sku}</li>}
                                                                                     {product?.attributes?.nodes.map((attribute) => {
                                                                                         const { label, id, value } = attribute;
                                                                                         return <li key={id}>Product {label} : {value}</li>
@@ -508,7 +517,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                                     {product?.selectedQty && <li>Quantity : {product.selectedQty}</li>}
                                                                                 </ul>
                                                                                 <div className="editBtn">
-                                                                                    <a href="#">Edit</a>
+                                                                                    <Link href={"/?edit=1"}>Edit</Link>
                                                                                 </div>
                                                                             </div>
 

@@ -5,6 +5,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 // const inter = Inter({ subsets: ["latin"] });
 import Script from "next/script";
+import { sendGraphQLQuery } from "@/utils/utils";
+import { THEME_SETTINGS } from "@/queries/graphql_queries";
 
 
 export default function CheckoutPage() {
@@ -122,14 +124,23 @@ export default function CheckoutPage() {
       src="https://checkout.razorpay.com/v1/checkout.js"
       onLoad={() => setRzpLoaded(true)}
     />
-    {/* <div style={{marginTop:150}}> */}
-    {/* <h5 onClick={handlePayment}>Click me</h5> */}
-    {/* <Script
-        src="https://checkout.razorpay.com/v1/checkout.js"
-        onLoad={() => setRzpLoaded(true)}
-      />
-    </div> */}
    </>
-     
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const data = await sendGraphQLQuery(THEME_SETTINGS);
+    return {
+      props: {
+        data
+      }
+    }
+  } catch (error) {
+    return {
+      props: {
+        error
+      }
+    }
+  }
 }

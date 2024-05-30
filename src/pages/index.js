@@ -8,7 +8,7 @@ import InsightSec from "@/components/InsightSec";
 import QuestionSec from "@/components/QuestionSec";
 import BenefitSec from "@/components/BenefitSec";
 import ReviewSec from "@/components/ReviewSec";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { sendGraphQLQuery } from "@/utils/utils";
 import { HOME_PAGE, THEME_SETTINGS } from "@/queries/graphql_queries";
 import VideoSec from "@/components/VideoSec";
@@ -17,6 +17,7 @@ import ScrollTextColor from "@/components/ScrollTextColor";
 import FeaturesSecNew from "@/components/FeaturesSecNew";
 import PowerStripSliderSec from "@/components/PowerStripSliderSec";
 import MobileTextColor from "@/components/MobileTextColor";
+import { useRouter } from "next/router";
 
 
 // const inter = Inter({ subsets: ["latin"] });
@@ -55,6 +56,39 @@ export default function Home({ data, error }) {
     )
   }
 
+  const router = useRouter();
+  const sectionRef = useRef(null);
+
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      console.log('App is changing to:', url);
+      console.log("Router ",router.query)
+
+      if(router.query?.edit && router.query?.edit == 1){
+        // sectionRef.current.scrollIntoView({ behavior: 'smooth' });
+        const section = sectionRef.current;
+        const sectionStyles = window.getComputedStyle(section);
+        const marginTop = parseInt(sectionStyles.marginTop, 10);
+        const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = sectionTop - marginTop;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }
+    };
+
+    // Subscribe to route change events
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    // Cleanup subscription on unmount
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  },[router.events])
+
   return (
     <>
       <Head>
@@ -63,7 +97,7 @@ export default function Home({ data, error }) {
       <Banner {...BannerData} />
       <ScrollTextColor {...powerStripData}/>
       <MobileTextColor/>
-      <PriceSec productData={selectProduct}/>
+      <PriceSec productData={selectProduct} sectionRef={sectionRef}/>
       <FeaturesSecNew {...featuresData}/>
       {videoUrl && <VideoSec {...videoData}/>}
       <BenefitSec {...benefitsData}/>

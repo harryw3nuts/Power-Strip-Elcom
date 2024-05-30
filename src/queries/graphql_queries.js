@@ -245,6 +245,7 @@ query THEME_SETTINGS {
                         variations {
                           nodes {
                             databaseId
+                            sku
                             name
                             price
                             regularPrice

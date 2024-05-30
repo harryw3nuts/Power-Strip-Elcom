@@ -785,7 +785,7 @@ input[type=number] {
     
     }
 
-    .loaderActive {overflow: hidden; pointer-events: none;}
+    .loaderActive {overflow: hidden;}
 
     @keyframes rotation {
     0% {

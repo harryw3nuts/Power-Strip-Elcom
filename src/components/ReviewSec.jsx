@@ -29,7 +29,7 @@ const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
         slidesToShow: 3,
         speed: 500,
         prevArrow: <ArrowLeft />,
-		nextArrow: <ArrowRight />,
+		    nextArrow: <ArrowRight />,
         responsive: [
 			{
 				breakpoint: 1399,

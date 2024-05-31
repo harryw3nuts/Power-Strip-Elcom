@@ -41,12 +41,16 @@ query THEME_SETTINGS {
         pdfInvoiceText
         pdfOrderDateText
         pdfCustomerDetailsText
-        pdfShippingText
+        pdfShippingAddressText
         pdfProductCodeText
         pdfProductNameText
         pdfColorText
         pdfQuantityText
         pdfPriceText
+        pdfSubtotalText
+        pdfShippingText
+        pdfTotalText
+        pdfThankYouText
         successImage {
           sourceUrl
         }
@@ -142,6 +146,9 @@ query THEME_SETTINGS {
                     powerStriprightText
                     featuresHeading
                     featuresImage{
+                      sourceUrl
+                    }
+                    featuresImageMobile{
                       sourceUrl
                     }
                     features1Heading

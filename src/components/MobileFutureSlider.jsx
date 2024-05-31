@@ -11,7 +11,7 @@ import vactor2 from "@/asset/images/vactor2.png";
 
 
 
-const MobileFutureSlider = () => {
+const MobileFutureSlider = ({featuresHeading,featuresImage,featuresImageMobile,features1Heading,features2Heading,features3Heading,features4Heading,features5Heading,features1Subheading,features2Subheading,features3Subheading,features4Subheading,features5Subheading}) => {
 
     const ArrowLeft = (props) => (
 		<button {...props} className="left group">
@@ -39,73 +39,73 @@ const MobileFutureSlider = () => {
         <div className="mobileSlider">
             
                 <div className="mobileGrp">
-                    <div className="mobileFuture">
+                    {featuresHeading && <div className="mobileFuture">
                         <div className="mobileTitle">
-                            <h2>Features</h2>
+                            <h2>{featuresHeading}</h2>
                         </div>
-                    </div>
+                    </div>}
                     <div className="sliderWrap">
                         <Slider {...settings}>
-                            <div className="textBoxgrp">
+                            {(features1Heading || features1Subheading || featuresImageMobile) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
-                                    <Image src={mobileImg} alt="mobileImg"></Image>
+                                    <Image src={featuresImageMobile.sourceUrl} width={274} height={525} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textOne">
-                                    <h3>Surge & Overcurrent Protection</h3>
-                                    <span>Inbuilt MOV provides surge protection</span>
+                                    {features1Heading && <h3>{features1Heading}</h3>}
+                                    {features1Subheading && <span>{features1Subheading}</span>}
                                 </div>
                                 <div className="lineBox1">
                                     <Image src={vactor1} alt="vactor1"></Image>
                                 </div>
-                            </div>
-                            <div className="textBoxgrp">
+                            </div>}
+                            {(features2Heading || features2Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textTwo">
-                                    <h3>Heavy Duty Copper Cable</h3>
-                                    <span>0.75 sq. mm Heavy-duty 1.8m copper wire</span>
+                                    {features2Heading && <h3>{features2Heading}</h3>}
+                                    {features2Subheading && <span>{features2Subheading}</span>}
                                 </div>
                                 <div className="lineBox2">
                                     <Image src={vactor1} alt="vactor1" height={550}></Image>
                                 </div>
-                            </div>
-                            <div className="textBoxgrp">
+                            </div>}
+                            {(features3Heading || features3Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textThree">
-                                    <h3>Four Universal Sockets</h3>
-                                    <span>Suitable for all 6 Ampere Plugs</span>
+                                    {features3Heading && <h3>{features3Heading}</h3>}
+                                    {features3Subheading && <span>{features3Subheading}</span>}
                                 </div>
                                 <div className="lineBox3">
                                     <Image src={vactor1} alt="vactor1" height={400}></Image>
                                 </div>
-                            </div>
-                            <div className="textBoxgrp">
+                            </div>}
+                            {(features4Heading || features4Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textfour">
-                                    <h3>Shock & Fire Resistant Material</h3>
-                                    <span>Fire Resistant V2 Grade Nylon Plastic body</span>
+                                    {features4Heading && <h3>{features4Heading}</h3>}
+                                    {features4Subheading && <span>{features4Subheading}</span>}
                                 </div>
                                 <div className="lineBox4">
                                     <Image src={vactor1} alt="vactor1" height={350}></Image>
                                 </div>
-                            </div>
-                            <div className="textBoxgrp">
+                            </div>}
+                            {(features5Heading || features5Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textFive">
-                                    <h3>Illuminated Push Button Switch</h3>
-                                    <span>Indicates power ON status</span>
+                                    {features5Heading && <h3>{features5Heading}</h3>}
+                                    {features5Subheading && <span>{features5Subheading}</span>}
                                 </div>
                                 <div className="lineBox5">
                                     <Image src={vactor1} alt="vactor1" height={450}></Image>
                                 </div>
-                            </div>
+                            </div>}
                         </Slider>
                     </div>
                 </div>

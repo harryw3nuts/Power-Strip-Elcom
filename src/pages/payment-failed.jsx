@@ -1,10 +1,29 @@
 import FailedSec from '@/components/FailPage'
+import { THEME_SETTINGS } from '@/queries/graphql_queries'
+import { sendGraphQLQuery } from '@/utils/utils'
 import React from 'react'
 
-const PaymentFail = () => {
+const PaymentFail = ({data}) => {
   return (
-    <FailedSec/>
+    <FailedSec data={data?.data?.themeGeneralSettings?.themeGeneralSettings}/>
   )
 }
 
 export default PaymentFail
+
+export async function getStaticProps() {
+  try {
+    const data = await sendGraphQLQuery(THEME_SETTINGS);
+    return {
+      props: {
+        data
+      }
+    }
+  } catch (error) {
+    return {
+      props: {
+        error
+      }
+    }
+  }
+}

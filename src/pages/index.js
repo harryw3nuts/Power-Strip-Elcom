@@ -33,7 +33,7 @@ export default function Home({ data, error }) {
     insightsHeading,insightsReadMoreLinkText,insightsAllInsightsLink,insightsInfo,
     benefitsHeading,benefitsInfo,
     faqHeading,faqInfo,selectProduct,
-    featuresHeading,featuresImage,features1Heading,features1Subheading,features2Heading,features2Subheading,features3Heading,features3Subheading,features4Heading,features4Subheading,features5Heading,features5Subheading,
+    featuresHeading,featuresImage,featuresImageMobile,features1Heading,features1Subheading,features2Heading,features2Subheading,features3Heading,features3Subheading,features4Heading,features4Subheading,features5Heading,features5Subheading,
     exploreHeading,exploreButtonInfo,exploreImagesInfo,
     videoBackgroundImage,videoUrl,videoButtonText
   } = data?.data?.pageBy?.template?.homePageFields;
@@ -48,7 +48,7 @@ export default function Home({ data, error }) {
   const benefitsData = {benefitsHeading,benefitsInfo}
   const faqData = {faqHeading,faqInfo}
   const powerStripData = {powerStripimage,powerStripleftText,powerStriprightText}
-  const featuresData = {featuresHeading,featuresImage,features1Heading,features2Heading,features3Heading,features4Heading,features5Heading,features1Subheading,features2Subheading,features3Subheading,features4Subheading,features5Subheading}
+  const featuresData = {featuresHeading,featuresImage,featuresImageMobile,features1Heading,features2Heading,features3Heading,features4Heading,features5Heading,features1Subheading,features2Subheading,features3Subheading,features4Subheading,features5Subheading}
   const exploreData = {exploreHeading,exploreButtonInfo,exploreImagesInfo}
   const videoData = {videoBackgroundImage,videoUrl,videoButtonText}
   if (error) {
@@ -99,7 +99,7 @@ export default function Home({ data, error }) {
       <ScrollTextColor {...powerStripData}/>
       <MobileTextColor/>
       <PriceSec productData={selectProduct} sectionRef={sectionRef}/>
-      <MobileFutureSlider/>
+      <MobileFutureSlider {...featuresData}/>
       <FeaturesSecNew {...featuresData}/>
       {videoUrl && <VideoSec {...videoData}/>}
       <BenefitSec {...benefitsData}/>

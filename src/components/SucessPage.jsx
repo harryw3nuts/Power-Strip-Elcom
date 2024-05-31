@@ -8,38 +8,39 @@ import { InvoiceDocument } from "./InvoiceDocument";
 
 
 
-const SucessSec = () => {
+const SucessSec = ({data}) => {
     const { orderInfo } = useContext(ThemeContext)
     const [isClient, setIsClient] = useState(false)
+    const {pdfAddressInfo,pdfColorText,pdfCustomerDetailsText,pdfGstInfo,pdfInvoiceText,pdfLogo,pdfOrderDateText,pdfPriceText,pdfProductCodeText,pdfProductNameText,pdfQuantityText,pdfShippingText,successBackHomeButtonText,successBackHomeText,successDescription,successDownloadInvoiceButtonText,successHeading,successImage} = data;
+
 
     useEffect(() => {
         setIsClient(true)
     }, [])
 
-    console.log("orderInfo : ", orderInfo)
     return (
         <>
             <div className="sucessWrap">
                 <div className="container">
                     <div className="sucessDtl">
-                        <div className="sucessImg">
-                            <Image src={sucess} alt="sucess"></Image>
-                        </div>
+                        {successImage?.sourceUrl && <div className="sucessImg">
+                            <Image src={successImage?.sourceUrl} width={405} height={236} alt="sucess"></Image>
+                        </div>}
                         <div className="sucessText">
-                            <h2>Your Payment is Successful!</h2>
-                            <p>Thank you for your payment. An automated payment receipt will be sent to your registered email.</p>
+                            {successHeading && <h2>{successHeading}</h2>}
+                            {successDescription && <p>{successDescription}.</p>}
                             <div className="btnbox">
                                 {(isClient && orderInfo) &&
-                                    <PDFDownloadLink document={<InvoiceDocument orderInfo={orderInfo} />} fileName="invoice.pdf">
-                                        {({ loading }) => (loading ? 'Loading invoice ...' : 'Download receipt')}
+                                    <PDFDownloadLink document={<InvoiceDocument orderInfo={orderInfo} data={data} />} fileName="invoice.pdf">
+                                        {({ loading }) => (loading ? 'Loading invoice ...' : (successDownloadInvoiceButtonText || 'Download receipt'))}
                                     </PDFDownloadLink>
                                 }
                                 {/* <Link href={'#'}>Download receipt</Link> */}
                             </div>
                         </div>
-                        <div className="backHome">
-                            <p>Page while be automatically redirected to the main page or click button <Link href={'/'}>Back home</Link></p>
-                        </div>
+                        {(successBackHomeText || successBackHomeButtonText) && <div className="backHome">
+                            <p>{successBackHomeText} <Link href={'/'}>{successBackHomeButtonText || "Back home"}</Link></p>
+                        </div>}
                     </div>
                 </div>
             </div>

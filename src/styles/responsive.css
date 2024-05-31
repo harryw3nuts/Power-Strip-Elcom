@@ -8,7 +8,7 @@
 
 @media (min-width: 1900px) {
     .features-sec .title { top: 140px; }
-    .feture_text_box-1 { top: 48%; left: 31.5%; }
+    .feture_text_box-1 { top: 50%; left: 29.5%; }
     .feture_text_box-2 { top: 64%; left: 23%; }
     .feture_text_box-3 { top: 48%; right: 13%; }
     .feture_text_box-4 { top: 62%; right: 16%; }
@@ -21,7 +21,7 @@
     /* .trailerText { justify-content: center; padding: 0 30px; width: 100%;} */
     /* .trailorSec { width: 33.33%;} */
     /* .trailerText > * { width: 33.33%;} */
-    .videoGrp .videoPlayer .videoWrapper .blueBtn { margin-left: 526px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn { padding: 0 450px;}
     .timerSec { display: flex; justify-content: flex-end; }
     /* .timerSec { width: 33.33%;}  */
 }
@@ -30,7 +30,10 @@
 
     .navigationBar .navWrap .container {max-width: 1408px;}
     .brackerwrap .brackerright {right: -80px;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {margin: 0 447px 0 300px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 350px;}
+    .trailerText { padding: 0 30px;}
+    .trailerText > * {flex-grow: 1; flex-basis: 0; width: 33.33%; } 
+    .timerSec { display: flex; justify-content: flex-end; }
  }
 
 @media (min-width: 1300px) and (max-width: 1399px) { 
@@ -38,7 +41,8 @@
     .brackerwrap .brackerleft {left: -160px;}
     .brackerwrap .brackerright {right: -160px;}
     .videoGrp .container {width: 100%;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {margin: 0 447px 0 220px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 330px;}
+    .timerSec {display: flex; justify-content: flex-end;}
     .feture_text_box-1 {left: 23.5%;}
     .feture_text_box-2 {left: 16.4%;}
     .feture_text_box-2 .line {right: 30px;}
@@ -56,7 +60,8 @@
     .thumbBox {justify-content: flex-start;}
     .videoGrp .container{width: 100%;}
     .trailerText {padding: 0 15px;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {margin-left: 185px; margin-right: 395px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 295px;}
+    .timerSec {display: flex; justify-content: flex-end;}
     .powerstripslider {padding-left: 0;}
     .powerstrip-slidersec-main {padding: 0 10px;}
     .brackerwrap .brackerleft {left: -160px;}
@@ -79,7 +84,7 @@
     .brackerwrap .brackerright img {height: 100%;}
     .productDetail > ul > li .value {font-size: 20px;}
     .videoGrp .container {width: 100%;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {margin: 0 254px 0 98px;}
+    
     .benefitsecBox .row {row-gap: 40px;}
     .powerstrip-slidersec-main .row {justify-content: space-evenly !important;}
     .powerstripslider-mainbox .powerstrips-slide img { width: 100%;}
@@ -100,13 +105,16 @@
     .zoomer .textwrapout.text .clipper h2.heading2 {font-size: 140px;}
     .feture_text_box-1 .line {right: 106px;}
     .feture_text_box-1 {top: 48%;}
-    .feture_text_box-2 {left: 11.4%; top: 58%;}
+    .feture_text_box-2 {left: 5.4%; top: 58%;}
     .feture_text_box-2 .line {right: 30px;}
     .feture_text_box-3 {top: 61%; right: 0;}
     .feture_text_box-4 {top: 69%; right: 0;}
-    .feture_text_box-5 {top: 77%; right: 18%;}
+    .feture_text_box-5 {top: 77%; right: 22%;}
     .buyNow .buybtn {padding: 0 90px;}
     .proceedBtn button {padding: 0 100px;}
+    .productDetail > ul > li {padding: 12px 20px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 158px;}
+    .timerSec {justify-content: flex-end; display: flex;}
  
 }
 
@@ -147,7 +155,7 @@
     .benefitsecBox .row {row-gap: 40px;}
     .stripWrap {margin: 80px 0;}
     .powerstrip-slidersec-main .row {justify-content: space-evenly !important;}
-    .powerstripslider {padding-left: 80px;}
+    .powerstripslider {padding-left: 0;}
     .powerstripslider-mainbox {height: 250px;}
     .powerstripslider-uitis {margin-left: 30px;}
     .reviewBox {padding-top: 80px; padding-bottom: 80px;}
@@ -177,6 +185,7 @@
     .feture_text_box-2 .line {right: 93px; top: 45px;}
     .features-sec .title h2 {font-size: 120px;}
     .proceedBtn button {padding: 0 100px;}
+    .productDetail > ul > li {padding: 8px;}
     
 }
 
@@ -209,6 +218,7 @@
     .priceImg {margin: 80px 0;}
     .productDetail > ul {flex-direction: column;}
     .productDetail > ul > li:not(:first-child) {border-top: 1px solid #d6d6d6;}
+    .productDetail > ul > li:not(:first-child) {border-left: none;}
     .productDetail > ul > li:first-child{padding-top: 0;}
     .productDetail > ul > li{padding: 20px 0;}
     .productDetail {margin-top: 40px;}
@@ -233,14 +243,14 @@
     .powerstripslider-mainbox .powerstrips-slide.client-2 {transform: translate(20px, 20px);}
     .powerstripslider-mainbox .powerstrips-slide.active {transform: translate(40px, 40px);}
     .powerstripslider-uitis {padding-top: 55px; margin-left: 0;}
-    .powerstrip-slidersec-main {padding: 0 16px; margin: 0; border-radius: 0; height: 100%; padding: 80px 16px;}
-    .powerstrip-slidersec-main .row {row-gap: 40px;}
+    .powerstrip-slidersec-main { margin: 0; border-radius: 0; height: 100%; padding: 80px 16px;}
+    .powerstrip-slidersec-main .row {row-gap: 40px; width: auto;}
     .stripHead h3 {font-size: 32px; margin: 0; line-height: 40px;}
     .reviewBox {padding: 80px 0 160px;}
     .reviewBox .reviewSlider {margin-top: -25px;}
     .insightWrap {margin: 80px 0;}
     .insightWrap .insightSec .insightHead h3 {font-size: 32px; margin: 0;}
-    .insightWrap .boxImage {min-height: 100%;}
+    .insightWrap .boxImage {height: 278px;}
     .insightWrap .insightSec .insightBox .boxText {padding: 24px 20px;}
     .insightWrap .insightSec .insightBox .boxText h5 {font-size: 18px; line-height: 26px; margin-bottom: 24px;}
     .insightWrap .insightSec .row {row-gap: 40px;}
@@ -255,14 +265,14 @@
     .slick-dots {left: 10px;}
     .reviewSlider .left.group {right: 25%;}
     .stripImg .stripBox img {height: 100%;}
-    .stripImg .stripBox {min-height: 162px;}
+    .stripImg .stripBox {min-height: 163px; height: 100%;}
     .stripImg .stripText span {font-size: 18px;}
     .priceWrapper .row .col-md-2{order: 2;} 
     .priceWrapper .row .col-md-10{order: 1;}
     .priceWrapper .row .col-md-12{order: 3;}
     .pricefullImg {height: 100%; min-height: 100%; }
     .swiper-slide {border-radius: 8px;}    
-    .swiper-free-mode > .swiper-wrapper {flex-direction: row; margin: 0 !important;} 
+    .swiper-free-mode > .swiper-wrapper {flex-direction: row; margin: 0 !important; } 
     .thumbBox {width: 70px; height: 70px; border-radius: 8px;}
     .priceSwiper {margin-top: 17px;}
     .switer_btn {display: none;}
@@ -270,12 +280,13 @@
     .titleBox .orderInner .orderBox {flex-direction: column;}
     .proceedBtn button {padding: 0 100px;}
     .swiper-free-mode > .swiper-wrapper .swiper-slide img {width: 70px;}
-    .mySwiper .swiper-slide {width: 75% !important; margin-right: 5px !important;}
+    .mySwiper .swiper-slide {width: 75% !important; margin-right: 0 !important;}
     .footerNav .footerBar .footerSec {flex-wrap: wrap; justify-content: center; align-items: center; padding: 15px 20px;}
     .footerBar .footerSec .socialLink {order: 1; width: 100%; justify-content: center; align-items: center; display: flex; margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid #343434;}
     .footerBar .footerSec .nameSec {order: 2; margin-right: 42px;}
     .footerBar .footerSec .webLink {order: 3; margin-left: 42px;}
     .mobileSlider {display: block;}
+    .priceImg .priceWrapper .row .col-xl-1 {padding: 0 15px;}
 
     .mobileSlider {background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%); padding-top: 80px; overflow: hidden;}
     .mobileSlider .mobileFuture {position: relative; }
@@ -322,6 +333,11 @@
     .mobileSlider .slick-dots li button:before {width: 10px; height: 10px; content: ''; background-color: #343434; border-radius: 50px;}
     .mobileSlider .slick-dots li {width: 8px; height: 8px;}
     .mobileSlider .slick-dots li.slick-active button:before{opacity: 1;}
+    .insightWrap .boxImage img {border-radius: 8px;}
+    .colorQun .textBlog {font-size: 12px;}
+    .colorQun .colorSec .textBlog {font-size: 12px; margin-bottom: 25px;}
+    .qunSec .textBlog {margin-bottom: 18px;}
+    .powerstrip-slider-text h3 br {display: none;}
     
     
     

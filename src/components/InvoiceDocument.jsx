@@ -6,7 +6,7 @@ import { ThemeContext } from '@/context/ThemeContext';
 import { IndiaStatesList, formatDate } from '@/utils/utils';
 
 export const InvoiceDocument = ({ orderInfo, data }) => {
-  console.log("data ; :: ", data);
+  // console.log("data ; :: ", data);
   const { pdfAddressInfo, pdfColorText, pdfCustomerDetailsText, pdfGstInfo, pdfInvoiceText, pdfLogo, pdfOrderDateText, pdfPriceText, pdfProductCodeText, pdfProductNameText, pdfQuantityText, pdfShippingAddressText, pdfSubtotalText, pdfShippingText, pdfTotalText, pdfThankYouText } = data;
   Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
 
@@ -192,22 +192,22 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
   const rs = "₹";
 
 
-  const order = {
-    id: '123456789',
-    date: '24 December 2022',
-    customerName: 'Mihir Vaze',
-    customerEmail: 'customer@gmail.com',
-    customerPhone: '+91 9876543210',
-    shippingAddress: 'Shop Address Line 2\nState, Country',
-    items: [
-      { code: '99920KISH', name: 'Elcom Power Strip', link: 'http://example.com', color: 'White', quantity: 1, price: '₹200' },
-    ],
-    subtotal: '₹600',
-    cgst: '₹50',
-    sgst: '₹50',
-    shipping: '₹50',
-    total: '₹750',
-  };
+  // const order = {
+  //   id: '123456789',
+  //   date: '24 December 2022',
+  //   customerName: 'Mihir Vaze',
+  //   customerEmail: 'customer@gmail.com',
+  //   customerPhone: '+91 9876543210',
+  //   shippingAddress: 'Shop Address Line 2\nState, Country',
+  //   items: [
+  //     { code: '99920KISH', name: 'Elcom Power Strip', link: 'http://example.com', color: 'White', quantity: 1, price: '₹200' },
+  //   ],
+  //   subtotal: '₹600',
+  //   cgst: '₹50',
+  //   sgst: '₹50',
+  //   shipping: '₹50',
+  //   total: '₹750',
+  // };
 
 
   let address = '';

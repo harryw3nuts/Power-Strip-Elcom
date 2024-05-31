@@ -4,7 +4,7 @@ import { sendGraphQLQuery } from '@/utils/utils'
 import React from 'react'
 
 const PaymentSuccessful = ({data}) => {
-  console.log("data : ",data.data.themeGeneralSettings.themeGeneralSettings)
+  // console.log("data : ",data.data.themeGeneralSettings.themeGeneralSettings)
   return (
     <SucessSec data={data?.data?.themeGeneralSettings?.themeGeneralSettings}/>
   )

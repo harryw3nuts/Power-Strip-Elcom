@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, Image, Link ,Font} from '@react-pdf/renderer'
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, Image, Link, Font } from '@react-pdf/renderer'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 import { IndiaStatesList, formatDate } from '@/utils/utils';
 
-export const InvoiceDocument = ({orderInfo,data}) => {
-  console.log("data ; :: ",data);
-  const {pdfAddressInfo,pdfColorText,pdfCustomerDetailsText,pdfGstInfo,pdfInvoiceText,pdfLogo,pdfOrderDateText,pdfPriceText,pdfProductCodeText,pdfProductNameText,pdfQuantityText,pdfShippingAddressText,pdfSubtotalText,pdfShippingText,pdfTotalText,pdfThankYouText} = data; 
-Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
+export const InvoiceDocument = ({ orderInfo, data }) => {
+  console.log("data ; :: ", data);
+  const { pdfAddressInfo, pdfColorText, pdfCustomerDetailsText, pdfGstInfo, pdfInvoiceText, pdfLogo, pdfOrderDateText, pdfPriceText, pdfProductCodeText, pdfProductNameText, pdfQuantityText, pdfShippingAddressText, pdfSubtotalText, pdfShippingText, pdfTotalText, pdfThankYouText } = data;
+  Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
 
   const styles = StyleSheet.create({
     page: {
@@ -185,7 +185,7 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
 
     rsLabel: {
       fontSize: 10,
-      fontFamily:'Roboto'
+      fontFamily: 'Roboto'
     }
   });
 
@@ -226,10 +226,10 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
       address += `- ${postcode}`;
     }
     if (state != '') {
-      const foundState = IndiaStatesList.filter((item,index) => item.id == state )
-      if(foundState.length > 0){
+      const foundState = IndiaStatesList.filter((item, index) => item.id == state)
+      if (foundState.length > 0) {
         address += `, ${foundState[0].name}`;
-      }else{
+      } else {
         address += `, ${state}`;
       }
     }
@@ -238,16 +238,17 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
     }
   }
 
-  console.log('pdfAddressInfo',data.pdfAddressInfo);
+  console.log('pdfAddressInfo', data.pdfAddressInfo);
   // return "ok"
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Image style={styles.logo} src={pdfLogo?.pdfLogo} />
+          {/* <Image style={styles.logo} src={"https://multiatesting.in/elcom-powerstrip/wp-content/uploads/2024/05/Logo.png"} /> */}
+          <Image style={styles.logo} src={"/Logo.png"} />
           <View style={styles.companyDetails}>
             {pdfAddressInfo && <Text>{pdfAddressInfo}</Text>}
-              {/* <Text>20, Prabhadevi Industrial Estate 408,</Text>
+            {/* <Text>20, Prabhadevi Industrial Estate 408,</Text>
               <Text>Veer Savarkar Marg, Prabhadevi,</Text>
               <Text>Mumbai, Maharashtra 400 025, India</Text> */}
             {pdfGstInfo && <Text style={styles.gst}>{pdfGstInfo}</Text>}
@@ -291,11 +292,11 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
         </View>
         <View style={styles.totalRow}>
           <View style={styles.comRow}>
-            <Text style={styles.totalLabel}>{pdfSubtotalText ||  "Subtotal:"}</Text>
+            <Text style={styles.totalLabel}>{pdfSubtotalText || "Subtotal:"}</Text>
             <Text style={styles.rsLabel}>{rs}{(orderInfo?.total - (orderInfo?.total_tax || 0)).toFixed(2)}</Text>
           </View>
           {orderInfo?.tax_lines?.length > 0 &&
-            orderInfo?.tax_lines?.map((tax,index) => {
+            orderInfo?.tax_lines?.map((tax, index) => {
               return (
                 <View style={styles.comRow} key={index}>
                   <Text style={styles.totalLabel}>{tax.label}:</Text>

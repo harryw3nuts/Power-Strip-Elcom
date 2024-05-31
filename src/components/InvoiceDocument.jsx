@@ -1,13 +1,14 @@
 import React, { useContext } from 'react'
-import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, Image, Link ,Font} from '@react-pdf/renderer'
+import { Page, Text, View, Document, StyleSheet, PDFDownloadLink, Image, Link, Font } from '@react-pdf/renderer'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 import { IndiaStatesList, formatDate } from '@/utils/utils';
 
-export const InvoiceDocument = ({orderInfo}) => {
-
-Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
+export const InvoiceDocument = ({ orderInfo, data }) => {
+  console.log("data ; :: ", data);
+  const { pdfAddressInfo, pdfColorText, pdfCustomerDetailsText, pdfGstInfo, pdfInvoiceText, pdfLogo, pdfOrderDateText, pdfPriceText, pdfProductCodeText, pdfProductNameText, pdfQuantityText, pdfShippingAddressText, pdfSubtotalText, pdfShippingText, pdfTotalText, pdfThankYouText } = data;
+  Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
 
   const styles = StyleSheet.create({
     page: {
@@ -184,7 +185,7 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
 
     rsLabel: {
       fontSize: 10,
-      fontFamily:'Roboto'
+      fontFamily: 'Roboto'
     }
   });
 
@@ -225,10 +226,10 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
       address += `- ${postcode}`;
     }
     if (state != '') {
-      const foundState = IndiaStatesList.filter((item,index) => item.id == state )
-      if(foundState.length > 0){
+      const foundState = IndiaStatesList.filter((item, index) => item.id == state)
+      if (foundState.length > 0) {
         address += `, ${foundState[0].name}`;
-      }else{
+      } else {
         address += `, ${state}`;
       }
     }
@@ -237,26 +238,29 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
     }
   }
 
-
+  console.log('pdfAddressInfo', data.pdfAddressInfo);
+  // return "ok"
   return (
     <Document>
       <Page size="A4" style={styles.page}>
         <View style={styles.header}>
-          <Image style={styles.logo} src="/Logo.png" />
+          {/* <Image style={styles.logo} src={"https://multiatesting.in/elcom-powerstrip/wp-content/uploads/2024/05/Logo.png"} /> */}
+          <Image style={styles.logo} src={"/Logo.png"} />
           <View style={styles.companyDetails}>
-            <Text>20, Prabhadevi Industrial Estate 408,</Text>
-            <Text>Veer Savarkar Marg, Prabhadevi,</Text>
-            <Text>Mumbai, Maharashtra 400 025, India</Text>
-            <Text style={styles.gst}>GST No: XXXXXXXXXXXXXXXXXX</Text>
+            {pdfAddressInfo && <Text>{pdfAddressInfo}</Text>}
+            {/* <Text>20, Prabhadevi Industrial Estate 408,</Text>
+              <Text>Veer Savarkar Marg, Prabhadevi,</Text>
+              <Text>Mumbai, Maharashtra 400 025, India</Text> */}
+            {pdfGstInfo && <Text style={styles.gst}>{pdfGstInfo}</Text>}
           </View>
         </View>
         <View style={styles.second}>
-          <Text style={styles.title}>Invoice: #{orderInfo?.id}</Text>
-          <Text style={styles.smallTitle}>Order Date: {formatDate(orderInfo.date_modified)}</Text>
+          <Text style={styles.title}>{pdfInvoiceText || "Invoice: "} #{orderInfo?.id}</Text>
+          <Text style={styles.smallTitle}>{pdfOrderDateText || "Order Date:"} {formatDate(orderInfo.date_modified)}</Text>
         </View>
         <View style={styles.sectionTwo}>
           <View style={styles.custDtl}>
-            <Text style={styles.sectionTitle}>Customer Details</Text>
+            <Text style={styles.sectionTitle}>{pdfCustomerDetailsText || "Customer Details"}</Text>
           </View>
           <View style={styles.infoRow}>
             <Text style={styles.briefDtl}>Name: {orderInfo?.billing?.first_name} {orderInfo?.billing?.last_name}</Text>
@@ -265,16 +269,16 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
           </View>
         </View>
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Shipping Address</Text>
+          <Text style={styles.sectionTitle}>{pdfShippingAddressText && "Shipping Address"}</Text>
           <Text style={styles.shipAdd}>{address}</Text>
         </View>
         <View style={styles.table}>
           <View style={styles.tableHeader}>
-            <Text style={styles.tableCell}>Product Code</Text>
-            <Text style={styles.tableCell}>Product Name</Text>
-            <Text style={styles.tableCell}>Color</Text>
-            <Text style={styles.tableCell}>Quantity</Text>
-            <Text style={styles.tableCell}>Price</Text>
+            <Text style={styles.tableCell}>{pdfProductCodeText || "Product Code"}</Text>
+            <Text style={styles.tableCell}>{pdfProductNameText || "Product Name"}</Text>
+            <Text style={styles.tableCell}>{pdfColorText || "Color"}</Text>
+            <Text style={styles.tableCell}>{pdfQuantityText || "Quantity"}</Text>
+            <Text style={styles.tableCell}>{pdfPriceText || "Price"}</Text>
           </View>
           {orderInfo.line_items.map((item, index) => (
             <View style={styles.tableRow} key={index}>
@@ -288,11 +292,11 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
         </View>
         <View style={styles.totalRow}>
           <View style={styles.comRow}>
-            <Text style={styles.totalLabel}>Subtotal:</Text>
+            <Text style={styles.totalLabel}>{pdfSubtotalText || "Subtotal:"}</Text>
             <Text style={styles.rsLabel}>{rs}{(orderInfo?.total - (orderInfo?.total_tax || 0)).toFixed(2)}</Text>
           </View>
           {orderInfo?.tax_lines?.length > 0 &&
-            orderInfo?.tax_lines?.map((tax,index) => {
+            orderInfo?.tax_lines?.map((tax, index) => {
               return (
                 <View style={styles.comRow} key={index}>
                   <Text style={styles.totalLabel}>{tax.label}:</Text>
@@ -302,17 +306,17 @@ Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
             })
           }
           <View style={styles.lastSec}>
-            <Text style={styles.totalLabel}>Shipping:</Text>
+            <Text style={styles.totalLabel}>{pdfShippingText || "Shipping:"}</Text>
             <Text style={styles.rsLabel}>{rs}{0}</Text>
           </View>
           <View style={styles.lastRow}>
-            <Text style={styles.totalLabel}>Total:</Text>
+            <Text style={styles.totalLabel}>{pdfTotalText || "Total:"}</Text>
             <Text style={styles.rsLabel}>{rs}{orderInfo?.total}</Text>
           </View>
         </View>
-        <View style={styles.footer}>
-          <Text>Thank you for your purchase!</Text>
-        </View>
+        {pdfThankYouText || <View style={styles.footer}>
+          <Text>{pdfThankYouText}</Text>
+        </View>}
       </Page>
     </Document>
   )

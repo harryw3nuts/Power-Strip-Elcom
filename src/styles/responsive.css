@@ -15,7 +15,15 @@
     .feture_text_box-5 { top: 77%; right: 21%; }
 
     .feture_text_box-2 .line { right: -20px; }
-    .videoGrp .container{max-width: 1920px; margin: 0 auto;} 
+    .videoGrp .container{max-width: 1920px; margin: 0 auto; width: 100%;} 
+    .trailerText { padding: 0 30px;}
+    .trailerText > * {flex-grow: 1; flex-basis: 0; width: 33.33%; }
+    /* .trailerText { justify-content: center; padding: 0 30px; width: 100%;} */
+    /* .trailorSec { width: 33.33%;} */
+    /* .trailerText > * { width: 33.33%;} */
+    .videoGrp .videoPlayer .videoWrapper .blueBtn { margin-left: 526px;}
+    .timerSec { display: flex; justify-content: flex-end; }
+    /* .timerSec { width: 33.33%;}  */
 }
 
 @media (min-width: 1400px) and (max-width: 1440px) {

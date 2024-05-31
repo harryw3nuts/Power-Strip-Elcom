@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { ThemeProvider } from '@/context/ThemeContext';
 import { useEffect } from 'react';
+import NextNProgress from 'nextjs-progressbar';
 
 export default function App({ Component, pageProps }) {
   const themeSettings = pageProps?.data?.data?.themeGeneralSettings?.themeGeneralSettings;
@@ -42,11 +43,14 @@ export default function App({ Component, pageProps }) {
   //   })();
   // },[])
   return (
-    <ThemeProvider>
-      <Header {...headerData}/>
-      <Component {...pageProps} />
-      <Footer {...footerData}/>
-    </ThemeProvider>
+    <>
+      <ThemeProvider>
+        <NextNProgress color='#0071E3' height={6}/>
+        <Header {...headerData} />
+        <Component {...pageProps} />
+        <Footer {...footerData} />
+      </ThemeProvider>
+    </>
   )
     ;
 }

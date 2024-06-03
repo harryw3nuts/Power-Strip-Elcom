@@ -173,7 +173,7 @@ const ScrollTextColor = ({powerStripimage,powerStripleftText,powerStriprightText
         <div className="zoomer-wrap" id="aboutSec">
             <div className="zoomer" ref={pinRef}>
                 <div className="btnbox">
-                    <a href="#" className="border-btn">view details</a>
+                    <a href="#" className="border-btn">View Details</a>
                 </div>
                 <div className="text textwrapout">
                     <div className="clipper" ref={textClipperRef}>

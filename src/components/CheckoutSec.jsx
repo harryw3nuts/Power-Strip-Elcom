@@ -17,7 +17,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
     const router = useRouter();
     const context = useContext(ThemeContext);
     const { products, setProducts,setOrderInfo } = context;
-    console.log("products", products)
+    // console.log("products", products)
     // console.log("rzpLoaded", rzpLoaded)
     const [values, setValues] = useState();
     const [isLoading, setIsLoading] = useState(false);
@@ -42,7 +42,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
     useEffect(() => {
         if (products.length > 0) {
             const total = products.reduce((prev, product, index) => {
-                console.log("Product + ", product)
+                // console.log("Product + ", product)
                 let productPrice = rupeeStringToNumber(product.price);
                 let productQty = product?.selectedQty || 1;
                 let currentProductTotal = productPrice * productQty;
@@ -116,7 +116,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                 .then(response => {
                     console.log('Woocommerce Order created successfully:', response.data);
                     const orderData = response.data;
-                    console.log(orderData.id);
+                    // console.log(orderData.id);
                     razorPayHandler(orderData)
                 })
                 .catch(error => {
@@ -127,6 +127,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                         confirmButtonText: 'Ok'
                     })
                     console.error('Error creating Woocommerce order:', error.response.data);
+                    setIsLoading(false);
                 });
         }
 
@@ -161,7 +162,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                 razorPayOrderID = order.id;
 
                 // Use the order object returned by the API for payment initiation
-                console.log('Razor pay Order created:', order);
+                // console.log('Razor pay Order created:', order);
                 if (window && window.Razorpay && rzpLoaded) {
                     const rzp = new window.Razorpay({
                         key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
@@ -171,8 +172,8 @@ const CheckoutSec = ({ rzpLoaded }) => {
                         // description: 'Payment for Product/Service',
                         order_id: order.id,
                         handler: function (response) {
-                            console.log("order : L LL L ", order);
-                            console.log(response);
+                            // console.log("order : L LL L ", order);
+                            // console.log(response);
                             const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = response;
 
                             /* updaing woocommer order and add razorpay meta data to it and 
@@ -197,7 +198,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
 
                             api.put(`orders/${orderId}`, updateOrderData)
                                 .then(response => {
-                                    console.log('updateOrderData Success:', response.data);
+                                    // console.log('updateOrderData Success:', response.data);
                                     setIsLoading(false);
                                     context.setOrderInfo(response.data)
                                     router.push('/payment-successful')
@@ -226,14 +227,14 @@ const CheckoutSec = ({ rzpLoaded }) => {
                         },
                         modal: {
                             ondismiss: async function (dismissdata) {
-                                console.log("Checkout form closed", dismissdata);
+                                // console.log("Checkout form closed", dismissdata);
                                 // Handle the close event here
 
                                 //updating woocommerce order and make state pendingpayment to failed
                                 const updateOrderData = { status: "failed", }
                                 api.put(`orders/${orderId}`, updateOrderData)
                                     .then(response => {
-                                        console.log('update order failed Success:', response.data);
+                                        // console.log('update order failed Success:', response.data);
                                         setIsLoading(false);
                                         // setProducts([])
                                         // router.push('/payment-failed')
@@ -339,7 +340,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                 return errors;
                             }}
                             onSubmit={(values, { setSubmitting }) => {
-                                console.log("values : ", values)
+                                // console.log("values : ", values)
                                 let fullName = values.name;
                                 let fullNameArr = fullName.trim().split(" ");
                                 let firstName = '';
@@ -517,7 +518,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                                     {product?.selectedQty && <li>Quantity : {product.selectedQty}</li>}
                                                                                 </ul>
                                                                                 <div className="editBtn">
-                                                                                    <Link href={"/?edit=1"}>Edit</Link>
+                                                                                    <Link href={`/?edit=1`}>Edit</Link>
                                                                                 </div>
                                                                             </div>
 

@@ -101,7 +101,7 @@ const VideoSec = ({videoBackgroundImage,videoUrl:videoUrlData,videoButtonText}) 
                                         <p>{videoDetails?.title}</p>
                                     </div>}
                                     <div className="blueBtn">
-                                        <Link href="/" onClick={(e) => { e.preventDefault(); setVideoUrl(updatedURL); console.log(updatedURL); setShowVideo(true) }}>{videoButtonText ? videoButtonText:  "watch video"}</Link>
+                                        <Link href="/" onClick={(e) => { e.preventDefault(); setVideoUrl(updatedURL); setShowVideo(true) }}>{videoButtonText ? videoButtonText:  "watch video"}</Link>
                                     </div>
                                     {videoDetails?.duration && <div className="timerSec">
                                         <span>{videoDetails?.duration}</span>

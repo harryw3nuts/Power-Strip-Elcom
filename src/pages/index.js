@@ -23,8 +23,8 @@ export default function Home({ data, error }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      console.log('App is changing to:', url);
-      console.log("Router ", router.query);
+      // console.log('App is changing to:', url);
+      // console.log("Router ", router.query);
 
       if (router.query?.edit && router.query?.edit == 1) {
         const section = sectionRef.current;

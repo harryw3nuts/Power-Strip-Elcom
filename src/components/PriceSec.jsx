@@ -28,12 +28,13 @@ import { useContext } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 
 const PriceSec = ({ productData, sectionRef }) => {
-    console.log("productData : ", productData)
+    // console.log("productData : ", productData)
     const { productExtraOptions, galleryImages, featuredImage } = productData;
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
     const [isBeginning, setIsBeginning] = useState(true);
     const [isEnd, setIsEnd] = useState(false);
+    const [defaultSelectedColor, setDefaultSelectedColor] = useState("white");
 
     const swiperRef = useRef();
     const radioRefs = useRef([]);
@@ -42,6 +43,7 @@ const PriceSec = ({ productData, sectionRef }) => {
     const router = useRouter();
     const { products, setProductsHandler } = useContext(ThemeContext);
     const defaultSelected = 'white';
+
 
     let [num, setNum] = useState(1);
     let incNum = () => {
@@ -89,7 +91,7 @@ const PriceSec = ({ productData, sectionRef }) => {
     const buyNowHandler = () => {
         const matchingVariation = getMatchingVariation();
 
-        console.log("matchingVariation : ", matchingVariation);
+        // console.log("matchingVariation : ", matchingVariation);
         if (matchingVariation == undefined && num <= 0) {
             Swal.fire({
                 title: 'Attributes and Quantity is required!',
@@ -124,10 +126,26 @@ const PriceSec = ({ productData, sectionRef }) => {
 
     useEffect(() => {
         // Programmatically click the chosen radio button (e.g., the one at index `defaultSelected`)
-        if (radioRefs.current[defaultSelected]) {
-          radioRefs.current[defaultSelected].click();
+        if (radioRefs.current[defaultSelectedColor]) {
+            radioRefs.current[defaultSelectedColor].click();
         }
-      }, [defaultSelected]);
+    }, [defaultSelectedColor]);
+
+    //if user click on edit button on checkout page then selected value will be default set
+    useEffect(() => {
+        if (products && products.length > 0) {
+            let selectedQTY = products[0].selectedQty
+            let selectedColor = "";
+            products[0].attributes.nodes.map((att, index) => {
+                if (att.name == "pa_color") {
+                    selectedColor = att.value
+                }
+            })
+            setDefaultSelectedColor(selectedColor);
+            setNum(selectedQTY);
+        }
+    }, [])
+
 
     // const [readMore , setReadMore] = useState(false);
     const longText = "Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. ";
@@ -233,9 +251,9 @@ const PriceSec = ({ productData, sectionRef }) => {
                                                             {optionsWithFields?.map(option => {
                                                                 return (
                                                                     <div className='difBtn' key={option.value}>
-                                                                        <label for={option.slug}>
-                                                                            <input type="radio" id={option.slug} name={name} onChange={(e) => handleAttributeChange(name, e.target.value)} value={option.slug} 
-                                                                             ref={(el) => (radioRefs.current[option.slug] = el)}
+                                                                        <label htmlFor={option.slug}>
+                                                                            <input type="radio" id={option.slug} name={name} onChange={(e) => handleAttributeChange(name, e.target.value)} value={option.slug}
+                                                                                ref={(el) => (radioRefs.current[option.slug] = el)}
                                                                             />
                                                                             <span style={{
                                                                                 background: option

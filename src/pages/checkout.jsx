@@ -11,7 +11,7 @@ import { THEME_SETTINGS } from "@/queries/graphql_queries";
 
 export default function CheckoutPage() {
   const [rzpLoaded, setRzpLoaded] = useState(false);
-  console.log(rzpLoaded)
+  // console.log(rzpLoaded)
   const handlePayment = async () => {
     try {
       const response = await fetch('/api/createOrder', {
@@ -30,7 +30,7 @@ export default function CheckoutPage() {
       const { order } = data;
   
       // Use the order object returned by the API for payment initiation
-      console.log('Order created:', order);
+      // console.log('Order created:', order);
 
       if (window && window.Razorpay && rzpLoaded) {
         const rzp = new window.Razorpay({
@@ -41,7 +41,7 @@ export default function CheckoutPage() {
           description: 'Payment for Product/Service',
           order_id: order.id,
           handler: function (response) {
-            console.log(response);
+            // console.log(response);
             // Handle successful payment response
           },
           prefill: {

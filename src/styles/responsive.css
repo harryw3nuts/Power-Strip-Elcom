@@ -79,7 +79,7 @@
  
 @media (min-width: 992px) and (max-width: 1199px) {
  
-    .navigationBar .navWrap .navInner > ul > li a {padding: 0;}
+    
     .brackerwrap .brackerleft img {height: 100%;}
     .brackerwrap .brackerright img {height: 100%;}
     .productDetail > ul > li .value {font-size: 20px;}
@@ -115,6 +115,7 @@
     .productDetail > ul > li {padding: 12px 20px;}
     .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 158px;}
     .timerSec {justify-content: flex-end; display: flex;}
+    .navigationBar .navWrap .navInner > ul > li:not(:last-child){margin-right: 5px;}
  
 }
 

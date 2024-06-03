@@ -174,7 +174,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
       width: '30%',
       paddingTop: 8,
       paddingBottom: 8,
-      marginTop: 10,
+
     },
     lastSec: {
       display: 'flex',
@@ -188,8 +188,10 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
 
     rsLabel: {
       fontSize: 10,
+      fontWeight: 'normal',
       fontFamily: 'Roboto',
-      fontWeight:'bold'
+      
+      
     },
 
     rsvLabel:{
@@ -206,6 +208,14 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
     subName:{
       fontSize:10,
       color:"#4963A0"
+    },
+    productName:{
+      width:'20%',
+      color:'#0071E3',
+      fontSize: 10,
+      paddingLeft:10,
+      paddingRight:10,
+      textAlign:'center'
     }
   });
 
@@ -312,7 +322,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
           {orderInfo.line_items.map((item, index) => (
             <View style={styles.tableRow} key={index}>
               <Text style={styles.tableCell}>{item?.sku ? item?.sku : '-'}</Text>
-              <Text style={styles.tableCell}>{item?.name}</Text>
+              <Text style={styles.productName}>{item?.name}</Text>
               <Text style={styles.tableCell}>{item?.meta_data[0]?.display_value}</Text>
               <Text style={styles.tableCell}>{item?.quantity}</Text>
               <Text style={styles.rsvLabel}>{rs}{item?.subtotal}</Text>

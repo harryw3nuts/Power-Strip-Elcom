@@ -8,7 +8,7 @@ import { IndiaStatesList, formatDate } from '@/utils/utils';
 export const InvoiceDocument = ({ orderInfo, data }) => {
   // console.log("data ; :: ", data);
   const { pdfAddressInfo, pdfColorText, pdfCustomerDetailsText, pdfGstInfo, pdfInvoiceText, pdfLogo, pdfOrderDateText, pdfPriceText, pdfProductCodeText, pdfProductNameText, pdfQuantityText, pdfShippingAddressText, pdfSubtotalText, pdfShippingText, pdfTotalText, pdfThankYouText } = data;
-  Font.register({ family: 'Roboto', src: '/Roboto-Medium.ttf' });
+  Font.register({ family: 'Roboto', src: '/Roboto-Bold.ttf' });
 
   const styles = StyleSheet.create({
     page: {
@@ -99,7 +99,6 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
       width: '100%',
 
     },
-
     tableCell: {
       width: '20%',
       paddingLeft: '10px',
@@ -116,6 +115,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
     },
     totalLabel: {
       textAlign: 'right',
+      fontFamily:'Roboto',
       fontWeight: 'bold',
       fontSize: 10,
     },
@@ -189,7 +189,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
     rsLabel: {
       fontSize: 10,
       fontFamily: 'Roboto',
-      
+      fontWeight:'bold'
     },
 
     rsvLabel:{

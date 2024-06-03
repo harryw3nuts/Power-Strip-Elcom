@@ -271,8 +271,6 @@ const About = () => {
             <h1>HELLo</h1>
             <h1>HELLo</h1>
             <h1>HELLo</h1>
-            <h1>HELLo</h1>
-            <h1>HELLo</h1>
             <InvoiceDocument orderInfo={newOrderInfo} data={newdata} />
             {(isClient && newOrderInfo) &&
                 <PDFDownloadLink document={<InvoiceDocument orderInfo={newOrderInfo} data={newdata} />} fileName="invoice.pdf">

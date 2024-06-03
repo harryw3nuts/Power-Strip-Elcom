@@ -36,10 +36,12 @@ const PriceSec = ({ productData, sectionRef }) => {
     const [isEnd, setIsEnd] = useState(false);
 
     const swiperRef = useRef();
+    const radioRefs = useRef([]);
     const [selectedAttributes, setSelectedAttributes] = useState({});
     const [productPrice, setProductPrice] = useState(productData?.price || 0);
     const router = useRouter();
     const { products, setProductsHandler } = useContext(ThemeContext);
+    const defaultSelected = 'white';
 
     let [num, setNum] = useState(1);
     let incNum = () => {
@@ -119,6 +121,13 @@ const PriceSec = ({ productData, sectionRef }) => {
             setProductPrice(matchingVariation?.price)
         }
     }, [selectedAttributes])
+
+    useEffect(() => {
+        // Programmatically click the chosen radio button (e.g., the one at index `defaultSelected`)
+        if (radioRefs.current[defaultSelected]) {
+          radioRefs.current[defaultSelected].click();
+        }
+      }, [defaultSelected]);
 
     // const [readMore , setReadMore] = useState(false);
     const longText = "Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. ";
@@ -225,7 +234,9 @@ const PriceSec = ({ productData, sectionRef }) => {
                                                                 return (
                                                                     <div className='difBtn' key={option.value}>
                                                                         <label for={option.slug}>
-                                                                            <input type="radio" id={option.slug} name={name} onChange={(e) => handleAttributeChange(name, e.target.value)} value={option.slug} />
+                                                                            <input type="radio" id={option.slug} name={name} onChange={(e) => handleAttributeChange(name, e.target.value)} value={option.slug} 
+                                                                             ref={(el) => (radioRefs.current[option.slug] = el)}
+                                                                            />
                                                                             <span style={{
                                                                                 background: option
                                                                                     .colorCode

@@ -20,7 +20,7 @@ body { max-width: 100vw; height: 100vh; font-family: 'Inter Tight'; color: #1010
  @media (min-width:1920px){
   .container { width: 1824px; max-width: 1824px; margin: 0 auto;} 
   }
-
+      
 
   .flxrow {
 	display: -webkit-box;

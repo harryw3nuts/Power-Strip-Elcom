@@ -288,7 +288,7 @@ const SucessSec = ({ data }) => {
                         </div>}
                         <div className="sucessText">
                             {successHeading && <h2>{successHeading}</h2>}
-                            {successDescription && <p>{successDescription}.</p>}
+                            {successDescription && <p>{successDescription}</p>}
                             <div className="btnbox">
                                 {(isClient && orderInfo) &&
                                     <PDFDownloadLink document={<InvoiceDocument orderInfo={orderInfo} data={data} />} fileName="invoice.pdf">

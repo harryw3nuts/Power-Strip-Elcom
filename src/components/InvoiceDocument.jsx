@@ -44,13 +44,15 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
       fontSize: 16,
       color: '#2C2A25',
       marginBottom: 10,
-      fontWeight: 600
+      fontWeight: 700,
+      fontFamily:'Roboto'
     },
     sectionTitle: {
       fontSize: 16,
       marginBottom: 10,
       color: '#2C2A25',
-      fontWeight: 600,
+      fontWeight: 700,
+      fontFamily:'Roboto'
     },
     section: {
       marginBottom: 25,
@@ -143,7 +145,8 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
 
     briefDtl: {
       fontSize: 10,
-      fontWeight: 'light'
+      fontWeight: 'light',
+      
     },
 
     gst: {
@@ -185,7 +188,24 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
 
     rsLabel: {
       fontSize: 10,
-      fontFamily: 'Roboto'
+      fontFamily: 'Roboto',
+      
+    },
+
+    rsvLabel:{
+       fontSize:10,
+       width:'20%',
+       textAlign: 'center',
+       fontFamily: 'Roboto',
+    },
+    nameDtl: {
+      flexDirection:'row',
+      gap:'2px',
+      display:'flex'
+    },
+    subName:{
+      fontSize:10,
+      color:"#4963A0"
     }
   });
 
@@ -263,9 +283,18 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
             <Text style={styles.sectionTitle}>{pdfCustomerDetailsText || "Customer Details"}</Text>
           </View>
           <View style={styles.infoRow}>
-            <Text style={styles.briefDtl}>Name: {orderInfo?.billing?.first_name} {orderInfo?.billing?.last_name}</Text>
-            <Text style={styles.briefDtl}>Email: {orderInfo?.billing?.email}</Text>
-            <Text style={styles.briefDtl}>Phone No: {orderInfo?.billing?.phone}</Text>
+            <View style={styles.nameDtl}>
+              <Text style={styles.briefDtl}>Name: </Text>
+              <Text style={styles.subName}>{orderInfo?.billing?.first_name} {orderInfo?.billing?.last_name}</Text>
+            </View>
+            <View style={styles.nameDtl}>
+              <Text style={styles.briefDtl}>Email: </Text>
+              <Text style={styles.subName}>{orderInfo?.billing?.email}</Text>
+            </View>
+            <View style={styles.nameDtl}>
+              <Text style={styles.briefDtl}>Phone No: </Text>
+              <Text style={styles.subName}>{orderInfo?.billing?.phone}</Text>
+            </View>
           </View>
         </View>
         <View style={styles.section}>
@@ -286,7 +315,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
               <Text style={styles.tableCell}>{item?.name}</Text>
               <Text style={styles.tableCell}>{item?.meta_data[0]?.display_value}</Text>
               <Text style={styles.tableCell}>{item?.quantity}</Text>
-              <Text style={styles.rsLabel}>{rs}{item?.subtotal}</Text>
+              <Text style={styles.rsvLabel}>{rs}{item?.subtotal}</Text>
             </View>
           ))}
         </View>

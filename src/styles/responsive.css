@@ -28,7 +28,7 @@
 
 @media (min-width: 1400px) and (max-width: 1440px) {
 
-    .navigationBar .navWrap .container {max-width: 1408px;}
+    .navigationBar .navWrap .container {max-width: 1440px; width: 1440px;}
     .brackerwrap .brackerright {right: -80px;}
     .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 350px;}
     .trailerText { padding: 0 30px;}
@@ -49,6 +49,9 @@
     .feture_text_box-4 {right: 0; top: 60%;}
     .feture_text_box-3 {top: 37%;}
     .proceedBtn button {padding: 0 100px;}
+    .stripImg .stripBox img {height: 100%;}
+    .stripImg .stripBox {min-height: 260px;}
+
  
  }
 
@@ -56,8 +59,14 @@
 @media (min-width: 1200px) and (max-width: 1299px) {
  
     .swiper-slide {justify-content: flex-start;}
-    .swiper-free-mode > .swiper-wrapper .swiper-slide img{width: 70px;}
+    .swiper-free-mode > .swiper-wrapper .swiper-slide img{width: 100%;}
+    .stripImg .stripBox img {height: 100%;}
+    .stripImg .stripBox {min-height: 260px;}
+    .textwrap h2.heading2 {margin-top: 400px;}
+    .zoomer .btnbox{bottom: 10%;}
     .thumbBox {justify-content: flex-start;}
+    .insightWrap .boxImage img {height: auto;}
+    .insightWrap .boxImage {min-height: 238px;}
     .videoGrp .container{width: 100%;}
     .trailerText {padding: 0 15px;}
     .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 295px;}
@@ -186,6 +195,7 @@
     .features-sec .title h2 {font-size: 120px;}
     .proceedBtn button {padding: 0 100px;}
     .productDetail > ul > li {padding: 8px;}
+    .timerSec {display: flex; justify-content: flex-end;}
     
 }
 
@@ -227,7 +237,8 @@
     .videoGrp .videoPlayer .videoWrapper .blueBtn {display: none;}
     .trailorSec p {font-size: 10px;}
     .timerSec span {font-size: 10px;}
-    .trailerText {justify-content: space-evenly;}
+    .trailerText {justify-content: space-evenly; padding: 0 10px;}
+    .timerSec {display: flex; justify-content: flex-end;}
     .stripWrap {margin: 80px 0;}
     .benefitWrap {margin: 80px 0;}
     .benefitBox .benefitImg {max-width: 80px;}

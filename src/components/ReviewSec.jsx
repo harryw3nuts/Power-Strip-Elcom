@@ -5,6 +5,7 @@ import Slider from "react-slick";
 // import React, { Component } from "react";
 import React from "react";
 import ReactReadMoreReadLess from "react-read-more-read-less";
+import { Autoplay } from "swiper/modules";
 
 const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
 
@@ -25,6 +26,7 @@ const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
         className: "center",
         centerMode: true,
         infinite: true,
+        Autoplay:true,
         centerPadding: "60px",
         slidesToShow: 3,
         speed: 500,

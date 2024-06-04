@@ -561,7 +561,7 @@ input[type="radio"]:checked + label:before {-webkit-transition: all .3s ease;
   .zoomer .btnbox { display: flex; align-items: center; justify-content: center; width: 100%; position: absolute; bottom: 24%;z-index: 1000; }
 
   
-  .border-btn { display: flex; align-items: center; justify-content: center; border: 1px solid #ffffff; color: #ffffff; font-size: 14px; font-weight: 400; height: 60px; padding: 0 44px; border-radius: 100px; text-decoration: none; }
+  .border-btn { display: flex; align-items: center; justify-content: center; border: 1px solid #ffffff; color: #ffffff; font-size: 14px; font-weight: 400; height: 60px; padding: 0 44px; border-radius: 100px; text-decoration: none; letter-spacing: 2.1px;}
 .border-btn.blue-fill { border: none; background-color: #0071E3; }
 
 /* powerstrip_text-main */
@@ -643,7 +643,7 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
 .powerstripslider-dots span.active { background-color: #101010; }
 
 .powerstripslider-mainbox { position: relative; width: 100%; height: 430px;  }
-.powerstripslider-mainbox .powerstrips-slide { position: absolute; border-radius: 12px; overflow: hidden;
+.powerstripslider-mainbox .powerstrips-slide { position: absolute; border-radius: 8px; overflow: hidden;
   transform: translateX(0); top: 0; left: 0;
   transition: opacity 0.5s ease, transform 0.5s ease;  }
 .powerstripslider-mainbox .powerstrips-slide.client-1 {  z-index: 1;  transform: translate(0); }

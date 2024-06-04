@@ -43,14 +43,19 @@
     .videoGrp .container {width: 100%;}
     .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 330px;}
     .timerSec {display: flex; justify-content: flex-end;}
-    .feture_text_box-1 {left: 23.5%;}
-    .feture_text_box-2 {left: 16.4%;}
+    .feture_text_box-1 {left: 25.5%;}
+    .feture_text_box-2 {left: 23.4%;}
     .feture_text_box-2 .line {right: 30px;}
-    .feture_text_box-4 {right: 0; top: 60%;}
-    .feture_text_box-3 {top: 37%;}
+    .feture_text_box-4 {right: 32px; top: 66%;}
+    .feture_text_box-3 {top: 54%; right: 4%;}
+    .feture_text_box-5 {top: 80%; right: 10%;}
     .proceedBtn button {padding: 0 100px;}
     .stripImg .stripBox img {height: 100%;}
     .stripImg .stripBox {min-height: 260px;}
+    
+    .zoomer .btnbox {bottom: 15%;}
+    .features-sec .imgbox {max-width: 650px;}
+    .features-sec .imgbox img {height: 100%; max-width: 100%;}
 
  
  }
@@ -75,13 +80,13 @@
     .powerstrip-slidersec-main {padding: 0 10px;}
     .brackerwrap .brackerleft {left: -160px;}
     .brackerwrap .brackerright {right: -160px;}
-    .feture_text_box-1 {left: 19.5%; top: 48%;}
-    .feture_text_box-2 {left: 13.5%;}
-    .feture_text_box-2 .line {right: 35px;}
-    .feture_text_box-3 {top: 50%;}
+    .feture_text_box-1 {left: 18.5%; top: 39%;}
+    .feture_text_box-2 {left: 10.5%;}
+    .feture_text_box-2 .line {right: -3px;}
+    .feture_text_box-3 {top: 50%; right: 6%;}
     .feture_text_box-4 {top: 70%;}
-    .feture_text_box-5 {top: 78%; right: 16%;}
-    .feture_text_box-5 .line {left: -15px;}
+    .feture_text_box-5 {top: 85%; right: 16%;}
+    .feture_text_box-5 .line {left: -26px; transform: rotate(194deg); top: -26px;}
     .proceedBtn button {padding: 0 100px;}
 }
 
@@ -112,18 +117,21 @@
     .textwrap h2.heading2 {font-size: 140px;}
     .zoomer .textwrapout.text .clipper h2 {font-size: 140px;}
     .zoomer .textwrapout.text .clipper h2.heading2 {font-size: 140px;}
-    .feture_text_box-1 .line {right: 106px;}
-    .feture_text_box-1 {top: 48%;}
+    .feture_text_box-1 .line {right: -15px;}
+    .feture_text_box-1 {top: 45%; left: 12.5%;}
     .feture_text_box-2 {left: 5.4%; top: 58%;}
-    .feture_text_box-2 .line {right: 30px;}
-    .feture_text_box-3 {top: 61%; right: 0;}
-    .feture_text_box-4 {top: 69%; right: 0;}
-    .feture_text_box-5 {top: 77%; right: 22%;}
+    
+    .feture_text_box-3 {top: 64%; right: 23px;}
+    .feture_text_box-4 {top: 73%; right: 0;}
+    .feture_text_box-5 {top: 83%; right: 17%;}
     .buyNow .buybtn {padding: 0 90px;}
     .proceedBtn button {padding: 0 100px;}
     .productDetail > ul > li {padding: 12px 20px;}
     .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 158px;}
     .timerSec {justify-content: flex-end; display: flex;}
+    .features-sec .imgbox {max-width: 700px;}
+    .features-sec .imgbox img { height: 100%; max-width: 100%;}
+    .feture_text_box-5 .line {transform: rotate(192deg);}
  
 }
 
@@ -183,8 +191,8 @@
     .powerstripslider-mainbox .powerstrips-slide img {width: 100%; height: 100%;}
     .powerstripslider-mainbox .powerstrips-slide {max-width: 314px;}
     .powerstrip-slider-text h3 {font-size: 35px;}
-    .feture_text_box-1 {left: 4.5%;}
-    .feture_text_box-2 {top: 50%; left: 30px;}
+    .feture_text_box-1 {left: 1.5%;}
+    .feture_text_box-2 {top: 53%; left: 30px;}
     .feture_text_box-3 {top: 57%; right: 3%; padding-left: 160px; max-width: 300px;}
     .feture_text_box-4 {top: 71%; right: 2%; padding-left: 115px;}
     .feture_text_box-5 {top: 80%; padding-left: 268px; right: 10%;}

@@ -9,6 +9,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
   // console.log("data ; :: ", data);
   const { pdfAddressInfo, pdfColorText, pdfCustomerDetailsText, pdfGstInfo, pdfInvoiceText, pdfLogo, pdfOrderDateText, pdfPriceText, pdfProductCodeText, pdfProductNameText, pdfQuantityText, pdfShippingAddressText, pdfSubtotalText, pdfShippingText, pdfTotalText, pdfThankYouText } = data;
   Font.register({ family: 'Roboto', src: '/Roboto-Bold.ttf' });
+  Font.register({ family: 'Roboto-Regular', src: '/Roboto-Regular.ttf' });
 
   const styles = StyleSheet.create({
     page: {
@@ -116,13 +117,13 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
     totalLabel: {
       textAlign: 'right',
       fontFamily:'Roboto',
-      fontWeight: 'bold',
+      fontWeight: 700,
       fontSize: 10,
     },
     footer: {
       textAlign: 'center',
       fontSize: 10,
-      color: '#777',
+      color: '#777',   
       marginTop: 20,
     },
     smallTitle: {
@@ -188,10 +189,8 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
 
     rsLabel: {
       fontSize: 10,
-      fontWeight: 'normal',
-      fontFamily: 'Roboto',
-      
-      
+      // fontWeight: 'normal',
+      // fontFamily: 'Roboto',
     },
 
     rsvLabel:{

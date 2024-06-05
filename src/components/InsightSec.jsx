@@ -18,6 +18,7 @@ const InsightSec = ({insightsHeading,insightsReadMoreLinkText,insightsAllInsight
                                     const {title,link,categoryName,image} = post;
                                     return (
                                         <div className="col-lg-4 col-md-6" key={index}>
+                                            <Link href={link} target="_blank">
                                             <div className="insightBox">
                                                 {image && <div className="boxImage">
                                                     <Image src={image?.sourceUrl} width={416} height={278} alt="stripbox1"></Image>
@@ -30,10 +31,12 @@ const InsightSec = ({insightsHeading,insightsReadMoreLinkText,insightsAllInsight
                                                         <h5>{title}</h5>
                                                     </div>
                                                     {link && <div className="btnbox">
-                                                        <Link href={link} target="_blank">{insightsReadMoreLinkText && "Read more"}</Link>
+                                                        {/* <Link href={link} target="_blank">{insightsReadMoreLinkText && "Read more"}</Link> */}
+                                                        <span>{insightsReadMoreLinkText && "Read more"}</span>
                                                     </div>}
                                                 </div>
                                             </div>
+                                            </Link>
                                         </div>
                                     )
                                 })}

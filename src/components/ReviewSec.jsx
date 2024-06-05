@@ -11,12 +11,14 @@ const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
 
     const ArrowLeft = (props) => (
 		<button {...props} className="left group">
-			<svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
+			  <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.5147 1.51472L2.02944 10L10.5147 18.4853" stroke="#101010" strokeWidth="1.5" />
+        </svg>
 		</button>
 	);
 	const ArrowRight = (props) => (
 		<button {...props} className="right group">
-			<svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
+			  <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.48528 1.51472L9.97056 10L1.48528 18.4853" stroke="#101010" strokeWidth="1.5" />
+        </svg>
 		</button>
 	);
 
@@ -26,10 +28,14 @@ const ReviewSec = ({reviewsHeading,reviewsInfo}) => {
         className: "center",
         centerMode: true,
         infinite: true,
-        Autoplay:true,
+        autoplay:true,
         centerPadding: "60px",
         slidesToShow: 3,
-        speed: 500,
+        slidesToScroll: 1,
+        speed: 2000,
+        autoplaySpeed: 2000,
+        // cssEase: "linear",
+        animation:true,
         prevArrow: <ArrowLeft />,
 		    nextArrow: <ArrowRight />,
         responsive: [

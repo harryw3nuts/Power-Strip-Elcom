@@ -9,6 +9,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
   // console.log("data ; :: ", data);
   const { pdfAddressInfo, pdfColorText, pdfCustomerDetailsText, pdfGstInfo, pdfInvoiceText, pdfLogo, pdfOrderDateText, pdfPriceText, pdfProductCodeText, pdfProductNameText, pdfQuantityText, pdfShippingAddressText, pdfSubtotalText, pdfShippingText, pdfTotalText, pdfThankYouText } = data;
   Font.register({ family: 'Roboto', src: '/Roboto-Bold.ttf' });
+  Font.register({ family: 'Roboto-Medium', src: '/Roboto-Medium.ttf' });
   Font.register({ family: 'Roboto-Regular', src: '/Roboto-Regular.ttf' });
 
   const styles = StyleSheet.create({
@@ -84,7 +85,8 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
       alignItems: 'center',
       flexDirection: 'row',
       width: '100%',
-
+      borderTopLeftRadius: 4,
+      borderTopRightRadius:4,
     },
     tableRow: {
       display: 'flex',
@@ -98,6 +100,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
       color: '#000',
       flexDirection: 'row',
       width: '100%',
+      borderBottom: '0.25px solid #BDBDBD', 
 
     },
     tableCell: {
@@ -162,7 +165,7 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
       flexDirection: 'row',
       justifyContent: 'space-between',
       width: '30%',
-      borderBottom: '1px solid #000',
+      borderBottom: '1px solid #7B7B7B',
       paddingTop: 8,
       paddingBottom: 8,
       alignItems: 'center'
@@ -182,22 +185,23 @@ export const InvoiceDocument = ({ orderInfo, data }) => {
       justifyContent: 'space-between',
       flexDirection: 'row',
       width: '30%',
-      borderBottom: '1px solid #000',
+      borderBottom: '1px solid #7B7B7B',
       paddingTop: 8,
       paddingBottom: 18,
     },
 
     rsLabel: {
       fontSize: 10,
-      // fontWeight: 'normal',
-      // fontFamily: 'Roboto',
+      fontWeight:400,
+      fontFamily:'Roboto-Regular',
     },
 
     rsvLabel:{
        fontSize:10,
        width:'20%',
        textAlign: 'center',
-       fontFamily: 'Roboto',
+       fontWeight:400,
+       fontFamily:'Roboto-Regular',
     },
     nameDtl: {
       flexDirection:'row',

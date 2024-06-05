@@ -4,12 +4,15 @@ import Twitter from '@/components/Svgs/Twitter';
 import Linkedin from "@/components/Svgs/Linkedin";
 import Facebook from "@/components/Svgs/Facebook";
 import Youtube from "./Svgs/Youtube";
+import { useRouter } from "next/router";
 
 
 const Footer = ({ footerCopyrightInfo, footerElcomLink, twitterUri, linkedinUri, facebookUri, youtubeUri }) => {
     const currentYear = new Date().getFullYear();
+    const router = useRouter();
+    const route = router?.route;
 
-    if (footerCopyrightInfo || footerElcomLink || twitterUri || linkedinUri || youtubeUri) {
+    if ((footerCopyrightInfo || footerElcomLink || twitterUri || linkedinUri || youtubeUri) && (route == '/' || route == '/checkout')) {
         return (
             <>
                 <footer className="footerNav">

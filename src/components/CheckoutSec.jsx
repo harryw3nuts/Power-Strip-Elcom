@@ -64,7 +64,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                 setTaxInfo(response.data);
             })
             .catch(error => {
-                console.error('Woocommerce TAX ERROR:', error.response.data);
+                console.error('Woocommerce TAX ERROR:', error);
             });
 
         // document.body.classList.add("loaderActive")
@@ -240,6 +240,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                         // router.push('/payment-failed')
                                     })
                                     .catch(error => {
+                                        setIsLoading(false);
                                         Swal.fire({
                                             title: 'Error while updating order',
                                             text: error.response.data,
@@ -247,7 +248,6 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                             confirmButtonText: 'Ok'
                                         })
                                         console.error('updateOrderData ERROR:', error.response.data);
-                                        setIsLoading(false);
                                     });
 
                                 // update razorpay order and add custom notes to it  

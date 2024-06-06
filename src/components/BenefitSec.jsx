@@ -1,5 +1,5 @@
 import Image from "next/image"
-import benefitimg1 from '@/asset/images/icon_1.svg';
+// import benefitimg1 from '@/asset/images/icon_1.svg';
 
 const BenefitSec = ({benefitsHeading,benefitsInfo}) => {
     if(benefitsInfo){

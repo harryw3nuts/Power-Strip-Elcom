@@ -285,8 +285,9 @@
     .timerSec span {font-size: 10px;}
     .trailerText {justify-content: space-evenly; padding: 0 10px;}
     .timerSec {display: flex; justify-content: flex-end;}
-    .stripWrap {margin: 80px 0;}
-    .benefitWrap {margin: 80px 0;}
+    .stripWrap {margin: 80px 0 40px;}
+    .benefitWrap {margin: 80px 0 50px;}
+    .insightWrap .insightSec .insightBox {margin-bottom: 40px;}
     .benefitBox .benefitImg {max-width: 80px;}
     .benefitBox .benefitImg img {width: 100%; height: 100%;}
     .benefitBox .benefitText .lebalText {font-size: 12px; padding-bottom: 10px;}
@@ -311,7 +312,7 @@
     .insightWrap .boxImage {height: 278px;}
     .insightWrap .insightSec .insightBox .boxText {padding: 24px 20px;}
     .insightWrap .insightSec .insightBox .boxText h5 {font-size: 18px; line-height: 26px; margin-bottom: 24px;}
-    .insightWrap .insightSec .row {row-gap: 40px;}
+    /* .insightWrap .insightSec .row {row-gap: 40px;} */
     .questionWrap {margin: 80px 0;}
     .questionWrap .accordianWrap .accordianHead h3 {font-size: 32px; line-height: 40px;}
     .questionWrap .accordianWrap .accordianHead {margin-bottom: 40px;}
@@ -330,7 +331,7 @@
     .priceWrapper .row .col-md-12{order: 3;}
     .pricefullImg {height: 100%; min-height: 100%; }
     .swiper-slide {border-radius: 8px;}    
-    .swiper-free-mode > .swiper-wrapper {flex-direction: row; margin: 0 !important; } 
+    .swiper-free-mode > .swiper-wrapper {flex-direction: row; margin: 0 !important; gap: 0; } 
     .thumbBox {width: 70px; height: 70px; border-radius: 8px;}
     .priceSwiper {margin-top: 17px;}
     .switer_btn {display: none;}
@@ -338,14 +339,16 @@
     .titleBox .orderInner .orderBox {flex-direction: column;}
     .proceedBtn button {padding: 0 100px;}
     .swiper-free-mode > .swiper-wrapper .swiper-slide img {width: 70px;}
-    .mySwiper .swiper-slide {width: 75% !important; margin-right: 0 !important;}
+    .mySwiper .swiper-slide {width: 75% !important; margin-right: 12px !important;}
     .footerNav .footerBar .footerSec {flex-wrap: wrap; justify-content: center; align-items: center; padding: 15px 20px;}
     .footerBar .footerSec .socialLink {order: 1; width: 100%; justify-content: center; align-items: center; display: flex; margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid #343434;}
     .footerBar .footerSec .nameSec {order: 2; margin-right: 42px;}
     .footerBar .footerSec .webLink {order: 3; margin-left: 42px;}
     .mobileSlider {display: block;}
     .priceImg .priceWrapper .row .col-xl-1 {padding: 0 15px;}
-
+    .pricefullImg .swiper-slide {justify-content: flex-end;}
+    .colorBtn {gap: 0; }
+    .difBtn:not(:last-child) {margin-right: 20px;}
     .mobileSlider {background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%); padding-top: 80px; overflow: hidden;}
     .mobileSlider .mobileFuture {position: relative; }
     .mobileSlider .mobileFuture .mobileTitle {}
@@ -400,7 +403,9 @@
     
     .mobileSlider .left.disabled,.mobileSlider .left.disabled:focus { color: #a1a1a1;}
     .mobileSlider .right.disabled,.mobileSlider .right.disabled:focus { color: #a1a1a1;}
-
+    .stripImg {margin-bottom: 40px;}
+    .stripSec .row {row-gap: 0;}
+    .mySwiper2 {min-height: 100%;}
  
  }
 

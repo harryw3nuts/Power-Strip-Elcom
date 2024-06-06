@@ -126,11 +126,11 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .priceSwiper .thumbBox {border-radius: 4px;background: #f4f4f4; width: 100%; display: flex; justify-content: center; align-items: center; position: relative; border-radius: 4px; overflow: hidden;}
 .priceSwiper .thumbBox::before { content: ''; display: block; width: 100%; padding-top: 100%;}
 .priceSwiper .thumbBox img { width: 100%; height: 100%; position: absolute; left: 0; top: 0; object-fit: contain;}
-.pricefullImg {background: #f4f4f4; min-height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative;}
-.switer_btn {position: absolute; bottom: 32px; right: 32px; display: flex; gap: 10px; z-index: 10;}
+.pricefullImg { min-height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative;}
+.switer_btn {position: absolute; bottom: 80px; right: 32px; display: flex; gap: 10px; z-index: 10;}
 .switer_btn .group { border: none; background-color: #FFF; width: 40px; height: 40px; border-radius: 50px;}
 
-.thumbfullBox {display: flex; justify-content: start; align-items: center; width: 100%;}
+.thumbfullBox {display: flex; justify-content: start; align-items: center; height: 100%; }
 .thumbfullBox img {display: flex; justify-content: start; align-items: center; width: 100%;}
 .swiper-button-prev,
 .swiper-button-next {left: 0 !important; top: 100% !important;}
@@ -361,7 +361,7 @@ font-style: normal; font-weight: 500; line-height: 24px; text-decoration-line: u
 font-size: 14px; font-style: normal; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase;}
 
 
-.sucessWrap {padding: 155px 0 50px;}
+.sucessWrap {padding: 155px 0 50px; height: 100vh;}
 .sucessWrap .sucessDtl {position: relative; text-align: center;}
 .sucessWrap .sucessDtl .sucessImg {max-width: 404px; padding-bottom: 80px; display: flex; justify-content: center; width: 100%; margin: 0 auto;}
 .sucessWrap .sucessDtl .sucessImg img {width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;}
@@ -733,7 +733,7 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
 }
 
 .mySwiper2 {
-  height: 100%;
+  min-height: 563px;
   width: 100%;
 }
 
@@ -762,12 +762,13 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
   object-fit: contain;
 }
 .swiper-free-mode > .swiper-wrapper {flex-direction: column; max-width: 100px; gap: 12px;}
-.swiper-free-mode > .swiper-wrapper .swiper-slide img {width: 100%; border-radius: 4px;}
+.swiper-free-mode > .swiper-wrapper .swiper-slide img {width: 100%; border-radius: 4px; }
 /* .swiper-free-mode > .swiper-wrapper { }
 .swiper-free-mode > .swiper-wrapper .swiper-slide img {width: 100px; height: 100px;}
 .priceSwiper {display: flex; gap: 12px;}
 .secondSec .swiper-slide img {width: 752px; height: 563px;}  */
-
+/* .pricefullImg .swiper-wrapper {height: auto;} */
+.pricefullImg .swiper-slide {justify-content: center;}
 .disable_arrow svg{opacity: 0.4; pointer-events: none;}
 
 .css-16vukcu {border: none !important;}

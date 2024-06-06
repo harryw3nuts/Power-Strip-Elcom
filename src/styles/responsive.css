@@ -7,6 +7,9 @@
     } */
 
 @media (min-width: 1900px) {
+
+    .navWrap .container {max-width: 1920px; width: 1920px;}
+    /* .navigationBar .navWrap .navBar {padding-left: 38px;} */
     .features-sec .title { top: 140px; }
     .feture_text_box-1 { top: 50%; left: 29.5%; }
     .feture_text_box-2 { top: 64%; left: 23%; }
@@ -27,6 +30,7 @@
     .titleBox .orderInner .orderBox .orderDtl {gap: 180px;}
     .stripImg .stripBox {min-height: 432px;}
     .stripImg .stripBox img {min-height: 100%; height: 100%;}
+    /* .thumbfullBox {width: 100%;} */
 }
 @media(min-width: 1441px) and (max-width:1550px) {
 
@@ -46,6 +50,7 @@
     .trailerText { padding: 0 30px;}
     .trailerText > * {flex-grow: 1; flex-basis: 0; width: 33.33%; } 
     .timerSec { display: flex; justify-content: flex-end; }
+    .navigationBar .navWrap .navBar {padding-left: 38px; padding-right: 50px;}
  }
 
 @media (min-width: 1300px) and (max-width: 1399px) { 
@@ -98,21 +103,21 @@
     .insightWrap .boxImage {min-height: 238px;}
     .videoGrp .container{width: 100%;}
     .trailerText {padding: 0 15px;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 295px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 293px;}
     .timerSec {display: flex; justify-content: flex-end;}
     .powerstripslider {padding-left: 0;}
     .powerstrip-slidersec-main {padding: 0 10px;}
     .brackerwrap .brackerleft {left: -160px;}
     .brackerwrap .brackerright {right: -160px;}
     .feture_text_box-1 {left: 20.5%; top: 38%;}
-    .feture_text_box-2 {left: 14.5%;}
+    .feture_text_box-2 {left: 17.5%; top: 50%;}
     .feture_text_box-2 .line {right: -3px;}
     .feture_text_box-3 {top: 50%; right: 6%;}
     .feture_text_box-4 {top: 70%;}
-    .feture_text_box-5 {top: 87%; right: 12%; padding-left: 380px;}
+    .feture_text_box-5 {top: 87%; right: 10%; padding-left: 380px;}
     .feture_text_box-5 .line {left: -26px; transform: rotate(194deg); top: -26px;}
     .proceedBtn button {padding: 0 100px;}
-    .features-sec .imgbox {max-width: 630px;}
+    .features-sec .imgbox {max-width: 570px;}
     .features-sec .imgbox img {height: 100%; max-width: 100%;}
 }
 

@@ -93,11 +93,12 @@
     .swiper-free-mode > .swiper-wrapper .swiper-slide img{width: 100%;}
     .stripImg .stripBox img {height: 100%;}
     .stripImg .stripBox {min-height: 260px;}
-    .textwrap h2.heading2 {margin-top: 320px;}
-    .zoomer .textwrapout.text .clipper h2.heading2 {margin-top: 320px;}
-    .textwrap h2 {margin-top: 180px;}
-    .zoomer .textwrapout.text .clipper h2 {margin-top: 180px;}
-    .zoomer .btnbox{bottom: 10%;}
+    .textwrap h2.heading2 {margin-top: 300px;}
+    .features-sec .title h2 {font-size: 160px;}
+    .zoomer .textwrapout.text .clipper h2.heading2 {margin-top: 300px;}
+    .textwrap h2 {margin-top: 160px;}
+    .zoomer .textwrapout.text .clipper h2 {margin-top: 160px;}
+    .zoomer .btnbox{bottom: 5%;}
     .thumbBox {justify-content: flex-start;}
     .insightWrap .boxImage img {height: auto;}
     .insightWrap .boxImage {min-height: 238px;}
@@ -117,8 +118,9 @@
     .feture_text_box-5 {top: 87%; right: 10%; padding-left: 380px;}
     .feture_text_box-5 .line {left: -26px; transform: rotate(194deg); top: -26px;}
     .proceedBtn button {padding: 0 100px;}
-    .features-sec .imgbox {max-width: 570px;}
+    .features-sec .imgbox {max-width: 530px;}
     .features-sec .imgbox img {height: 100%; max-width: 100%;}
+    .features-sec .title {top: 60px;}
 }
 
  
@@ -148,19 +150,20 @@
     .textwrap h2.heading2 {font-size: 140px;}
     .zoomer .textwrapout.text .clipper h2 {font-size: 140px;}
     .zoomer .textwrapout.text .clipper h2.heading2 {font-size: 140px;}
+    .zoomer .btnbox {bottom: 10%;}
     .feture_text_box-1 .line {right: -15px;}
-    .feture_text_box-1 {top: 45%; left: 12.5%;}
-    .feture_text_box-2 {left: 5.4%; top: 58%;}
+    .feture_text_box-1 {top: 38%; left: 12.5%;}
+    .feture_text_box-2 {left: 9.4%; top: 50%;}
     
-    .feture_text_box-3 {top: 64%; right: 23px;}
-    .feture_text_box-4 {top: 73%; right: 0;}
-    .feture_text_box-5 {top: 83%; right: 17%;}
+    .feture_text_box-3 {top: 53%; right: 0;}
+    .feture_text_box-4 {top: 65%; right: 25px;}
+    .feture_text_box-5 {top: 80%; right: 15%;}
     .buyNow .buybtn {padding: 0 90px;}
     .proceedBtn button {padding: 0 100px;}
     .productDetail > ul > li {padding: 12px 20px;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 158px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 140px;}
     .timerSec {justify-content: flex-end; display: flex;}
-    .features-sec .imgbox {max-width: 700px;}
+    .features-sec .imgbox {max-width: 560px;}
     .features-sec .imgbox img { height: 100%; max-width: 100%;}
     .feture_text_box-5 .line {transform: rotate(192deg);}
 

@@ -1,3 +1,4 @@
+import { scrollToSection } from "@/utils/utils";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -5,15 +6,6 @@ import { useRouter } from "next/router";
 const Header = ({ headerLogo, menuInfo,ctaOneInfo, ctaTwoInfo }) => {
     const router = useRouter();
     const route = router?.route;
-
-    const scrollToSection = (id) => {
-        const element = document.querySelector(id);
-        if (element) {
-            const offset = 90; // adjust this value to account for the height of the header or any other fixed element
-            const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
-            window.scrollTo({ top: y, behavior: 'smooth' });
-        }
-    };
 
     return (
         // <header>header</header>
@@ -43,8 +35,8 @@ const Header = ({ headerLogo, menuInfo,ctaOneInfo, ctaTwoInfo }) => {
                         </div>}
                         {(ctaOneInfo || ctaTwoInfo) && <div className="navBtn">
                             <ul>
-                                {ctaOneInfo && <li><Link href={ctaOneInfo.url} target={ctaOneInfo.target}>{ctaOneInfo.title}</Link></li>}
-                                {(ctaTwoInfo && route == '/') && <li className="buyNow"><Link href={"#"} onClick={(e) => { e.preventDefault(); scrollToSection("detailSec") }}>{ctaTwoInfo.title}</Link></li>}
+                                {ctaOneInfo && <li><Link href={ctaOneInfo.url == '#' ? process.env.NEXT_PUBLIC_ELCOM_CONTACT_PAGE_URL : ctaOneInfo.url} target={ctaOneInfo.url == '#' ? '_blank' : ctaOneInfo.target}>{ctaOneInfo.title}</Link></li>}
+                                {(ctaTwoInfo && route == '/') && <li className="buyNow"><Link href={"#"} onClick={(e) => { e.preventDefault(); scrollToSection(ctaTwoInfo.url) }}>{ctaTwoInfo.title}</Link></li>}
                                 {/* {ctaTwoInfo && <li className="buyNow"><Link href={ctaTwoInfo.url} target={ctaTwoInfo.target}>{ctaTwoInfo.title}</Link></li>} */}
                             </ul>
                         </div>}

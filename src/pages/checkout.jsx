@@ -6,10 +6,13 @@ import { useEffect, useState } from "react";
 // const inter = Inter({ subsets: ["latin"] });
 import Script from "next/script";
 import { sendGraphQLQuery } from "@/utils/utils";
-import { THEME_SETTINGS } from "@/queries/graphql_queries";
+import { CHECKOUT_PAGE, THEME_SETTINGS } from "@/queries/graphql_queries";
+import SeoData from "@/components/SeoData";
 
 
-export default function CheckoutPage() {
+export default function CheckoutPage({checkoutseo}) {
+  const seoData = checkoutseo?.data?.pageBy?.seoData;
+  const title = checkoutseo?.data?.pageBy?.title;
   const [rzpLoaded, setRzpLoaded] = useState(false);
   // console.log(rzpLoaded)
   const handlePayment = async () => {
@@ -119,6 +122,7 @@ export default function CheckoutPage() {
   },[])
   return (
    <>
+    <SeoData pageTitle={title || "Checkout | Elcom Powerstrip"} seodata={seoData} />
     <CheckoutSec rzpLoaded={rzpLoaded}/>
     <Script
       src="https://checkout.razorpay.com/v1/checkout.js"
@@ -131,9 +135,11 @@ export default function CheckoutPage() {
 export async function getStaticProps() {
   try {
     const data = await sendGraphQLQuery(THEME_SETTINGS);
+    const checkoutseo = await sendGraphQLQuery(CHECKOUT_PAGE);
     return {
       props: {
-        data
+        data,
+        checkoutseo
       },
       revalidate: 10
     }

@@ -2,27 +2,27 @@ import axios from "axios";
 
 // Function to send GraphQL queries with variables
 export async function sendGraphQLQuery(query, variables = {}) {
-    try {
-      const response = await axios.post(process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL, {
-        query: query,
-        variables: variables,
-      });
-  
-      return response.data;
-    } catch (error) {
-      console.error('GraphQL query error:', error);
-      throw error;
-    }
+  try {
+    const response = await axios.post(process.env.NEXT_PUBLIC_WORDPRESS_SITE_URL, {
+      query: query,
+      variables: variables,
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error('GraphQL query error:', error);
+    throw error;
   }
+}
 
 export function checkVideoPlatform(url) {
-    if (url.includes('youtube.com')) {
-        return 'YouTube';
-    } else if (url.includes('vimeo.com')) {
-        return 'Vimeo';
-    } else {
-        return '';
-    }
+  if (url.includes('youtube.com')) {
+    return 'YouTube';
+  } else if (url.includes('vimeo.com')) {
+    return 'Vimeo';
+  } else {
+    return '';
+  }
 }
 
 export function getYouTubeEmbeddedUrl(url) {
@@ -30,10 +30,10 @@ export function getYouTubeEmbeddedUrl(url) {
   const youtubeRegex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
   const match = url.match(youtubeRegex);
   if (match && match[1]) {
-      videoId = match[1];
+    videoId = match[1];
   }
   if (videoId) {
-      return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+    return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
   }
   return null;
 }
@@ -43,10 +43,10 @@ export function getVimeoEmbeddedUrl(url) {
   const vimeoRegex = /vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/(?:\w+\/)?|album\/(?:\d+\/video\/)?|video\/|)(\d+)(?:$|\/|\?)/;
   const match = url.match(vimeoRegex);
   if (match && match[1]) {
-      videoId = match[1];
+    videoId = match[1];
   }
   if (videoId) {
-      return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
+    return `https://player.vimeo.com/video/${videoId}?autoplay=1`;
   }
   return null;
 }
@@ -82,7 +82,7 @@ export function parseDuration(duration) {
   return formattedDuration;
 }
 
-export function rupeeStringToNumber(price){
+export function rupeeStringToNumber(price) {
   const priceString = price;
   const priceNumber = parseFloat(priceString.replace("₹", "").replace(/,/g, ""));
   const roundedPrice = parseFloat(priceNumber.toFixed(2));
@@ -98,59 +98,73 @@ export function isValidIndianPhoneNumber(phoneNumber) {
 export function formatDate(dateString) {
   // Create a new Date object from the input date string
   const date = new Date(dateString);
-  
+
   // Array of month names
   const months = [
     "January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
   ];
-  
+
   // Extract day, month, and year
   const day = date.getDate();
   const month = months[date.getMonth()];
   const year = date.getFullYear();
-  
+
   // Format the date into "day month year"
   return `${day} ${month} ${year}`;
 }
 
+export function scrollToSection(id) {
+  // console.log("ksdlf : ",id.split("")[0] == "#" ? "yes" : "no");
+  if (id.split("")[0] == "#" && id.split("").length > 1) {
+    const element = document.querySelector(id);
+    if (element) {
+      const offset = 90; // adjust this value to account for the height of the header or any other fixed element
+      const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  } else {
+    router.push(id)
+  }
+}
+
 
 export const IndiaStatesList = [
-  { id: 'AN', name: 'Andaman and Nicobar Islands' },
-  { id: 'AP', name: 'Andhra Pradesh' },
-  { id: 'AR', name: 'Arunachal Pradesh' },
-  { id: 'AS', name: 'Assam' },
-  { id: 'BR', name: 'Bihar' },
-  { id: 'CH', name: 'Chandigarh' },
-  { id: 'CG', name: 'Chhattisgarh' },
-  { id: 'DN', name: 'Dadra and Nagar Haveli' },
-  { id: 'DD', name: 'Daman and Diu' },
-  { id: 'DL', name: 'Delhi' },
-  { id: 'GA', name: 'Goa' },
-  { id: 'GJ', name: 'Gujarat' },
-  { id: 'HR', name: 'Haryana' },
-  { id: 'HP', name: 'Himachal Pradesh' },
-  { id: 'JK', name: 'Jammu and Kashmir' },
-  { id: 'JH', name: 'Jharkhand' },
-  { id: 'KA', name: 'Karnataka' },
-  { id: 'KL', name: 'Kerala' },
-  { id: 'LA', name: 'Ladakh' },
-  { id: 'LD', name: 'Lakshadweep' },
-  { id: 'MP', name: 'Madhya Pradesh' },
-  { id: 'MH', name: 'Maharashtra' },
-  { id: 'MN', name: 'Manipur' },
-  { id: 'ML', name: 'Meghalaya' },
-  { id: 'MZ', name: 'Mizoram' },
-  { id: 'NL', name: 'Nagaland' },
-  { id: 'OR', name: 'Odisha' },
-  { id: 'PY', name: 'Puducherry' },
-  { id: 'PB', name: 'Punjab' },
-  { id: 'RJ', name: 'Rajasthan' },
-  { id: 'SK', name: 'Sikkim' },
-  { id: 'TN', name: 'Tamil Nadu' },
-  { id: 'TS', name: 'Telangana' },
-  { id: 'TR', name: 'Tripura' },
-  { id: 'UP', name: 'Uttar Pradesh' },
-  { id: 'UK', name: 'Uttarakhand' },
-  { id: 'WB', name: 'West Bengal' }
+  { value: 'AN', label: 'Andaman and Nicobar Islands' },
+  { value: 'AP', label: 'Andhra Pradesh' },
+  { value: 'AR', label: 'Arunachal Pradesh' },
+  { value: 'AS', label: 'Assam' },
+  { value: 'BR', label: 'Bihar' },
+  { value: 'CH', label: 'Chandigarh' },
+  { value: 'CG', label: 'Chhattisgarh' },
+  { value: 'DN', label: 'Dadra and Nagar Haveli' },
+  { value: 'DD', label: 'Daman and Diu' },
+  { value: 'DL', label: 'Delhi' },
+  { value: 'GA', label: 'Goa' },
+  { value: 'GJ', label: 'Gujarat' },
+  { value: 'HR', label: 'Haryana' },
+  { value: 'HP', label: 'Himachal Pradesh' },
+  { value: 'JK', label: 'Jammu and Kashmir' },
+  { value: 'JH', label: 'Jharkhand' },
+  { value: 'KA', label: 'Karnataka' },
+  { value: 'KL', label: 'Kerala' },
+  { value: 'LA', label: 'Ladakh' },
+  { value: 'LD', label: 'Lakshadweep' },
+  { value: 'MP', label: 'Madhya Pradesh' },
+  { value: 'MH', label: 'Maharashtra' },
+  { value: 'MN', label: 'Manipur' },
+  { value: 'ML', label: 'Meghalaya' },
+  { value: 'MZ', label: 'Mizoram' },
+  { value: 'NL', label: 'Nagaland' },
+  { value: 'OR', label: 'Odisha' },
+  { value: 'PY', label: 'Puducherry' },
+  { value: 'PB', label: 'Punjab' },
+  { value: 'RJ', label: 'Rajasthan' },
+  { value: 'SK', label: 'Sikkim' },
+  { value: 'TN', label: 'Tamil Nadu' },
+  { value: 'TS', label: 'Telangana' },
+  { value: 'TR', label: 'Tripura' },
+  { value: 'UP', label: 'Uttar Pradesh' },
+  { value: 'UK', label: 'Uttarakhand' },
+  { value: 'WB', label: 'West Bengal' }
 ]; 

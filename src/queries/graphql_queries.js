@@ -1,3 +1,41 @@
+const SEOQUERY = `
+  seoData{
+    metaTitle
+    metaDescription
+    metaKeywords
+    metaImage{
+      sourceUrl
+    }
+    jsonSchema
+  }
+`;
+
+
+export const CHECKOUT_PAGE = `
+query CHECKOUT_PAGE_QUERY {
+  pageBy(uri:"checkout"){
+    title
+    ${SEOQUERY}
+  }
+}
+`
+
+export const PAYMENT_SUCCESS_PAGE = `
+query PAYMENT_SUCCESS_PAGE_QUERY {
+  pageBy(uri:"payment-successful"){
+    ${SEOQUERY}
+  }
+}
+`
+
+export const PAYMENT_FAILES_PAGE = `
+query PAYMENT_FAILED_PAGE_QUERY{
+  pageBy(uri:"payment-failed"){
+    ${SEOQUERY}
+  }
+}
+`
+
 export const THEME_SETTINGS = `
 query THEME_SETTINGS {
     themeGeneralSettings{
@@ -123,6 +161,7 @@ query THEME_SETTINGS {
       }
     }
     pageBy(uri: "/") {
+        title
         template {
             ... on HomePageTemplate {
                 homePageFields {
@@ -287,6 +326,7 @@ query THEME_SETTINGS {
                 }
             }
         }
+        ${SEOQUERY}
     }
     posts(first: 3, where: {status: PUBLISH}) {
       nodes {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PowerStripSlider from "./PowerStripSlider";
+import { scrollToSection } from "@/utils/utils";
 
 const PowerStripSliderSec = ({ exploreHeading, exploreButtonInfo, exploreImagesInfo }) => {
   if(exploreImagesInfo){
@@ -11,7 +12,7 @@ const PowerStripSliderSec = ({ exploreHeading, exploreButtonInfo, exploreImagesI
               <div className="powerstrip-slider-text">
                 {exploreHeading && <h3 dangerouslySetInnerHTML={{ __html: exploreHeading }}></h3>}
                 {exploreButtonInfo && <div className="btnbox">
-                  <Link href={exploreButtonInfo.url} target={exploreButtonInfo.target} className="border-btn blue-fill" >{exploreButtonInfo.title}</Link>
+                  <Link href={"#"} onClick={(e) => { e.preventDefault(); scrollToSection(exploreButtonInfo.url) }} target={exploreButtonInfo.target} className="border-btn blue-fill" >{exploreButtonInfo.title}</Link>
                 </div>}
               </div>
             </div>}

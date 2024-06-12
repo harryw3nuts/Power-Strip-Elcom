@@ -71,6 +71,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
     }, [])
 
     useEffect(() => {
+        console.log("selected state ",selectedState)
         if (taxInfo && selectedState != '') {
             let matchingRates = taxInfo.filter(rate => rate.state === selectedState);
 
@@ -465,12 +466,12 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                                 <Select
                                                                                     {...field}
                                                                                     options={options}
-                                                                                    labelField="name"
-                                                                                    valueField="id"
+                                                                                    // labelField="name"
+                                                                                    // valueField="id"
                                                                                     placeholder="State"
                                                                                     onChange={(option) => {
                                                                                         if (option.length) {
-                                                                                            setSelectedState(option[0].id);
+                                                                                            setSelectedState(option[0].value);
                                                                                         }
                                                                                         form.setFieldValue(field.name, option)
                                                                                     }}

@@ -16,6 +16,7 @@ import FeaturesSecNew from "@/components/FeaturesSecNew";
 import PowerStripSliderSec from "@/components/PowerStripSliderSec";
 import MobileTextColor from "@/components/MobileTextColor";
 import MobileFutureSlider from "@/components/MobileFutureSlider";
+import SeoData from "@/components/SeoData";
 
 export default function Home({ data, error }) {
   const router = useRouter();
@@ -66,7 +67,11 @@ export default function Home({ data, error }) {
     videoBackgroundImage, videoUrl, videoButtonText
   } = data?.data?.pageBy?.template?.homePageFields;
 
+  const title = data?.data?.pageBy?.title;
+  const seoData = data?.data?.pageBy?.seoData;
+
   const latest3Posts = data?.data?.posts?.nodes;
+
 
   const BannerData = { bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo };
   const otherInfoData = { otherHeading, otherProductInfo };
@@ -81,9 +86,7 @@ export default function Home({ data, error }) {
 
   return (
     <>
-      <Head>
-        <title>Elcom | Power Strip</title>
-      </Head>
+      <SeoData pageTitle={title || "Home | Elcom Powerstrip"} seodata={seoData} />
       <Banner {...BannerData} />
       <ScrollTextColor {...powerStripData} />
       <MobileTextColor />

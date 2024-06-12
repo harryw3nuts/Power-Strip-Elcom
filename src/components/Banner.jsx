@@ -2,8 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import leftstrip from "@/asset/images/leftstrip.png";
 import rightstrip from "@/asset/images/rightstrip.png";
+import { scrollToSection } from "@/utils/utils";
 
 const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,bannerRightSideImage,bannerButtonInfo}) => {
+    
     return (
         <>
             <div className="brackerwrap">
@@ -19,7 +21,7 @@ const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,bannerRightS
                             {bannerHeading && <h1>{bannerHeading}</h1>}
                             {bannerSubHeading && <p>{bannerSubHeading}</p>}
                             {bannerButtonInfo && <div className="btnbox">
-                                <Link href={bannerButtonInfo.url} target={bannerButtonInfo.target}>{bannerButtonInfo.title}</Link>
+                                <Link href={"#"} onClick={(e) => { e.preventDefault(); scrollToSection(bannerButtonInfo?.url) }} target={bannerButtonInfo.target}>{bannerButtonInfo.title}</Link>
                             </div>}
                         </div>
                     </div>

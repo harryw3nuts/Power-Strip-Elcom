@@ -18,7 +18,7 @@ const Header = ({ headerLogo, menuInfo,ctaOneInfo, ctaTwoInfo }) => {
                                 <Image src={headerLogo?.sourceUrl} alt="Logo" width={43} height={40}></Image>
                             </Link>
                         </div>
-                        {(menuInfo && route == '/') && <div className="navInner">
+                        {(menuInfo && (route == '/' || route == '/legalpage')) && <div className="navInner">
                             <ul>
                                 {menuInfo.map((menu,index) => {
                                     if(menu?.scrollToSectionLink){

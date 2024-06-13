@@ -70,27 +70,27 @@ const CheckoutSec = ({ rzpLoaded }) => {
         // document.body.classList.add("loaderActive")
     }, [])
 
-    useEffect(() => {
-        console.log("selected state ",selectedState)
-        if (taxInfo && selectedState != '') {
-            let matchingRates = taxInfo.filter(rate => rate.state === selectedState);
+    // useEffect(() => {
+    //     console.log("selected state ",selectedState)
+    //     if (taxInfo && selectedState != '') {
+    //         let matchingRates = taxInfo.filter(rate => rate.state === selectedState);
 
-            // If no matches are found, check for objects with an empty state
-            if (matchingRates.length === 0) {
-                matchingRates = taxInfo.filter(rate => rate.state === '');
-            }
+    //         // If no matches are found, check for objects with an empty state
+    //         if (matchingRates.length === 0) {
+    //             matchingRates = taxInfo.filter(rate => rate.state === '');
+    //         }
 
-            // Calculate the total tax based on matching rates
-            const totalTax = matchingRates.reduce((total, rate) => {
-                return total + (productsTotal * parseFloat(rate.rate) / 100);
-            }, 0);
+    //         // Calculate the total tax based on matching rates
+    //         const totalTax = matchingRates.reduce((total, rate) => {
+    //             return total + (productsTotal * parseFloat(rate.rate) / 100);
+    //         }, 0);
 
-            let finalTotal = (productsTotal + totalTax)
-            setStateTaxRate(matchingRates);
-            setSubTotal(finalTotal);
-        }
+    //         let finalTotal = (productsTotal + totalTax)
+    //         setStateTaxRate(matchingRates);
+    //         setSubTotal(finalTotal);
+    //     }
 
-    }, [selectedState])
+    // }, [selectedState])
 
     useEffect(() => {
         if(isLoading){
@@ -117,7 +117,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                 .then(response => {
                     console.log('Woocommerce Order created successfully:', response.data);
                     const orderData = response.data;
-                    // console.log(orderData.id);
+                    console.log("orderData: ",orderData);
                     razorPayHandler(orderData)
                 })
                 .catch(error => {
@@ -341,7 +341,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                 return errors;
                             }}
                             onSubmit={(values, { setSubmitting }) => {
-                                // console.log("values : ", values)
+                                console.log("values : ", values)
                                 let fullName = values.name;
                                 let fullNameArr = fullName.trim().split(" ");
                                 let firstName = '';
@@ -359,7 +359,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                     address_1: values?.addressLine1,
                                     address_2: values?.addressLine2,
                                     city: values?.city,
-                                    state: values?.state[0].id,
+                                    state: values?.state[0].value,
                                     postcode: values?.pincode,
                                     country: 'IN',
                                     email: values?.email,
@@ -530,11 +530,10 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                     <div className="totalBox">
                                                                         <ul>
                                                                             <li>
-                                                                                <p>Total</p>
+                                                                                <p>Subtotal <span>(MRP incl. of all taxes)</span></p>
                                                                                 <span>₹ {productsTotal.toFixed(2)}/-</span>
                                                                             </li>
-                                                                            {/* {JSON.stringify(stateTaxRate)} */}
-                                                                            {stateTaxRate.length == 0 &&
+                                                                            {/* {stateTaxRate.length == 0 &&
                                                                                 <li>
                                                                                     <p>Tax</p>
                                                                                     <span>₹ 0/-</span>
@@ -547,13 +546,13 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                                         <span>₹ {(productsTotal * parseFloat(info.rate) / 100).toFixed(2)}/-</span>
                                                                                     </li>)
                                                                                 })
-                                                                            }
+                                                                            } */}
                                                                             <li>
                                                                                 <p>Shipping</p>
                                                                                 <span>₹ 00/-</span>
                                                                             </li>
                                                                             <li>
-                                                                                <p className="subHead">Subtotal</p>
+                                                                                <p className="subHead">Total</p>
                                                                                 <span className="totalRs">₹ {subTotal.toFixed(2)}/-</span>
                                                                             </li>
                                                                         </ul>

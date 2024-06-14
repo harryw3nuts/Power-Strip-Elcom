@@ -9,7 +9,11 @@ const ThemeProvider = ({ children }) => {
 
   const setProductsHandler = (product) => {
     // setProducts((products) => [...products,product]);
-    setProducts([product]);
+    if(product == ''){
+      setProducts([]);
+    }else{
+      setProducts([product]);
+    }
   };
 
   const setPaymentErrorHandler = (msg) => {

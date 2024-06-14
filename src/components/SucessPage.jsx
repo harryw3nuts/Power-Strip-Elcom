@@ -9,13 +9,14 @@ import { InvoiceDocument } from "./InvoiceDocument";
 
 
 const SucessSec = ({ data }) => {
-    const { orderInfo } = useContext(ThemeContext)
+    const { orderInfo,setProductsHandler } = useContext(ThemeContext)
     const [isClient, setIsClient] = useState(false)
     const { pdfAddressInfo, pdfColorText, pdfCustomerDetailsText, pdfGstInfo, pdfInvoiceText, pdfLogo, pdfOrderDateText, pdfPriceText, pdfProductCodeText, pdfProductNameText, pdfQuantityText, pdfShippingText, successBackHomeButtonText, successBackHomeText, successDescription, successDownloadInvoiceButtonText, successHeading, successImage } = data;
 
 
     useEffect(() => {
         setIsClient(true)
+        setProductsHandler("")
     }, [])
     console.log("orderInfo from success: ",orderInfo)
     // const newdata = {

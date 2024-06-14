@@ -10,6 +10,7 @@ import NextNProgress from 'nextjs-progressbar';
 
 export default function App({ Component, pageProps }) {
   const themeSettings = pageProps?.data?.data?.themeGeneralSettings?.themeGeneralSettings;
+  // console.log("themeSettings ",themeSettings)
   const headerData = {
     headerLogo: themeSettings?.headerLogo,
     ctaOneInfo: themeSettings?.ctaOneInfo,
@@ -24,6 +25,7 @@ export default function App({ Component, pageProps }) {
     linkedinUri: themeSettings?.linkedinUri,
     facebookUri: themeSettings?.facebookUri,
     youtubeUri: themeSettings?.youtubeUri,
+    footerLinks:themeSettings?.footerLinks
   }
 
   // useEffect(()=>{

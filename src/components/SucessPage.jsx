@@ -18,7 +18,7 @@ const SucessSec = ({ data }) => {
         setIsClient(true)
         setProductsHandler("")
     }, [])
-    console.log("orderInfo from success: ",orderInfo)
+    // console.log("orderInfo from success: ",orderInfo)
     // const newdata = {
     //     "headerLogo": {
     //         "sourceUrl": "https://multiatesting.in/elcom-powerstrip/wp-content/uploads/2024/05/Logo.svg"

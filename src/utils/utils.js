@@ -1,4 +1,5 @@
 import axios from "axios";
+import Router from "next/router";
 
 // Function to send GraphQL queries with variables
 export async function sendGraphQLQuery(query, variables = {}) {
@@ -114,17 +115,22 @@ export function formatDate(dateString) {
   return `${day} ${month} ${year}`;
 }
 
-export function scrollToSection(id) {
+export function scrollToSection(id,route) {
   // console.log("ksdlf : ",id.split("")[0] == "#" ? "yes" : "no");
-  if (id.split("")[0] == "#" && id.split("").length > 1) {
-    const element = document.querySelector(id);
-    if (element) {
-      const offset = 90; // adjust this value to account for the height of the header or any other fixed element
-      const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+  if(route && route != '/'){
+    const targetSection = id.replace('#', ''); // Remove the hash symbol if present
+    Router.push(`/?scrollTo=${targetSection}`);
+  }else{
+    if (id.split("")[0] == "#" && id.split("").length > 1) {
+      const element = document.querySelector(id);
+      if (element) {
+        const offset = 90; // adjust this value to account for the height of the header or any other fixed element
+        const y = element.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    } else {
+      Router.push(id)
     }
-  } else {
-    router.push(id)
   }
 }
 

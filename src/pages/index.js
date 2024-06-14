@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
-import { sendGraphQLQuery } from "@/utils/utils";
+import { scrollToSection, sendGraphQLQuery } from "@/utils/utils";
 import { HOME_PAGE } from "@/queries/graphql_queries";
 import Banner from "@/components/Banner";
 import PriceSec from "@/components/PriceSec";
@@ -49,6 +49,19 @@ export default function Home({ data, error }) {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const targetSection = urlParams.get('scrollTo');
+    if(targetSection){
+      scrollToSection('#'+targetSection)
+      urlParams.delete('scrollTo');
+      // const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+      const newUrl = `${window.location.pathname}`;
+      router.replace(newUrl, undefined, { shallow: true });
+    }
+  },[])
 
   if (error) {
     return <h2>Error: {JSON.stringify(error)}</h2>;

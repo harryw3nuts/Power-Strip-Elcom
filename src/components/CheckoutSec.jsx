@@ -115,9 +115,9 @@ const CheckoutSec = ({ rzpLoaded }) => {
             // creating wordpress order and status is pending payment to retrive order id and amount for razorpay checkout
             api.post('orders', orderData)
                 .then(response => {
-                    console.log('Woocommerce Order created successfully:', response.data);
+                    // console.log('Woocommerce Order created successfully:', response.data);
                     const orderData = response.data;
-                    console.log("orderData: ",orderData);
+                    // console.log("orderData: ",orderData);
                     razorPayHandler(orderData)
                 })
                 .catch(error => {
@@ -341,7 +341,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                 return errors;
                             }}
                             onSubmit={(values, { setSubmitting }) => {
-                                console.log("values : ", values)
+                                // console.log("values : ", values)
                                 let fullName = values.name;
                                 let fullNameArr = fullName.trim().split(" ");
                                 let firstName = '';
@@ -482,7 +482,7 @@ const CheckoutSec = ({ rzpLoaded }) => {
                                                                         <ErrorMessage name="state" component="div" className="errorMessage" />
                                                                     </div>
                                                                     <div className='contactInner'>
-                                                                        <Field type="text" name="pincode" placeholder="PIn code" min="0"
+                                                                        <Field type="text" name="pincode" placeholder="Pin code" min="0"
                                                                             onChange={handleChange}
                                                                             onBlur={handleBlur}
                                                                             value={values.pincode} />

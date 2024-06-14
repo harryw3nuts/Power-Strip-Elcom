@@ -1,3 +1,5 @@
+import SeoData from "@/components/SeoData";
+
 const SEOQUERY = `
   seoData{
     metaTitle
@@ -9,6 +11,86 @@ const SEOQUERY = `
     jsonSchema
   }
 `;
+
+
+const THEME_SETTING_FIELDS = `
+themeGeneralSettings{
+  themeGeneralSettings{
+    headerLogo{
+      sourceUrl
+    }
+    menuInfo{
+      link{
+        title
+        target
+        url
+      }
+      scrollToSectionLink
+    }
+    ctaOneInfo{
+      title
+      target
+      url
+    }
+    ctaTwoInfo{
+      title
+      target
+      url
+    }
+    footerCopyrightInfo
+    footerElcomLink{
+      title
+      target
+      url
+    }
+    footerLinks{
+      link{
+        title
+        url
+        target
+      }
+    }
+    twitterUri
+    linkedinUri
+    facebookUri
+    youtubeUri
+    pdfLogo{
+      sourceUrl
+    }
+    pdfAddressInfo
+    pdfGstInfo
+    pdfInvoiceText
+    pdfOrderDateText
+    pdfCustomerDetailsText
+    pdfShippingAddressText
+    pdfProductCodeText
+    pdfProductNameText
+    pdfColorText
+    pdfQuantityText
+    pdfPriceText
+    pdfSubtotalText
+    pdfShippingText
+    pdfTotalText
+    pdfThankYouText
+    successImage {
+      sourceUrl
+    }
+    successHeading
+    successDescription
+    successDownloadInvoiceButtonText
+    successBackHomeText
+    successBackHomeButtonText
+    failImage{
+      sourceUrl
+    }
+    failHeading
+    failDescription
+    failRetryButtonText
+    failBackHomeText
+    failBackHomeButtonText
+  }
+}
+`
 
 
 export const CHECKOUT_PAGE = `
@@ -38,128 +120,12 @@ query PAYMENT_FAILED_PAGE_QUERY{
 
 export const THEME_SETTINGS = `
 query THEME_SETTINGS {
-    themeGeneralSettings{
-      themeGeneralSettings{
-        headerLogo{
-          sourceUrl
-        }
-        menuInfo{
-          link{
-            title
-            target
-            url
-          }
-          scrollToSectionLink
-        }
-        ctaOneInfo{
-          title
-          target
-          url
-        }
-        ctaTwoInfo{
-          title
-          target
-          url
-        }
-        footerCopyrightInfo
-        footerElcomLink{
-          title
-          target
-          url
-        }
-        twitterUri
-        linkedinUri
-        facebookUri
-        youtubeUri
-        pdfLogo{
-          sourceUrl
-        }
-        pdfAddressInfo
-        pdfGstInfo
-        pdfInvoiceText
-        pdfOrderDateText
-        pdfCustomerDetailsText
-        pdfShippingAddressText
-        pdfProductCodeText
-        pdfProductNameText
-        pdfColorText
-        pdfQuantityText
-        pdfPriceText
-        pdfSubtotalText
-        pdfShippingText
-        pdfTotalText
-        pdfThankYouText
-        successImage {
-          sourceUrl
-        }
-        successHeading
-        successDescription
-        successDownloadInvoiceButtonText
-        successBackHomeText
-        successBackHomeButtonText
-        failImage{
-          sourceUrl
-        }
-        failHeading
-        failDescription
-        failRetryButtonText
-        failBackHomeText
-        failBackHomeButtonText
-      }
-    }
+    ${THEME_SETTING_FIELDS}
   }
 `
 export const HOME_PAGE = `
 query THEME_SETTINGS {
-    themeGeneralSettings{
-      themeGeneralSettings{
-        headerLogo{
-          sourceUrl
-        }
-        menuInfo{
-          link{
-            title
-            target
-            url
-          }
-          scrollToSectionLink
-        }
-        ctaOneInfo{
-          title
-          target
-          url
-        }
-        ctaTwoInfo{
-          title
-          target
-          url
-        }
-        footerCopyrightInfo
-        footerElcomLink{
-          title
-          target
-          url
-        }
-        twitterUri
-        linkedinUri
-        facebookUri
-        youtubeUri
-        pdfLogo{
-          sourceUrl
-        }
-        pdfAddressInfo
-        pdfGstInfo
-        pdfInvoiceText
-        pdfOrderDateText
-        pdfCustomerDetailsText
-        pdfShippingText
-        pdfProductCodeText
-        pdfProductNameText
-        pdfColorText
-        pdfQuantityText
-        pdfPriceText
-      }
-    }
+    ${THEME_SETTING_FIELDS}
     pageBy(uri: "/") {
         title
         template {
@@ -343,6 +309,30 @@ query THEME_SETTINGS {
           }
         }
       }
+    }
+  }
+`
+
+export const GET_ALL_PAGES_SLUG = `
+  query GET_ALL_PAGES_SLUG {
+    pages(where: {notIn: [5, 408, 410, 51, 50, 49, 52], status: PUBLISH}) {
+      nodes {
+        slug
+      }
+    }
+  }
+`
+
+export const GET_DEFAULT_PAGE = `
+  query GET_DEFAULT_PAGE($id: ID = "") {
+    page(id: $id, idType: URI){
+      title
+      slug
+      template{
+        templateName
+      }
+      content
+      ${SEOQUERY}     
     }
   }
 `

@@ -24,7 +24,11 @@ const Footer = ({ footerCopyrightInfo, footerElcomLink, twitterUri, linkedinUri,
                                 </div>}
                                 {footerElcomLink &&
                                     <div className="webLink">
-                                        <Link href={footerElcomLink.url} target={footerElcomLink.target}>{footerElcomLink.title}</Link>
+                                        <ul>
+                                            <li><Link href={footerElcomLink.url} target={footerElcomLink.target}>{footerElcomLink.title}</Link></li>
+                                            <li><Link href={footerElcomLink.url} target={footerElcomLink.target}>{footerElcomLink.title}</Link></li>
+                                            <li><Link href={footerElcomLink.url} target={footerElcomLink.target}>{footerElcomLink.title}</Link></li>    
+                                        </ul>
                                     </div>
                                 }
                                 {(twitterUri.trim() != '' || linkedinUri.trim() != '' || facebookUri.trim() != '' || youtubeUri.trim() != '') && <div className="socialLink">

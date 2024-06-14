@@ -196,6 +196,11 @@
     .legalNotice h4 {font-size: 28px;}
     .legalNotice h5 {font-size: 24px;}
     .legalNotice h6{font-size: 22px;}
+
+    .titleBox {padding: 20px;}
+    .titleBox .orderInner .orderBox .orderDtl ul .orderHead {font-size: 15px; line-height: 20px;}
+    .titleBox .orderInner .orderBox {gap: 10px;}
+    .titleBox .orderInner .orderBox .orderDtl ul li {font-size: 14px; line-height: 16px;}
  
  
 }
@@ -285,6 +290,10 @@
     .legalNotice h4 {font-size: 28px;}
     .legalNotice h5 {font-size: 24px;}
     .legalNotice h6{font-size: 22px;}
+
+    .footerBar .footerSec .socialLink ul {gap: 0;}
+    .footerBar .footerSec .socialLink ul li:not(:last-child) {margin-right: 20px;}
+    .footerNav .footerBar .footerSec {padding: 20px;}
  
     
 }
@@ -386,8 +395,8 @@
     .mySwiper .swiper-slide {width: 75% !important; margin-right: 12px !important;}
     .footerNav .footerBar .footerSec {flex-wrap: wrap; justify-content: center; align-items: center; padding: 15px 20px;}
     .footerBar .footerSec .socialLink {order: 1; width: 100%; justify-content: center; align-items: center; display: flex; margin-bottom: 13px; padding-bottom: 13px; border-bottom: 1px solid #343434;}
-    .footerBar .footerSec .nameSec {order: 2; margin-right: 42px;}
-    .footerBar .footerSec .webLink {order: 3; margin-left: 42px;}
+    .footerBar .footerSec .nameSec {order: 2; margin-bottom: 20px;}
+    .footerBar .footerSec .webLink {order: 3; }
     .mobileSlider {display: block;}
     .priceImg .priceWrapper .row .col-xl-1 {padding: 0 15px;}
     .pricefullImg .swiper-slide {justify-content: flex-end;}

@@ -92,11 +92,14 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .footerBar .footerSec .nameSec {position: relative;}
 .footerBar .footerSec .nameSec span {display: block; font-size: 12px; color: #D6D6D6; line-height: 16px; font-family: "Inter Tight"; font-weight: 500;}
 .footerBar .footerSec .webLink {position: relative;}
-.footerBar .footerSec .webLink a {font-size: 12px; color: #D6D6D6; line-height: 16px; text-decoration: none; font-family: "Inter Tight"; font-weight: 500; display: flex;}
+.webLink ul {display: flex;}
+.webLink ul li:not(:last-child) {margin-right: 20px;}
+.footerBar .footerSec .webLink a {font-size: 12px; color: #D6D6D6; line-height: 16px; text-decoration: none; font-family: "Inter Tight"; font-weight: 500; display: flex; text-transform: capitalize;}
 .footerBar .footerSec .socialLink {position: relative;}
-.footerBar .footerSec .socialLink ul {display: flex; gap: 31px;}
+.footerBar .footerSec .socialLink ul {display: flex;}
 .footerBar .footerSec .socialLink ul li {display: block; margin: 0; padding: 0;}
-.footerBar .footerSec .socialLink ul li a {text-decoration: none; transition: all ease-in-out 0.3s;}
+.footerBar .footerSec .socialLink ul li:not(:last-child) {margin-right: 31px;}
+.footerBar .footerSec .socialLink ul li a {text-decoration: none; transition: all ease-in-out 0.3s; display: flex;}
 .footerBar .footerSec .socialLink ul li a svg {color: #A1A1A1; transition: all ease-in-out 0.3s;}
 .footerBar .footerSec .socialLink ul li a:hover svg{color: #FFF;}
 /* footer end */
@@ -430,6 +433,9 @@ font-weight: 600; line-height: 24px; text-decoration-line: underline;}
 .totalDtl .totalBox {}
 .totalDtl .totalBox ul {display: block; margin: 0; padding: 0;}
 .totalDtl .totalBox ul li {border-top: 1px solid #7B7B7B; padding: 10px 0 20px;}
+.totalDtl .totalBox ul li p {display: flex; align-items: baseline;}
+.totalDtl .totalBox ul li p span {color: #7B7B7B; font-family: "Inter Tight"; font-size: 12px; font-style: normal; font-weight: 400; line-height: 24px; display: block; margin-left: 5px; }
+
 .totalDtl .totalBox ul li p {color: #000; font-family: "Inter Tight"; font-size: 16px;
 font-weight: 400; line-height: 24px; /* 150% */}
 .totalDtl .totalBox ul li span {display: block; margin: 0; color: #000; font-family: "Inter Tight";

@@ -83,6 +83,8 @@
     .zoomer .textwrapout.text .clipper h2 {margin-top: 180px;}
     .zoomer .textwrapout.text .clipper h2.heading2 {margin-top: 320px;}
 
+    .legalWrap {padding-top: 150px;}
+
  
  }
 
@@ -121,6 +123,19 @@
     .features-sec .imgbox {max-width: 530px;}
     .features-sec .imgbox img {height: 100%; max-width: 100%;}
     .features-sec .title {top: 60px;}
+
+    .legalWrap {padding: 150px 0 40px;}
+    .legalWrap .legalText .legalTitle h1 {font-size: 54px;}
+    .legalWrap .legalText .legalTitle {padding: 40px 0;}
+    .legalNotice {padding: 40px 0 ;}
+    .legalNotice h3 {font-size: 32px;}
+    .legalNotice p {font-size: 18px;}
+    .legalNotice > * + h3 {margin-top: 40px;}
+
+    .legalNotice h2 {font-size: 44px; }
+    .legalNotice h4 {font-size: 28px;}
+    .legalNotice h5 {font-size: 24px;}
+    .legalNotice h6{font-size: 22px;}
 }
 
  
@@ -168,6 +183,19 @@
     .feture_text_box-5 .line {transform: rotate(192deg);}
 
     .stripImg .stripBox {min-height: 215px;}
+
+    .legalWrap {padding: 100px 0 40px;}
+    .legalWrap .legalText .legalTitle h1 {font-size: 54px;}
+    .legalWrap .legalText .legalTitle {padding: 40px 0;}
+    .legalNotice {padding: 40px 0 ;}
+    .legalNotice h3 {font-size: 32px;}
+    .legalNotice p {font-size: 18px;}
+    .legalNotice > * + h3 {margin-top: 40px;}
+
+    .legalNotice h2 {font-size: 44px; }
+    .legalNotice h4 {font-size: 28px;}
+    .legalNotice h5 {font-size: 24px;}
+    .legalNotice h6{font-size: 22px;}
  
  
 }
@@ -244,6 +272,19 @@
     .titleBox .orderInner .orderBox .orderDtl {gap: 140px;}
 
     .stripImg .stripBox {min-height: 336px;}
+
+    .legalWrap {padding: 100px 0 40px;}
+    .legalWrap .legalText .legalTitle h1 {font-size: 54px;}
+    .legalWrap .legalText .legalTitle {padding: 40px 0;}
+    .legalNotice {padding: 40px 0 ;}
+    .legalNotice h3 {font-size: 32px;}
+    .legalNotice p {font-size: 18px;}
+    .legalNotice > * + h3 {margin-top: 40px;}
+
+    .legalNotice h2 {font-size: 44px; }
+    .legalNotice h4 {font-size: 28px;}
+    .legalNotice h5 {font-size: 24px;}
+    .legalNotice h6{font-size: 22px;}
  
     
 }
@@ -409,6 +450,19 @@
     .stripImg {margin-bottom: 40px;}
     .stripSec .row {row-gap: 0;}
     .mySwiper2 {min-height: 100%;}
+
+    .legalWrap {padding: 100px 0 40px;}
+    .legalWrap .legalText .legalTitle h1 {font-size: 44px;}
+    .legalWrap .legalText .legalTitle {padding: 40px 0;}
+    .legalNotice {padding: 40px 0 ;}
+    .legalNotice h3 {font-size: 28px;}
+    .legalNotice p {font-size: 16px;}
+    .legalNotice > * + h3 {margin-top: 40px;}
+
+    .legalNotice h2 {font-size: 34px; }
+    .legalNotice h4 {font-size: 26px;}
+    .legalNotice h5 {font-size: 22px;}
+    .legalNotice h6{font-size: 20px;}
  
  }
 

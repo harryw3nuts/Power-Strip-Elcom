@@ -1,11 +1,8 @@
 import Link from "next/link";
 import Image from "next/image";
-import leftstrip from "@/asset/images/leftstrip.png";
-import rightstrip from "@/asset/images/rightstrip.png";
 import { scrollToSection } from "@/utils/utils";
 
 const Banner = ({bannerHeading,bannerSubHeading,bannerLeftSideImage,bannerRightSideImage,bannerButtonInfo}) => {
-    
     return (
         <>
             <div className="brackerwrap">

@@ -147,6 +147,9 @@ query THEME_SETTINGS {
                     powerStripimage{
                       sourceUrl
                     }
+                    powerStripMobileImage{
+                      sourceUrl
+                    }
                     powerStripleftText
                     powerStriprightText
                     featuresHeading
@@ -282,6 +285,7 @@ query THEME_SETTINGS {
                             heading
                             value
                           }
+                          shortDescription
                         }
                       }
                       ... on SimpleProduct {

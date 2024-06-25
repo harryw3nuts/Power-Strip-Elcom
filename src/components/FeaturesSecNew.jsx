@@ -2,7 +2,6 @@ import { useRef, useEffect, } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import MainImage from "@/asset/images/features-main-imge.png"
 gsap.registerPlugin(ScrollTrigger);
 
 const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features2Heading,features3Heading,features4Heading,features5Heading,features1Subheading,features2Subheading,features3Subheading,features4Subheading,features5Subheading}) => {
@@ -18,9 +17,7 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
     const circle1Ref = useRef(null);
     const circle2Ref = useRef(null);
 
-
     useEffect(() => {
-
         const animationDuration = 1;
         let timeline;
         function AnimationHandler() {
@@ -74,7 +71,6 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
             // ScrollTrigger.getAll().forEach(trigger => trigger.kill());
             // timeline.kill()
         };
-
     }, []);
 
     return (
@@ -153,8 +149,6 @@ const FeaturesSecNew = ({featuresHeading,featuresImage,features1Heading,features
                             </div>
                         </div>}
                         {/* feture_text_box-5 */}
-
-
                     </div>
                 </div>
             </div>

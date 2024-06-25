@@ -7,31 +7,27 @@ import axios from "axios";
 
 
 const VideoSec = ({videoBackgroundImage,videoUrl:videoUrlData,videoButtonText}) => {
-
     const [showVideo, setShowVideo] = useState(false);
     const [videoUrl, setVideoUrl] = useState("");
     const [videoDetails,setVideoDetails] = useState();
-    // const url = "https://www.youtube.com/watch?v=D0UnqGm_miA";
-    const url = "https://www.youtube.com/watch?v=7PIji8OubXU";
-    // const url = "https://www.youtube.com/embed/D0UnqGm_miA";
-    // const url = "https://vimeo.com/46926279";
-    // const url = "https://vimeo.com/945935458";
+    const url = videoUrlData;
     let updatedURL = '';
-    //getting plateform of given URL (eg. Youtube,Vimeo)
-    const videoPlatForm = checkVideoPlatform(url);
+    let videoPlatForm = '';
 
-    if(videoPlatForm == 'YouTube'){
-        updatedURL = getYouTubeEmbeddedUrl(url)
-    }else if(videoPlatForm == 'Vimeo'){
-        updatedURL = getVimeoEmbeddedUrl(url)
-    }else{
-        updatedURL = url;
+    if(videoUrlData){
+        //getting plateform of given URL (eg. Youtube,Vimeo)
+        videoPlatForm = checkVideoPlatform(url);
+        if(videoPlatForm == 'YouTube'){
+            updatedURL = getYouTubeEmbeddedUrl(url)
+        }else if(videoPlatForm == 'Vimeo'){
+            updatedURL = getVimeoEmbeddedUrl(url)
+        }else{
+            updatedURL = url;
+        }
     }
 
     //get Youtube video id from url
     const getVideoIdFromUrl = (url) => {
-        // const urlObj = new URL(url);
-        // return urlObj.searchParams.get('v');
         let videoId;
         const youtubeRegex = /(?:youtube\.com\/(?:[^\/\n\s]+\/\S+\/|(?:v|e(?:mbed)?)\/|\S*?[?&]v=)|youtu\.be\/)([a-zA-Z0-9_-]{11})/;
         const match = url.match(youtubeRegex);

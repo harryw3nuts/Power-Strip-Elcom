@@ -17,7 +17,7 @@ const PaymentFail = ({data,paymentFailData}) => {
 
 export default PaymentFail
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const data = await sendGraphQLQuery(THEME_SETTINGS);
     const paymentFailData = await sendGraphQLQuery(PAYMENT_FAILES_PAGE);
@@ -26,7 +26,6 @@ export async function getStaticProps() {
         data,
         paymentFailData
       },
-      revalidate: 10
     }
   } catch (error) {
     return {

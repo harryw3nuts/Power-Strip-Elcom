@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import { scrollToSection, sendGraphQLQuery } from "@/utils/utils";
@@ -24,9 +23,6 @@ export default function Home({ data, error }) {
 
   useEffect(() => {
     const handleRouteChange = (url) => {
-      // console.log('App is changing to:', url);
-      // console.log("Router ", router.query);
-
       if (router.query?.edit && router.query?.edit == 1) {
         const section = sectionRef.current;
         const sectionStyles = window.getComputedStyle(section);
@@ -57,7 +53,6 @@ export default function Home({ data, error }) {
     if(targetSection){
       scrollToSection('#'+targetSection)
       urlParams.delete('scrollTo');
-      // const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
       const newUrl = `${window.location.pathname}`;
       router.replace(newUrl, undefined, { shallow: true });
     }
@@ -69,7 +64,7 @@ export default function Home({ data, error }) {
 
   const {
     bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo,
-    powerStripimage, powerStripleftText, powerStriprightText,
+    powerStripimage, powerStripMobileImage,powerStripleftText, powerStriprightText,
     otherHeading, otherProductInfo,
     reviewsHeading, reviewsInfo,
     insightsHeading, insightsReadMoreLinkText, insightsAllInsightsLink, insightsInfo,
@@ -85,14 +80,13 @@ export default function Home({ data, error }) {
 
   const latest3Posts = data?.data?.posts?.nodes;
 
-
   const BannerData = { bannerHeading, bannerSubHeading, bannerLeftSideImage, bannerRightSideImage, bannerButtonInfo };
   const otherInfoData = { otherHeading, otherProductInfo };
   const reviewsData = { reviewsHeading, reviewsInfo };
   const insightsData = { insightsHeading, insightsReadMoreLinkText, insightsAllInsightsLink, latest3Posts, insightsInfo };
   const benefitsData = { benefitsHeading, benefitsInfo };
   const faqData = { faqHeading, faqInfo };
-  const powerStripData = { powerStripimage, powerStripleftText, powerStriprightText };
+  const powerStripData = { powerStripimage, powerStripMobileImage,powerStripleftText, powerStriprightText };
   const featuresData = { featuresHeading, featuresImage, featuresImageMobile, features1Heading, features2Heading, features3Heading, features4Heading, features5Heading, features1Subheading, features2Subheading, features3Subheading, features4Subheading, features5Subheading };
   const exploreData = { exploreHeading, exploreButtonInfo, exploreImagesInfo };
   const videoData = { videoBackgroundImage, videoUrl, videoButtonText };
@@ -102,7 +96,7 @@ export default function Home({ data, error }) {
       <SeoData pageTitle={title || "Home | Elcom Powerstrip"} seodata={seoData} />
       <Banner {...BannerData} />
       <ScrollTextColor {...powerStripData} />
-      <MobileTextColor />
+      <MobileTextColor {...powerStripData}/>
       <PriceSec productData={selectProduct} sectionRef={sectionRef} />
       <MobileFutureSlider {...featuresData} />
       <FeaturesSecNew {...featuresData} />
@@ -117,20 +111,19 @@ export default function Home({ data, error }) {
   );
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const data = await sendGraphQLQuery(HOME_PAGE);
     return {
       props: {
         data
-      },
-      revalidate: 10
-    };
+      }
+    }
   } catch (error) {
     return {
       props: {
         error
       }
-    };
+    }
   }
 }

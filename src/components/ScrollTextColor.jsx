@@ -1,7 +1,5 @@
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import PsImage from "@/asset/images/ps-text-image.png";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
@@ -23,33 +21,18 @@ const ScrollTextColor = ({powerStripimage,powerStripleftText,powerStriprightText
     });
 
     useEffect(() => {
-        // const handleResize = () => {
         setImageClipperDimensions({
             width: imageClipperRef.current.getBoundingClientRect().width,
             height: imageClipperRef.current.getBoundingClientRect().height,
         });
-        // };
-        // window.addEventListener("resize", handleResize);
-
-        // Initial load
-        // handleResize();
-
-        // Remove event listener on cleanup
-        // return () => {
-        //     window.removeEventListener("resize", handleResize);
-        // };
     }, [imageLoaded]);
 
     useEffect(() => {
         if (!imageLoaded) return;
 
-        // const animationHandler = () => {
-
         const scaleImg = 0.465;
         const textDivWidth = imageClipperDimensions.width * scaleImg;
         const textDivHeight = imageClipperDimensions.height * scaleImg;
-        // console.log("textDivWidth", textDivWidth);
-        // console.log("imageClipperDimensions.width", imageClipperDimensions.width);
 
         gsap.fromTo(
             intextRef.current,
@@ -62,14 +45,7 @@ const ScrollTextColor = ({powerStripimage,powerStripleftText,powerStriprightText
                     start: "top top",
                     end: "200% bottom",
                     scrub: 0.5,
-                    onUpdate: (self) => {
-                        // console.log('self', self);
-                        // console.log('imageClipperDimensions.width', imageClipperDimensions.width);
-                        // const progress = self.progress;
-                        // const newWidth = textDivWidth * (1 - progress) + scaleImg * textDivWidth * progress;
-                        // const newHeight = textDivHeight * (1 - progress) + scaleImg * textDivHeight * progress;
-                        // gsap.set(intextRef.current, { width: newWidth, height: newHeight });
-                    },
+                    onUpdate: (self) => {},
                 },
             }
         );
@@ -143,10 +119,6 @@ const ScrollTextColor = ({powerStripimage,powerStripleftText,powerStriprightText
                 },
             }
         );
-        //console.log({scaleImg, textDivHeight, textDivWidth, initilHeight, initilWidth});
-        // }
-
-        // animationHandler()
 
         // PinSec
         const pinHandler = () => {

@@ -28,7 +28,6 @@ import { useContext } from 'react';
 import { ThemeContext } from '@/context/ThemeContext';
 
 const PriceSec = ({ productData, sectionRef }) => {
-    // console.log("productData : ", productData)
     const { productExtraOptions, galleryImages, featuredImage } = productData;
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
@@ -91,7 +90,6 @@ const PriceSec = ({ productData, sectionRef }) => {
     const buyNowHandler = () => {
         const matchingVariation = getMatchingVariation();
 
-        // console.log("matchingVariation : ", matchingVariation);
         if (matchingVariation == undefined && num <= 0) {
             Swal.fire({
                 title: 'Attributes and Quantity is required!',
@@ -145,10 +143,6 @@ const PriceSec = ({ productData, sectionRef }) => {
             setNum(selectedQTY);
         }
     }, [])
-
-
-    // const [readMore , setReadMore] = useState(false);
-    const longText = "Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. Our Power strip is crafted with premium materials like PC FR V2 Grade Plastic, Conductive Integral Brass Components, Heavy-duty Copper Wire, and Molded Plug with Copper Alloy. ";
 
     if (productData?.__typename == "VariableProduct") {
         return (
@@ -315,7 +309,7 @@ const PriceSec = ({ productData, sectionRef }) => {
                                             </ul>
                                         </div>}
                                     </div>}
-                                    <div className='productContent'>
+                                    {productExtraOptions?.shortDescription && <div className='productContent'>
                                         <ReactReadMoreReadLess
                                             charLimit={200}
                                             readMoreText={"Read more"}
@@ -323,9 +317,9 @@ const PriceSec = ({ productData, sectionRef }) => {
                                             readMoreClassName="read-more-less--more"
                                             readLessClassName="read-more-less--less"
                                         >
-                                            {longText}
+                                            {productExtraOptions?.shortDescription}
                                         </ReactReadMoreReadLess>
-                                    </div>
+                                    </div>}
                                 </div>
 
                             </div>

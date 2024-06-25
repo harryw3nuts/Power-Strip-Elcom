@@ -1,32 +1,31 @@
 
 import Image from "next/image";
-import Link from "next/link";
 import mobileImg from "@/asset/images/mobileImg.png";
 
 import Slider from "react-slick";
 import vactor1 from "@/asset/images/vactor1.png";
-import vactor2 from "@/asset/images/vactor2.png";
 import React, { useState } from "react";
 
+const MobileFutureSlider = ({ featuresHeading, featuresImage, featuresImageMobile, features1Heading, features2Heading, features3Heading, features4Heading, features5Heading, features1Subheading, features2Subheading, features3Subheading, features4Subheading, features5Subheading }) => {
 
-
-
-
-const MobileFutureSlider = ({featuresHeading,featuresImage,featuresImageMobile,features1Heading,features2Heading,features3Heading,features4Heading,features5Heading,features1Subheading,features2Subheading,features3Subheading,features4Subheading,features5Subheading}) => {
-
-    const [currentSlide, setCurrentSlide] = useState(0);
+    const [cSlide, setCurrentSlide] = useState(0);
 
     const ArrowLeft = (props) => {
+        const { currentSlide, slideCount, ...buttonProps } = props;
         return (
-		<button {...props}  className={`left group ${currentSlide === 0 ? "disabled" : ""}`}>
-			<svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"/></svg>
-		</button>
-	)};
-	const ArrowRight = (props) => (
-		<button {...props}  className={`right group ${(currentSlide + 1) === props.slideCount ? "disabled" : ""}`}>
-			<svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"/></svg>
-		</button>
-	);
+            <button {...buttonProps} className={`left group ${cSlide === 0 ? "disabled" : ""}`}>
+                <svg className="feather feather-chevron-left" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6" /></svg>
+            </button>
+        )
+    };
+    const ArrowRight = (props) => {
+        const { currentSlide, slideCount, ...buttonProps } = props;
+        return (
+            <button {...buttonProps} className={`right group ${(cSlide + 1) === slideCount ? "disabled" : ""}`}>
+                <svg className="feather feather-chevron-right" fill="none" height="24" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6" /></svg>
+            </button>
+        )
+    };
 
     var settings = {
         dots: true,
@@ -35,14 +34,13 @@ const MobileFutureSlider = ({featuresHeading,featuresImage,featuresImageMobile,f
         slidesToShow: 1,
         slidesToScroll: 1,
         prevArrow: <ArrowLeft />,
-		nextArrow: <ArrowRight />,
-        fade:true,
+        nextArrow: <ArrowRight />,
+        fade: true,
         beforeChange: (oldIndex, newIndex) => setCurrentSlide(newIndex),
-      };
+    };
     return (
         <>
-        <div className="mobileSlider">
-            
+            <div className="mobileSlider">
                 <div className="mobileGrp">
                     {featuresHeading && <div className="mobileFuture">
                         <div className="mobileTitle">
@@ -114,8 +112,7 @@ const MobileFutureSlider = ({featuresHeading,featuresImage,featuresImageMobile,f
                         </Slider>
                     </div>
                 </div>
-            
-        </div>
+            </div>
         </>
     )
 }

@@ -6,7 +6,6 @@ import React from 'react'
 
 const PaymentSuccessful = ({data,paymentSuccessData}) => {
   const seoData = paymentSuccessData?.data?.pageBy?.seoData;
-  // console.log("data : ",data.data.themeGeneralSettings.themeGeneralSettings)
   return (
     <>
     <SeoData pageTitle={""} seodata={seoData}/>
@@ -17,7 +16,7 @@ const PaymentSuccessful = ({data,paymentSuccessData}) => {
 
 export default PaymentSuccessful
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try {
     const data = await sendGraphQLQuery(THEME_SETTINGS);
     const paymentSuccessData = await sendGraphQLQuery(PAYMENT_SUCCESS_PAGE);
@@ -25,8 +24,7 @@ export async function getStaticProps() {
       props: {
         data,
         paymentSuccessData
-      },
-      revalidate: 10
+      }
     }
   } catch (error) {
     return {

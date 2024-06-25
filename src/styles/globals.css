@@ -133,8 +133,8 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .switer_btn {position: absolute; bottom: 80px; right: 32px; display: flex; gap: 10px; z-index: 10;}
 .switer_btn .group { border: none; background-color: #FFF; width: 40px; height: 40px; border-radius: 50px;}
 
-.thumbfullBox {display: flex; justify-content: start; align-items: center; height: 100%; }
-.thumbfullBox img {display: flex; justify-content: start; align-items: center; width: 100%;}
+.thumbfullBox {display: flex; justify-content: flex-start; align-items: center; height: 100%; }
+.thumbfullBox img {display: flex; justify-content: flex-start; align-items: center; width: 100%;}
 .swiper-button-prev,
 .swiper-button-next {left: 0 !important; top: 100% !important;}
 

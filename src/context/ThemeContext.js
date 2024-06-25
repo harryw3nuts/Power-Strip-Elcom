@@ -1,5 +1,4 @@
 import React, { createContext, useState } from 'react';
-
 const ThemeContext = createContext();
 
 const ThemeProvider = ({ children }) => {
@@ -8,7 +7,6 @@ const ThemeProvider = ({ children }) => {
   const [orderInfo, setOrderInfo] = useState("");
 
   const setProductsHandler = (product) => {
-    // setProducts((products) => [...products,product]);
     if(product == ''){
       setProducts([]);
     }else{
@@ -25,7 +23,9 @@ const ThemeProvider = ({ children }) => {
   }
 
   return (
-    <ThemeContext.Provider value={{ products, setProductsHandler,paymentErrorMessage,setPaymentErrorHandler,orderInfo,setOrderInfo }}>
+    <ThemeContext.Provider value={
+      { products, setProductsHandler,paymentErrorMessage,setPaymentErrorHandler,orderInfo,setOrderInfo }
+    }>
       {children}
     </ThemeContext.Provider>
   );

@@ -1,7 +1,7 @@
 import SeoData from '@/components/SeoData';
-import { GET_ALL_PAGES_SLUG, GET_DEFAULT_PAGE, THEME_SETTINGS } from '@/queries/graphql_queries';
+import { GET_DEFAULT_PAGE, THEME_SETTINGS } from '@/queries/graphql_queries';
 import { sendGraphQLQuery } from '@/utils/utils';
-import React, { useEffect } from 'react'
+import React from 'react'
 
 const Page = ({ pageData, error }) => {
 
@@ -57,21 +57,7 @@ const Page = ({ pageData, error }) => {
 
 export default Page
 
-
-export async function getStaticPaths() {
-    try {
-        const data = await sendGraphQLQuery(GET_ALL_PAGES_SLUG);
-        const slugsdata = await data?.data?.pages?.nodes;
-        const paths = slugsdata.map((data) => ({
-            params: { page: data.slug.toString() },
-        }));
-        return { paths, fallback: true };
-    } catch (error) {
-        return { paths, fallback: true };
-    }
-}
-
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
     const { params } = context;
 
     const variables = {
@@ -86,16 +72,14 @@ export async function getStaticProps(context) {
                 pageData: pagedata?.data,
                 data:data,
                 error: ''
-            },
-            revalidate: 10,
+            }
         }
     } catch (error) {
         return {
             props: {
                 error: error,
                 pageData: ''
-            },
-            revalidate: 10,
+            }
         }
     }
 }

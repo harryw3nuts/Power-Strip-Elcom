@@ -79,42 +79,44 @@ const ReviewSec = ({ reviewsHeading, reviewsInfo }) => {
     // cssEase: 'linear'
   };
 
-  return (
-    <>
-      <div className="reviewBox">
-        {reviewsHeading && <div className="benefitHead">
-          <h3>{reviewsHeading}</h3>
-        </div>}
-        <div className="reviewSlider">
-          <Slider {...settings}>
-            {reviewsInfo.map((review, index) => {
-              const { name, description } = review;
-              const des_length = description.split(' ').length;
-              return (
-                <div className="box_slider" key={index}>
-                  {name && <div className="text_box_slider">
-                    <span>{name}</span>
-                  </div>}
-                  {description && <div className="text_slider_dtl">
-                    <ReactReadMoreReadLess
-                      charLimit={450}
-                      readMoreText={"Read more"}
-                      readLessText={"Read less"}
-                      readMoreClassName="read-more-less--more"
-                      readLessClassName="read-more-less--less"
-                    >
-                      {description}
-                    </ReactReadMoreReadLess>
-                  </div>}
-                </div>
-              )
-            })}
-          </Slider>
+  if(reviewsInfo){
+    return (
+      <>
+        <div className="reviewBox">
+          {reviewsHeading && <div className="benefitHead">
+            <h3>{reviewsHeading}</h3>
+          </div>}
+          <div className="reviewSlider">
+            <Slider {...settings}>
+              {reviewsInfo.map((review, index) => {
+                const { name, description } = review;
+                const des_length = description.split(' ').length;
+                return (
+                  <div className="box_slider" key={index}>
+                    {name && <div className="text_box_slider">
+                      <span>{name}</span>
+                    </div>}
+                    {description && <div className="text_slider_dtl">
+                      <ReactReadMoreReadLess
+                        charLimit={450}
+                        readMoreText={"Read more"}
+                        readLessText={"Read less"}
+                        readMoreClassName="read-more-less--more"
+                        readLessClassName="read-more-less--less"
+                      >
+                        {description}
+                      </ReactReadMoreReadLess>
+                    </div>}
+                  </div>
+                )
+              })}
+            </Slider>
+          </div>
+  
         </div>
-
-      </div>
-    </>
-  )
+      </>
+    )
+  }
 }
 
 export default ReviewSec;

@@ -15,7 +15,7 @@
     .feture_text_box-2 { top: 64%; left: 23%; }
     .feture_text_box-3 { top: 48%; right: 13%; }
     .feture_text_box-4 { top: 62%; right: 16%; }
-    .feture_text_box-5 { top: 77%; right: 21%; }
+    .feture_text_box-5 { top: 80%; right: 21%; }
 
     .feture_text_box-2 .line { right: -20px; }
     .videoGrp .container{max-width: 1920px; margin: 0 auto; width: 100%;} 
@@ -158,6 +158,7 @@
     .insightWrap .boxImage {height: 100%; min-height: 198px;} 
     .insightWrap .insightSec .insightBox .boxText {padding: 24px 20px;}
     .insightWrap {margin: 80px 0;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn a {min-width: 210px; padding: 0;}
     
     .questionWrap {margin: 80px 0;}
     .zoomer .images img {width: 100%;}
@@ -233,9 +234,9 @@
     .videoGrp .container {width: 100%;}
     .trailorSec p {font-size: 10px;}
     .timerSec span {font-size: 10px;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn a {font-size: 10px; height: 40px; padding: 0 20px;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn a {font-size: 10px; height: 40px; padding: 0 20px; max-width: 150px;}
     .trailerText {justify-content: space-between; padding: 0 30px;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {display: none;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0; display: flex; align-items: center; justify-content: center;}
     .benefitWrap {margin: 80px 0;}
     .benefitHead h3 {font-size: 120px;}
     .benefitsecBox {margin-top: -50px;}
@@ -261,10 +262,10 @@
     .powerstripslider-mainbox .powerstrips-slide img {width: 100%; height: 100%;}
     .powerstripslider-mainbox .powerstrips-slide {max-width: 314px;}
     .powerstrip-slider-text h3 {font-size: 35px;}
-    .feture_text_box-1 {left: 1.5%;}
-    .feture_text_box-2 {top: 53%; left: 30px;}
-    .feture_text_box-3 {top: 57%; right: 3%; padding-left: 160px; max-width: 300px;}
-    .feture_text_box-4 {top: 71%; right: 2%; padding-left: 115px;}
+    .feture_text_box-1 {left: 1.5%; top: 33%;}
+    .feture_text_box-2 {top: 50%; left: 30px;}
+    .feture_text_box-3 {top: 47%; right: 3%; padding-left: 160px; max-width: 300px;}
+    .feture_text_box-4 {top: 64%; right: 0; padding-left: 115px;}
     .feture_text_box-5 {top: 80%; padding-left: 268px; right: 10%;}
     .feture_text_box-4 .line {left: -115px; top: 18px;}
     .feture_text_box-5 .line {transform: rotate(192deg);left: -122px;}
@@ -307,7 +308,8 @@
     .navigationBar .navWrap .navInner > ul {display: none;}
     .benefitHead h3 {font-size: 68px;} 
     .benefitsecBox {margin-top: -25px;}
-    .benefitBox {margin-bottom: 30px; padding: 20px; height: auto;}
+    .benefitsecBox .row {height: 100%; row-gap: 30px;}
+    .benefitBox { padding: 20px; height: 100%;}
     .features-sec {display: none;}
     .navigationBar .navWrap .navBtn > ul li:first-child{display: none;}
     .navigationBar .navWrap .navBar {padding: 18px 16px;}
@@ -333,7 +335,8 @@
     .productDetail {margin-top: 40px;}
     .videoGrp .container {max-width: 100%; width: 100%;}
     .videoGrp {margin: 80px 0;}
-    .videoGrp .videoPlayer .videoWrapper .blueBtn {display: none;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn {display: flex; justify-content: center; padding: 0;}
+    .videoGrp .videoPlayer .videoWrapper .blueBtn a {font-size: 10px; min-width: 120px; height: 40px; padding: 0;}
     .trailorSec p {font-size: 10px;}
     .timerSec span {font-size: 10px;}
     .trailerText {justify-content: space-evenly; padding: 0 10px;}
@@ -407,7 +410,9 @@
     .mobileSlider .mobileFuture .mobileTitle {}
     .mobileSlider .mobileFuture .mobileTitle h2 {background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 100%);; text-align: center; font-family: "Inter Tight"; font-size: 68px; font-weight: 500; line-height: 72px; color: transparent; -webkit-background-clip: text;}
     .mobileImgBox {padding-top: 60px; padding-left: 65px;}
+    .mobileImgBox img {display: flex; object-fit: cover;}
     .mobileGrp {}
+    .slick-initialized .slick-slide {top: 6px;}
     .textBoxgrp {position: relative;}
     .textBoxgrp .lineBox1 {position: absolute; left: 0; top: 0;}
     .textOne {position: absolute; left: 25px; top: 0; }

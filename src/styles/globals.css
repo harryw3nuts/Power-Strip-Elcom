@@ -79,7 +79,8 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .navigationBar .navWrap .navBtn {position: relative; margin: 0;}
 .navigationBar .navWrap .navBtn > ul {display: flex; gap: 30px; align-items: center;}
 .navigationBar .navWrap .navBtn > ul > li {padding: 0; display: block;} 
-.navigationBar .navWrap .navBtn > ul > li a {text-decoration: none; color: var(--Primary-Black, #101010); font-size: 16px; font-weight: 500; line-height: 16px; text-transform: capitalize; font-family: 'Inter Tight';}
+.navigationBar .navWrap .navBtn > ul > li a {text-decoration: none; color: var(--Primary-Black, #101010); font-size: 16px; font-weight: 500; line-height: 16px; text-transform: capitalize; font-family: 'Inter Tight'; transition: all ease-in-out 0.3s; height: 32px; padding: 0 16px; border-radius: 100px; display: flex; align-items: center; justify-content: center;}
+.navigationBar .navWrap .navBtn > ul > li a:hover{background-color: var(--elcom-black); color: #FFFFFF;}
 .navigationBar .navWrap .navBtn > ul > .buyNow {display: flex; margin: 0;}
 .navigationBar .navWrap .navBtn > ul > .buyNow a {display: flex; align-items: center; justify-content: center; background-color: #0071E3; height: 34px; border-radius: 100px; padding: 0 20px; color: #FFF; text-decoration: none; text-transform: uppercase; font-weight: 500; font-size: 14px; letter-spacing: 0.7px;font-family: 'Inter Tight'; transition: all ease-in-out 0.3s; }
 .navigationBar .navWrap .navBtn > ul > .buyNow a:hover{background-color: #101010;}
@@ -352,7 +353,7 @@ font-style: normal; font-weight: 500; line-height: 24px; text-decoration-line: u
 
 .trailerText {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; display: flex; align-items: center; width: 100%; justify-content: center;}
 /* .videoGrp .videoPlayer .videoWrapper .blueBtn {margin: 0 453px 0 311px;} */
-.videoGrp .videoPlayer .videoWrapper .blueBtn a {color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; text-decoration: none; border: 1px solid #FFF; border-radius: 100px; height: 60px; display: flex; justify-content: center; align-items: center; padding: 0 44px; transition: all ease-in-out 0.3s;}
+.videoGrp .videoPlayer .videoWrapper .blueBtn a { width: auto;color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; text-decoration: none; border: 1px solid #FFF; border-radius: 100px; height: 60px; display: flex; justify-content: center; align-items: center; padding: 0 44px; transition: all ease-in-out 0.3s;}
 .videoGrp .videoPlayer .videoWrapper .blueBtn a:hover{background-color: #0071E3; border-color: #0071E3;}
 
 .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 350px;}
@@ -466,7 +467,8 @@ input[type="radio"]:checked + label:before {-webkit-transition: all .3s ease;
 .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {background: transparent !important;}  
 .btn:focus-visible {background-color: transparent !important; box-shadow: none !important;} 
 /* PriceSec end */
-
+.zoomer .btnbox .border-btn {transition: all ease-in-out 0.3s;}
+.zoomer .btnbox .border-btn:hover{background-color: var(--elcom-black);}
 .zoomer-wrap { position: relative; overflow: hidden; }
 .zoomer {
     position: relative;
@@ -664,7 +666,7 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
 .feture_text_box-4 .line { left: 0; position: absolute; top: 16px; transform: rotate(180deg);  }
 
 .feture_text_box-5 { position: absolute; max-width: 752px; top: 72%; right: 14%; padding-left: 405px; }
-.feture_text_box-5 .line { left: 0; position: absolute; top: 16px; transform: rotate(180deg);  }
+.feture_text_box-5 .line { left: 0; position: absolute; top: 2px; transform: rotate(183deg);  }
 
 /* powerstrip-slider-main */
 .powerstrip-slidersec-main { padding: 0 32px; background-color: #F2F2F2; border-radius: 12px;  height: 100vh; margin: 0 32px; display: flex; align-items: center; }
@@ -672,7 +674,8 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
 .powerstrip-slidersec-main .row { width: 100%; }
 .powerstrip-slider-text h3 { font-size: 48px; font-weight: 600; color: #101010; }
 .powerstrip-slider-text .btnbox { margin-top: 40px; display: flex; align-items: center; }
-
+.powerstrip-slider-text .btnbox .border-btn {transition: all ease-in-out 0.3s;}
+.powerstrip-slider-text .btnbox .border-btn:hover{background-color: var(--elcom-black);}
 .powerstripslider { padding-left: 40px; height: 100%; }
 .powerstripslider-uitis { display: flex; align-items: center; justify-content: space-between; width: 100%; margin-left: 67px; max-width: 647px; padding-top: 16px; }
 .powerstripslider-btnbox { display: flex; align-items: center; justify-content: center; gap: 8px; }
@@ -908,3 +911,12 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
   .legalNotice {padding: 60px 0 139px;display: block;  color: #101010; font-family: "Inter Tight"; padding-bottom: 29px; margin: 0;}
   .legalNotice p {font-size: 20px; color: #6F6F6F; font-family: "Inter Tight"; margin-bottom: 30px;}
   .legalNotice > * + h3 { margin-top: 80px;}
+
+
+
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm{background-color: var(--elcom-blue) !important; transition: all ease-in-out 0.3s !important;}
+  div:where(.swal2-container) button:where(.swal2-styled).swal2-confirm:focus{box-shadow: none !important;}
+  div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover{background-color: var(--elcom-black) !important;}
+  div:where(.swal2-container) h2:where(.swal2-title){color: var(--elcom-black) !important;}
+  div:where(.swal2-icon).swal2-warning {border-color: #FF0000 !important; color: #FF0000 !important;}
+  div:where(.swal2-container) h2:where(.swal2-title) span {color: #FF0000 !important; display: block; margin-top: 15px !important;}

@@ -63,7 +63,7 @@ const MobileFutureSlider = ({ featuresHeading, featuresImage, featuresImageMobil
                             </div>}
                             {(features2Heading || features2Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
-                                    <Image src={mobileImg} alt="mobileImg"></Image>
+                                    <Image src={mobileImg} width={274} height={525} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textTwo">
                                     {features2Heading && <h3>{features2Heading}</h3>}
@@ -75,7 +75,7 @@ const MobileFutureSlider = ({ featuresHeading, featuresImage, featuresImageMobil
                             </div>}
                             {(features3Heading || features3Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
-                                    <Image src={mobileImg} alt="mobileImg"></Image>
+                                    <Image src={mobileImg} width={274} height={525} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textThree">
                                     {features3Heading && <h3>{features3Heading}</h3>}
@@ -87,7 +87,7 @@ const MobileFutureSlider = ({ featuresHeading, featuresImage, featuresImageMobil
                             </div>}
                             {(features4Heading || features4Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
-                                    <Image src={mobileImg} alt="mobileImg"></Image>
+                                    <Image src={mobileImg} width={274} height={525} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textfour">
                                     {features4Heading && <h3>{features4Heading}</h3>}
@@ -99,7 +99,7 @@ const MobileFutureSlider = ({ featuresHeading, featuresImage, featuresImageMobil
                             </div>}
                             {(features5Heading || features5Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
-                                    <Image src={mobileImg} alt="mobileImg"></Image>
+                                    <Image src={mobileImg} width={274} height={525} alt="mobileImg"></Image>
                                 </div>
                                 <div className="textFive">
                                     {features5Heading && <h3>{features5Heading}</h3>}

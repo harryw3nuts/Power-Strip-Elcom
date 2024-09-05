@@ -104,7 +104,7 @@ const PriceSec = ({ productData, sectionRef }) => {
             })
         } else if (matchingVariation != undefined && num <= 0) {
             Swal.fire({
-                title: 'Quantity should be greater then 0',
+                title: 'Quantity should be greater then <span>0</span>',
                 icon: 'warning',
                 confirmButtonText: 'Ok'
             })

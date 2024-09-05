@@ -410,9 +410,9 @@
     .mobileSlider .mobileFuture .mobileTitle {}
     .mobileSlider .mobileFuture .mobileTitle h2 {background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 100%);; text-align: center; font-family: "Inter Tight"; font-size: 68px; font-weight: 500; line-height: 72px; color: transparent; -webkit-background-clip: text;}
     .mobileImgBox {padding-top: 60px; padding-left: 65px;}
-    .mobileImgBox img {display: flex; object-fit: cover;}
+    .mobileImgBox img {display: flex; width: 100%; height: 100%;}
     .mobileGrp {}
-    .slick-initialized .slick-slide {top: 6px;}
+    .slick-initialized .slick-slide {top: 8px;}
     .textBoxgrp {position: relative;}
     .textBoxgrp .lineBox1 {position: absolute; left: 0; top: 0;}
     .textOne {position: absolute; left: 25px; top: 0; }

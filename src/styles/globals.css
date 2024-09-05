@@ -468,7 +468,7 @@ input[type="radio"]:checked + label:before {-webkit-transition: all .3s ease;
 .btn:focus-visible {background-color: transparent !important; box-shadow: none !important;} 
 /* PriceSec end */
 .zoomer .btnbox .border-btn {transition: all ease-in-out 0.3s;}
-.zoomer .btnbox .border-btn:hover{background-color: var(--elcom-black);}
+.zoomer .btnbox .border-btn:hover{background-color: var(--elcom-black); border-color: var(--elcom-black);}
 .zoomer-wrap { position: relative; overflow: hidden; }
 .zoomer {
     position: relative;
@@ -919,4 +919,4 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
   div:where(.swal2-container) div:where(.swal2-actions):not(.swal2-loading) .swal2-styled:hover{background-color: var(--elcom-black) !important;}
   div:where(.swal2-container) h2:where(.swal2-title){color: var(--elcom-black) !important;}
   div:where(.swal2-icon).swal2-warning {border-color: #FF0000 !important; color: #FF0000 !important;}
-  div:where(.swal2-container) h2:where(.swal2-title) span {color: #FF0000 !important; display: block; margin-top: 15px !important;}
+  div:where(.swal2-container) h2:where(.swal2-title) span {color: #FF0000 !important; display: inline-flex;}

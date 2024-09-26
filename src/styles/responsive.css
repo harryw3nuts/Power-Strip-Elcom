@@ -317,7 +317,7 @@
     .brackerwrap .brackerInner {padding-top: 80px;}
     .brackerwrap .brackerleft img {height: 100%;}
     .brackerwrap .brackerright img {height: 100%;}
-    .brackerwrap .brackerleft {left: -50px;}
+    .brackerwrap .brackerleft { left: -60px; max-width: 380px; }
     .zoomer-wrap {display: none;}
     .mobileText {margin: 80px 0; display: block;}
     .mobileGrp {position: relative;}
@@ -375,7 +375,7 @@
     .accordion-button{padding: 20px; font-size: 18px; line-height: 26px;} 
     .accordion-button::before {right: 31px;}
     .accordion-body {font-size: 16px; padding: 0 20px 20px 20px;}
-    .brackerwrap .brackerright {right: -110px;}
+    .brackerwrap .brackerright { right: -160px; min-width: 400px; }
     .slick-initialized .slick-slide {margin: 0;padding: 0 16px;}
     .slick-dots {left: 10px;}
     .reviewSlider .left.group {right: 20%;}
@@ -405,7 +405,7 @@
     .pricefullImg .swiper-slide {justify-content: flex-end;}
     .colorBtn {gap: 0; }
     .difBtn:not(:last-child) {margin-right: 20px;}
-    .mobileSlider {background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%); padding-top: 80px; overflow: hidden;}
+    .mobileSlider {background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%); padding-top: 80px; overflow: hidden; }
     .mobileSlider .mobileFuture {position: relative; }
     .mobileSlider .mobileFuture .mobileTitle {}
     .mobileSlider .mobileFuture .mobileTitle h2 {background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 100%);; text-align: center; font-family: "Inter Tight"; font-size: 68px; font-weight: 500; line-height: 72px; color: transparent; -webkit-background-clip: text;}

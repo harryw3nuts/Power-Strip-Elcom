@@ -286,7 +286,7 @@ font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px
 .benefitHead {text-align: center;}
 .benefitHead h3 { font-size: 180px; font-weight: 500; background-image: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 90%); background-clip: text; color: transparent;
 -webkit-background-clip: text; font-family: "Inter Tight"; margin: 0;  }
-.benefitsecBox {margin-top: -72px;}
+/* .benefitsecBox {margin-top: -72px;} */
 .benefitBox {border-radius: 8px; background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%), #F4F4F4; padding: 32px 32px 57px 32px; display: flex; flex-direction: column; justify-content: center;  height: 100%;}
 .benefitBox .benefitText {position: relative; margin: 0;padding-bottom: 40px;}
 .benefitBox .benefitText .lebalText {display: block; color: var(--Secondary-Green, #5BDE84);
@@ -296,7 +296,9 @@ font-family: "Inter Tight"; font-size: 14px; font-style: normal; font-weight: 50
 /* .benefitBox .benefitImg img {display: flex; width: 100%; height: 100%;} */
 
 .reviewBox {background-color: #f2f2f2; padding: 120px 0 251px; overflow: hidden;}
-.reviewBox .reviewSlider {margin-top: -72px; position: relative;}
+.reviewBox .reviewSlider {
+  /* margin-top: -72px; */
+position: relative;}
 .box_slider {border-radius: 8px; background: var(--Primary-White, #FFF); padding: 32px; }
 .box_slider .text_box_slider {padding-bottom: 32px;}
 .box_slider .text_box_slider span {display: block; color: var(--Greys-300, #7B7B7B); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase;}

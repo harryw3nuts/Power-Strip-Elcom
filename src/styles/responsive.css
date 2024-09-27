@@ -307,7 +307,7 @@
 
     .navigationBar .navWrap .navInner > ul {display: none;}
     .benefitHead h3 {font-size: 68px;} 
-    .benefitsecBox {margin-top: -25px;}
+    /* .benefitsecBox {margin-top: -25px;} */
     .benefitsecBox .row {height: 100%; row-gap: 30px;}
     .benefitBox { padding: 20px; height: 100%;}
     .features-sec {display: none;}
@@ -362,7 +362,7 @@
     .powerstrip-slidersec-main .row {row-gap: 40px; width: auto;}
     .stripHead h3 {font-size: 32px; margin: 0; line-height: 40px;}
     .reviewBox {padding: 80px 0 160px;}
-    .reviewBox .reviewSlider {margin-top: -25px;}
+    /* .reviewBox .reviewSlider {margin-top: -25px;} */
     .insightWrap {margin: 80px 0;}
     .insightWrap .insightSec .insightHead h3 {font-size: 32px; margin: 0;}
     .insightWrap .boxImage {height: 278px;}
@@ -374,7 +374,7 @@
     .questionWrap .accordianWrap .accordianHead {margin-bottom: 40px;}
     .accordion-button{padding: 20px; font-size: 18px; line-height: 26px;} 
     .accordion-button::before {right: 31px;}
-    .accordion-body {font-size: 16px; padding: 0 20px 20px 20px;}
+    .accordion-body {font-size: 16px; padding: 20px;}
     .brackerwrap .brackerright { right: -160px; min-width: 400px; }
     .slick-initialized .slick-slide {margin: 0;padding: 0 16px;}
     .slick-dots {left: 10px;}
@@ -405,7 +405,7 @@
     .pricefullImg .swiper-slide {justify-content: flex-end;}
     .colorBtn {gap: 0; }
     .difBtn:not(:last-child) {margin-right: 20px;}
-    .mobileSlider {background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%); padding-top: 80px; overflow: hidden; }
+    .mobileSlider {background: linear-gradient(180deg, #101010 -10.69%, #FFF 170.25%); padding-top: 30px; overflow: hidden; height: 800px; }
     .mobileSlider .mobileFuture {position: relative; }
     .mobileSlider .mobileFuture .mobileTitle {}
     .mobileSlider .mobileFuture .mobileTitle h2 {background-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(16, 16, 16, .8) 100%);; text-align: center; font-family: "Inter Tight"; font-size: 68px; font-weight: 500; line-height: 72px; color: transparent; -webkit-background-clip: text;}
@@ -414,29 +414,29 @@
     .mobileGrp {}
     .slick-initialized .slick-slide {top: 8px;}
     .textBoxgrp {position: relative;}
-    .textBoxgrp .lineBox1 {position: absolute; left: 0; top: 0;}
-    .textOne {position: absolute; left: 25px; top: 0; }
+    /* .textBoxgrp .lineBox1 {position: absolute; left: 0; top: 0;} */
+    /* .textOne {position: absolute; left: 25px; top: 0; } */
     .textOne h3{color: var(--Greys-50, #F2F2F2); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: 2.1px; text-transform: uppercase;}
     .textOne span {color: var(--greys-100-body-text, #D6D6D6); font-family: "Inter Tight"; font-size: 12px; display: block; font-weight: 400; line-height: 18px;}
 
     
     .textTwo h3 {color: var(--Greys-50, #F2F2F2); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: 2.1px; text-transform: uppercase;}
     .textTwo span {color: var(--greys-100-body-text, #D6D6D6); font-family: "Inter Tight"; font-size: 12px; display: block; font-weight: 400; line-height: 18px;}
-    .textTwo {position: absolute; left: 50px; top: 0;}
-    .lineBox2 {position: absolute; top: 0; left: -18px; transform: rotate(9deg);}
+    /* .textTwo {position: absolute; left: 50px; top: 0;} */
+    /* .lineBox2 {position: absolute; top: 0; left: -18px; transform: rotate(9deg);} */
     .sliderWrap {}
-    .textThree {position: absolute; left: 50px; top: 0;}
+    /* .textThree {position: absolute; left: 50px; top: 0;} */
     .textThree h3 {color: var(--Greys-50, #F2F2F2); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: 2.1px; text-transform: uppercase;}
     .textThree span {color: var(--greys-100-body-text, #D6D6D6); font-family: "Inter Tight"; font-size: 12px; display: block; font-weight: 400; line-height: 18px;}
-    .lineBox3 {position: absolute; top: 0; left: 20px;}
-    .textfour {position: absolute; left: 50px; top: 0;}
+    /* .lineBox3 {position: absolute; top: 0; left: 20px;} */
+    /* .textfour {position: absolute; left: 50px; top: 0;} */
     .textfour h3 {color: var(--Greys-50, #F2F2F2); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: 2.1px; text-transform: uppercase;}
     .textfour span {color: var(--greys-100-body-text, #D6D6D6); font-family: "Inter Tight"; font-size: 12px; display: block; font-weight: 400; line-height: 18px;}
-    .lineBox4 {position: absolute; top: 0; left: 20px;}
-    .textFive {position: absolute; left: 50px; top: 0;}
+    /* .lineBox4 {position: absolute; top: 0; left: 20px;} */
+    /* .textFive {position: absolute; left: 50px; top: 0;} */
     .textFive h3 {color: var(--Greys-50, #F2F2F2); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 18px; letter-spacing: 2.1px; text-transform: uppercase;}
     .textFive span {color: var(--greys-100-body-text, #D6D6D6); font-family: "Inter Tight"; font-size: 12px; display: block; font-weight: 400; line-height: 18px;}
-    .lineBox5 {position: absolute; left: -10px; top: 0; transform: rotate(8deg);}
+    /* .lineBox5 {position: absolute; left: -10px; top: 0; transform: rotate(8deg);} */
     
     .mobileSlider .right.group,
     .mobileSlider .left.group {background-color: #FFF; width: 40px; height: 40px; border-radius: 50px;}

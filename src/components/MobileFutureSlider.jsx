@@ -53,60 +53,80 @@ const MobileFutureSlider = ({ featuresHeading, featuresImage, featuresImageMobil
                                 <div className="mobileImgBox">
                                     <Image src={featuresImageMobile.sourceUrl} width={121} height={1050} alt="mobileImg" unoptimized={true}></Image>
                                 </div>
-                                <div className="textOne">
-                                    {features1Heading && <h3>{features1Heading}</h3>}
-                                    {features1Subheading && <span>{features1Subheading}</span>}
-                                </div>
-                                <div className="lineBox1">
-                                    <Image src={vactor1} alt="vactor1"></Image>
+                                <div className="contain-text-img">
+                                    <div className="contain-text-img_wraper">
+                                        <div className="textOne">
+                                            {features1Heading && <h3>{features1Heading}</h3>}
+                                            {features1Subheading && <span>{features1Subheading}</span>}
+                                        </div>
+                                        <div className="lineBox1">
+                                            <Image src={vactor1} alt="vactor1"></Image>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>}
                             {(features2Heading || features2Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} width={121} height={525} alt="mobileImg" unoptimized={true}></Image>
                                 </div>
-                                <div className="textTwo">
-                                    {features2Heading && <h3>{features2Heading}</h3>}
-                                    {features2Subheading && <span>{features2Subheading}</span>}
-                                </div>
-                                <div className="lineBox2">
-                                    <Image src={vactor1} alt="vactor1" height={550}></Image>
+                                <div className="contain-text-img-2">
+                                    <div className="contain-text-img_wraper">
+                                        <div className="textTwo">
+                                            {features2Heading && <h3>{features2Heading}</h3>}
+                                            {features2Subheading && <span>{features2Subheading}</span>}
+                                        </div>
+                                        <div className="lineBox2">
+                                            <Image src={vactor1} alt="vactor1" height={550}></Image>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>}
                             {(features3Heading || features3Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} width={121} height={525} alt="mobileImg" unoptimized={true}></Image>
                                 </div>
-                                <div className="textThree">
-                                    {features3Heading && <h3>{features3Heading}</h3>}
-                                    {features3Subheading && <span>{features3Subheading}</span>}
-                                </div>
-                                <div className="lineBox3">
-                                    <Image src={vactor1} alt="vactor1" height={400}></Image>
+                                <div className="contain-text-img-3">
+                                    <div className="contain-text-img_wraper">
+                                        <div className="textThree">
+                                            {features3Heading && <h3>{features3Heading}</h3>}
+                                            {features3Subheading && <span>{features3Subheading}</span>}
+                                        </div>
+                                        <div className="lineBox3">
+                                            <Image src={vactor1} alt="vactor1" height={400}></Image>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>}
                             {(features4Heading || features4Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} width={121} height={525} alt="mobileImg" unoptimized={true}></Image>
                                 </div>
-                                <div className="textfour">
-                                    {features4Heading && <h3>{features4Heading}</h3>}
-                                    {features4Subheading && <span>{features4Subheading}</span>}
-                                </div>
-                                <div className="lineBox4">
-                                    <Image src={vactor1} alt="vactor1" height={350}></Image>
+                                <div className="contain-text-img-4">
+                                    <div className="contain-text-img_wraper">
+                                        <div className="textfour">
+                                            {features4Heading && <h3>{features4Heading}</h3>}
+                                            {features4Subheading && <span>{features4Subheading}</span>}
+                                        </div>
+                                        <div className="lineBox4">
+                                            <Image src={vactor1} alt="vactor1" height={350}></Image>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>}
                             {(features5Heading || features5Subheading) && <div className="textBoxgrp">
                                 <div className="mobileImgBox">
                                     <Image src={mobileImg} width={121} height={525} alt="mobileImg" unoptimized={true}></Image>
                                 </div>
-                                <div className="textFive">
-                                    {features5Heading && <h3>{features5Heading}</h3>}
-                                    {features5Subheading && <span>{features5Subheading}</span>}
-                                </div>
-                                <div className="lineBox5">
-                                    <Image src={vactor1} alt="vactor1" height={450}></Image>
+                                <div className="contain-text-img-5">
+                                    <div className="contain-text-img_wraper">
+                                        <div className="textFive">
+                                            {features5Heading && <h3>{features5Heading}</h3>}
+                                            {features5Subheading && <span>{features5Subheading}</span>}
+                                        </div>
+                                        <div className="lineBox5">
+                                            <Image src={vactor1} alt="vactor1" height={450}></Image>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>}
                         </Slider>

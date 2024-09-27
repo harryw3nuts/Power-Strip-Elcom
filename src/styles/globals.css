@@ -251,7 +251,7 @@ font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px
 .accordion-button:focus {box-shadow: none;}
 .accordion-button:not(.collapsed) {background-color: transparent; box-shadow: none;}
 .accordion-button {position: relative; width: 100%; border: none; outline: none; text-align: left; padding: 40px; cursor: pointer; color: var(--Greys-300, #7B7B7B) !important; font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px; background-color: transparent;}
-.accordion-body {padding: 0 40px 40px 40px; color: var(--greys-400-body-text, #343434); font-family: "Inter Tight"; font-size: 20px; font-weight: 400; line-height: 28px; margin: 0; max-width: 712px;}
+.accordion-body {padding: 40px; color: var(--greys-400-body-text, #343434); font-family: "Inter Tight"; font-size: 20px; font-weight: 400; line-height: 28px; margin: 0; max-width: 712px;}
 .accordion-button::after {background: #101010; width: 24px; background-image: none !important; height: 1px; transition: none !important;}
 .accordion-button::before{background: #101010; width: 1px; background-image: none !important; height: 24px; position: absolute; content: '';  margin-left: auto; right: 51px; transition: none !important;}
 .accordion-button:not(.collapsed)::after{display: block !important;}
@@ -409,8 +409,7 @@ font-size: 24px; font-weight: 600; line-height: 32px;}
 .innerformDtl .contactInner input:focus-visible{ outline: none;}
 
 .titleBox {background: #F4F4F4; padding: 40px;}
-.titleBox .orderInner {position: relative;}
-.titleBox .orderInner .titleHead {padding: 0 0 40px;}
+.titleBox .orderInner {position: relative; }.titleBox .orderInner .titleHead {padding: 0 0 40px;}
 .titleBox .orderInner .titleHead h4 {color: var(--Primary-Black, #101010); font-family: "Inter Tight"; font-size: 24px; font-weight: 600; line-height: 32px;}
 
 .titleBox .orderInner .orderBox { display: flex; gap: 20px; align-items: center; margin-bottom: 40px; border: 1px solid #000; padding: 10px 8px; border-radius: 4px;}
@@ -922,3 +921,34 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
   div:where(.swal2-container) h2:where(.swal2-title){color: var(--elcom-black) !important;}
   div:where(.swal2-icon).swal2-warning {border-color: #FF0000 !important; color: #FF0000 !important;}
   div:where(.swal2-container) h2:where(.swal2-title) span {color: #FF0000 !important; display: inline-flex;}
+
+  .textBoxgrp { position: relative; }
+  .contain-text-img { position: absolute; width: 30px; height: 30px; bottom: 18%; left: 49vw; }
+  .contain-text-img .contain-text-img_wraper { position: absolute; bottom: 0; left: -49vw; width: 100vw; padding-left: 25px; }
+  .contain-text-img .contain-text-img_wraper .textOne { padding-left: 30px; }
+  .contain-text-img .contain-text-img_wraper .lineBox1 { margin-top: -42px; }
+
+  .contain-text-img-2 { position: absolute; width: 30px; height: 30px; bottom: 18%; left: 49vw; }
+  .contain-text-img-2 .contain-text-img_wraper { position: absolute; bottom: 0; left: -49vw; width: 100vw; padding-left: 25px; }
+  .contain-text-img-2 .contain-text-img_wraper .textTwo { padding-left: 30px; }
+  .contain-text-img-2 .contain-text-img_wraper .lineBox2 { margin-top: -42px; }
+
+  .contain-text-img-3 { position: absolute; width: 30px; height: 30px; bottom: 38%; left: 49vw; }
+  .contain-text-img-3 .contain-text-img_wraper { position: absolute; bottom: 0; left: -35vw; width: 100vw; padding-left: 25px; }
+  .contain-text-img-3 .contain-text-img_wraper .textThree { padding-left: 30px; }
+  .contain-text-img-3 .contain-text-img_wraper .lineBox3 { margin-top: -42px; }
+
+  .contain-text-img-4 { position: absolute; width: 30px; height: 30px; bottom: 48%; left: 44vw; }
+  .contain-text-img-4 .contain-text-img_wraper { position: absolute; bottom: 0; left: -35vw; width: 100vw; padding-left: 25px; }
+  .contain-text-img-4 .contain-text-img_wraper .textfour { padding-left: 30px; }
+  .contain-text-img-4 .contain-text-img_wraper .lineBox4 { margin-top: -42px; }
+
+  .contain-text-img-5 { position: absolute; width: 30px; height: 30px; bottom: 19%; left: 30vw; }
+  .contain-text-img-5 .contain-text-img_wraper { position: absolute; bottom: 0; left: -35vw; width: 100vw; padding-left: 25px; }
+  .contain-text-img-5 .contain-text-img_wraper .textfour { padding-left: 30px; }
+  .contain-text-img-5 .contain-text-img_wraper .lineBox4 { margin-top: -42px; }
+
+  /* .contain-text-img-2 { position: absolute; width: 100%; height: 100%; top: 12%; left: 6%; }
+  .contain-text-img-3 { position: absolute; width: 100%; height: 100%; top: 8%; left: 12%; }
+  .contain-text-img-4 { position: absolute; width: 100%; height: 100%; top: 6%; left: 9%; }
+  .contain-text-img-5 { position: absolute; width: 100%; height: 100%; top: 10.1%; left: 5%; } */

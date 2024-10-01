@@ -912,6 +912,13 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
   .legalNotice {padding: 60px 0 139px;display: block;  color: #101010; font-family: "Inter Tight"; padding-bottom: 29px; margin: 0;}
   .legalNotice p {font-size: 20px; color: #6F6F6F; font-family: "Inter Tight"; margin-bottom: 30px;}
   .legalNotice > * + h3 { margin-top: 80px;}
+  .legalNotice ul { padding-left: 24px; margin: 18px 0; }
+  .legalNotice ul li { position: relative; }
+  .legalNotice ul li::after { position: absolute; top: 9px; left: -18px; width: 6px; height: 6px; background-color: #101010; content: ''; border-radius: 100%; }
+  .legalNotice ul li + li { margin-top: 12px; }
+  .legalNotice ul li ul { margin: 12px 0; }
+  .legalNotice ul li p { margin-top: 12px; }
+  .legalNotice p em { margin-top: 24px; display: block; }
 
 
 

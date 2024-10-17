@@ -130,7 +130,7 @@ ul li {margin: 0; padding: 0; list-style: none; text-decoration: none;}
 .priceSwiper .thumbBox {border-radius: 4px;background: #f4f4f4; width: 100%; display: flex; justify-content: center; align-items: center; position: relative; border-radius: 4px; overflow: hidden;}
 .priceSwiper .thumbBox::before { content: ''; display: block; width: 100%; padding-top: 100%;}
 .priceSwiper .thumbBox img { width: 100%; height: 100%; position: absolute; left: 0; top: 0; object-fit: contain;}
-.pricefullImg { min-height: 563px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative;}
+.pricefullImg { min-height: 550px; display: flex; align-items: center; justify-content: center; border-radius: 8px; position: relative; height: 100%;}
 .switer_btn {position: absolute; bottom: 80px; right: 32px; display: flex; gap: 10px; z-index: 10;}
 .switer_btn .group { border: none; background-color: #FFF; width: 40px; height: 40px; border-radius: 50px;}
 
@@ -355,7 +355,7 @@ font-style: normal; font-weight: 500; line-height: 24px; text-decoration-line: u
 
 .trailerText {position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; display: flex; align-items: center; width: 100%; justify-content: center;}
 /* .videoGrp .videoPlayer .videoWrapper .blueBtn {margin: 0 453px 0 311px;} */
-.videoGrp .videoPlayer .videoWrapper .blueBtn a { width: auto;color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; text-decoration: none; border: 1px solid #FFF; border-radius: 100px; height: 60px; display: flex; justify-content: center; align-items: center; padding: 0 34px; transition: all ease-in-out 0.3s;}
+.videoGrp .videoPlayer .videoWrapper .blueBtn a { width: auto;color: var(--Primary-White, #FFF); font-family: "Inter Tight"; font-size: 14px; font-weight: 500; line-height: 16px; letter-spacing: 2.1px; text-transform: uppercase; text-decoration: none; border: 1px solid #FFF; border-radius: 100px; height: 60px; display: flex; justify-content: center; align-items: center; padding: 0 34px; transition: all ease-in-out 0.3s; white-space: nowrap;}
 .videoGrp .videoPlayer .videoWrapper .blueBtn a:hover{background-color: #000; border-color: #000;}
 
 .videoGrp .videoPlayer .videoWrapper .blueBtn {padding: 0 350px;}
@@ -743,8 +743,10 @@ font-size: 16px; font-weight: 500; line-height: 20px; letter-spacing: 2.4px; tex
 }
 
 .mySwiper2 {
-  min-height: 563px;
+  
   width: 100%;
+  min-height: 100%;
+  
 }
 
 .mySwiper {

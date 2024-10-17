@@ -317,7 +317,7 @@
     .brackerwrap .brackerInner {padding-top: 80px;}
     .brackerwrap .brackerleft img {height: 100%;}
     .brackerwrap .brackerright img {height: 100%;}
-    .brackerwrap .brackerleft { left: -60px; max-width: 380px; }
+    .brackerwrap .brackerleft { left: -60px; max-width: 310px; }
     .zoomer-wrap {display: none;}
     .mobileText {margin: 80px 0; display: block;}
     .mobileGrp {position: relative;}
@@ -375,7 +375,7 @@
     .accordion-button{padding: 20px; font-size: 18px; line-height: 26px;} 
     .accordion-button::before {right: 31px;}
     .accordion-body {font-size: 16px; padding: 20px;}
-    .brackerwrap .brackerright { right: -160px; min-width: 400px; }
+    .brackerwrap .brackerright { right: -160px; min-width: 350px; bottom: -15px;}
     .slick-initialized .slick-slide {margin: 0;padding: 0 16px;}
     .slick-dots {left: 10px;}
     .reviewSlider .left.group {right: 20%;}
@@ -477,6 +477,11 @@
     .legalNotice h4 {font-size: 26px;}
     .legalNotice h5 {font-size: 22px;}
     .legalNotice h6{font-size: 20px;}
+
+
+    .thumbfullBox {width: 100%;}
+    .swiper-slide img {object-fit: inherit;}
+    
  
  }
 
